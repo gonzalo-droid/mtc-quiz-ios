@@ -906,7 +906,7 @@ public struct CategoryCard: View {
 
     private var vehicleImage: Image {
         if
-            let url = Bundle.module.url(forResource: category.examId, withExtension: "png"),
+            let url = Bundle.module.url(forResource: "\(category.examId)_card", withExtension: "png"),
             let uiImage = UIImage(contentsOfFile: url.path)
         {
             return Image(uiImage: uiImage)
