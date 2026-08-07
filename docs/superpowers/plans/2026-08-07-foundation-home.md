@@ -15,7 +15,7 @@
 - Every data value ported from Android (category text, hex colors, UserDefaults semantics) must match the Kotlin source **exactly** — this is a port, not a redesign. Source of truth: `/Volumes/Neko/AndroidStudioProjects/MTCQuiz/core/domain/src/main/java/com/gondroid/core/domain/model/Category.kt`, `core/data/src/main/java/com/gondroid/core/data/local/CategoryLocalDataSource.kt`, `home/presentation/src/main/java/com/gondroid/home/presentation/CategoryColors.kt`.
 - There are exactly **9 categories**. Android's `id` sequence is 1-6 then 8-10 (7 is intentionally skipped — "B-I / triciclos" has no balotario yet). Preserve that gap; do not renumber to 1-9.
 - No test target for `MTCDesignSystem` — it's pure visual constants with no branching logic to verify; it's checked visually once wired into `HomeView` in Task 5.
-- Every package task ends with `swift test --package-path Packages/<Name>` (or `swift build` for packages with no test target) passing before moving to the next task — this works standalone, no Xcode GUI needed, until Task 6.
+- Every package task ends with `swift test --package-path Packages/<Name>` (or `swift build` for packages with no test target) passing before moving to the next task — this works standalone, no Xcode GUI needed, until Task 6. **Exception:** any package importing `UIKit` or `SwiftUI` (MTCDesignSystem, and MTCHomeFeature from Task 5 onward) cannot be verified with plain `swift build`/`swift test` — those default to compiling for the local macOS host, which doesn't have UIKit, and the build fails with "no such module 'UIKit'" even though the code is correct for iOS. For those packages, verify instead with: `cd Packages/<Name> && xcodebuild build -scheme <Name> -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/<name>-verify`. This was discovered mid-plan (Task 2) — MTCDomain and MTCData (Foundation-only, Task 4's ViewModel is Observation-only) are unaffected and keep using plain `swift build`/`swift test`.
 
 ---
 
@@ -964,8 +964,10 @@ public struct HomeView: View {
 
 - [ ] **Step 5: Verify it builds**
 
-Run: `cd /Volumes/Neko/apps_ios/mtcquiz && swift build --package-path Packages/MTCHomeFeature`
-Expected: Build complete!
+This package imports `SwiftUI` and `UIKit` — plain `swift build` fails with "no such module 'UIKit'" because it defaults to building for the macOS host, which doesn't have UIKit (see Global Constraints). Verify with an iOS Simulator destination instead:
+
+Run: `cd /Volumes/Neko/apps_ios/mtcquiz/Packages/MTCHomeFeature && xcodebuild build -scheme MTCHomeFeature -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/mtchomefeature-verify`
+Expected: `** BUILD SUCCEEDED **`
 
 - [ ] **Step 6: Commit**
 
