@@ -29,3 +29,4 @@ Packages/*/.swiftpm/
 
 # Superpowers scratch workspace
 .superpowers/
+.worktrees
