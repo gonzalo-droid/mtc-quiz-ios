@@ -2,6 +2,8 @@ import Testing
 import MTCDomain
 @testable import MTCDetailFeature
 
+// Verify with: xcodebuild test -scheme MTCDetailFeature -destination 'platform=iOS Simulator,name=iPhone 17' (plain `swift test` can't compile MTCDesignSystem's UIKit import)
+
 @Suite @MainActor struct DetailViewModelTests {
     private let category = MTCDomain.Category(
         id: "1", title: "CLASE A - CATEGORIA I", category: "A-I", classType: "CLASE A",

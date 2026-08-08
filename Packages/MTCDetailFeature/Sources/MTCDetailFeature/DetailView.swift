@@ -30,6 +30,12 @@ public struct DetailView: View {
                     ProgressView()
                         .frame(maxWidth: .infinity)
                         .padding(.top, 60)
+                } else {
+                    Text("No se encontró la categoría.")
+                        .font(MTCTypography.body)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 60)
                 }
             }
             .padding(16)
@@ -107,12 +113,23 @@ private let previewCategory = MTCDomain.Category(
 
 private struct PreviewCategoryRepository: CategoryRepository {
     func categories() async -> [MTCDomain.Category] { [previewCategory] }
-    func category(withId id: String) async -> MTCDomain.Category? { previewCategory }
+    func category(withId id: String) async -> MTCDomain.Category? {
+        id == previewCategory.id ? previewCategory : nil
+    }
 }
 
 #Preview("Con categoría") {
     DetailView(
         viewModel: DetailViewModel(categoryId: "1", categoryRepository: PreviewCategoryRepository()),
+        onStartEvaluation: {},
+        onStudy: {},
+        onDownloadPDF: {}
+    )
+}
+
+#Preview("Categoría no encontrada") {
+    DetailView(
+        viewModel: DetailViewModel(categoryId: "no-such-id", categoryRepository: PreviewCategoryRepository()),
         onStartEvaluation: {},
         onStudy: {},
         onDownloadPDF: {}

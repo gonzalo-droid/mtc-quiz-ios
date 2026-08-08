@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "MTCDetailFeature",
-    platforms: [.iOS(.v17), .macOS(.v14)],
+    platforms: [.iOS(.v17)],
     products: [
         .library(name: "MTCDetailFeature", targets: ["MTCDetailFeature"]),
     ],
