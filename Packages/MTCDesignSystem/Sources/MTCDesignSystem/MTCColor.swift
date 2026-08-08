@@ -3,6 +3,8 @@ import SwiftUI
 public enum MTCColor {
     /// Ported from Color.kt: primaryLight/primaryDark.
     public static let primary = Color(light: "#3949AB", dark: "#B6C4FF")
+    /// Ported from Color.kt: onPrimaryLight/onPrimaryDark — readable text/icon color on top of `primary`.
+    public static let onPrimary = Color(light: "#FFFFFF", dark: "#08218A")
     /// Ported from Color.kt: tertiaryLight/tertiaryDark (used for the streak flame).
     public static let amber = Color(light: "#785900", dark: "#F5BF48")
 
