@@ -32,13 +32,13 @@ public struct CategoryCard: View {
                 vehicleImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 190, height: 150)
+                    .frame(width: 230, height: 180)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    .padding(4)
+                    .padding(2)
             }
         }
         .buttonStyle(.plain)
-        .frame(height: 160)
+        .frame(height: 190)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
