@@ -32,9 +32,9 @@ public struct CategoryCard: View {
                 vehicleImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 90)
+                    .frame(width: 190, height: 150)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    .padding(8)
+                    .padding(4)
             }
         }
         .buttonStyle(.plain)
