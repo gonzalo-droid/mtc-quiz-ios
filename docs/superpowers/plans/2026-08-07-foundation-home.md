@@ -15,7 +15,7 @@
 - Every data value ported from Android (category text, hex colors, UserDefaults semantics) must match the Kotlin source **exactly** — this is a port, not a redesign. Source of truth: `/Volumes/Neko/AndroidStudioProjects/MTCQuiz/core/domain/src/main/java/com/gondroid/core/domain/model/Category.kt`, `core/data/src/main/java/com/gondroid/core/data/local/CategoryLocalDataSource.kt`, `home/presentation/src/main/java/com/gondroid/home/presentation/CategoryColors.kt`.
 - There are exactly **9 categories**. Android's `id` sequence is 1-6 then 8-10 (7 is intentionally skipped — "B-I / triciclos" has no balotario yet). Preserve that gap; do not renumber to 1-9.
 - No test target for `MTCDesignSystem` — it's pure visual constants with no branching logic to verify; it's checked visually once wired into `HomeView` in Task 5.
-- Every package task ends with `swift test --package-path Packages/<Name>` (or `swift build` for packages with no test target) passing before moving to the next task — this works standalone, no Xcode GUI needed, until Task 6.
+- Every package task ends with `swift test --package-path Packages/<Name>` (or `swift build` for packages with no test target) passing before moving to the next task — this works standalone, no Xcode GUI needed, until Task 6. **Exception:** any package importing `UIKit` or `SwiftUI` (MTCDesignSystem, and MTCHomeFeature from Task 5 onward) cannot be verified with plain `swift build`/`swift test` — those default to compiling for the local macOS host, which doesn't have UIKit, and the build fails with "no such module 'UIKit'" even though the code is correct for iOS. For those packages, verify instead with: `cd Packages/<Name> && xcodebuild build -scheme <Name> -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/<name>-verify`. This was discovered mid-plan (Task 2) — MTCDomain and MTCData (Foundation-only, Task 4's ViewModel is Observation-only) are unaffected and keep using plain `swift build`/`swift test`.
 
 ---
 
@@ -620,7 +620,9 @@ git commit -m "feat: add MTCData package with bundled categories JSON and UserDe
 
 **Interfaces:**
 - Consumes: `Category`, `CategoryRepository`, `PreferencesRepository` from `MTCDomain` (Task 1). Does NOT depend on `MTCData` (Task 3) — the view model only knows the protocols, never the concrete repositories; that's the whole point of the dependency-inversion boundary.
-- Produces: `HomeState` (struct: `categories: [Category] = []`, `streak: Int = 0`, `userName: String = ""`, all with public memberwise-equivalent `init`). `HomeViewModel` (`@MainActor @Observable public final class`, `public init(categoryRepository: CategoryRepository, preferencesRepository: PreferencesRepository)`, `public private(set) var state: HomeState`, `public func load() async`). Task 5's `HomeView` and Task 6's app shell consume `HomeViewModel` by this exact initializer and `state`/`load()` API.
+- Produces: `HomeState` (struct: `categories: [MTCDomain.Category] = []`, `streak: Int = 0`, `userName: String = ""`, all with public memberwise-equivalent `init`). `HomeViewModel` (`@MainActor @Observable public final class`, `public init(categoryRepository: CategoryRepository, preferencesRepository: PreferencesRepository)`, `public private(set) var state: HomeState`, `public func load() async`). Task 5's `HomeView` and Task 6's app shell consume `HomeViewModel` by this exact initializer and `state`/`load()` API.
+
+**Naming note:** Task 3 discovered that Foundation's Objective-C runtime header declares a global `typedef ... Category` on Apple platforms, which collides with `MTCDomain.Category` in any file that imports both `MTCDomain` and anything pulling in Foundation (`Foundation` itself, and transitively `Testing`, `SwiftUI`, possibly `Observation`). To avoid a repeat fix-loop, every file below spells the type out as `MTCDomain.Category` wherever it appears, even in files where it might turn out not to be strictly required — it's a free, safe qualification either way.
 
 - [ ] **Step 1: Package scaffold with local dependencies**
 
@@ -664,13 +666,13 @@ let package = Package(
 import MTCDomain
 
 final class FakeCategoryRepository: CategoryRepository {
-    var categoriesToReturn: [Category]
+    var categoriesToReturn: [MTCDomain.Category]
 
-    init(categoriesToReturn: [Category] = []) {
+    init(categoriesToReturn: [MTCDomain.Category] = []) {
         self.categoriesToReturn = categoriesToReturn
     }
 
-    func categories() async -> [Category] {
+    func categories() async -> [MTCDomain.Category] {
         categoriesToReturn
     }
 }
@@ -719,7 +721,7 @@ import MTCDomain
     }
 
     @Test func loadPopulatesStateFromBothRepositories() async {
-        let category = Category(
+        let category = MTCDomain.Category(
             id: "1", title: "CLASE A - CATEGORIA I", category: "A-I",
             classType: "CLASE A", description: "d", pdf: "p.pdf",
             pathJson: "a1_questions.json"
@@ -750,11 +752,11 @@ Expected: FAIL — `HomeState`/`HomeViewModel` don't exist yet.
 import MTCDomain
 
 public struct HomeState: Equatable, Sendable {
-    public var categories: [Category]
+    public var categories: [MTCDomain.Category]
     public var streak: Int
     public var userName: String
 
-    public init(categories: [Category] = [], streak: Int = 0, userName: String = "") {
+    public init(categories: [MTCDomain.Category] = [], streak: Int = 0, userName: String = "") {
         self.categories = categories
         self.streak = streak
         self.userName = userName
@@ -816,9 +818,11 @@ git commit -m "feat: add HomeState and HomeViewModel to MTCHomeFeature"
 
 **Interfaces:**
 - Consumes: `Category` (`MTCDomain`), `MTCColor`/`MTCTypography` (`MTCDesignSystem`, Task 2), `HomeViewModel`/`HomeState` (Task 4).
-- Produces: `CategoryCard` (public SwiftUI `View`, `init(category: Category, onSelect: @escaping () -> Void)`). `HomeView` (public SwiftUI `View`, `init(viewModel: HomeViewModel, onSelectCategory: @escaping (Category) -> Void)`). Task 6's app shell constructs `HomeView` by this exact initializer.
+- Produces: `CategoryCard` (public SwiftUI `View`, `init(category: MTCDomain.Category, onSelect: @escaping () -> Void)`). `HomeView` (public SwiftUI `View`, `init(viewModel: HomeViewModel, onSelectCategory: @escaping (MTCDomain.Category) -> Void)`). Task 6's app shell constructs `HomeView` by this exact initializer.
 
-No automated test for SwiftUI view code (Android doesn't unit-test its Composables either — `HomeScreen.kt` only has a `@Preview`, no test file). Verified via `swift build` here, then visually via the iOS Simulator in Task 6.
+No automated test for SwiftUI view code (Android doesn't unit-test its Composables either — `HomeScreen.kt` only has a `@Preview`, no test file). Verified via `xcodebuild -destination 'generic/platform=iOS Simulator'` here (see Step 5 — this package imports SwiftUI/UIKit, same reason Task 2 needed it), then visually via the iOS Simulator in Task 6.
+
+Both files below spell the type as `MTCDomain.Category` throughout, per the naming note in Task 4 — this file set imports `SwiftUI`, which is exactly the kind of import that triggers the Foundation/Objective-C `Category` collision.
 
 - [ ] **Step 1: Copy the 9 vehicle illustrations from the Android project**
 
@@ -862,10 +866,10 @@ import MTCDomain
 import MTCDesignSystem
 
 public struct CategoryCard: View {
-    private let category: Category
+    private let category: MTCDomain.Category
     private let onSelect: () -> Void
 
-    public init(category: Category, onSelect: @escaping () -> Void) {
+    public init(category: MTCDomain.Category, onSelect: @escaping () -> Void) {
         self.category = category
         self.onSelect = onSelect
     }
@@ -902,7 +906,7 @@ public struct CategoryCard: View {
 
     private var vehicleImage: Image {
         if
-            let url = Bundle.module.url(forResource: category.examId, withExtension: "png"),
+            let url = Bundle.module.url(forResource: "\(category.examId)_card", withExtension: "png"),
             let uiImage = UIImage(contentsOfFile: url.path)
         {
             return Image(uiImage: uiImage)
@@ -922,9 +926,9 @@ import MTCDesignSystem
 
 public struct HomeView: View {
     @State private var viewModel: HomeViewModel
-    private let onSelectCategory: (Category) -> Void
+    private let onSelectCategory: (MTCDomain.Category) -> Void
 
-    public init(viewModel: HomeViewModel, onSelectCategory: @escaping (Category) -> Void) {
+    public init(viewModel: HomeViewModel, onSelectCategory: @escaping (MTCDomain.Category) -> Void) {
         _viewModel = State(initialValue: viewModel)
         self.onSelectCategory = onSelectCategory
     }
@@ -964,8 +968,10 @@ public struct HomeView: View {
 
 - [ ] **Step 5: Verify it builds**
 
-Run: `cd /Volumes/Neko/apps_ios/mtcquiz && swift build --package-path Packages/MTCHomeFeature`
-Expected: Build complete!
+This package imports `SwiftUI` and `UIKit` — plain `swift build` fails with "no such module 'UIKit'" because it defaults to building for the macOS host, which doesn't have UIKit (see Global Constraints). Verify with an iOS Simulator destination instead:
+
+Run: `cd /Volumes/Neko/apps_ios/mtcquiz/Packages/MTCHomeFeature && xcodebuild build -scheme MTCHomeFeature -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/mtchomefeature-verify`
+Expected: `** BUILD SUCCEEDED **`
 
 - [ ] **Step 6: Commit**
 

@@ -1,17 +1,21 @@
-//
-//  mtcquizApp.swift
-//  mtcquiz
-//
-//  Created by Gonzalo on 7/08/26.
-//
-
 import SwiftUI
+import MTCData
+import MTCHomeFeature
 
 @main
 struct mtcquizApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(
+                viewModel: HomeViewModel(
+                    categoryRepository: LocalCategoryRepository(),
+                    preferencesRepository: UserDefaultsPreferencesRepository()
+                ),
+                onSelectCategory: { category in
+                    // La navegación real a Detail llega en el sub-proyecto 2.
+                    print("Selected category: \(category.category)")
+                }
+            )
         }
     }
 }
