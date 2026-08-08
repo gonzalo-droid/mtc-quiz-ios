@@ -15,6 +15,10 @@ public final class LocalCategoryRepository: CategoryRepository {
         }
         return decoded.map(\.asDomain)
     }
+
+    public func category(withId id: String) async -> MTCDomain.Category? {
+        await categories().first { $0.id == id }
+    }
 }
 
 private struct CategoryDTO: Decodable {

@@ -10,4 +10,8 @@ final class FakeCategoryRepository: CategoryRepository {
     func categories() async -> [MTCDomain.Category] {
         categoriesToReturn
     }
+
+    func category(withId id: String) async -> MTCDomain.Category? {
+        categoriesToReturn.first { $0.id == id }
+    }
 }

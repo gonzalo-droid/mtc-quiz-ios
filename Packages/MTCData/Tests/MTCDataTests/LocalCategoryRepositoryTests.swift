@@ -24,4 +24,16 @@ import Testing
         #expect(a1.pdf == "CLASE_A_I.pdf")
         #expect(a1.examId == "a1")
     }
+
+    @Test func categoryWithIdReturnsMatchingCategory() async {
+        let repository = LocalCategoryRepository()
+        let category = await repository.category(withId: "1")
+        #expect(category?.category == "A-I")
+    }
+
+    @Test func categoryWithIdReturnsNilForUnknownId() async {
+        let repository = LocalCategoryRepository()
+        let category = await repository.category(withId: "does-not-exist")
+        #expect(category == nil)
+    }
 }
