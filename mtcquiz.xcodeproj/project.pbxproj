@@ -13,6 +13,7 @@
 		EAD5415A3027A921007E9B1F /* MTCData in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541593027A921007E9B1F /* MTCData */; };
 		EAD5415B3027A928007E9B1F /* MTCDetailFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5415C3027A928007E9B1F /* MTCDetailFeature */; };
 		EAD5415E3027A928007E9B1F /* MTCPDFFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5415F3027A928007E9B1F /* MTCPDFFeature */; };
+		EAD541613027A928007E9B1F /* MTCEvaluationFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541623027A928007E9B1F /* MTCEvaluationFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 				EAD541573027A914007E9B1F /* MTCDesignSystem in Frameworks */,
 				EAD5415B3027A928007E9B1F /* MTCDetailFeature in Frameworks */,
 				EAD5415E3027A928007E9B1F /* MTCPDFFeature in Frameworks */,
+				EAD541613027A928007E9B1F /* MTCEvaluationFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,7 @@
 				EAD541593027A921007E9B1F /* MTCData */,
 				EAD5415C3027A928007E9B1F /* MTCDetailFeature */,
 				EAD5415F3027A928007E9B1F /* MTCPDFFeature */,
+				EAD541623027A928007E9B1F /* MTCEvaluationFeature */,
 			);
 			productName = mtcquiz;
 			productReference = EA73862B3025ADA90019A50B /* mtcquiz.app */;
@@ -122,6 +125,7 @@
 				EAD541583027A921007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCData" */,
 				EAD5415D3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCDetailFeature" */,
 				EAD541603027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCPDFFeature" */,
+				EAD541633027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCEvaluationFeature" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EA73862C3025ADA90019A50B /* Products */;
@@ -387,6 +391,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/MTCPDFFeature;
 		};
+		EAD541633027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCEvaluationFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MTCEvaluationFeature;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -413,6 +421,10 @@
 		EAD5415F3027A928007E9B1F /* MTCPDFFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MTCPDFFeature;
+		};
+		EAD541623027A928007E9B1F /* MTCEvaluationFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MTCEvaluationFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

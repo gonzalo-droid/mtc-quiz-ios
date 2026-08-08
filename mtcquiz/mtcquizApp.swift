@@ -1,18 +1,33 @@
 import SwiftUI
+import SwiftData
 import MTCData
 import MTCHomeFeature
 import MTCDetailFeature
 import MTCPDFFeature
+import MTCEvaluationFeature
 internal import MTCDomain
 
 @main
 struct mtcquizApp: App {
     private let categoryRepository = LocalCategoryRepository()
     private let preferencesRepository = UserDefaultsPreferencesRepository()
+    private let questionRepository = LocalQuestionRepository()
+    private let imageResolver = LocalQuestionImageResolver()
+    private let modelContainer: ModelContainer
+
+    init() {
+        modelContainer = try! ModelContainer(for: EvaluationRecord.self)
+    }
 
     var body: some Scene {
         WindowGroup {
-            RootView(categoryRepository: categoryRepository, preferencesRepository: preferencesRepository)
+            RootView(
+                categoryRepository: categoryRepository,
+                preferencesRepository: preferencesRepository,
+                questionRepository: questionRepository,
+                imageResolver: imageResolver,
+                evaluationRepository: SwiftDataEvaluationRepository(modelContext: modelContainer.mainContext)
+            )
         }
     }
 }
@@ -20,6 +35,9 @@ struct mtcquizApp: App {
 private struct RootView: View {
     let categoryRepository: LocalCategoryRepository
     let preferencesRepository: UserDefaultsPreferencesRepository
+    let questionRepository: LocalQuestionRepository
+    let imageResolver: LocalQuestionImageResolver
+    let evaluationRepository: SwiftDataEvaluationRepository
     @State private var path = NavigationPath()
 
     var body: some View {
@@ -39,7 +57,7 @@ private struct RootView: View {
                     DetailView(
                         viewModel: DetailViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
                         onStartEvaluation: {
-                            // La navegación real a Evaluation llega en el sub-proyecto de Evaluation.
+                            path.append(Route.evaluation(categoryId: categoryId))
                         },
                         onStudy: {
                             // "Estudiar" (QuestionReview) queda fuera de alcance en esta pasada.
@@ -51,6 +69,38 @@ private struct RootView: View {
                 case .pdf(let categoryId):
                     PDFScreenView(
                         viewModel: PDFViewModel(categoryId: categoryId, categoryRepository: categoryRepository)
+                    )
+                case .evaluation(let categoryId):
+                    QuizView(
+                        viewModel: QuizViewModel(
+                            categoryId: categoryId,
+                            categoryRepository: categoryRepository,
+                            questionRepository: questionRepository,
+                            evaluationRepository: evaluationRepository,
+                            preferencesRepository: preferencesRepository
+                        ),
+                        imageResolver: imageResolver,
+                        preferencesRepository: preferencesRepository,
+                        onCancel: {
+                            // Stack here is [detail, evaluation]; pop 1 to return to detail.
+                            path.removeLast()
+                        },
+                        onFinished: { evaluationId in
+                            path.append(Route.summary(categoryId: categoryId, evaluationId: evaluationId))
+                        }
+                    )
+                case .summary(let categoryId, let evaluationId):
+                    SummaryView(
+                        viewModel: SummaryViewModel(
+                            categoryId: categoryId,
+                            evaluationId: evaluationId,
+                            categoryRepository: categoryRepository,
+                            evaluationRepository: evaluationRepository
+                        ),
+                        onFinish: {
+                            // Stack here is [detail, evaluation, summary]; pop 2 to return to detail.
+                            path.removeLast(2)
+                        }
                     )
                 }
             }
