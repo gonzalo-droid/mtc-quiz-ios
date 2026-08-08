@@ -72,11 +72,17 @@ public struct QuizView: View {
             let minutes = await preferencesRepository.evaluationTimeMinutes
             guard minutes > 0 else { return }
             secondsRemaining = minutes * 60
-            while secondsRemaining > 0 {
+            while secondsRemaining > 0 && !viewModel.state.isFinishing {
                 try? await Task.sleep(for: .seconds(1))
+                guard !Task.isCancelled else { return }
                 secondsRemaining -= 1
             }
-            showTimeUpDialog = true
+            // Only surface the time's-up dialog if the loop exited because time actually ran
+            // out — not because the quiz already finished (e.g. QuizView is still alive
+            // underneath a pushed Summary screen; see Finding 2 in the final review).
+            if !viewModel.state.isFinishing {
+                showTimeUpDialog = true
+            }
         }
     }
 
@@ -111,7 +117,7 @@ public struct QuizView: View {
             }
             .background(MTCColor.primary)
             .clipShape(Capsule())
-            .disabled(viewModel.state.selectedOptionIndex == nil)
+            .disabled(viewModel.state.selectedOptionIndex == nil || viewModel.state.isFinishing)
         }
         .padding(16)
     }

@@ -93,6 +93,13 @@ public final class QuizViewModel {
     }
 
     public func finishQuiz() async {
+        // Re-entrancy guard: a double-tap on "Finalizar" (or the timer's time's-up dialog
+        // firing after finishQuiz() was already triggered) must not save a second
+        // EvaluationRecord or invoke onFinished twice. Set synchronously, before any await,
+        // so a concurrently-started second call always observes it.
+        guard !state.isFinishing else { return }
+        state.isFinishing = true
+
         let correct = results.filter(\.isCorrect).count
         let total = state.questions.count
         let incorrect = total - correct

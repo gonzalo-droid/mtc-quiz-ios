@@ -140,6 +140,31 @@ import MTCDomain
         #expect(saved.outcome == .rejected)
     }
 
+    @Test func finishQuizCountsUnansweredQuestionsAsIncorrect() async {
+        // 3 questions, only the first is answered (correctly) before finishQuiz() is called —
+        // mirrors the real time's-up path, where the timer fires finishQuiz() with some
+        // questions never verified. 1/3 ≈ 33% < 80% threshold -> rejected, and the 2
+        // unanswered questions should count as incorrect rather than being dropped.
+        let questions = [
+            makeQuestion(id: 1, answer: "c"), makeQuestion(id: 2, answer: "a"), makeQuestion(id: 3, answer: "b"),
+        ]
+        let (viewModel, evaluationRepository) = makeViewModel(questions: questions, passPercentage: 80)
+        await viewModel.load()
+
+        viewModel.selectOption(at: 2) // correct for question 1 ("c")
+        viewModel.verifyAnswer()
+        // Questions 2 and 3 are left unanswered.
+
+        await viewModel.finishQuiz()
+
+        #expect(evaluationRepository.savedEvaluations.count == 1)
+        let saved = evaluationRepository.savedEvaluations[0]
+        #expect(saved.totalCorrect == 1)
+        #expect(saved.totalIncorrect == 2)
+        #expect(saved.totalQuestions == 3)
+        #expect(saved.outcome == .rejected)
+    }
+
     @Test func finishQuizInvokesOnFinishedWithTheSavedEvaluationId() async {
         let (viewModel, _) = makeViewModel(questions: [makeQuestion(id: 1)])
         await viewModel.load()
