@@ -1,6 +1,7 @@
 import SwiftUI
 import MTCData
 import MTCHomeFeature
+internal import MTCDomain
 
 @main
 struct mtcquizApp: App {
