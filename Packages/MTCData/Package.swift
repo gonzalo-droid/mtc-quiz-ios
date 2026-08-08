@@ -17,6 +17,7 @@ let package = Package(
             resources: [
                 .process("Resources/categories.json"),
                 .copy("Resources/Questions"),
+                .copy("Resources/Images"),
             ]
         ),
         .testTarget(name: "MTCDataTests", dependencies: ["MTCData", "MTCDomain"]),
