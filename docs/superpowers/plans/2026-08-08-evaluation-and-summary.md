@@ -1575,8 +1575,10 @@ git commit -m "feat: add QuizState and QuizViewModel to new MTCEvaluationFeature
 - Create: `Packages/MTCEvaluationFeature/Sources/MTCEvaluationFeature/QuizView.swift`
 
 **Interfaces:**
-- Consumes: `QuizViewModel`/`QuizState` (Task 5), `QuestionAnswerCard`/`AnswerOption`/`AnswerOptionState` (`MTCDesignSystem`, Task 4), `MTCDomain.QuestionImageResolver` (Task 1, real impl injected via the app shell in Task 9).
-- Produces: `QuizView` (public SwiftUI `View`, `init(viewModel: QuizViewModel, imageResolver: QuestionImageResolver, evaluationTimeMinutes: Int, onCancel: @escaping () -> Void, onFinished: @escaping (String) -> Void)`). Task 9's app shell constructs this by this exact initializer.
+- Consumes: `QuizViewModel`/`QuizState` (Task 5), `QuestionAnswerCard`/`AnswerOption`/`AnswerOptionState` (`MTCDesignSystem`, Task 4), `MTCDomain.QuestionImageResolver`, `MTCDomain.PreferencesRepository` (Task 1, real impls injected via the app shell in Task 9).
+- Produces: `QuizView` (public SwiftUI `View`, `init(viewModel: QuizViewModel, imageResolver: QuestionImageResolver, preferencesRepository: PreferencesRepository, onCancel: @escaping () -> Void, onFinished: @escaping (String) -> Void)`). Task 9's app shell constructs this by this exact initializer.
+
+**Why `preferencesRepository` instead of a plain `evaluationTimeMinutes: Int`:** `PreferencesRepository.evaluationTimeMinutes` is `{ get async }`, and the app shell's `RootView.body` (Task 9) is a synchronous computed property — it cannot `await` a value to pass in as a plain `Int` at construction time. `QuizView` reads the real value itself, inside its own `.task`, alongside `viewModel.load()`.
 
 Ported from `docs/screen/evaluation.png` and `docs/screen/evaluation_image.png` (the latter showing a question with an image strip), and the real Android `EvaluationScreen.kt` timer/button/dialog logic already fully captured in this plan's header.
 
@@ -1622,7 +1624,7 @@ import MTCDesignSystem
 public struct QuizView: View {
     @State private var viewModel: QuizViewModel
     private let imageResolver: QuestionImageResolver
-    private let evaluationTimeMinutes: Int
+    private let preferencesRepository: PreferencesRepository
     private let onCancel: () -> Void
     private let onFinished: (String) -> Void
 
@@ -1633,13 +1635,13 @@ public struct QuizView: View {
     public init(
         viewModel: QuizViewModel,
         imageResolver: QuestionImageResolver,
-        evaluationTimeMinutes: Int,
+        preferencesRepository: PreferencesRepository,
         onCancel: @escaping () -> Void,
         onFinished: @escaping (String) -> Void
     ) {
         _viewModel = State(initialValue: viewModel)
         self.imageResolver = imageResolver
-        self.evaluationTimeMinutes = evaluationTimeMinutes
+        self.preferencesRepository = preferencesRepository
         self.onCancel = onCancel
         self.onFinished = onFinished
     }
@@ -1685,8 +1687,10 @@ public struct QuizView: View {
             Text("Se acabó el tiempo para esta evaluación.")
         }
         .task(id: viewModel.state.isLoading) {
-            guard !viewModel.state.isLoading, evaluationTimeMinutes > 0 else { return }
-            secondsRemaining = evaluationTimeMinutes * 60
+            guard !viewModel.state.isLoading else { return }
+            let minutes = await preferencesRepository.evaluationTimeMinutes
+            guard minutes > 0 else { return }
+            secondsRemaining = minutes * 60
             while secondsRemaining > 0 {
                 try? await Task.sleep(for: .seconds(1))
                 secondsRemaining -= 1
@@ -1840,7 +1844,7 @@ private struct PreviewImageResolver: QuestionImageResolver {
                 preferencesRepository: PreviewPreferencesRepository()
             ),
             imageResolver: PreviewImageResolver(),
-            evaluationTimeMinutes: 40,
+            preferencesRepository: PreviewPreferencesRepository(),
             onCancel: {},
             onFinished: { _ in }
         )
@@ -2328,7 +2332,7 @@ private struct RootView: View {
                             preferencesRepository: preferencesRepository
                         ),
                         imageResolver: imageResolver,
-                        evaluationTimeMinutes: 40,
+                        preferencesRepository: preferencesRepository,
                         onCancel: {
                             path.removeLast()
                         },
@@ -2354,8 +2358,6 @@ private struct RootView: View {
     }
 }
 ```
-
-Note: `evaluationTimeMinutes: 40` is passed as a literal here rather than read from `preferencesRepository` asynchronously at the call site — `QuizView`'s `init` isn't `async`, so read the real value from `preferencesRepository.evaluationTimeMinutes` inside `QuizView`'s own `.task` instead of threading it through the initializer, OR keep it simple by having `RootView` read it once synchronously... **actually correct this before implementing**: since `PreferencesRepository.evaluationTimeMinutes` is `{ get async }`, `RootView.body` (a synchronous computed property) cannot await it directly. The cleanest fix: change `QuizView`'s `init` to accept the `PreferencesRepository` directly instead of a pre-resolved `Int`, and have `QuizView` read `evaluationTimeMinutes` itself inside its own `.task` (alongside `viewModel.load()`), removing the `evaluationTimeMinutes: Int` parameter from `QuizView`'s initializer entirely. **This is a real correction to Task 6's planned `QuizView` signature — apply it now in this task**: update `QuizView.init` to `init(viewModel: QuizViewModel, imageResolver: QuestionImageResolver, preferencesRepository: PreferencesRepository, onCancel: @escaping () -> Void, onFinished: @escaping (String) -> Void)`, and inside the timer `.task(id:)`, read `let minutes = await preferencesRepository.evaluationTimeMinutes` instead of using a stored `evaluationTimeMinutes` property. Make this adjustment to `Packages/MTCEvaluationFeature/Sources/MTCEvaluationFeature/QuizView.swift` (and its preview) as part of this task, then wire `RootView`'s `.evaluation` case to pass `preferencesRepository:` instead of a literal `40`.
 
 - [ ] **Step 4: Build headlessly**
 
