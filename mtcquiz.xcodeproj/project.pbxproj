@@ -11,6 +11,7 @@
 		EAD541543027A907007E9B1F /* MTCDomain in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541533027A907007E9B1F /* MTCDomain */; };
 		EAD541573027A914007E9B1F /* MTCDesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541563027A914007E9B1F /* MTCDesignSystem */; };
 		EAD5415A3027A921007E9B1F /* MTCData in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541593027A921007E9B1F /* MTCData */; };
+		EAD5415B3027A928007E9B1F /* MTCDetailFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5415C3027A928007E9B1F /* MTCDetailFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 				EAD5415A3027A921007E9B1F /* MTCData in Frameworks */,
 				EAD541543027A907007E9B1F /* MTCDomain in Frameworks */,
 				EAD541573027A914007E9B1F /* MTCDesignSystem in Frameworks */,
+				EAD5415B3027A928007E9B1F /* MTCDetailFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +82,7 @@
 				EAD541533027A907007E9B1F /* MTCDomain */,
 				EAD541563027A914007E9B1F /* MTCDesignSystem */,
 				EAD541593027A921007E9B1F /* MTCData */,
+				EAD5415C3027A928007E9B1F /* MTCDetailFeature */,
 			);
 			productName = mtcquiz;
 			productReference = EA73862B3025ADA90019A50B /* mtcquiz.app */;
@@ -114,6 +117,7 @@
 				EAD541523027A907007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCDomain" */,
 				EAD541553027A914007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCDesignSystem" */,
 				EAD541583027A921007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCData" */,
+				EAD5415D3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCDetailFeature" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EA73862C3025ADA90019A50B /* Products */;
@@ -371,6 +375,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/MTCData;
 		};
+		EAD5415D3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCDetailFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MTCDetailFeature;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -389,6 +397,10 @@
 		EAD541593027A921007E9B1F /* MTCData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MTCData;
+		};
+		EAD5415C3027A928007E9B1F /* MTCDetailFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MTCDetailFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

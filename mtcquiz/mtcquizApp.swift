@@ -1,22 +1,54 @@
 import SwiftUI
 import MTCData
 import MTCHomeFeature
+import MTCDetailFeature
 internal import MTCDomain
 
 @main
 struct mtcquizApp: App {
+    private let categoryRepository = LocalCategoryRepository()
+    private let preferencesRepository = UserDefaultsPreferencesRepository()
+
     var body: some Scene {
         WindowGroup {
+            RootView(categoryRepository: categoryRepository, preferencesRepository: preferencesRepository)
+        }
+    }
+}
+
+private struct RootView: View {
+    let categoryRepository: LocalCategoryRepository
+    let preferencesRepository: UserDefaultsPreferencesRepository
+    @State private var path = NavigationPath()
+
+    var body: some View {
+        NavigationStack(path: $path) {
             HomeView(
                 viewModel: HomeViewModel(
-                    categoryRepository: LocalCategoryRepository(),
-                    preferencesRepository: UserDefaultsPreferencesRepository()
+                    categoryRepository: categoryRepository,
+                    preferencesRepository: preferencesRepository
                 ),
                 onSelectCategory: { category in
-                    // La navegación real a Detail llega en el sub-proyecto 2.
-                    print("Selected category: \(category.category)")
+                    path.append(Route.detail(categoryId: category.id))
                 }
             )
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .detail(let categoryId):
+                    DetailView(
+                        viewModel: DetailViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
+                        onStartEvaluation: {
+                            // La navegación real a Evaluation llega en el sub-proyecto de Evaluation.
+                        },
+                        onStudy: {
+                            // "Estudiar" (QuestionReview) queda fuera de alcance en esta pasada.
+                        },
+                        onDownloadPDF: {
+                            // La navegación real a PDF llega en el sub-proyecto de PDF.
+                        }
+                    )
+                }
+            }
         }
     }
 }
