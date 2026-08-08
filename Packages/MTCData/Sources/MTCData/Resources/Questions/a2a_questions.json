@@ -1,0 +1,3365 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Está permitido en la vía:",
+            "answer": "c",
+            "options": [
+                "a) Recoger o dejar pasajeros o carga en cualquier lugar",
+                "b) Dejar animales sueltos o situarlos de forma tal que obstaculicen solo un poco el tránsito",
+                "c) Recoger o dejar pasajeros en lugares autorizados.",
+                "d) Ejercer el comercio ambulatorio o estacionario"
+            ]
+        },
+        {
+            "id": 2,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Respecto de los dispositivos de control o regulación del tránsito:",
+            "answer": "b",
+            "options": [
+                "a) Solo los peatones están obligados a su obediencia",
+                "b) Los conductores y los peatones están obligados a su obediencia, salvo instrucción de la Policía Nacional del Perú asignada al tránsito que indique lo contrario",
+                "c) Solo los conductores están obligados a su obediencia.",
+                "d) Los conductores están obligados a su obediencia, aun cuando la Policía Nacional del Perú asignada al tránsito pueda indicar lo contrario."
+            ]
+        },
+        {
+            "id": 3,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La señal vertical reglamentaria R-6 ¿prohibido voltear a la izquierda?, significa que:",
+            "answer": "a",
+            "options": [
+                "a) Está prohibido voltear a la izquierda y, por lo tanto también está prohibido el giro en U.",
+                "b) Está prohibido voltear a la izquierda, sin embargo, está permitido el giro en U.",
+                "c) El único sentido de desplazamiento es continuar de frente.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 4,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La señal vertical reglamentaria R-3 significa que:",
+            "answer": "c",
+            "options": [
+                "a) Nos acercamos a una zona restringida al tránsito.",
+                "b) Está permitido adelantar vehículos.",
+                "c) El único sentido de desplazamiento es continuar de frente.",
+                "d) Ninguna de las alternativas es correcta"
+            ],
+            "imagens": [
+                "q4_a_a2a"
+            ]
+        },
+        {
+            "id": 5,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En las vías, las marcas en el pavimento que son del tipo central discontinua y de color amarillo significan que:",
+            "answer": "a",
+            "options": [
+                "a) Está permitido cruzar al otro carril para el adelantamiento vehicular, si es que es seguro hacerlo.",
+                "b) No está permitido cruzar al otro carril para el adelantamiento vehicular.",
+                "c) Se está reduciendo el ancho de la calzada de la vía por donde se circula.",
+                "d) Se está frente a un lugar de cruce peatonal."
+            ]
+        },
+        {
+            "id": 6,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El color ámbar o amarillo del semáforo significa que:",
+            "answer": "d",
+            "options": [
+                "a) Los vehículos deben avanzar.",
+                "b) Los vehículos deben detenerse.",
+                "c) Los vehículos deben acelerar la marcha.",
+                "d) Los vehículos deben detenerse antes de ingresar a la intersección si su velocidad y ubicación lo permiten; de lo contrario, deberán cruzar y despejar la intersección."
+            ]
+        },
+        {
+            "id": 7,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Los colores del semáforo tienen el siguiente significado: rojo: _____; ámbar o amarillo: _____; verde: ____.",
+            "answer": "a",
+            "options": [
+                "a) Detención - prevención - paso.",
+                "b) Detención - paso con prevención - circulación rápida.",
+                "c) Disminución de la velocidad - prevención - paso rápido.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 8,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué indica una flecha verde en un semáforo vehicular?",
+            "answer": "a",
+            "options": [
+                "a) Se puede continuar con precaución únicamente en la dirección de la flecha y desde el carril que esta flecha controla.",
+                "b) No está permitida la circulación en el sentido que indica la flecha.",
+                "c) Se debe respetar únicamente la luz circular.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 9,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal vertical reglamentaria R-53:",
+            "answer": "b",
+            "options": [
+                "a) Prohíbe estacionar.",
+                "b) Prohíbe al conductor detener el vehículo dentro del área de la intersección.",
+                "c) Prohíbe la carga y descarga.",
+                "d) Prohíbe la circulación de vehículos motorizados"
+            ],
+            "imagens": [
+                "q9_a_a2a"
+            ]
+        },
+        {
+            "id": 10,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si llega a una intersección y visualiza el semáforo con una flecha roja hacia la izquierda y la luz circular verde prendidas al mismo tiempo, la acción correcta es:",
+            "answer": "b",
+            "options": [
+                "a) Avanzar en cualquier sentido, ya que la luz circular está en verde.",
+                "b) Avanzar, pero el giro a la izquierda está prohibido por la flecha roja.",
+                "c) Avanzar únicamente hacia la izquierda, pues continuar de frente está prohibido.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 11,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si llega a una intersección donde el semáforo muestra una luz intermitente, qué afirmación es correcta:",
+            "answer": "b",
+            "options": [
+                "a) Si la luz intermitente es roja, ésta es equivalente a un ¿CEDA EL PASO?",
+                "b) Si la luz intermitente es ámbar, tiene preferencia, debiendo reducir la velocidad y continuar con precaución.",
+                "c) Si la luz intermitente es verde, ésta es equivalente a un 'PARE'.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 12,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿La luz intermitente roja es igual que una señal de PARE?",
+            "answer": "a",
+            "options": [
+                "a) Verdad.",
+                "b) Es verdad siempre y cuando también se encuentre un Policía de Tránsito indicando la señal de Pare.",
+                "c) Falso",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 13,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Al aproximarse a una intersección con giro permitido a la izquierda, la conducta correcta es:",
+            "answer": "d",
+            "options": [
+                "a) Girar desde cualquier carril.",
+                "b) Colocarse en el carril derecho, luego girar con precaución.",
+                "c) Colocarse en el carril más despejado de tráfico, luego girar con precaución.",
+                "d) Hacer la señal de volteo a la izquierda con las luces direccionales, ubicar con antelación el vehículo en el carril de circulación de la izquierda y girar con precaución."
+            ]
+        },
+        {
+            "id": 14,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Al cambiar de carril en una vía de un solo sentido con múltiples carriles, ¿cuál es la conducta correcta?",
+            "answer": "a",
+            "options": [
+                "a) Se deben encender las luces direccionales primero, buscar una brecha y realizar el cambio de carril con precaución.",
+                "b) Se debe encontrar una brecha, luego cambiar de carril con precaución; no es necesario el uso de luces direccionales para cambios de carril.",
+                "c) Se debe advertir utilizando el claxon, identificar una brecha y realizar el cambio de carril con precaución.",
+                "d) Está prohibido el cambio de carril en vías de un solo sentido."
+            ]
+        },
+        {
+            "id": 15,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Respecto a los cruces a nivel con vías férreas, señale la afirmación correcta:",
+            "answer": "a",
+            "options": [
+                "a) Los vehículos que transitan por la vía férrea tienen preferencia de paso sobre los que transitan por la vía que la cruza.",
+                "b) Los vehículos que transitan por la vía que cruza la línea férrea tienen preferencia de paso sobre los que transitan por la vía férrea.",
+                "c) El vehículo que llegue primero tiene preferencia.",
+                "d) Tiene preferencia el conductor que viene por la derecha del otro."
+            ]
+        },
+        {
+            "id": 16,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Ante la señal de color rojo del semáforo y la indicación de continuar la marcha del efectivo de la Policía Nacional del Perú asignado al control del tránsito, corresponde:",
+            "answer": "b",
+            "options": [
+                "a) Detenerse hasta que cambie a luz verde.",
+                "b) Continuar la marcha.",
+                "c) Estar prevenido.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 17,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Está prohibido estacionar un vehículo:",
+            "answer": "d",
+            "options": [
+                "a) En las curvas.",
+                "b) Dentro de una intersección.",
+                "c) Frente a la entrada de garajes y de recintos militares o policiales.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 18,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal vertical reglamentaria (R-29):",
+            "answer": "c",
+            "options": [
+                "a) Prohíbe el uso de la bocina en vías urbanas.",
+                "b) Prohíbe el uso de la bocina en carreteras.",
+                "c) Prohíbe el uso de la bocina.",
+                "d) Prohíbe hacer ruido."
+            ],
+            "imagens": [
+                "q18_a_a2a"
+            ]
+        },
+        {
+            "id": 19,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Se le impondrá el pago de una multa y no podrá obtener la licencia de conducir por 3 años a la persona que:",
+            "answer": "a",
+            "options": [
+                "a) Conduzca un vehículo automotor sin tener licencia de conducir.",
+                "b) Conduzca un vehículo que no cuente con el equipamiento para brindar una máxima comodidad a sus ocupantes.",
+                "c) Conduzca un vehículo sin contar con el SOAT.",
+                "d) a y c son correctas"
+            ]
+        },
+        {
+            "id": 20,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En el supuesto que se encuentre manejando y un vehículo que tiene la intención de sobrepasarlo o adelantarlo lo alcance, ¿qué debería hacer usted?",
+            "answer": "b",
+            "options": [
+                "a) Debe aumentar la velocidad para no dejar que el otro vehículo lo pase.",
+                "b) No debe aumentar la velocidad hasta que el vehículo lo sobrepase.",
+                "c) Debe disminuir drásticamente la velocidad de su vehículo.",
+                "d) Debe detener su vehículo."
+            ]
+        },
+        {
+            "id": 21,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál de las siguientes afirmaciones es correcta?",
+            "answer": "a",
+            "options": [
+                "a) El conductor debe respetar los límites máximos y mínimos de velocidad establecidos.",
+                "b) El conductor debe respetar únicamente los límites máximos de velocidad, pues no existen límites mínimos.",
+                "c) El conductor puede conducir a la velocidad que desee, siempre que lo haga de manera prudente.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 22,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué luces debe utilizar un conductor que circula en las vías públicas urbanas por la noche?",
+            "answer": "a",
+            "options": [
+                "a) Bajas.",
+                "b) Altas.",
+                "c) Luces altas en las intersecciones y bajas en las avenidas.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 23,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En caso de accidentes, el SOAT cubre los daños que sufren:",
+            "answer": "b",
+            "options": [
+                "a) Solo los ocupantes del vehículo.",
+                "b) Los ocupantes y terceros no ocupantes del vehículo.",
+                "c) Solo terceros afectados.",
+                "d) Solo el conductor del vehículo."
+            ]
+        },
+        {
+            "id": 24,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál de los siguientes seguros es exigible para conducir un vehículo automotor?",
+            "answer": "c",
+            "options": [
+                "a) Cualquier tipo de seguro de accidentes personales que comercialicen las empresas de seguro.",
+                "b) Cualquier tipo de seguro vehicular, siempre que cubra a los ocupantes del vehículo y terceros afectados por un accidente de tránsito.",
+                "c) El Seguro Obligatorio de Accidentes de Tránsito - SOAT.",
+                "d) No es obligatorio contar con un seguro."
+            ]
+        },
+        {
+            "id": 25,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuándo es obligatorio darle preferencia de paso a un vehículo de emergencia o vehículo oficial?",
+            "answer": "c",
+            "options": [
+                "a) Cuando emita señales visibles.",
+                "b) Cuando emita señales audibles.",
+                "c) Cuando emita señales audibles y visibles.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 26,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si por el carril por donde está conduciendo se aproxima a un vehículo de transporte escolar que se encuentra detenido, recogiendo o dejando escolares ¿Qué debe hacer?",
+            "answer": "a",
+            "options": [
+                "a) Detener el vehículo y no continuar la marcha hasta que haya culminado el ascenso o descenso de los escolares.",
+                "b) Adelantar por el lado izquierdo, pero con precaución.",
+                "c) Tocar el claxon para alertar que está pasando.",
+                "d) Adelantar muy despacio."
+            ]
+        },
+        {
+            "id": 27,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué significa un triángulo rojo de seguridad colocado en la calzada?",
+            "answer": "a",
+            "options": [
+                "a) La presencia de un vehículo inmovilizado en la vía pública por alguna circunstancia.",
+                "b) Zona de obras por reparación en la calzada.",
+                "c) Que el vehículo que lo enfrenta debe detenerse.",
+                "d) a y c son correctas."
+            ]
+        },
+        {
+            "id": 28,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal vertical reglamentaria P-22C indica que:",
+            "answer": "b",
+            "options": [
+                "a) Está permitido adelantar.",
+                "b) Se aproxima un carril adicional.",
+                "c) Está permitido cambiar de carril.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q28_a_a2a"
+            ]
+        },
+        {
+            "id": 29,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Las luces intermitentes de emergencia del vehículo deben utilizarse obligatoriamente:",
+            "answer": "b",
+            "options": [
+                "a) Para girar en las intersecciones y para advertir los cambios de carril.",
+                "b) Para indicar la detención, parada o estacionamiento en zona peligrosa o la ejecución de maniobras riesgosas.",
+                "c) Durante toda la circulación del vehículo.",
+                "d) En cada intersección."
+            ]
+        },
+        {
+            "id": 30,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En intersecciones que no tienen señales de Pare, Ceda el Paso o Semáforo, ¿las vías de doble sentido tienen prioridad de paso respecto a las vías de un solo sentido de igual clasificación?",
+            "answer": "b",
+            "options": [
+                "a) No.",
+                "b) Si.",
+                "c) Depende de la intersección.",
+                "d) No se encuentra regulado en el reglamento."
+            ]
+        },
+        {
+            "id": 31,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si usted se aproxima a una señal de PARE colocada verticalmente o pintada en la vía, la acción correcta es:",
+            "answer": "d",
+            "options": [
+                "a) Disminuir su velocidad y cederle el paso a los vehículos que circulan por la transversal.",
+                "b) Disminuir su velocidad y pasar con cuidado.",
+                "c) Sobre parar y pasar rápidamente.",
+                "d) Parar por completo, ceder el paso a los usuarios que tengan preferencia y luego continuar con precaución."
+            ]
+        },
+        {
+            "id": 32,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál es la diferencia entre las señales P-2A y P-1A?",
+            "answer": "c",
+            "options": [
+                "a) No hay diferencia, se usan indistintamente.",
+                "b) La señal P-2A se utiliza en situaciones de mayor riesgo.",
+                "c) La señal P-1A advierte la presencia de curva pronunciada a la derecha mientras que la P-2A advierte la presencia de curva suave a la derecha.",
+                "d) La señal P-2A advierte la presencia de curva pronunciada a la derecha mientras que la P-1A advierte la presencia de curva suave a la derecha."
+            ],
+            "imagens": [
+                "q32_a_a2a"
+            ]
+        },
+        {
+            "id": 33,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué indica la señal R-30F?",
+            "answer": "b",
+            "options": [
+                "a) Tener precaución con vehículos lentos.",
+                "b) Regula la velocidad máxima permitida en curvas.",
+                "c) Regula la velocidad máxima en zonas rurales.",
+                "d) No se encuentra regulada en el reglamento."
+            ],
+            "imagens": [
+                "q33_a_a2a"
+            ]
+        },
+        {
+            "id": 34,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué señal debe utilizar el conductor para disminuir la velocidad o detener el vehículo cuando está en marcha?",
+            "answer": "c",
+            "options": [
+                "a) Luces direccionales.",
+                "b) Solo el antebrazo izquierdo y mano extendidos hacia abajo fuera del vehículo.",
+                "c) Luces intermitentes y, en caso de fuerza mayor, utilizar el antebrazo izquierdo y mano extendidos hacia abajo fuera del vehículo, haciendo ángulo recto con el brazo.",
+                "d) Luces bajas."
+            ]
+        },
+        {
+            "id": 35,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si dos vehículos se aproximan simultáneamente a una intersección no regulada (sin señalización) procedentes de vías diferentes, ¿quién tiene preferencia de paso?",
+            "answer": "b",
+            "options": [
+                "a) Cualquiera de los dos.",
+                "b) El que se aproxime por la derecha del otro.",
+                "c) El que se aproxime por la izquierda del otro.",
+                "d) El que haga sonar la bocina primero."
+            ],
+            "imagens": [
+                "q35_a_a2a"
+            ]
+        },
+        {
+            "id": 36,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En una intersección no regulada (sin señalización) tiene preferencia de paso:",
+            "answer": "a",
+            "options": [
+                "a) El vehículo que ingresó primero a la intersección.",
+                "b) El vehículo que haga sonar la bocina primero.",
+                "c) El vehículo que haga cambio de luces primero.",
+                "d) Cualquier vehículo"
+            ]
+        },
+        {
+            "id": 37,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En una rotonda, tiene prioridad de paso el vehículo que:",
+            "answer": "b",
+            "options": [
+                "a) Quiere ingresar a la rotonda.",
+                "b) Circula por ella.",
+                "c) Acelera primero.",
+                "d) Hace sonar la bocina."
+            ]
+        },
+        {
+            "id": 38,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El sobrepaso o adelantamiento de un vehículo en movimiento se efectúa, salvo excepciones, por la _________ retornando el vehículo después de la maniobra a su carril original.",
+            "answer": "b",
+            "options": [
+                "a) Derecha.",
+                "b) Izquierda.",
+                "c) Berma",
+                "d) Por la derecha o izquierda."
+            ]
+        },
+        {
+            "id": 39,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si un conductor está tomando medicamentos y por ello siente sueño ¿qué debe hacer?",
+            "answer": "c",
+            "options": [
+                "a) Manejar normalmente.",
+                "b) Manejar despacio.",
+                "c) Abstenerse de manejar.",
+                "d) Manejar con un copiloto."
+            ]
+        },
+        {
+            "id": 40,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Son documentos que deben portarse obligatoriamente, durante la conducción del vehículo, y exhibirse cuando la autoridad competente lo solicite:",
+            "answer": "a",
+            "options": [
+                "a) Documento de identidad, SOAT vigente (puede ser virtual) y tarjeta de identificación vehicular.",
+                "b) Certificado de Inspección Técnica Vehicular y contrato de compraventa del vehículo.",
+                "c) Contrato de compraventa del vehículo.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 41,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En los tramos de una vía con pendiente pronunciada, que permite la circulación de un solo vehículo, se debe de tener en cuenta que el vehículo que asciende respecto al vehículo que desciende:",
+            "answer": "b",
+            "options": [
+                "a) No tiene preferencia de paso.",
+                "b) Tiene preferencia de paso.",
+                "c) Debe detenerse.",
+                "d) Debe retroceder."
+            ]
+        },
+        {
+            "id": 42,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Al cambiar de dirección, un conductor debe:",
+            "answer": "a",
+            "options": [
+                "a) Señalizar toda la maniobra hasta su culminación.",
+                "b) Cambiar de dirección y luego señalizar.",
+                "c) No existe ninguna obligación.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 43,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Se puede conducir un vehículo con el motor en punto neutro?",
+            "answer": "b",
+            "options": [
+                "a) Sí, pero solo si está bajando una pendiente.",
+                "b) No, está prohibido.",
+                "c) Sí, en caso de que el conductor no sea novato.",
+                "d) No se encuentra regulado en la norma."
+            ]
+        },
+        {
+            "id": 44,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Para girar o cambiar de carril hacia la derecha, el conductor debe utilizar las luces direccionales y, en casos de fuerza mayor, la siguiente señal manual:",
+            "answer": "b",
+            "options": [
+                "a) Brazo, antebrazo izquierdo y mano extendidos hacia afuera del vehículo.",
+                "b) Antebrazo izquierdo y mano extendidos hacia arriba fuera del vehículo, formando un ángulo recto con el brazo.",
+                "c) Brazo, antebrazo derecho y mano extendidos hacia afuera del vehículo.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 45,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si la licencia de conducir no se encuentra vigente, los vehículos que autoriza a conducir dicha licencia:",
+            "answer": "a",
+            "options": [
+                "a) No podrán ser conducidos.",
+                "b) Podrán ser conducidos únicamente en zonas urbanas.",
+                "c) Podrán ser conducidos hasta por 90 días posteriores a la pérdida de vigencia de la licencia.",
+                "d) Podrán ser conducidos con normalidad hasta que renueve su licencia."
+            ]
+        },
+        {
+            "id": 46,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "De acuerdo con el sistema de control de licencias de conducir por puntos:",
+            "answer": "a",
+            "options": [
+                "a) Determinadas infracciones suman puntos.",
+                "b) Una infracción puede sumar o disminuir puntos, a elección del infractor.",
+                "c) Determinadas infracciones restan puntos.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 47,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál es la consecuencia de acumular 100 puntos en la licencia de conducir en un período de 24 meses?",
+            "answer": "a",
+            "options": [
+                "a) Suspensión de licencia de conducir.",
+                "b) Anulación de la Placa Única Nacional de Rodaje.",
+                "c) Inhabilitación definitiva para obtener una licencia de conducir.",
+                "d) Internamiento vehicular."
+            ]
+        },
+        {
+            "id": 48,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Se entiende por carril a la:",
+            "answer": "b",
+            "options": [
+                "a) Parte de la vía destinada a la circulación de peatones.",
+                "b) Parte de la calzada destinada al tránsito de una fila de vehículos.",
+                "c) Vía rural destinada a la circulación de peatones y animales.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 49,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Se entiende por línea de parada a:",
+            "answer": "a",
+            "options": [
+                "a) La línea transversal marcada en la calzada antes de la intersección, que indica al conductor el límite para detener el vehículo.",
+                "b) Las líneas que se encuentran en los lugares del estacionamiento.",
+                "c) El lugar utilizado para embarcar y desembarcar pasajeros.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 50,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal vertical reglamentaria P-17A, indica:",
+            "answer": "c",
+            "options": [
+                "a) Reducción de la calzada al lado derecho.",
+                "b) Reducción de la calzada al lado izquierdo.",
+                "c) Reducción de la calzada en ambos lados.",
+                "d) Ensanchamiento de la calzada en ambos lados."
+            ],
+            "imagens": [
+                "q50_a_a2a"
+            ]
+        },
+        {
+            "id": 51,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En caso de encontrar marcación de doble línea amarilla compuesta por un trazo continuo y otro trazo discontinuo en una vía de doble sentido, ¿qué se debe hacer?",
+            "answer": "c",
+            "options": [
+                "a) Se puede adelantar en ambos sentidos.",
+                "b) No está permitido adelantar en ningún sentido.",
+                "c) Respetar la línea que está de su lado (si es continua, no adelantar; si es discontinua, está permitido adelantar).",
+                "d) Respetar la línea que está de su lado (si es discontinua, no adelantar; si es continua, está permitido adelantar)"
+            ]
+        },
+        {
+            "id": 52,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Se define como zona rígida al:",
+            "answer": "c",
+            "options": [
+                "a) Área donde se prohíbe la circulación de vehículos.",
+                "b) Área donde se prohíbe la circulación de peatones.",
+                "c) Área de la vía en la que se prohíbe el estacionamiento de vehículos.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 53,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La posición de frente o de espaldas ejecutada por el efectivo de la Policía Nacional del Perú asignado al control de tránsito significa:",
+            "answer": "a",
+            "options": [
+                "a) Obligación de detenerse de quien así lo enfrente.",
+                "b) Continuar la marcha por el carril izquierdo de la calzada.",
+                "c) Continuar la marcha.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 54,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Siempre que no exista una señal de límite de velocidad, en zonas urbanas el límite máximo de velocidad en calles y jirones es de:",
+            "answer": "b",
+            "options": [
+                "a) 30km/h.",
+                "b) 40km/h.",
+                "c) 60km/h.",
+                "d) 80km/h."
+            ]
+        },
+        {
+            "id": 55,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Siempre que no exista una señal de límite de velocidad, en zonas urbanas el límite máximo de velocidad en avenidas es de:",
+            "answer": "c",
+            "options": [
+                "a) 30km/h.",
+                "b) 40km/h.",
+                "c) 60km/h.",
+                "d) 80km/h."
+            ]
+        },
+        {
+            "id": 56,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Siempre que no exista una señal de límite de velocidad, en zonas urbanas el límite máximo de velocidad en vías expresas es de:",
+            "answer": "c",
+            "options": [
+                "a) 60km/h.",
+                "b) 70km/h.",
+                "c) 80km/h.",
+                "d) 100km/h."
+            ]
+        },
+        {
+            "id": 57,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Siempre que no exista una señal de límite de velocidad en zonas urbanas, el límite máximo de velocidad en zona escolar es de:",
+            "answer": "b",
+            "options": [
+                "a) 20km/h.",
+                "b) 30km/h.",
+                "c) 35km/h.",
+                "d) 50km/h."
+            ]
+        },
+        {
+            "id": 58,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Siempre que no exista una señal de límite de velocidad en carreteras, el límite máximo de velocidad para automóviles, camionetas y motocicletas es de:",
+            "answer": "c",
+            "options": [
+                "a) 80km/h.",
+                "b) 90km/h.",
+                "c) 100km/h.",
+                "d) 110km/h."
+            ]
+        },
+        {
+            "id": 59,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Siempre que no exista una señal de límite de velocidad mínima, el límite mínimo de velocidad en zona urbana y en carreteras es de:",
+            "answer": "b",
+            "options": [
+                "a) 30km/h.",
+                "b) La mitad de la velocidad máxima establecida para cada tipo de vía.",
+                "c) 20 km/h.",
+                "d) 15 km/h."
+            ]
+        },
+        {
+            "id": 60,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál es la sanción por conducir con presencia de alcohol en la sangre en proporción mayor a lo previsto en el Código Penal, o bajo los efectos de estupefacientes, narcóticos y/o alucinógenos comprobados con el examen respectivo, o por negarse al mismo y que haya participado en un accidente de tránsito?",
+            "answer": "d",
+            "options": [
+                "a) Multa.",
+                "b) Cancelación de licencia de conducir.",
+                "c) Suspensión de la licencia de conducir.",
+                "d) Multa, cancelación de la licencia de conducir e inhabilitación definitiva para obtener una licencia de conducir."
+            ]
+        },
+        {
+            "id": 61,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál es la sanción si en un operativo de alcoholemia usted es intervenido y se comprueba que ha consumido alcohol por encima del límite legal, o está conduciendo bajo los efectos de estupefacientes, narcóticos y/o alucinógenos comprobada con el examen respectivo?",
+            "answer": "c",
+            "options": [
+                "a) Una multa",
+                "b) La suspensión de la licencia de conducir.",
+                "c) Multa y suspensión de la licencia de conducir por 3 años.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 62,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La frecuencia de la inspección técnica de un vehículo particular es:",
+            "answer": "b",
+            "options": [
+                "a) Cada medio año.",
+                "b) Cada año.",
+                "c) Cada dos años.",
+                "d) Cada tres años."
+            ]
+        },
+        {
+            "id": 63,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿A partir de qué año de antigüedad debe realizarse la inspección técnica de un vehículo particular para transporte de personas de hasta 9 asientos incluido el conductor de la categoría M1?",
+            "answer": "b",
+            "options": [
+                "a) A partir del segundo año contado desde el año siguiente de su fabricación.",
+                "b) A partir del cuarto año contado desde el año siguiente de su fabricación.",
+                "c) A partir del quinto año contado desde el año siguiente de su fabricación.",
+                "d) No está sujeto a inspección técnica."
+            ]
+        },
+        {
+            "id": 64,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál es el plazo de vigencia del SOAT?",
+            "answer": "a",
+            "options": [
+                "a) 1 año.",
+                "b) 6 meses.",
+                "c) 4 años.",
+                "d) 2 años."
+            ]
+        },
+        {
+            "id": 65,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si ocurre un accidente de tránsito, ¿qué obligación tiene el conductor, el propietario del vehículo o el prestador del servicio de transporte?",
+            "answer": "c",
+            "options": [
+                "a) Dar aviso a los bomberos.",
+                "b) Dar aviso solo a la compañía de seguros.",
+                "c) Dar aviso a la compañía de seguros y dejar constancia en la delegación de la Policía Nacional del Perú más cercana.",
+                "d) Dar aviso únicamente a la Policía Nacional del Perú."
+            ]
+        },
+        {
+            "id": 66,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si una licencia de conducir consigna alguna restricción, es correcto afirmar que:",
+            "answer": "b",
+            "options": [
+                "a) Dicha restricción es meramente informativa.",
+                "b) Es una obligación cumplir con la restricción.",
+                "c) Incumplir la restricción no genera un riesgo para la seguridad vial.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 67,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La señal preventiva P-33A, significa:",
+            "answer": "c",
+            "options": [
+                "a) Señal de curva sinuosa.",
+                "b) Señal de proximidad a un badén.",
+                "c) Señal de proximidad de un reductor de velocidad tipo resalto.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q67_a_a2a"
+            ]
+        },
+        {
+            "id": 68,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si su vehículo deja de funcionar o comienza a tener problemas y usted trata de moverlo al costado de la autopista, debe:",
+            "answer": "a",
+            "options": [
+                "a) Activar las luces intermitentes de emergencia.",
+                "b) Parar en su posición actual.",
+                "c) Salir del vehículo rápidamente.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 69,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Está permitido usar la bocina de su vehículo para advertir al conductor del vehículo que circula delante, que será adelantado?",
+            "answer": "c",
+            "options": [
+                "a) Sí, siempre y cuando el sonido no sea estridente.",
+                "b) Si, salvo prohibición expresa mediante la correspondiente señal.",
+                "c) No, está prohibido.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 70,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si observa que se aproxima una ambulancia sin las luces especiales encendidas y sin sirena, es correcto afirmar que:",
+            "answer": "a",
+            "options": [
+                "a) No estamos obligados a darle preferencia de paso.",
+                "b) Estamos obligados a darle prioridad de paso por ser una ambulancia.",
+                "c) Está informando que está en servicio de urgencia.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 71,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si se encuentra en una intersección y se enciende la luz verde del semáforo y observa que en la calle transversal hay vehículos o personas despejando la intersección, ¿qué debe hacer?",
+            "answer": "a",
+            "options": [
+                "a) No iniciar la marcha hasta que el vehículo o las personas terminen de cruzar.",
+                "b) Tocar el claxon para que se apuren en pasar.",
+                "c) Bajar del vehículo y reclamar la falta al infractor.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 72,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En señalética vial, el color __________ en el pavimento es utilizado para carriles de tráfico en sentido opuesto y el color __________ en el pavimento es utilizado como separador de carriles de tráfico en el mismo sentido.",
+            "answer": "a",
+            "options": [
+                "a) Amarillo - blanco.",
+                "b) Blanco - Amarillo.",
+                "c) Azul - rojo.",
+                "d) Rojo - Amarillo."
+            ]
+        },
+        {
+            "id": 73,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si una fila de escolares cruza la calzada fuera del crucero peatonal, ¿qué acción se debe tomar?",
+            "answer": "c",
+            "options": [
+                "a) Advertir con el claxon.",
+                "b) Advertir a viva voz.",
+                "c) Parar y ceder el paso.",
+                "d) Continuar la marcha lentamente."
+            ]
+        },
+        {
+            "id": 74,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si se aproxima a una zona escolar, ¿qué acción debe realizar?",
+            "answer": "c",
+            "options": [
+                "a) No tiene ninguna obligación si no hay señalización.",
+                "b) Disminuir la velocidad a 40 Km/h.",
+                "c) Disminuir la velocidad a 30 Km/h.",
+                "d) Disminuir la velocidad a 35 km/h."
+            ]
+        },
+        {
+            "id": 75,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Tienen el objetivo de notificar a los usuarios las limitaciones, prohibiciones o restricciones en el uso de la vía.",
+            "answer": "a",
+            "options": [
+                "a) Señales reguladoras o de reglamentación.",
+                "b) Señales preventivas.",
+                "c) Señales informativas.",
+                "d) Señales horizontales."
+            ]
+        },
+        {
+            "id": 76,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Tienen el propósito de advertir a los usuarios sobre la existencia y naturaleza de un peligro en la vía.",
+            "answer": "b",
+            "options": [
+                "a) Señales reguladoras o de reglamentación.",
+                "b) Señales preventivas.",
+                "c) Señales informativas.",
+                "d) Señales horizontales."
+            ]
+        },
+        {
+            "id": 77,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Es una infracción de tránsito:",
+            "answer": "d",
+            "options": [
+                "a) No detenerse totalmente en una señal de PARE.",
+                "b) Arrojar, depositar o abandonar objetos o sustancias en la vía pública que dificulten la circulación.",
+                "c) Utilizar la bocina para llamar la atención en forma innecesaria.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 78,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué debería hacer el conductor al acercarse a una señal de 'CEDA EL PASO' en una intersección?",
+            "answer": "c",
+            "options": [
+                "a) Ceder el paso a los vehículos de emergencia.",
+                "b) Mantener la velocidad y avanzar con cuidado.",
+                "c) Disminuir la velocidad, parar si es necesario y ceder el paso a los peatones o vehículos que circulan por la vía transversal.",
+                "d) Parar totalmente y luego avanzar con cuidado."
+            ]
+        },
+        {
+            "id": 79,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "No se debe conducir un vehículo:",
+            "answer": "d",
+            "options": [
+                "a) Si no se cuenta con el SOAT.",
+                "b) En retroceso, salvo las excepciones que establece la norma.",
+                "c) Si no se tiene la licencia para el tipo de vehículo que se quiere conducir.",
+                "d) Todas son correctas."
+            ]
+        },
+        {
+            "id": 80,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué debe hacer si se aproxima a una intersección sin semáforo y sin presencia de la Policía de Tránsito, y observa que un peatón está cruzando por el paso peatonal?",
+            "answer": "b",
+            "options": [
+                "a) Disminuir la velocidad y pasar con cuidado.",
+                "b) Detener el vehículo y ceder el paso al peatón.",
+                "c) Continuar porque usted tiene la prioridad.",
+                "d) Incrementar la velocidad para adelantar el cruce el peatón."
+            ]
+        },
+        {
+            "id": 81,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Sobre el uso del cinturón de seguridad en los vehículos que se encuentran en circulación, es correcto afirmar que:",
+            "answer": "d",
+            "options": [
+                "a) El uso del cinturón de seguridad es obligatorio para las personas que ocupen los asientos delanteros.",
+                "b) En los asientos posteriores el uso del cinturón de seguridad es obligatorio en todos los vehículos cuando los tengan incorporados de fábrica y en los casos en que, de acuerdo a las normas se encuentren obligados a tenerlos.",
+                "c) El uso del cinturón de seguridad no solo es obligatorio para el conductor.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 82,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si en una vía de dos carriles con tránsito en un mismo sentido usted se desplaza lentamente en su vehículo, debe circular por el carril de la _________ y los vehículos que circulen a mayor velocidad deben hacerlo por el carril de la _________",
+            "answer": "c",
+            "options": [
+                "a) Izquierda / Derecha.",
+                "b) Derecha / Derecha.",
+                "c) Derecha / Izquierda.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 83,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Sobre el uso de la bocina del vehículo, es correcto afirmar que:",
+            "answer": "c",
+            "options": [
+                "a) El conductor debe tratar de no utilizar la bocina para llamar la atención en forma innecesaria.",
+                "b) El uso de la bocina para llamar la atención en forma innecesaria no es una infracción al tránsito.",
+                "c) El conductor únicamente debe utilizar la bocina para evitar situaciones peligrosas.",
+                "d) a y b son correctas."
+            ]
+        },
+        {
+            "id": 84,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Una línea blanca continua en el sentido longitudinal de una vía, que se coloca en el pavimento, le indica al conductor:",
+            "answer": "c",
+            "options": [
+                "a) Que se puede adelantar, debido a que la línea no es amarilla continua.",
+                "b) Que está prohibido cruzar la línea y no hay excepciones.",
+                "c) Que está prohibido pasar al otro lado de la línea con algunas excepciones.",
+                "d) Que es zona de peatones."
+            ]
+        },
+        {
+            "id": 85,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál es el número máximo de personas que puede transportar un vehículo particular?",
+            "answer": "a",
+            "options": [
+                "a) Es igual al número de asientos señalados en la tarjeta de identificación vehicular, con la excepción de niños en brazos en los asientos posteriores.",
+                "b) No existe prohibición sobre un número máximo de personas que se puede transportar.",
+                "c) La restricción sobre un número máximo de personas que se puede transportar se aplica para los asientos delanteros, para los asientos posteriores no hay restricción.",
+                "d) Se puede transportar a todas las personas que entren en el vehículo, sin restricción, siempre y cuando no obstaculicen la visibilidad del conductor y todos sean de la misma familia."
+            ]
+        },
+        {
+            "id": 86,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La acción correcta al abastecer de combustible su vehículo, es:",
+            "answer": "b",
+            "options": [
+                "a) Asegurarse de que todos los pasajeros permanezcan a bordo del vehículo.",
+                "b) Abstenerse de fumar tanto el conductor como sus acompañantes.",
+                "c) Mantener encendido el motor del vehículo.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 87,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Mientras usted está conduciendo su vehículo automotor, ¿puede llevar sujeto a su auto al conductor de una bicicleta mientras éste la conduce?",
+            "answer": "d",
+            "options": [
+                "a) Sí, siempre y cuando el conductor de la bicicleta se sujete a la parte posterior del auto, pero nunca a la parte lateral de éste.",
+                "b) Sí, siempre y cuando se prevean todas las medidas de seguridad respectivas.",
+                "c) Sí, siempre y cuando esta acción sea realizada a una velocidad no mayor a...",
+                "d) No, es una acción prohibida y quien la cometa puede ser sancionado con una multa."
+            ]
+        },
+        {
+            "id": 88,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si usted desea realizar una competencia de carreras entre su vehículo y otro vehículo motorizado; para ello puede utilizar:",
+            "answer": "b",
+            "options": [
+                "a) Las vías aledañas del parque del distrito en el cual reside, en el horario de 11:00 pm. a 5:00 am.",
+                "b) Un circuito de carrera, autódromo o pista de aceleración autorizado por la autoridad competente.",
+                "c) Las vías aledañas del parque del distrito en el cual reside, siempre y cuando tenga el permiso municipal correspondiente.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 89,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Señale cuáles de las siguientes conductas constituye una infracción al tránsito:",
+            "answer": "d",
+            "options": [
+                "a) Tener la puerta, capot o maletera del vehículo abierta, cuando el vehículo está en marcha.",
+                "b) Conducir un vehículo lentamente por el carril de la izquierda causando congestión.",
+                "c) Conducir un vehículo con el motor en punto neutro o apagado.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 90,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Las marcas en el pavimento constituyen un elemento indispensable para la operación vehicular, pues su función es:",
+            "answer": "c",
+            "options": [
+                "a) Reemplazar a la señalización vertical cuando ésta no se encuentra en la vía, por tal motivo son colocadas donde no existe señales verticales.",
+                "b) Guiar a los usuarios únicamente en las vías que presentan peligros.",
+                "c) Reglamentar la circulación, así como advertir y guiar a los usuarios de la vía.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 91,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Las marcas en el pavimento de color __________ complementan las señales informativas, como por ejemplo las zonas de estacionamiento para personas con movilidad reducida.",
+            "answer": "b",
+            "options": [
+                "a) Blanco.",
+                "b) Azul.",
+                "c) Rojo.",
+                "d) Gris."
+            ]
+        },
+        {
+            "id": 92,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La línea central de color amarillo en el pavimento es continua cuando:",
+            "answer": "a",
+            "options": [
+                "a) No está permitido cruzar al otro carril.",
+                "b) Está permitido cruzar al otro carril para el adelantamiento.",
+                "c) Se trata de una vía de doble sentido de circulación, que permite cruzar al otro carril.",
+                "d) Separa corrientes de tráfico en el mismo sentido."
+            ],
+            "imagens": [
+                "q92_a_a2a"
+            ]
+        },
+        {
+            "id": 93,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si un conductor que circula por el carril derecho de una vía se encuentra con las flechas inclinadas que se muestran en la figura, su conducta correcta es:",
+            "answer": "d",
+            "options": [
+                "a) Continuar la circulación por el carril en que se encuentra.",
+                "b) Adelantar al vehículo que se encuentra delante de él y que circula por el carril izquierdo.",
+                "c) No adelantar al vehículo que tiene adelante y que circula por el carril izquierdo y continuar por su carril.",
+                "d) Cambiarse al carril izquierdo con precaución."
+            ]
+        },
+        {
+            "id": 94,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si durante la conducción vehicular, un efectivo de la Policía de Tránsito le solicita al conductor someterse a una prueba de alcoholemia; la acción correcta del conductor es:",
+            "answer": "a",
+            "options": [
+                "a) Someterse a la prueba de alcoholemia, ya que está obligado a ello ante la solicitud del efectivo de la Policía de Tránsito.",
+                "b) Someterse o negarse a la prueba de alcoholemia, ya que no constituye una obligación del conductor realizarse dicha prueba.",
+                "c) Negarse a la prueba de alcoholemia, ya que únicamente es exigible si ha participado en un accidente de tránsito.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 95,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál de las siguientes conductas no es una infracción de tránsito?",
+            "answer": "d",
+            "options": [
+                "a) Llevar las placas de rodaje en el lugar que no corresponde.",
+                "b) Seguir a los vehículos de emergencia y vehículos oficiales para avanzar más rápidamente.",
+                "c) Arrojar objetos en la vía pública que dificulten la circulación.",
+                "d) Detenerse totalmente en una señal de PARE cuando no hay peatones y/o vehículos circulando por la vía transversal."
+            ]
+        },
+        {
+            "id": 96,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si un conductor sale de su propiedad y tiene que cruzar la acera e ingresar a una vía, la conducta correcta es:",
+            "answer": "b",
+            "options": [
+                "a) Dar preferencia de paso solo a los vehículos que circulan por la vía, pero no a los peatones.",
+                "b) Dar preferencia de paso a los vehículos que circulan por la vía y a los peatones que circulan por la acera.",
+                "c) Tocar el claxon para advertir a los peatones que circulen por la acera, que se detengan.",
+                "d) Salir rápidamente, a fin de evitar accidentes."
+            ]
+        },
+        {
+            "id": 97,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Qué significa una línea continua blanca pintada entre el carril de la derecha y la berma de una carretera?",
+            "answer": "d",
+            "options": [
+                "a) Un carril para motocicletas.",
+                "b) Una línea que divide el área peatonal y el área de vehículos.",
+                "c) Una línea que puede cruzarse para rebasar en caso de congestión.",
+                "d) Que no se debe conducir atravesándola, al menos que haya una situación de emergencia."
+            ]
+        },
+        {
+            "id": 98,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si maneja de noche, hubiera neblina y tuviera luces rompenieblas, debe utilizar:",
+            "answer": "a",
+            "options": [
+                "a) Las luces bajas junto con las rompenieblas.",
+                "b) Solo las luces altas.",
+                "c) Solo las luces bajas.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 99,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En el caso representado en el siguiente gráfico ¿el vehículo rojo puede rebasar al azul?",
+            "answer": "c",
+            "options": [
+                "a) Puede hacerlo si no viene un vehículo en el sentido contrario.",
+                "b) Puede hacerlo solo si, el vehículo en sentido contrario está lejos y alcanza hacer la maniobra con seguridad.",
+                "c) No puede hacerlo.",
+                "d) Puede hacerlo por la izquierda."
+            ],
+            "imagens": [
+                "q99_a_a2a"
+            ]
+        },
+        {
+            "id": 100,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-17), significa:",
+            "answer": "b",
+            "options": [
+                "a) Prohibido estacionar.",
+                "b) Prohibida la circulación de vehículos automotores.",
+                "c) Prohibida la circulación de autos particulares.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q100_a_a2a"
+            ]
+        },
+        {
+            "id": 101,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si usted se encuentra conduciendo su vehículo por una vía y antes de cruzar la intersección se encuentra con la señal R-4, esta le indica:",
+            "answer": "b",
+            "options": [
+                "a) Que la calle está clausurada.",
+                "b) Que está por ingresar a una vía de sentido contrario y no debe entrar.",
+                "c) Que debe parar totalmente antes de poder ingresar.",
+                "d) Ninguna de las alternativas es correcta"
+            ],
+            "imagens": [
+                "q101_a_a2a"
+            ]
+        },
+        {
+            "id": 102,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-36), significa:",
+            "answer": "b",
+            "options": [
+                "a) Proximidad de un túnel.",
+                "b) Superficie deslizante.",
+                "c) Prender las luces bajas.",
+                "d) Mantener la distancia entre vehículos por seguridad."
+            ],
+            "imagens": [
+                "q102_a_a2a"
+            ]
+        },
+        {
+            "id": 103,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-14), significa:",
+            "answer": "c",
+            "options": [
+                "a) Circular por el carril de la derecha.",
+                "b) Circular por el carril central.",
+                "c) Circular solo en el sentido indicado por la flecha.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q103_a_a2a"
+            ]
+        },
+        {
+            "id": 104,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si usted circula por una vía y se encuentra con la señal (R-11a), ésta le indica:",
+            "answer": "c",
+            "options": [
+                "a) Que es una vía de tres carriles de un solo sentido.",
+                "b) Que es una vía de tres carriles y usted puede utilizar solo uno de ellos.",
+                "c) Que es una vía de tres carriles y usted puede utilizar los dos de la derecha.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q104_a_a2a"
+            ]
+        },
+        {
+            "id": 105,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-30c), significa:",
+            "answer": "c",
+            "options": [
+                "a) Que la velocidad máxima de la vía es de 50 km/h.",
+                "b) Que la velocidad mínima de la vía es de 50 km/h.",
+                "c) Que al salir de la vía por donde está circulando, la velocidad máxima es 50 km/h.",
+                "d) Que al salir de la vía por donde está circulando, la velocidad mínima es 50 km/h."
+            ],
+            "imagens": [
+                "q105_a_a2a"
+            ]
+        },
+        {
+            "id": 106,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-5-4), significa:",
+            "answer": "b",
+            "options": [
+                "a) Que la vía no continúa y los conductores deben girar a la izquierda.",
+                "b) Que la intersección contempla giros tangentes a la izquierda en ambos sentidos.",
+                "c) Que la intersección está en mantenimiento y que por el momento solo se puede girar a la izquierda.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q106_a_a2a"
+            ]
+        },
+        {
+            "id": 107,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-9), significa:",
+            "answer": "b",
+            "options": [
+                "a) Que no está permitido girar en U.",
+                "b) Que está permitido el giro en U.",
+                "c) Que si desea puede girar a la izquierda.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q107_a_a2a"
+            ]
+        },
+        {
+            "id": 108,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-5-2), significa:",
+            "answer": "c",
+            "options": [
+                "a) Que la vía solo permite girar a la izquierda.",
+                "b) Prevención por bifurcación de la vía.",
+                "c) Que el carril por donde circula permite girar a la izquierda o seguir de frente.",
+                "d) No es una señal válida en el Perú."
+            ],
+            "imagens": [
+                "q108_a_a2a"
+            ]
+        },
+        {
+            "id": 109,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-20), significa:",
+            "answer": "c",
+            "options": [
+                "a) Que el peatón antes de cruzar debe mirar si se acercan autos por la derecha.",
+                "b) Que el conductor que viene por la derecha debe tener cuidado con los peatones.",
+                "c) Que los peatones deben circular por la izquierda.",
+                "d) Que los peatones deben circular por la derecha."
+            ],
+            "imagens": [
+                "q109_a_a2a"
+            ]
+        },
+        {
+            "id": 110,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-40), significa:",
+            "answer": "d",
+            "options": [
+                "a) Crucero tipo cebra.",
+                "b) Control policial.",
+                "c) Pavimento deslizante.",
+                "d) Circular con luces bajas."
+            ],
+            "imagens": [
+                "q110_a_a2a"
+            ]
+        },
+        {
+            "id": 111,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-48), significa:",
+            "answer": "c",
+            "options": [
+                "a) Los peatones deben circular por la derecha y los camiones por la izquierda",
+                "b) Los peatones deben tener cuidado con los camiones.",
+                "c) Zona de carga y descarga.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q111_a_a2a"
+            ]
+        },
+        {
+            "id": 112,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-49), significa:",
+            "answer": "b",
+            "options": [
+                "a) Está permitido cambiar de carril por la izquierda y por la derecha.",
+                "b) Se debe mantener la distancia de seguridad entre vehículos.",
+                "c) Está permitido cambiar de carril por la izquierda para adelantar.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q112_a_a2a"
+            ]
+        },
+        {
+            "id": 113,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-50), significa:",
+            "answer": "c",
+            "options": [
+                "a) Que si solo hay un carril tiene preferencia de paso el conductor que llegó primero.",
+                "b) Que si solo hay un carril tiene preferencia el conductor que está mirando la señal.",
+                "c) Que si solo hay un carril no tiene preferencia el que está mirando la señal y debe darle paso al del sentido contrario.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q113_a_a2a"
+            ]
+        },
+        {
+            "id": 114,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La señal (R-5-1), es:",
+            "answer": "c",
+            "options": [
+                "a) Una señal informativa.",
+                "b) Una señal preventiva.",
+                "c) Una señal de obligación.",
+                "d) No es una señal válida en el Perú."
+            ],
+            "imagens": [
+                "q114_a_a2a"
+            ]
+        },
+        {
+            "id": 115,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La señal (P-3a), le indica al conductor que:",
+            "answer": "c",
+            "options": [
+                "a) Hay una curva y contracurva a la izquierda.",
+                "b) Hay una curva y contracurva a la derecha.",
+                "c) Hay una curva y contracurva pronunciada a la derecha.",
+                "d) Hay una curva y contracurva pronunciada a la izquierda."
+            ],
+            "imagens": [
+                "q115_a_a2a"
+            ]
+        },
+        {
+            "id": 116,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-5-1a), le advierte al conductor que:",
+            "answer": "d",
+            "options": [
+                "a) Se aproxima a una curva y contra-curva a la izquierda.",
+                "b) Se aproxima a una curva y contra-curva a la derecha.",
+                "c) Se aproxima a un camino sinuoso a la derecha.",
+                "d) Se aproxima a un camino sinuoso a la izquierda."
+            ],
+            "imagens": [
+                "q116_a_a2a"
+            ]
+        },
+        {
+            "id": 117,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-61), le advierte al conductor que:",
+            "answer": "c",
+            "options": [
+                "a) El sentido del tránsito es el que indica la flecha.",
+                "b) Se aproxima a una reducción de la vía en ambos sentidos.",
+                "c) Está circulando por una curva horizontal.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q117_a_a2a"
+            ]
+        },
+        {
+            "id": 118,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-34), le advierte al conductor que:",
+            "answer": "d",
+            "options": [
+                "a) La vía está en mal estado y tiene baches.",
+                "b) Se aproxima a un resalto.",
+                "c) Se aproxima a un rompe muelles.",
+                "d) Se aproxima a un badén."
+            ],
+            "imagens": [
+                "q118_a_a2a"
+            ]
+        },
+        {
+            "id": 119,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-60), es:",
+            "answer": "c",
+            "options": [
+                "a) Una señal turística.",
+                "b) Una señal informativa.",
+                "c) Una señal preventiva.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q119_a_a2a"
+            ]
+        },
+        {
+            "id": 120,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-46), indica:",
+            "answer": "c",
+            "options": [
+                "a) Existencia de una ciclovía.",
+                "b) Autorización para el cruce de ciclistas.",
+                "c) Ciclistas en la vía.",
+                "d) Cercanía de una ciclovía."
+            ],
+            "imagens": [
+                "q120_a_a2a"
+            ]
+        },
+        {
+            "id": 121,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-46-a), indica:",
+            "answer": "b",
+            "options": [
+                "a) Que los ciclistas deben usar la ciclovía.",
+                "b) Que nos aproximamos a un cruce de ciclovía.",
+                "c) Que la ciclovía es solo para los ciclistas.",
+                "d) Todas las alternativas son correctas."
+            ],
+            "imagens": [
+                "q121_a_a2a"
+            ]
+        },
+        {
+            "id": 122,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-46b), indica:",
+            "answer": "d",
+            "options": [
+                "a) Que los ciclistas deben detenerse en ese punto.",
+                "b) Que nos aproximamos a un cruce de ciclovía.",
+                "c) Que la ciclovía es solo para los ciclistas.",
+                "d) La ubicación de un cruce de ciclistas."
+            ],
+            "imagens": [
+                "q122_a_a2a"
+            ]
+        },
+        {
+            "id": 123,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-48), indica:",
+            "answer": "b",
+            "options": [
+                "a) Vía es de uso exclusivo de los peatones.",
+                "b) Zona con presencia de peatones.",
+                "c) Ubicación de un cruce escolar.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q123_a_a2a"
+            ]
+        },
+        {
+            "id": 124,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-48a), indica:",
+            "answer": "b",
+            "options": [
+                "a) Vía es de uso exclusivo de peatones.",
+                "b) Proximidad a un cruce peatonal.",
+                "c) Ubicación de un cruce escolar.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q124_a_a2a"
+            ]
+        },
+        {
+            "id": 125,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-48-b), indica:",
+            "answer": "c",
+            "options": [
+                "a) Ubicación de un cruce escolar.",
+                "b) Proximidad a una calzada.",
+                "c) Ubicación de un cruce peatonal.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q125_a_a2a"
+            ]
+        },
+        {
+            "id": 126,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-49), indica:",
+            "answer": "a",
+            "options": [
+                "a) Zona escolar.",
+                "b) Proximidad a un cruce peatonal.",
+                "c) Zona transitada.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q126_a_a2a"
+            ]
+        },
+        {
+            "id": 127,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-49a), indica:",
+            "answer": "b",
+            "options": [
+                "a) Zona escolar.",
+                "b) Proximidad a un cruce escolar.",
+                "c) Ubicación de un cruce escolar.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q127_a_a2a"
+            ]
+        },
+        {
+            "id": 128,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-49b), indica:",
+            "answer": "c",
+            "options": [
+                "a) Zona transitada.",
+                "b) Proximidad a un cruce peatonal.",
+                "c) Ubicación de un cruce escolar",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q128_a_a2a"
+            ]
+        },
+        {
+            "id": 129,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-50), indica:",
+            "answer": "d",
+            "options": [
+                "a) Zona de deportes.",
+                "b) Proximidad a campo deportivo.",
+                "c) Proximidad a zona urbana.",
+                "d) Niños jugando."
+            ],
+            "imagens": [
+                "q129_a_a2a"
+            ]
+        },
+        {
+            "id": 130,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-51), indica:",
+            "answer": "c",
+            "options": [
+                "a) Zona de parqueo de vehículos pesados.",
+                "b) Proximidad a zona rural.",
+                "c) Maquinaria agrícola en la vía.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q130_a_a2a"
+            ]
+        },
+        {
+            "id": 131,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-53), indica:",
+            "answer": "c",
+            "options": [
+                "a) Proximidad a un establo.",
+                "b) Proximidad a zona agrícola.",
+                "c) Animales en la vía.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q131_a_a2a"
+            ]
+        },
+        {
+            "id": 132,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-55), indica:",
+            "answer": "b",
+            "options": [
+                "a) Semáforo malogrado.",
+                "b) Proximidad a un semáforo.",
+                "c) Semáforos en ola verde.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q132_a_a2a"
+            ]
+        },
+        {
+            "id": 133,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-58), le indica:",
+            "answer": "a",
+            "options": [
+                "a) Que usted se aproxima a una señal de PARE.",
+                "b) Que usted debe parar donde está la señal P-58.",
+                "c) Que se trata de un PARE, pero puede seguir adelante.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q133_a_a2a"
+            ]
+        },
+        {
+            "id": 134,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-59), le indica:",
+            "answer": "a",
+            "options": [
+                "a) Que usted se aproxima a una señal de CEDA EL PASO.",
+                "b) Que usted debe ceder el paso donde está la señal P-59.",
+                "c) Que se trata de un PARE, pero puede seguir adelante.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q134_a_a2a"
+            ]
+        },
+        {
+            "id": 135,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-41), le indica:",
+            "answer": "c",
+            "options": [
+                "a) Que usted se aproxima a una zona de camiones.",
+                "b) Que usted debe encender sus luces pues se aproxima a una zona con poca visibilidad.",
+                "c) Que usted se aproxima a un túnel.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q135_a_a2a"
+            ]
+        },
+        {
+            "id": 136,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-45), indica:",
+            "answer": "c",
+            "options": [
+                "a) Proximidad a un aeropuerto.",
+                "b) Proximidad a una pista de aviones.",
+                "c) Vuelo de aviones a baja altura.",
+                "d) Aviones que generan ruido."
+            ],
+            "imagens": [
+                "q136_a_a2a"
+            ]
+        },
+        {
+            "id": 137,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-52), le indica:",
+            "answer": "c",
+            "options": [
+                "a) Que usted debe dar prioridad de paso a las ambulancias.",
+                "b) Que usted debe dar prioridad de paso a los bomberos.",
+                "c) Que se aproxima a una salida de vehículos de bomberos.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q137_a_a2a"
+            ]
+        },
+        {
+            "id": 138,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-66), le indica:",
+            "answer": "b",
+            "options": [
+                "a) Que se aproxima un desierto.",
+                "b) Que se aproxima una zona donde hay ráfagas de viento lateral.",
+                "c) Que se acerca a una zona de arenamiento en la vía.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q138_a_a2a"
+            ]
+        },
+        {
+            "id": 139,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-66a), le indica:",
+            "answer": "c",
+            "options": [
+                "a) Que se aproxima una tormenta.",
+                "b) Que está pasando por una zona donde hay ráfagas de viento lateral.",
+                "c) Que se acerca a una zona de arenamiento en la vía.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q139_a_a2a"
+            ]
+        },
+        {
+            "id": 140,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si al conducir su vehículo se encuentra con la señal vertical que se muestra (desvío por prohibición de giro izquierda), usted debe entender que:",
+            "answer": "b",
+            "options": [
+                "a) La vía está interrumpida y debe tomar el camino alternativo que muestra la señal.",
+                "b) En la siguiente intersección está prohibido girar a la izquierda y por lo tanto, si desea seguir esa ruta debe tomar el camino alternativo que muestra la señal.",
+                "c) En la siguiente intersección está prohibido girar a la derecha y por lo tanto, si desea seguir esa ruta debe tomar el camino alternativo que muestra la señal.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q140_a_a2a"
+            ]
+        },
+        {
+            "id": 141,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si al conducir su vehículo se encuentra con la señal vertical que se muestra (desvío alternativo), usted debe entender que:",
+            "answer": "a",
+            "options": [
+                "a) Si quiere girar a la izquierda debe pasar la intersección y dar la vuelta a la manzana.",
+                "b) En la siguiente intersección está prohibido girar a la izquierda y por lo tanto, si desea seguir esa ruta debe hacerlo una cuadra antes.",
+                "c) En esa dirección hay una zona de parqueo.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q141_a_a2a"
+            ]
+        },
+        {
+            "id": 142,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (I-14), significa:",
+            "answer": "c",
+            "options": [
+                "a) Señal de hostal.",
+                "b) Señal de hospedaje.",
+                "c) Señal de hospital.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q142_a_a2a"
+            ]
+        },
+        {
+            "id": 143,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (I-31), significa:",
+            "answer": "d",
+            "options": [
+                "a) Proximidad de una bahía de taxis.",
+                "b) Proximidad a un estacionamiento permitido.",
+                "c) Proximidad de una zona de parqueo para vecinos.",
+                "d) Proximidad de un estacionamiento para emergencias."
+            ],
+            "imagens": [
+                "q143_a_a2a"
+            ]
+        },
+        {
+            "id": 144,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (I-9), significa:",
+            "answer": "c",
+            "options": [
+                "a) Zona de control policial.",
+                "b) Zona de control de aduanas.",
+                "c) Zona militar.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q144_a_a2a"
+            ]
+        },
+        {
+            "id": 145,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (I-18), se utiliza para indicar:",
+            "answer": "b",
+            "options": [
+                "a) Cercanía a una ferretería.",
+                "b) Cercanía a un servicio mecánico.",
+                "c) Cercanía a un grifo.",
+                "d) Ninguna de las alternativas es correcta"
+            ],
+            "imagens": [
+                "q145_a_a2a"
+            ]
+        },
+        {
+            "id": 146,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (I-19), se utiliza para indicar:",
+            "answer": "c",
+            "options": [
+                "a) Cercanía a un servicio mecánico.",
+                "b) Cercanía a una tienda.",
+                "c) Cercanía a un grifo.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q146_a_a2a"
+            ]
+        },
+        {
+            "id": 147,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (I-20), se utiliza para indicar:",
+            "answer": "d",
+            "options": [
+                "a) Cercanía a un servicio mecánico.",
+                "b) Cercanía a una zona donde debe circular con cadenas en las llantas.",
+                "c) Cercanía a un grifo.",
+                "d) Cercanía a una llantería."
+            ],
+            "imagens": [
+                "q147_a_a2a"
+            ]
+        },
+        {
+            "id": 148,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (R-16a), se utiliza para indicar:",
+            "answer": "b",
+            "options": [
+                "a) Fin de la restricción de circulación de automotores.",
+                "b) Fin de la restricción de prohibido adelantar.",
+                "c) Fin de la restricción de circulación en doble sentido.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q148_a_a2a"
+            ]
+        },
+        {
+            "id": 149,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El comportamiento del conductor como usuario de la vía, debe estar orientado a:",
+            "answer": "d",
+            "options": [
+                "a) Valor por la vida.",
+                "b) Respeto por la integridad física del resto de los usuarios.",
+                "c) Respeto a la autoridad encargada de la vigilancia y disciplina de tráfico.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 150,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Son considerados usuarios vulnerables de la vía y por tanto merecen especial protección:",
+            "answer": "a",
+            "options": [
+                "a) Peatones, niños, adultos mayores, personas con movilidad reducida, ciclistas.",
+                "b) Únicamente los peatones y ciclistas.",
+                "c) Únicamente los peatones y niños.",
+                "d) Todas las alternativas son correctas, con excepción de los ciclistas."
+            ]
+        },
+        {
+            "id": 151,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-61), muestra:",
+            "answer": "b",
+            "options": [
+                "a) Flechas retroreflectivas que indican peligro.",
+                "b) Delineadores de curva, que guían al conductor.",
+                "c) Advertencia al conductor sobre la proximidad de un puente.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q151_a_a2a"
+            ]
+        },
+        {
+            "id": 152,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si usted es titular de una licencia particular A-I, está autorizado a conducir el siguiente vehículo:",
+            "answer": "d",
+            "options": [
+                "a) Camión, tipo volquete.",
+                "b) Ómnibus, tipo panorámico.",
+                "c) Mototaxi.",
+                "d) Automóvil, tipo sedan."
+            ]
+        },
+        {
+            "id": 153,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Mientras la persona conduce, le está permitido:",
+            "answer": "c",
+            "options": [
+                "a) Compartir su asiento con un niño, siempre y cuando éste sea menor de un año de edad.",
+                "b) Que otra persona tome el control de la dirección del vehículo, siempre y cuando...",
+                "c) Conducir con una mano sobre el volante de dirección, cuando es necesario accionar algún comando del vehículo, como realizar los cambios de velocidad.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 154,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El conductor está ________ a ___________ a las pruebas que le solicite el Efectivo de la Policía Nacional del Perú, asignado al control del tránsito, para determinar su estado de intoxicación por alcohol, drogas, estupefacientes u otros tóxicos",
+            "answer": "c",
+            "options": [
+                "a) En su derecho - negarse.",
+                "b) Facultado - Rechazar.",
+                "c) Obligado - someterse.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 155,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Ante un conductor con evidente discapacidad física, la cual no figura en el rubro de restricciones de su licencia de conducir, procede:",
+            "answer": "a",
+            "options": [
+                "a) Que la Policía de Tránsito intervenga a dicho conductor y que la autoridad que expidió la licencia de conducir ordene su reexaminación.",
+                "b) Que la autoridad competente expida un permiso excepcional para dicho conductor.",
+                "c) Que la Policía de Tránsito expida un permiso excepcional para dicho conductor.",
+                "d) Que la Policía de Tránsito otorgue a dicho conductor un plazo prudencial para que continúe conduciendo."
+            ]
+        },
+        {
+            "id": 156,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Una persona con discapacidad física puede obtener una licencia de conducir particular?",
+            "answer": "a",
+            "options": [
+                "a) Sí, siempre y cuando dicha discapacidad pueda ser superada con algún corrector que establezca alguna de las restricciones que prevé la norma vigente.",
+                "b) No, está terminantemente prohibido.",
+                "c) Depende del criterio del centro de emisión de la licencia de conducir.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 157,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Puede una persona menor de edad conducir un vehículo?",
+            "answer": "d",
+            "options": [
+                "a) Nunca.",
+                "b) Sí, siempre y cuando vaya acompañada de una persona mayor de edad y titular de una licencia de conducir.",
+                "c) No, salvo que conduzca un vehículo de dimensión reducida.",
+                "d) Sí, siempre y cuando sea mayor de 16 años y cuente con licencia de conducir o permiso provisional, conforme a lo dispuesto en el Reglamento Nacional del Sistema de Emisión de Licencias de Conducir."
+            ]
+        },
+        {
+            "id": 158,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Es una obligación general de tránsito que, los ____________ circulen respetando los mensajes de _______________, las instrucciones de los Efectivos de la Policía de Tránsito y el mandato de las normas legales y reglamentarias correspondientes.",
+            "answer": "b",
+            "options": [
+                "a) Peatones - los letreros instalados en las vías públicas.",
+                "b) Los usuarios de la vía pública - los dispositivos de control de tránsito.",
+                "c) Vehículos - los medios de comunicación.",
+                "d) Menores de edad - los adultos mayores."
+            ]
+        },
+        {
+            "id": 159,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Marque la afirmación incorrecta:",
+            "answer": "c",
+            "options": [
+                "a) Está prohibido arrojar, depositar o abandonar objetos en la vía pública, o cualquier otro obstáculo que pueda dificultar la circulación.",
+                "b) El conductor debe mantener el vehículo que conduce con el combustible necesario para evitar detenciones en la vía.",
+                "c) Los vehículos deben circular en vías urbanas con las luces bajas las 24 horas del día.",
+                "d) En caso de haber agua en la calzada, el conductor de un vehículo debe tomar las precauciones, para evitar que ésta pueda mojar la acera y los peatones."
+            ]
+        },
+        {
+            "id": 160,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Si al conducir por una avenida se encuentra con una señal en la vía que indica un límite máximo de 50 km/h, sin embargo, conforme a lo dispuesto en la norma el límite máximo de velocidad en dicha vía es de 60 km/h; usted:",
+            "answer": "a",
+            "options": [
+                "a) Debe obedecer la señal de velocidad instalada en la vía.",
+                "b) Puede ir a una velocidad máxima de 60 km/h.",
+                "c) Debe ir a una velocidad máxima de 60 km/h.",
+                "d) Debe ir a una velocidad entre 50 y 60 km/h."
+            ]
+        },
+        {
+            "id": 161,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Sobre la conducción en retroceso, marque la opción correcta:",
+            "answer": "a",
+            "options": [
+                "a) Está prohibida, salvo en casos estrictamente justificados.",
+                "b) Nunca debe realizarse.",
+                "c) Está permitida",
+                "d) Está permitida, salvo en carreteras."
+            ]
+        },
+        {
+            "id": 162,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El uso de la luz ___________ es obligatorio en __________, debiendo cambiar por luz ____________ momentos previos al cruce con otro vehículo que circule en sentido contrario.",
+            "answer": "d",
+            "options": [
+                "a) Baja - carreteras - alta.",
+                "b) Alta - vías urbanas - baja.",
+                "c) Rompenieblas - carreteras - baja.",
+                "d) Alta - carreteras - baja."
+            ]
+        },
+        {
+            "id": 163,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Indique la conducta permitida:",
+            "answer": "b",
+            "options": [
+                "a) El estacionamiento de un vehículo a la salida de salas de espectáculos en funcionamiento.",
+                "b) El estacionamiento de un vehículo de emergencia en un lugar no permitido, si ello fuera imprescindible.",
+                "c) El estacionamiento de un vehículo después de 1 metro de un paso peatonal.",
+                "d) El estacionamiento de un vehículo sobre las aceras."
+            ]
+        },
+        {
+            "id": 164,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Se considera el abandono de un vehículo cuando:",
+            "answer": "c",
+            "options": [
+                "a) El vehículo está estacionado en un lugar permitido en la vía pública, pero sin conductor por un tiempo mayor de 72 horas.",
+                "b) El vehículo está estacionado en un lugar permitido en la vía pública, pero sin conductor por un tiempo mayor de 96 horas.",
+                "c) El vehículo está estacionado en un lugar permitido en la vía pública, pero sin conductor y por un tiempo mayor de 48 horas.",
+                "d) La norma de tránsito no establece nada sobre el abandono del vehículo."
+            ]
+        },
+        {
+            "id": 165,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Al transportar carga en su vehículo, usted debe:",
+            "answer": "d",
+            "options": [
+                "a) Asegurarse, en caso la carga sobresalga lateralmente de la carrocería, esté bien sujeta.",
+                "b) Evitar todo riesgo de caída de la carga que sobresale lateralmente de la carrocería.",
+                "c) Tratar que la carga no sea arrastrada.",
+                "d) Asegurarse que la carga no sobrepase las dimensiones de la carrocería."
+            ]
+        },
+        {
+            "id": 166,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Sobre la emisión vehicular de sustancias contaminantes, marque la opción correcta:",
+            "answer": "b",
+            "options": [
+                "a) Está permitida.",
+                "b) Está prohibida, en un índice superior al límite máximo que permite la norma.",
+                "c) Está prohibida en el ámbito urbano.",
+                "d) La norma no regula sobre ello."
+            ]
+        },
+        {
+            "id": 167,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La autoridad competente, ______________ puede prohibir o restringir _____________________ en determinadas vías públicas.",
+            "answer": "a",
+            "options": [
+                "a) Cuando la situación lo justifique - la circulación o estacionamiento de vehículos.",
+                "b) Aun cuando la situación lo justifique no - circulación o estacionamiento de vehículos.",
+                "c) No se encuentra facultada ni - circulación de vehículos",
+                "d) Únicamente con el consentimiento del conductor - circulación de vehículos."
+            ]
+        },
+        {
+            "id": 168,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si al conducir en una carretera de noche se aproxima un vehículo en sentido contrario; usted debe:",
+            "answer": "c",
+            "options": [
+                "a) Cambiar de luces bajas a luces altas",
+                "b) Encender las luces de emergencia.",
+                "c) Cambiar de luces altas a luces bajas.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 169,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La detención de un vehículo debe efectuarse:",
+            "answer": "d",
+            "options": [
+                "a) En el sentido contrario a la circulación y en el carril izquierdo de la vía.",
+                "b) En el sentido de la circulación y en el carril derecho de la vía, utilizando las luces altas.",
+                "c) En el sentido de la circulación y en el carril izquierdo de la vía, utilizando las luces intermitentes.",
+                "d) En el sentido de la circulación y en el carril derecho de la vía, utilizando las luces intermitentes."
+            ]
+        },
+        {
+            "id": 170,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "En caso de un accidente de tránsito con daños personales y/o materiales los participantes deben:",
+            "answer": "c",
+            "options": [
+                "a) Acudir a la estación de bomberos.",
+                "b) Llamar a un familiar.",
+                "c) Solicitar la intervención de la autoridad policial.",
+                "d) Abandonar el lugar donde ocurrió el accidente."
+            ]
+        },
+        {
+            "id": 171,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El conductor antes de iniciar la conducción de un vehículo no está obligado a:",
+            "answer": "d",
+            "options": [
+                "a) Portar la tarjeta de identificación vehicular del vehículo que conduce.",
+                "b) Portar y exhibir la Placa Única de Rodaje.",
+                "c) Constatar que el vehículo tiene SOAT vigente.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 172,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La __________ faculta y autoriza la circulación del vehículo por la vía pública, identifica el bien, y, por ende, al titular responsable de las acciones que deriven de su propiedad.",
+            "answer": "d",
+            "options": [
+                "a) Tarjeta de identificación vehicular.",
+                "b) Municipalidad provincial.",
+                "c) La Superintendencia Nacional de Aduanas y de Administración Tributaria - SUNAT.",
+                "d) Placa Única Nacional de Rodaje."
+            ]
+        },
+        {
+            "id": 173,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "A fin de determinar la presencia de alcohol o sustancias estupefacientes en el conductor, el efectivo de la Policía de Tránsito puede exigirle al momento de la intervención:",
+            "answer": "d",
+            "options": [
+                "a) Que realice pruebas de coordinación y equilibrio.",
+                "b) Uso del alcoholímetro.",
+                "c) Prueba de alcoholemia.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 174,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿El Reglamento Nacional de Tránsito considera la reincidencia en las infracciones de tránsito?",
+            "answer": "b",
+            "options": [
+                "a) No, el conductor puede cometer la misma infracción varias veces y la sanción será la misma.",
+                "b) Si, cuando el conductor comete la misma infracción dentro de los 12 meses será sancionado con el doble de la multa.",
+                "c) Solo en los casos en que se cometan infracciones gravísimas.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 175,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Después de qué tiempo de haber cometido la misma infracción se llama reincidencia y es sancionada con el doble de la multa establecida?",
+            "answer": "b",
+            "options": [
+                "a) 06 meses.",
+                "b) 12 meses.",
+                "c) 24 meses.",
+                "d) 35 meses."
+            ]
+        },
+        {
+            "id": 176,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si a un conductor infractor le suspendieron su licencia de conducir, éste se encuentra facultado para:",
+            "answer": "d",
+            "options": [
+                "a) Tramitar el duplicado de su licencia de conducir.",
+                "b) Tramitar la revalidación de su licencia de conducir.",
+                "c) Tramitar la recategorización de su licencia de conducir.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 177,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Las __________________ tienen por función informar a los usuarios sobre los servicios generales existentes próximos a la vía, tales como teléfono, hospedaje, restaurante, primeros auxilios, estación de combustibles, talleres, y otros.",
+            "answer": "c",
+            "options": [
+                "a) Señales de localización.",
+                "b) Señales de salida inmediata.",
+                "c) Señales de servicios generales.",
+                "d) Señales ordinarias"
+            ]
+        },
+        {
+            "id": 178,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Constituye una infracción tramitar el duplicado de una licencia de conducir que se encuentra retenida?",
+            "answer": "c",
+            "options": [
+                "a) No constituye una infracción.",
+                "b) Solo cuando la licencia de conducir ha sido retenida por la comisión de una infracción muy grave.",
+                "c) Si, constituye una infracción.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 179,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Las marcas en el pavimento constituyen la señalización ___________ y se emplean para _____________ la circulación.",
+            "answer": "a",
+            "options": [
+                "a) Horizontal - reglamentar.",
+                "b) Vertical - reglamentar.",
+                "c) Más importante - mejorar.",
+                "d) Menos importante - adornar."
+            ]
+        },
+        {
+            "id": 180,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Ciclista es a ciclovía como:",
+            "answer": "b",
+            "options": [
+                "a) Conductor - acera.",
+                "b) Conductor - calzada.",
+                "c) Conductor - berma.",
+                "d) Peatón - autopista."
+            ]
+        },
+        {
+            "id": 181,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-15), se utiliza para advertir al conductor:",
+            "answer": "d",
+            "options": [
+                "a) La proximidad a una vía de tres carriles.",
+                "b) La proximidad a un huracán.",
+                "c) La proximidad a un camino sinuoso.",
+                "d) La proximidad de una intersección rotatoria (óvalo o rotonda)."
+            ],
+            "imagens": [
+                "q181_a_a2a"
+            ]
+        },
+        {
+            "id": 182,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La siguiente señal (P-31a), indica:",
+            "answer": "a",
+            "options": [
+                "a) La proximidad del final de la vía.",
+                "b) La proximidad de una vía asfaltada.",
+                "c) La proximidad de una pendiente leve.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q182_a_a2a"
+            ]
+        },
+        {
+            "id": 183,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Es una línea transversal a la calzada, que indica al conductor que debe detener completamente el vehículo, no debiendo sobrepasar el inicio de la indicada línea:",
+            "answer": "c",
+            "options": [
+                "a) Línea de carril.",
+                "b) Línea de borde de calzada.",
+                "c) Línea de pare.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 184,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Los semáforos son:",
+            "answer": "a",
+            "options": [
+                "a) Dispositivos de control del tránsito que tienen por finalidad regular y controlar el tránsito vehicular, motorizado y no motorizado, y el peatonal, a través de las indicaciones de las luces respectivas.",
+                "b) Dispositivos de control del tránsito que tienen por finalidad regular y controlar únicamente el tránsito vehicular motorizado y peatonal, a través de las indicaciones de luces.",
+                "c) Señales de color rojo, verde y amarillo, que tienen como único fin regular la corriente vehicular.",
+                "d) Artefactos que emiten luces de colores y cuyo único fin es regular la corriente de vehículos motorizados y peatones."
+            ]
+        },
+        {
+            "id": 185,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La conducción requiere un alto nivel de atención, pues existen distracciones que pueden ocasionar accidentes de tránsito, como por ejemplo:",
+            "answer": "d",
+            "options": [
+                "a) Preocupaciones.",
+                "b) Uso del teléfono celular.",
+                "c) Manipulación de la radio mientras se conduce.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 186,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Influye la somnolencia en la capacidad de conducir?",
+            "answer": "a",
+            "options": [
+                "a) Si, pues el conductor tomará decisiones lentas que lo inducirán a cometer errores.",
+                "b) Si, ya que el conductor está de mal genio.",
+                "c) No, siempre que la conducción sea realizada lentamente.",
+                "d) No, siempre y cuando la conducción sea realizada con un acompañante."
+            ]
+        },
+        {
+            "id": 187,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿Cuál es la acción correcta del conductor, según las normas de tránsito, en la situación que plantea el siguiente gráfico? (vehículo girando a la derecha con peatón cruzando)",
+            "answer": "b",
+            "options": [
+                "a) Girar rápidamente a la derecha antes que el peatón cruce la calzada.",
+                "b) Dar preferencia de paso al peatón para que cruce la calzada.",
+                "c) Girar lentamente a la derecha antes que el peatón cruce la calzada.",
+                "d) Tocar el claxon para que el peatón no cruce la calzada"
+            ],
+            "imagens": [
+                "q187_a_a2a"
+            ]
+        },
+        {
+            "id": 188,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "¿En cuál de las siguientes opciones, los factores mencionados contribuyen a una colisión vehicular?",
+            "answer": "b",
+            "options": [
+                "a) Pavimento seco, somnolencia, frenos desgastados.",
+                "b) Pavimento húmedo, neumáticos desgastados, cansancio.",
+                "c) Reductores de velocidad, falta de atención, uso del teléfono celular.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 189,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La __________ es la parte de una carretera o camino contigua a la calzada, no habilitada para la circulación de vehículos y destinada eventualmente a la detención de vehículos en emergencia y circulación de peatones.",
+            "answer": "a",
+            "options": [
+                "a) Berma.",
+                "b) Autopista.",
+                "c) Acera.",
+                "d) Demarcación."
+            ]
+        },
+        {
+            "id": 190,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Es una parte de la vía destinada a la circulación de vehículos y eventualmente al cruce de peatones y animales.",
+            "answer": "a",
+            "options": [
+                "a) La calzada.",
+                "b) La acera.",
+                "c) La berma.",
+                "d) Ninguna de las alternativas es correcta."
+            ]
+        },
+        {
+            "id": 191,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Es una parte de la vía destinada al uso de peatones",
+            "answer": "a",
+            "options": [
+                "a) La acera.",
+                "b) La calzada.",
+                "c) La berma.",
+                "d) La autopista."
+            ]
+        },
+        {
+            "id": 192,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Son señales que regulan el tránsito:",
+            "answer": "d",
+            "options": [
+                "a) Las bocinas y las marcas en la calzada o señales horizontales.",
+                "b) Las bocinas y las señales verticales.",
+                "c) Las señales verticales, las marcas en la calzada o señales horizontales y las bocinas.",
+                "d) Las señales verticales y las marcas en la calzada o señales horizontales."
+            ]
+        },
+        {
+            "id": 193,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Los vehículos deben ser conducidos con:",
+            "answer": "b",
+            "options": [
+                "a) Puertas y capot cerrados, permitiéndose la maletera entreabierta para casos especiales.",
+                "b) Puertas, capot y maletera cerrados.",
+                "c) Puertas, capot y maletera cerrados, salvo autorización especial.",
+                "d) Capot y maletera cerrados, permitiéndose dos puertas entreabiertas para casos especiales."
+            ]
+        },
+        {
+            "id": 194,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El conductor que en una vía urbana va a girar a la izquierda, a la derecha o en U debe hacer la señal respectiva con la luz direccional, por lo menos:",
+            "answer": "c",
+            "options": [
+                "a) 2 segundos antes de realizar la maniobra.",
+                "b) 1 metro antes de realizar la maniobra.",
+                "c) 20 metros antes de realizar la maniobra.",
+                "d) 3 metros antes de realizar la maniobra."
+            ]
+        },
+        {
+            "id": 195,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si usted está conduciendo por una carretera y va girar a la izquierda, debe realizar la señal respectiva con la luz direccional por lo menos:",
+            "answer": "c",
+            "options": [
+                "a) 2 segundos antes de realizar la maniobra.",
+                "b) 2 metros antes de realizar la maniobra.",
+                "c) 30 metros antes de realizar la maniobra.",
+                "d) 1 metro antes de realizar la maniobra."
+            ]
+        },
+        {
+            "id": 196,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "La licencia particular de la Clase y Categoría A-I, ¿permite conducir motos?",
+            "answer": "b",
+            "options": [
+                "a) Si.",
+                "b) No",
+                "c) Únicamente en el ámbito urbano.",
+                "d) Únicamente en carreteras."
+            ]
+        },
+        {
+            "id": 197,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "El siguiente gráfico muestra (zona escolar con señalización):",
+            "answer": "a",
+            "options": [
+                "a) Señalización de tránsito vertical y horizontal en una zona escolar.",
+                "b) Únicamente señalización de tránsito vertical en una zona escolar.",
+                "c) Únicamente señalización de tránsito horizontal en una zona escolar.",
+                "d) Ninguna de las alternativas es correcta."
+            ],
+            "imagens": [
+                "q197_a_a2a"
+            ]
+        },
+        {
+            "id": 198,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Las __________canalizadoras, tiene por función conformar las islas canalizadoras del tránsito automotor en una _________.",
+            "answer": "b",
+            "options": [
+                "a) Islas canalizadoras - vía.",
+                "b) Líneas - intersección.",
+                "c) Vías - intersección.",
+                "d) Todas las alternativas son correctas."
+            ]
+        },
+        {
+            "id": 199,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "Si al conducir en una intersección se encuentra con las siguientes marcas en el pavimento (malla ortogonal de color amarillo), significa:",
+            "answer": "a",
+            "options": [
+                "a) Que no puede detener el vehículo dentro del área de intersección.",
+                "b) Que se están realizando trabajos de emergencia en el área demarcada.",
+                "c) Que únicamente puede detener el vehículo dentro del área de intersección.",
+                "d) Que es una isla de refugio peatonal."
+            ],
+            "imagens": [
+                "q199_a_a2a"
+            ]
+        },
+        {
+            "id": 200,
+            "section": "Materias generales",
+            "category": "Todas",
+            "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+            "title": "De acuerdo al siguiente gráfico (líneas amarillas continuas con camión), es correcto afirmar que:",
+            "answer": "c",
+            "options": [
+                "a) La zona que permite adelantar inicia con las líneas amarillas continuas.",
+                "b) Los conductores pueden estacionarse al empezar las líneas continuas.",
+                "c) La zona de no adelantar inicia con las líneas amarillas continuas.",
+                "d) El conductor del camión puede estacionarse antes de empezar las líneas continuas"
+            ],
+            "imagens": [
+                "q200_a_a2a"
+            ]
+        },
+        {
+            "id": 201,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "El Reglamento Nacional de Administración de Transporte regula:",
+            "answer": "b",
+            "fundamento": "Artículo 1 del RENAT",
+            "options": [
+                "a) El servicio de transporte terrestre y el tránsito.",
+                "b) El servicio de transporte terrestre de personas y mercancías.",
+                "c) Únicamente el servicio de transporte de mercancías.",
+                "d) Ninguna de las anteriores."
+            ]
+        },
+        {
+            "id": 202,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "El régimen o la actividad de fiscalización no está orientada a:",
+            "answer": "d",
+            "fundamento": "Artículo 89 del RENAT",
+            "options": [
+                "a) Proteger la vida, la salud y la seguridad de las personas.",
+                "b) Proteger los intereses de los usuarios y de los prestadores del servicio.",
+                "c) Sancionar los incumplimientos o infracciones previstas en el Reglamento Nacional de Administración de Transporte",
+                "d) Promover la inclusión social."
+            ]
+        },
+        {
+            "id": 203,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Las sanciones por las infracciones al servicio de transporte se encuentran comprendidas en:",
+            "answer": "a",
+            "fundamento": "Artículo 100 y Anexo 1 y 2 del RENAT",
+            "options": [
+                "a) El Reglamento Nacional de Administración de Transporte.",
+                "b) El Texto Único Ordenado del Reglamento Nacional de Tránsito - Código de Tránsito.",
+                "c) El Reglamento Nacional de Inspecciones Técnicas Vehiculares.",
+                "d) Todas las anteriores."
+            ]
+        },
+        {
+            "id": 204,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Con relación a las obligaciones del conductor del servicio de transporte terrestre. Marque la alternativa incorrecta:",
+            "answer": "d",
+            "fundamento": "Artículo 31 del RENAT",
+            "options": [
+                "a) Debe ser titular de una licencia de conducir de la clase y categoría que corresponda al vehículo que conduce.",
+                "b) Debe portar su licencia de conducir vigente, así como la documentación del vehículo.",
+                "c) Debe conducir solo vehículos habilitados por la autoridad competente.",
+                "d) Puede oponerse a la labor de supervisión y fiscalización de la autoridad competente."
+            ]
+        },
+        {
+            "id": 205,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Con relación a las obligaciones del conductor del servicio de transporte terrestre, es obligatorio que el conductor ….",
+            "answer": "d",
+            "fundamento": "Artículo 31 del RENAT",
+            "options": [
+                "a) No deba tener su licencia de conducir suspendida, retenida o cancelada",
+                "b) No deba llegar o exceder de tope máximo de 100 puntos firmes",
+                "c) No tenga impuesta dos o más infracciones Muy Graves, cinco o más infracciones Graves o una infracción Muy Grave y tres o más infracciones Graves",
+                "d) Todas las anteriores."
+            ]
+        },
+        {
+            "id": 206,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "La entidad competente de fiscalizar el servicio de transporte de ámbito provincial es:",
+            "answer": "b",
+            "fundamento": "Artículo 11 del RENAT",
+            "options": [
+                "a) El Gobierno Regional.",
+                "b) La municipalidad provincial.",
+                "c) El Ministerio de Transportes y Comunicaciones.",
+                "d) 'a' y 'c' son correctas."
+            ]
+        },
+        {
+            "id": 207,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Las infracciones se clasifican de acuerdo a su gradualidad en:",
+            "answer": "b",
+            "fundamento": "Numeral 98.2 del artículo 98 del RENAT",
+            "options": [
+                "a) Levísimas, graves y gravísimas.",
+                "b) Leves, graves y muy graves.",
+                "c) Leves, graves, muy graves y gravísimas.",
+                "d) Levísimas, gravísimas y muy graves."
+            ]
+        },
+        {
+            "id": 208,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "La edad máxima para conducir vehículos destinados al servicio de transporte terrestre es de:",
+            "answer": "d",
+            "fundamento": "Numeral 29.2 del artículo 29 del RENAT",
+            "options": [
+                "a) 55 años.",
+                "b) 60 años.",
+                "c) 65 años.",
+                "d) 70 años."
+            ]
+        },
+        {
+            "id": 209,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "El servicio de transporte especial de personas es aquel que se presta:",
+            "answer": "a",
+            "fundamento": "Artículo 3.63 del artículo 3 del RENAT",
+            "options": [
+                "a) Sin regularidad ni uniformidad.",
+                "b) Con regularidad y uniformidad.",
+                "c) Sin regularidad y con uniformidad.",
+                "d) Con regularidad y sin uniformidad"
+            ]
+        },
+        {
+            "id": 210,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "La autorización del servicio de taxi habilita para:",
+            "answer": "a",
+            "fundamento": "Numeral 3.63.6 del artículo 3 del RENAT",
+            "options": [
+                "a) Prestar el servicio dentro de la respectiva provincia donde se otorgó la autorización.",
+                "b) Prestar el servicio en todo el ámbito nacional.",
+                "c) Prestar el servicio dentro de todo el departamento correspondiente a la provincia donde se otorgó la autorización.",
+                "d) Ninguna de las anteriores."
+            ]
+        },
+        {
+            "id": 211,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "¿Cuál de los siguientes servicios no corresponde al servicio de transporte especial de personas?",
+            "answer": "a",
+            "fundamento": "Numeral 3.63 del artículo 3 del RENAT",
+            "options": [
+                "a) Diferenciado.",
+                "b) Turístico.",
+                "c) De trabajadores.",
+                "d) De estudiantes."
+            ]
+        },
+        {
+            "id": 212,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Si un conductor atenta contra la integridad física del inspector durante la realización de sus funciones, será sancionado con:",
+            "answer": "c",
+            "fundamento": "Código F.7 del Anexo 2 del RENAT",
+            "options": [
+                "a) Cancelación de licencia de conducir e inhabilitación para obtener nueva licencia por tres (3) años.",
+                "b) Suspensión de la licencia de conducir por tres (3) años.",
+                "c) Cancelación de la licencia de conducir e inhabilitación definitiva para obtener nueva licencia. Multa de 0.5 UIT.",
+                "d) Cancelación de la licencia de conducir por un (1) año e inhabilitación definitiva para obtener nueva licencia. Multa de 1 UIT."
+            ]
+        },
+        {
+            "id": 213,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "El vehículo que presta el servicio de transporte provincial de personas debe contar con el siguiente Seguro:",
+            "answer": "c",
+            "fundamento": "Artículo 30 de la Ley General de Transporte y Tránsito Terrestre, Ley N° 27181 del RENAT",
+            "options": [
+                "a) Únicamente con el Seguro Obligatorio de Accidentes de Tránsito - SOAT.",
+                "b) Únicamente con el Certificado de Accidentes de Tránsito - CAT.",
+                "c) El Seguro Obligatorio de Accidentes de Tránsito - SOAT o el Certificado contra Accidentes de tránsito - CAT.",
+                "d) Ninguno de los anteriores."
+            ]
+        },
+        {
+            "id": 214,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "En el servicio de transporte la vigencia de la habilitación del conductor es ….y de renovación automática una vez acreditada la vigencia de la licencia de conducir de la categoría correspondiente al vehículo habilitado",
+            "answer": "a",
+            "fundamento": "Numeral 71.4 del artículo 71 del RENAT",
+            "options": [
+                "a) Anual.",
+                "b) cada dos años.",
+                "c) Cada cinco años.",
+                "d) Ninguna de las anteriores."
+            ]
+        },
+        {
+            "id": 215,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "¿A partir de qué edad el conductor del servicio de transporte deberá rendir y aprobar los exámenes médicos semestrales que establezca la Dirección General de Transporte Terrestre (DGTT)?",
+            "answer": "c",
+            "fundamento": "Numeral 29.2 del artículo 29",
+            "options": [
+                "a) 60 años.",
+                "b) 55 años.",
+                "c) 65 años.",
+                "d) No existe dicha exigencia en la norma."
+            ]
+        },
+        {
+            "id": 216,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Si un presunto infractor paga voluntariamente dentro de los cinco días hábiles de levantada el acta de control, la multa que corresponda a la infracción imputada, ésta será reducida en:",
+            "answer": "d",
+            "fundamento": "Artículo 105.1 del artículo 105 del RENAT",
+            "options": [
+                "a) 20% de su monto.",
+                "b) 30% de su monto.",
+                "c) 40% de su monto.",
+                "d) 50% de su monto."
+            ]
+        },
+        {
+            "id": 217,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Cuando hablamos del «servicio de transporte especial de ámbito provincial, prestado en vehículos M1 de la clasificación vehicular, que tiene por objeto el traslado de personas desde un punto de origen hasta un punto de destino señalado por quien lo contrata.», nos estamos refiriendo al:",
+            "answer": "c",
+            "fundamento": "Numeral 3.63.6 del artículo 3 del RENAT",
+            "options": [
+                "a) Servicio de transporte de trabajadores.",
+                "b) Servicio de transporte de mercancías.",
+                "c) Servicio de transporte de taxi.",
+                "d) Servicio de transporte turístico."
+            ]
+        },
+        {
+            "id": 218,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "Es la medida preventiva que consiste en el traslado del vehículo fuera de la vía pública dispuesto por la autoridad competente y/o PNP, utilizando cualquier medio eficaz y proporcional al fin que se persigue:",
+            "answer": "a",
+            "fundamento": "Artículo 110 del RENAT",
+            "options": [
+                "a) Remoción del vehículo.",
+                "b) Retención del vehículo.",
+                "c) Internamiento del vehículo.",
+                "d) Interrupción del viaje."
+            ]
+        },
+        {
+            "id": 219,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "El servicio de transporte debe ser prestado a través de vehículos que:",
+            "answer": "d",
+            "fundamento": "Numeral 41.1.3 del artículo 41 del RENAT",
+            "options": [
+                "a) Se encuentren habilitados.",
+                "b) Hayan aprobado la Inspección Técnica Vehicular, cuando corresponda.",
+                "c) Cuenten con póliza de Seguro Obligatorio de Accidentes de Tránsito vigente o Certificado Contra Accidentes de Tránsito, según corresponda.",
+                "d) Todas las anteriores."
+            ]
+        },
+        {
+            "id": 220,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "¿Qué sanción le corresponde al conductor que presta el servicio sin contar con autorización otorgada por la autoridad competente o en una modalidad o ámbito diferente al autorizado?",
+            "answer": "a",
+            "fundamento": "Código F1 del Anexo 2 del RENAT",
+            "options": [
+                "a) Multa de 1 UIT",
+                "b) Multa de 2 UIT",
+                "c) Multa de 0.5 UIT",
+                "d) Multa de 0.05 UIT"
+            ]
+        },
+        {
+            "id": 221,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Regulación de actividad de transporte",
+            "title": "En cual de los siguientes supuestos no corresponde la medida preventiva de retención de la licencia de conducir, en el servicio de transporte terrestre:",
+            "answer": "c",
+            "fundamento": "Artículo 113 del RENAT",
+            "options": [
+                "a) Por negarse a entregar información o documentación correspondiente al vehículo que conduce.",
+                "b) Por realizar acciones destinadas a no someterse o a burlar la fiscalización.",
+                "c) Por desacatar la orden de suspensión precautoria del servicio de transporte.",
+                "d) Por conducir un vehículo que presta servicio de transporte, excediendo la edad máxima prevista en el Reglamento Nacional de Administración de Transporte"
+            ]
+        },
+        {
+            "id": 222,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Funcionamiento del Sistema Nacional de Emisión de Licencias de Conducir",
+            "title": "La licencia de conducir de Clase A Categoría II A tendrá una vigencia de…..",
+            "answer": "a",
+            "fundamento": "Artículo 18 del Reglamento de Licencias",
+            "options": [
+                "a) 3 años",
+                "b) 5 años",
+                "c) 8 años",
+                "d) 2 años"
+            ]
+        },
+        {
+            "id": 223,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Funcionamiento del Sistema Nacional de Emisión de Licencias de Conducir",
+            "title": "¿Cuál es la antigüedad mínima contando con licencia de Clase A- Categoría I que se requiere para obtener la licencia de Clase A categoría II A por recategorización?",
+            "answer": "a",
+            "fundamento": "Artículo 14 del Reglamento de Licencias",
+            "options": [
+                "a) 2 años.",
+                "b) 4 años.",
+                "c) 5 años",
+                "d) No existe antigüedad mínima"
+            ]
+        },
+        {
+            "id": 224,
+            "section": "Materias específicas",
+            "category": "AIIA",
+            "topic": "Funcionamiento del Sistema Nacional de Emisión de Licencias de Conducir",
+            "title": "La licencia de conducir de clase A categoría II A permite conducir los vehículos señalados en la categoría:",
+            "answer": "a",
+            "fundamento": "Artículo 9 del Reglamento de Licencias",
+            "options": [
+                "a) I",
+                "b) III",
+                "c) IV",
+                "d) II B"
+            ]
+        }
+    ]
+}

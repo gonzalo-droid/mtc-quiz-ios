@@ -14,7 +14,10 @@ let package = Package(
         .target(
             name: "MTCData",
             dependencies: ["MTCDomain"],
-            resources: [.process("Resources")]
+            resources: [
+                .process("Resources/categories.json"),
+                .copy("Resources/Questions"),
+            ]
         ),
         .testTarget(name: "MTCDataTests", dependencies: ["MTCData", "MTCDomain"]),
     ]

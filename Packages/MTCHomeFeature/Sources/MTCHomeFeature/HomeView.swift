@@ -77,6 +77,15 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
     var userName: String {
         get async { "Gonzalo" }
     }
+    var numberOfQuestions: Int {
+        get async { 40 }
+    }
+    var evaluationTimeMinutes: Int {
+        get async { 40 }
+    }
+    var passPercentage: Int {
+        get async { 80 }
+    }
 }
 
 private let previewCategories: [MTCDomain.Category] = [
