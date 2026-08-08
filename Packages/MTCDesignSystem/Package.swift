@@ -8,6 +8,9 @@ let package = Package(
         .library(name: "MTCDesignSystem", targets: ["MTCDesignSystem"]),
     ],
     targets: [
-        .target(name: "MTCDesignSystem"),
+        .target(
+            name: "MTCDesignSystem",
+            resources: [.process("Resources")]
+        ),
     ]
 )

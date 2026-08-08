@@ -14,8 +14,7 @@ let package = Package(
     targets: [
         .target(
             name: "MTCHomeFeature",
-            dependencies: ["MTCDomain", "MTCDesignSystem"],
-            resources: [.process("Resources")]
+            dependencies: ["MTCDomain", "MTCDesignSystem"]
         ),
         .testTarget(
             name: "MTCHomeFeatureTests",

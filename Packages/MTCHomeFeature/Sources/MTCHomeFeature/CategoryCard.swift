@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 import MTCDomain
 import MTCDesignSystem
 
@@ -29,9 +28,7 @@ public struct CategoryCard: View {
                 }
                 .padding(16)
 
-                vehicleImage
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                VehicleIllustration(examId: category.examId)
                     .frame(width: 230, height: 180)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     .padding(2)
@@ -40,16 +37,6 @@ public struct CategoryCard: View {
         .buttonStyle(.plain)
         .frame(height: 190)
         .clipShape(RoundedRectangle(cornerRadius: 16))
-    }
-
-    private var vehicleImage: Image {
-        if
-            let url = Bundle.module.url(forResource: "\(category.examId)_card", withExtension: "png"),
-            let uiImage = UIImage(contentsOfFile: url.path)
-        {
-            return Image(uiImage: uiImage)
-        }
-        return Image(systemName: "car.fill")
     }
 }
 
