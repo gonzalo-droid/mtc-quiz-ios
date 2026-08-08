@@ -52,3 +52,51 @@ public struct CategoryCard: View {
         return Image(systemName: "car.fill")
     }
 }
+
+#Preview("Clase A") {
+    CategoryCard(
+        category: MTCDomain.Category(
+            id: "1",
+            title: "CLASE A - CATEGORIA I",
+            category: "A-I",
+            classType: "CLASE A",
+            description: "Es el más común y te permite manejar carros como sedanes, coupé, hatchback, convertibles, station wagon, SUV, Areneros, Pickup y furgones.",
+            pdf: "CLASE_A_I.pdf",
+            pathJson: "a1_questions.json"
+        ),
+        onSelect: {}
+    )
+    .padding(16)
+}
+
+#Preview("Clase B") {
+    CategoryCard(
+        category: MTCDomain.Category(
+            id: "8",
+            title: "CLASE B - CATEGORIA II-A",
+            category: "B-IIa",
+            classType: "CLASE B",
+            description: "Bicimotos para transportar pasajeros o mercancías.",
+            pdf: "CLASE_B_IIA.pdf",
+            pathJson: "b2a_questions.json"
+        ),
+        onSelect: {}
+    )
+    .padding(16)
+}
+
+#Preview("Sin imagen (fallback)") {
+    CategoryCard(
+        category: MTCDomain.Category(
+            id: "99",
+            title: "Categoría de prueba",
+            category: "A-I",
+            classType: "CLASE A",
+            description: "d",
+            pdf: "p.pdf",
+            pathJson: "no_existe_questions.json"
+        ),
+        onSelect: {}
+    )
+    .padding(16)
+}
