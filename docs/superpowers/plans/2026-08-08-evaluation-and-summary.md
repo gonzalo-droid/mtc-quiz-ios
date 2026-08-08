@@ -419,7 +419,7 @@ ls /Volumes/Neko/apps_ios/mtcquiz/Packages/MTCData/Sources/MTCData/Resources/Que
 
 Expected: prints `9`. This is a `cp`, the Android source files are untouched.
 
-`Package.swift` already declares `resources: [.process("Resources")]` for the `MTCData` target (confirmed current state) — no change needed there, `.process` recurses into subdirectories including the new `Questions/` folder.
+`Package.swift` currently declares `resources: [.process("Resources")]` for the `MTCData` target. **Correction, discovered while implementing this step:** `.process(...)` applied to a whole directory flattens nested subdirectories in this toolchain rather than preserving them — `Bundle.module.url(forResource:withExtension:subdirectory: "Questions")` would silently fail to find anything. Change the target's `resources:` to `[.process("Resources/categories.json"), .copy("Resources/Questions")]` instead — `.copy` on a directory preserves its structure, `.process` stays targeted at the single existing `categories.json` file so its behavior is unchanged.
 
 - [ ] **Step 2: Write the failing test**
 
@@ -616,6 +616,16 @@ ls /Volumes/Neko/apps_ios/mtcquiz/Packages/MTCData/Sources/MTCData/Resources/Ima
 ```
 
 Expected: prints `506`.
+
+**Update `Package.swift`'s resource rule for the `MTCData` target.** Task 2 discovered that SwiftPM's `.process(...)` on a whole directory flattens nested subdirectories in this toolchain — it silently broke `Bundle.module.url(forResource:withExtension:subdirectory:)` lookups until fixed by switching to `.copy(...)` per-subdirectory (which preserves structure). The target's `resources:` array is currently `[.process("Resources/categories.json"), .copy("Resources/Questions")]` — add `.copy("Resources/Images")` to it:
+
+```swift
+            resources: [
+                .process("Resources/categories.json"),
+                .copy("Resources/Questions"),
+                .copy("Resources/Images"),
+            ]
+```
 
 - [ ] **Step 2: Write the failing test for the image resolver**
 
