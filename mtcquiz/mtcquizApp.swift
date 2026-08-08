@@ -2,6 +2,7 @@ import SwiftUI
 import MTCData
 import MTCHomeFeature
 import MTCDetailFeature
+import MTCPDFFeature
 internal import MTCDomain
 
 @main
@@ -44,8 +45,12 @@ private struct RootView: View {
                             // "Estudiar" (QuestionReview) queda fuera de alcance en esta pasada.
                         },
                         onDownloadPDF: {
-                            // La navegación real a PDF llega en el sub-proyecto de PDF.
+                            path.append(Route.pdf(categoryId: categoryId))
                         }
+                    )
+                case .pdf(let categoryId):
+                    PDFScreenView(
+                        viewModel: PDFViewModel(categoryId: categoryId, categoryRepository: categoryRepository)
                     )
                 }
             }
