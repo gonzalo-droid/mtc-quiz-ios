@@ -10,6 +10,7 @@ public final class UserDefaultsPreferencesRepository: PreferencesRepository {
         static let numberOfQuestions = "number_of_questions"
         static let evaluationTimeMinutes = "evaluation_time_minutes"
         static let passPercentage = "pass_percentage"
+        static let themeMode = "theme_mode"
     }
 
     public init(defaults: UserDefaults = .standard) {
@@ -46,5 +47,25 @@ public final class UserDefaultsPreferencesRepository: PreferencesRepository {
             let value = defaults.integer(forKey: Keys.passPercentage)
             return value == 0 ? 80 : value
         }
+    }
+
+    public var themeMode: String {
+        get async { defaults.string(forKey: Keys.themeMode) ?? "system" }
+    }
+
+    public func setThemeMode(_ mode: String) async {
+        defaults.set(mode, forKey: Keys.themeMode)
+    }
+
+    public func setNumberOfQuestions(_ value: Int) async {
+        defaults.set(value, forKey: Keys.numberOfQuestions)
+    }
+
+    public func setEvaluationTimeMinutes(_ value: Int) async {
+        defaults.set(value, forKey: Keys.evaluationTimeMinutes)
+    }
+
+    public func setPassPercentage(_ value: Int) async {
+        defaults.set(value, forKey: Keys.passPercentage)
     }
 }

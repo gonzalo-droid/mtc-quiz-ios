@@ -86,6 +86,14 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
     var passPercentage: Int {
         get async { 80 }
     }
+    var themeMode: String {
+        get async { "system" }
+    }
+
+    func setThemeMode(_ mode: String) async {}
+    func setNumberOfQuestions(_ value: Int) async {}
+    func setEvaluationTimeMinutes(_ value: Int) async {}
+    func setPassPercentage(_ value: Int) async {}
 }
 
 private let previewCategories: [MTCDomain.Category] = [
