@@ -14,11 +14,21 @@ public struct OnboardingView: View {
 
     public var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [onboardingPages[currentPage].topColor, onboardingPages[currentPage].bottomColor],
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            // 3 gradient layers are always present, cross-fading via opacity rather than a
+            // single LinearGradient whose `colors:` are swapped in place — LinearGradient
+            // isn't Animatable, so animating its color stops directly is unreliable across
+            // SwiftUI versions and can hard-cut instead of crossfading. Double/opacity is
+            // guaranteed Animatable, so this reliably animates.
+            ZStack {
+                ForEach(onboardingPages) { page in
+                    LinearGradient(
+                        colors: [page.topColor, page.bottomColor],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .opacity(page.id == currentPage ? 1 : 0)
+                }
+            }
             .ignoresSafeArea()
             .animation(.easeInOut(duration: 0.35), value: currentPage)
 

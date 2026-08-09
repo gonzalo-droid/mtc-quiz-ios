@@ -25,15 +25,22 @@ let onboardingPages: [OnboardingPage] = [
         symbolName: "chart.bar.fill",
         title: "Evalúa tu progreso",
         description: "Simulacros cronometrados, historial de evaluaciones y estadísticas para saber en qué mejorar",
-        topColor: Color(hex: "#FFB300"),
-        bottomColor: Color(hex: "#B37A00")
+        // Darkened from the original #FFB300/#B37A00 pair: at #FFB300 the button label
+        // (which reuses topColor) only hit 1.79:1 against white, and #B37A00 alone still
+        // only reaches ~3.68:1 — both fail WCAG's 4.5:1 floor for normal text. #996600
+        // clears 4.94:1 against white while keeping the amber hue.
+        topColor: Color(hex: "#996600"),
+        bottomColor: Color(hex: "#7A5200")
     ),
     OnboardingPage(
         id: 2,
         symbolName: "iphone",
         title: "Estudia donde quieras",
         description: "Todo el contenido disponible offline. Revisa el temario en PDF y repasa tus errores frecuentes",
-        topColor: Color(hex: "#4CAF50"),
-        bottomColor: Color(hex: "#2E6B30")
+        // Darkened from the original #4CAF50/#2E6B30 pair: #4CAF50 only reached 2.78:1 as
+        // the button label color against white. Promoting the old bottomColor to topColor
+        // clears 6.44:1, with a new, darker bottomColor below it to keep the gradient feel.
+        topColor: Color(hex: "#2E6B30"),
+        bottomColor: Color(hex: "#1C411D")
     ),
 ]
