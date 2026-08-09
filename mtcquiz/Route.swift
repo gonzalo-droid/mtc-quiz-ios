@@ -6,4 +6,5 @@ enum Route: Hashable {
     case settings
     case customize
     case premium
+    case questionReview(categoryId: String)
 }

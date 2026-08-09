@@ -7,6 +7,7 @@ import MTCPDFFeature
 import MTCEvaluationFeature
 import MTCSettingsFeature
 import MTCPremiumFeature
+import MTCQuestionReviewFeature
 internal import MTCDomain
 
 @main
@@ -69,11 +70,20 @@ private struct RootView: View {
                             path.append(Route.evaluation(categoryId: categoryId))
                         },
                         onStudy: {
-                            // "Estudiar" (QuestionReview) queda fuera de alcance en esta pasada.
+                            path.append(Route.questionReview(categoryId: categoryId))
                         },
                         onDownloadPDF: {
                             path.append(Route.pdf(categoryId: categoryId))
                         }
+                    )
+                case .questionReview(let categoryId):
+                    QuestionReviewView(
+                        viewModel: QuestionReviewViewModel(
+                            categoryId: categoryId,
+                            categoryRepository: categoryRepository,
+                            questionRepository: questionRepository
+                        ),
+                        imageResolver: imageResolver
                     )
                 case .pdf(let categoryId):
                     PDFScreenView(

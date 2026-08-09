@@ -86,18 +86,14 @@ public struct DetailView: View {
             .background(MTCColor.primary)
             .clipShape(Capsule())
 
-            // "Estudiar" (modo repaso/QuestionReview) no está construido en este port — deshabilitado
-            // en vez de retirado, para no perder la fidelidad visual con Android mientras no exista
-            // el destino real.
             Button(action: onStudy) {
-                Label("Estudiar (próximamente)", systemImage: "car.fill")
+                Label("Estudiar", systemImage: "car.fill")
                     .font(MTCTypography.headline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(MTCColor.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
             }
-            .overlay(Capsule().stroke(Color.secondary, lineWidth: 1.3))
-            .disabled(true)
+            .overlay(Capsule().stroke(MTCColor.primary, lineWidth: 1.3))
 
             Button(action: onDownloadPDF) {
                 Label("Descargar PDF", systemImage: "book.fill")
