@@ -6,15 +6,18 @@ public struct HomeView: View {
     @State private var viewModel: HomeViewModel
     private let onSelectCategory: (MTCDomain.Category) -> Void
     private let onOpenSettings: () -> Void
+    private let onOpenPremium: () -> Void
 
     public init(
         viewModel: HomeViewModel,
         onSelectCategory: @escaping (MTCDomain.Category) -> Void,
-        onOpenSettings: @escaping () -> Void
+        onOpenSettings: @escaping () -> Void,
+        onOpenPremium: @escaping () -> Void
     ) {
         _viewModel = State(initialValue: viewModel)
         self.onSelectCategory = onSelectCategory
         self.onOpenSettings = onOpenSettings
+        self.onOpenPremium = onOpenPremium
     }
 
     public var body: some View {
@@ -54,6 +57,12 @@ public struct HomeView: View {
             await viewModel.load()
         }
         .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: onOpenPremium) {
+                    Image(systemName: "crown.fill")
+                        .foregroundStyle(Color(red: 1.0, green: 0.702, blue: 0.0)) // matches PremiumView's premiumGold
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: onOpenSettings) {
                     Image(systemName: "line.3.horizontal")
@@ -130,7 +139,8 @@ private let previewCategories: [MTCDomain.Category] = [
             preferencesRepository: PreviewPreferencesRepository(streakToReturn: 5)
         ),
         onSelectCategory: { _ in },
-        onOpenSettings: {}
+        onOpenSettings: {},
+        onOpenPremium: {}
     )
 }
 
@@ -141,6 +151,7 @@ private let previewCategories: [MTCDomain.Category] = [
             preferencesRepository: PreviewPreferencesRepository(streakToReturn: 0)
         ),
         onSelectCategory: { _ in },
-        onOpenSettings: {}
+        onOpenSettings: {},
+        onOpenPremium: {}
     )
 }

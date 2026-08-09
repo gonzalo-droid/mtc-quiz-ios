@@ -5,4 +5,5 @@ enum Route: Hashable {
     case summary(categoryId: String, evaluationId: String)
     case settings
     case customize
+    case premium
 }

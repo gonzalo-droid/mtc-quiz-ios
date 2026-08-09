@@ -6,6 +6,7 @@ import MTCDetailFeature
 import MTCPDFFeature
 import MTCEvaluationFeature
 import MTCSettingsFeature
+import MTCPremiumFeature
 internal import MTCDomain
 
 @main
@@ -54,6 +55,9 @@ private struct RootView: View {
                 },
                 onOpenSettings: {
                     path.append(Route.settings)
+                },
+                onOpenPremium: {
+                    path.append(Route.premium)
                 }
             )
             .navigationDestination(for: Route.self) { route in
@@ -114,12 +118,19 @@ private struct RootView: View {
                             path.append(Route.customize)
                         },
                         onPremium: {
-                            // Premium screen no navega todavía — llega en el sub-proyecto de Premium.
+                            path.append(Route.premium)
                         }
                     )
                 case .customize:
                     CustomizeView(
                         viewModel: CustomizeViewModel(preferencesRepository: preferencesRepository)
+                    )
+                case .premium:
+                    PremiumView(
+                        viewModel: PremiumViewModel(),
+                        onBack: {
+                            path.removeLast()
+                        }
                     )
                 }
             }
