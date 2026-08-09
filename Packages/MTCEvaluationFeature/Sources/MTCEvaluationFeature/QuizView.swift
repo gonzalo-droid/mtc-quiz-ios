@@ -200,6 +200,7 @@ private struct PreviewQuestionRepository: QuestionRepository {
 private struct PreviewEvaluationRepository: EvaluationRepository {
     func save(_ evaluation: MTCDomain.Evaluation) async {}
     func evaluation(withId id: String) async -> MTCDomain.Evaluation? { nil }
+    func allEvaluations() async -> [MTCDomain.Evaluation] { [] }
 }
 
 private struct PreviewPreferencesRepository: PreferencesRepository {

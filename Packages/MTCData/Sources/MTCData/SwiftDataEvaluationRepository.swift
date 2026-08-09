@@ -30,8 +30,17 @@ public final class SwiftDataEvaluationRepository: EvaluationRepository {
     public func evaluation(withId id: String) async -> Evaluation? {
         let descriptor = FetchDescriptor<EvaluationRecord>(predicate: #Predicate { $0.id == id })
         guard let record = try? modelContext.fetch(descriptor).first else { return nil }
+        return evaluation(from: record)
+    }
 
-        return Evaluation(
+    public func allEvaluations() async -> [Evaluation] {
+        let descriptor = FetchDescriptor<EvaluationRecord>(sortBy: [SortDescriptor(\.date, order: .reverse)])
+        let records = (try? modelContext.fetch(descriptor)) ?? []
+        return records.map(evaluation(from:))
+    }
+
+    private func evaluation(from record: EvaluationRecord) -> Evaluation {
+        Evaluation(
             id: record.id,
             categoryId: record.categoryId,
             categoryTitle: record.categoryTitle,

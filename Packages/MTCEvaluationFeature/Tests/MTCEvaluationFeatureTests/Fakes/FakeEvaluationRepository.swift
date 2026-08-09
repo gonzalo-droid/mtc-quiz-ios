@@ -2,6 +2,7 @@ import MTCDomain
 
 final class FakeEvaluationRepository: EvaluationRepository {
     private(set) var savedEvaluations: [MTCDomain.Evaluation] = []
+    var evaluationsToReturn: [MTCDomain.Evaluation] = []
 
     func save(_ evaluation: MTCDomain.Evaluation) async {
         savedEvaluations.append(evaluation)
@@ -9,5 +10,9 @@ final class FakeEvaluationRepository: EvaluationRepository {
 
     func evaluation(withId id: String) async -> MTCDomain.Evaluation? {
         savedEvaluations.first { $0.id == id }
+    }
+
+    func allEvaluations() async -> [MTCDomain.Evaluation] {
+        evaluationsToReturn
     }
 }

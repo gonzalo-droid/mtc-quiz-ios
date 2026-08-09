@@ -40,4 +40,29 @@ import MTCDomain
         let repository = SwiftDataEvaluationRepository(modelContext: makeInMemoryContext())
         #expect(await repository.evaluation(withId: "does-not-exist") == nil)
     }
+
+    @Test func allEvaluationsReturnsNewestFirst() async {
+        let repository = SwiftDataEvaluationRepository(modelContext: makeInMemoryContext())
+        let older = MTCDomain.Evaluation(
+            id: "eval-older", categoryId: "1", categoryTitle: "CLASE A - CATEGORIA I",
+            totalCorrect: 5, totalIncorrect: 5, totalQuestions: 10,
+            outcome: .rejected, date: Date(timeIntervalSince1970: 1_000_000_000)
+        )
+        let newer = MTCDomain.Evaluation(
+            id: "eval-newer", categoryId: "1", categoryTitle: "CLASE A - CATEGORIA I",
+            totalCorrect: 9, totalIncorrect: 1, totalQuestions: 10,
+            outcome: .approved, date: Date(timeIntervalSince1970: 2_000_000_000)
+        )
+
+        await repository.save(older)
+        await repository.save(newer)
+        let all = await repository.allEvaluations()
+
+        #expect(all.map(\.id) == ["eval-newer", "eval-older"])
+    }
+
+    @Test func allEvaluationsIsEmptyWhenNothingSaved() async {
+        let repository = SwiftDataEvaluationRepository(modelContext: makeInMemoryContext())
+        #expect(await repository.allEvaluations().isEmpty)
+    }
 }
