@@ -17,6 +17,7 @@
 		EAD541643027A928007E9B1F /* MTCSettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541653027A928007E9B1F /* MTCSettingsFeature */; };
 		EAD541673027A928007E9B1F /* MTCPremiumFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541683027A928007E9B1F /* MTCPremiumFeature */; };
 		EAD5416A3027A928007E9B1F /* MTCQuestionReviewFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5416B3027A928007E9B1F /* MTCQuestionReviewFeature */; };
+		EAD5416D3027A928007E9B1F /* MTCOnboardingFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5416E3027A928007E9B1F /* MTCOnboardingFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 				EAD541643027A928007E9B1F /* MTCSettingsFeature in Frameworks */,
 				EAD541673027A928007E9B1F /* MTCPremiumFeature in Frameworks */,
 				EAD5416A3027A928007E9B1F /* MTCQuestionReviewFeature in Frameworks */,
+				EAD5416D3027A928007E9B1F /* MTCOnboardingFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +100,7 @@
 				EAD541653027A928007E9B1F /* MTCSettingsFeature */,
 				EAD541683027A928007E9B1F /* MTCPremiumFeature */,
 				EAD5416B3027A928007E9B1F /* MTCQuestionReviewFeature */,
+				EAD5416E3027A928007E9B1F /* MTCOnboardingFeature */,
 			);
 			productName = mtcquiz;
 			productReference = EA73862B3025ADA90019A50B /* mtcquiz.app */;
@@ -138,6 +141,7 @@
 				EAD541663027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCSettingsFeature" */,
 				EAD541693027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCPremiumFeature" */,
 				EAD5416C3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCQuestionReviewFeature" */,
+				EAD5416F3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCOnboardingFeature" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EA73862C3025ADA90019A50B /* Products */;
@@ -419,6 +423,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/MTCQuestionReviewFeature;
 		};
+		EAD5416F3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCOnboardingFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MTCOnboardingFeature;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -461,6 +469,10 @@
 		EAD5416B3027A928007E9B1F /* MTCQuestionReviewFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MTCQuestionReviewFeature;
+		};
+		EAD5416E3027A928007E9B1F /* MTCOnboardingFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MTCOnboardingFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

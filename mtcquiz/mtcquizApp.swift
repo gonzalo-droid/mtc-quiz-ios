@@ -8,6 +8,7 @@ import MTCEvaluationFeature
 import MTCSettingsFeature
 import MTCPremiumFeature
 import MTCQuestionReviewFeature
+import MTCOnboardingFeature
 internal import MTCDomain
 
 @main
@@ -45,8 +46,18 @@ private struct RootView: View {
     let dismissedQuestionRepository: SwiftDataDismissedQuestionRepository
     @State private var path = NavigationPath()
     @AppStorage("theme_mode") private var themeModeRaw: String = "system"
+    @AppStorage("onboarding_shown") private var onboardingShown: Bool = false
 
     var body: some View {
+        if !onboardingShown {
+            OnboardingView(onFinish: { onboardingShown = true })
+        } else {
+            content
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
         NavigationStack(path: $path) {
             HomeView(
                 viewModel: HomeViewModel(
