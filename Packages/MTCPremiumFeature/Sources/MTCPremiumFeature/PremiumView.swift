@@ -49,6 +49,19 @@ public struct PremiumView: View {
         }
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(.hidden, for: .navigationBar)
+        // NOTE: When the app-wide theme is explicitly "Claro" (light), this nested
+        // .preferredColorScheme(.dark) does NOT override the status bar's text/icon
+        // color — the outer NavigationStack's explicit light scheme wins for system
+        // chrome, while this screen's SwiftUI-drawn dark gradient still renders correctly.
+        // Result: status bar time/icons render in illegible black on the near-black
+        // gradient. Verified empirically (pixel-sampled RGB(0,0,0) text on RGB(26,26,46)
+        // background) that neither `.toolbarColorScheme(.dark, for: .navigationBar)` alone
+        // nor combined with this modifier fixes it — this is a known SwiftUI/UIKit
+        // limitation for NavigationStack push destinations, not something fixable with
+        // environment modifiers alone. "Oscuro" and "Sistema" themes are unaffected.
+        // A real fix would need a UIViewControllerRepresentable-based
+        // preferredStatusBarStyle override or imperative overrideUserInterfaceStyle
+        // window manipulation — out of scope for this UI-only pass.
         .preferredColorScheme(.dark)
         .alert(
             "",
@@ -167,7 +180,7 @@ public struct PremiumView: View {
 
         Spacer().frame(height: 16)
 
-        Text("La suscripción se renovará automáticamente al final del período a menos que la canceles al menos 24 horas antes. Puedes gestionar tu suscripción desde los ajustes de Google Play.")
+        Text("La suscripción se renovará automáticamente al final del período a menos que la canceles al menos 24 horas antes. Puedes gestionar tu suscripción desde los ajustes de tu Apple ID.")
             .font(.caption)
             .foregroundStyle(.white.opacity(0.4))
             .multilineTextAlignment(.center)
@@ -275,6 +288,23 @@ private struct PlanCard: View {
         }
         .buttonStyle(.plain)
     }
+}
+
+#Preview("PlanCard") {
+    VStack(spacing: 8) {
+        PlanCard(
+            plan: MTCDomain.SubscriptionPlan(productId: "mtcquiz_premium_monthly", billingPeriod: .monthly, formattedPrice: "S/ 9.90"),
+            selected: false,
+            onTap: {}
+        )
+        PlanCard(
+            plan: MTCDomain.SubscriptionPlan(productId: "mtcquiz_premium_annual", billingPeriod: .annual, formattedPrice: "S/ 29.90"),
+            selected: true,
+            onTap: {}
+        )
+    }
+    .padding(24)
+    .background(premiumDark)
 }
 
 #Preview("Con planes") {
