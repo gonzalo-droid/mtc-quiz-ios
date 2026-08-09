@@ -7,4 +7,7 @@ enum Route: Hashable {
     case customize
     case premium
     case questionReview(categoryId: String)
+    case stats
+    case history
+    case errorReview
 }

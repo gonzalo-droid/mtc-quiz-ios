@@ -19,7 +19,7 @@ struct mtcquizApp: App {
     private let modelContainer: ModelContainer
 
     init() {
-        modelContainer = try! ModelContainer(for: EvaluationRecord.self)
+        modelContainer = try! ModelContainer(for: EvaluationRecord.self, DismissedQuestionRecord.self)
     }
 
     var body: some Scene {
@@ -29,7 +29,8 @@ struct mtcquizApp: App {
                 preferencesRepository: preferencesRepository,
                 questionRepository: questionRepository,
                 imageResolver: imageResolver,
-                evaluationRepository: SwiftDataEvaluationRepository(modelContext: modelContainer.mainContext)
+                evaluationRepository: SwiftDataEvaluationRepository(modelContext: modelContainer.mainContext),
+                dismissedQuestionRepository: SwiftDataDismissedQuestionRepository(modelContext: modelContainer.mainContext)
             )
         }
     }
@@ -41,6 +42,7 @@ private struct RootView: View {
     let questionRepository: LocalQuestionRepository
     let imageResolver: LocalQuestionImageResolver
     let evaluationRepository: SwiftDataEvaluationRepository
+    let dismissedQuestionRepository: SwiftDataDismissedQuestionRepository
     @State private var path = NavigationPath()
     @AppStorage("theme_mode") private var themeModeRaw: String = "system"
 
@@ -129,7 +131,29 @@ private struct RootView: View {
                         },
                         onPremium: {
                             path.append(Route.premium)
+                        },
+                        onStats: {
+                            path.append(Route.stats)
+                        },
+                        onHistory: {
+                            path.append(Route.history)
                         }
+                    )
+                case .stats:
+                    StatsView(viewModel: StatsViewModel(evaluationRepository: evaluationRepository))
+                case .history:
+                    HistoryView(
+                        viewModel: HistoryViewModel(evaluationRepository: evaluationRepository),
+                        onReviewErrors: {
+                            path.append(Route.errorReview)
+                        }
+                    )
+                case .errorReview:
+                    ReviewErrorsView(
+                        viewModel: ReviewErrorsViewModel(
+                            evaluationRepository: evaluationRepository,
+                            dismissedQuestionRepository: dismissedQuestionRepository
+                        )
                     )
                 case .customize:
                     CustomizeView(

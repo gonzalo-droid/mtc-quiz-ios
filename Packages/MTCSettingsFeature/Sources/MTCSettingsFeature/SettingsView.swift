@@ -6,17 +6,23 @@ public struct SettingsView: View {
     @State private var viewModel: SettingsViewModel
     private let onCustomize: () -> Void
     private let onPremium: () -> Void
+    private let onStats: () -> Void
+    private let onHistory: () -> Void
 
     @Environment(\.requestReview) private var requestReview
 
     public init(
         viewModel: SettingsViewModel,
         onCustomize: @escaping () -> Void,
-        onPremium: @escaping () -> Void
+        onPremium: @escaping () -> Void,
+        onStats: @escaping () -> Void,
+        onHistory: @escaping () -> Void
     ) {
         _viewModel = State(initialValue: viewModel)
         self.onCustomize = onCustomize
         self.onPremium = onPremium
+        self.onStats = onStats
+        self.onHistory = onHistory
     }
 
     public var body: some View {
@@ -28,6 +34,11 @@ public struct SettingsView: View {
                     Text("Oscuro").tag("dark")
                 }
                 .pickerStyle(.segmented)
+            }
+
+            Section("Mi progreso") {
+                Button("Estadísticas", action: onStats)
+                Button("Historial de evaluaciones", action: onHistory)
             }
 
             Section {
@@ -92,7 +103,9 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
         SettingsView(
             viewModel: SettingsViewModel(preferencesRepository: PreviewPreferencesRepository()),
             onCustomize: {},
-            onPremium: {}
+            onPremium: {},
+            onStats: {},
+            onHistory: {}
         )
     }
 }
