@@ -5,10 +5,16 @@ import MTCDesignSystem
 public struct HomeView: View {
     @State private var viewModel: HomeViewModel
     private let onSelectCategory: (MTCDomain.Category) -> Void
+    private let onOpenSettings: () -> Void
 
-    public init(viewModel: HomeViewModel, onSelectCategory: @escaping (MTCDomain.Category) -> Void) {
+    public init(
+        viewModel: HomeViewModel,
+        onSelectCategory: @escaping (MTCDomain.Category) -> Void,
+        onOpenSettings: @escaping () -> Void
+    ) {
         _viewModel = State(initialValue: viewModel)
         self.onSelectCategory = onSelectCategory
+        self.onOpenSettings = onOpenSettings
     }
 
     public var body: some View {
@@ -50,6 +56,13 @@ public struct HomeView: View {
         }
         .task {
             await viewModel.load()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: onOpenSettings) {
+                    Image(systemName: "line.3.horizontal")
+                }
+            }
         }
     }
 }
@@ -120,7 +133,8 @@ private let previewCategories: [MTCDomain.Category] = [
             categoryRepository: PreviewCategoryRepository(categoriesToReturn: previewCategories),
             preferencesRepository: PreviewPreferencesRepository(streakToReturn: 5)
         ),
-        onSelectCategory: { _ in }
+        onSelectCategory: { _ in },
+        onOpenSettings: {}
     )
 }
 
@@ -130,6 +144,7 @@ private let previewCategories: [MTCDomain.Category] = [
             categoryRepository: PreviewCategoryRepository(categoriesToReturn: previewCategories),
             preferencesRepository: PreviewPreferencesRepository(streakToReturn: 0)
         ),
-        onSelectCategory: { _ in }
+        onSelectCategory: { _ in },
+        onOpenSettings: {}
     )
 }

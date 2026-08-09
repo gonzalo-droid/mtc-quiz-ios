@@ -5,6 +5,7 @@ import MTCHomeFeature
 import MTCDetailFeature
 import MTCPDFFeature
 import MTCEvaluationFeature
+import MTCSettingsFeature
 internal import MTCDomain
 
 @main
@@ -39,6 +40,7 @@ private struct RootView: View {
     let imageResolver: LocalQuestionImageResolver
     let evaluationRepository: SwiftDataEvaluationRepository
     @State private var path = NavigationPath()
+    @AppStorage("theme_mode") private var themeModeRaw: String = "system"
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -49,6 +51,9 @@ private struct RootView: View {
                 ),
                 onSelectCategory: { category in
                     path.append(Route.detail(categoryId: category.id))
+                },
+                onOpenSettings: {
+                    path.append(Route.settings)
                 }
             )
             .navigationDestination(for: Route.self) { route in
@@ -102,8 +107,31 @@ private struct RootView: View {
                             path.removeLast(2)
                         }
                     )
+                case .settings:
+                    SettingsView(
+                        viewModel: SettingsViewModel(preferencesRepository: preferencesRepository),
+                        onCustomize: {
+                            path.append(Route.customize)
+                        },
+                        onPremium: {
+                            // Premium screen no navega todavía — llega en el sub-proyecto de Premium.
+                        }
+                    )
+                case .customize:
+                    CustomizeView(
+                        viewModel: CustomizeViewModel(preferencesRepository: preferencesRepository)
+                    )
                 }
             }
+        }
+        .preferredColorScheme(colorScheme(for: themeModeRaw))
+    }
+
+    private func colorScheme(for mode: String) -> ColorScheme? {
+        switch mode {
+        case "dark": .dark
+        case "light": .light
+        default: nil // nil == follow the system setting, matching Android's isSystemInDarkTheme() fallback
         }
     }
 }

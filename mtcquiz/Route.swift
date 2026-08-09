@@ -3,4 +3,6 @@ enum Route: Hashable {
     case pdf(categoryId: String)
     case evaluation(categoryId: String)
     case summary(categoryId: String, evaluationId: String)
+    case settings
+    case customize
 }
