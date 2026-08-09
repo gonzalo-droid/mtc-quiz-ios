@@ -12,5 +12,9 @@ let package = Package(
             name: "MTCDesignSystem",
             resources: [.process("Resources")]
         ),
+        .testTarget(
+            name: "MTCDesignSystemTests",
+            dependencies: ["MTCDesignSystem"]
+        ),
     ]
 )
