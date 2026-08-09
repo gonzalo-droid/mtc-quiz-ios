@@ -68,4 +68,25 @@ import MTCDomain
         #expect(viewModel.state.categoryStats.isEmpty)
         #expect(viewModel.state.isLoading == false)
     }
+
+    @Test func loadPreservesFirstEncounterOrderWhenCategoryRatesTie() async {
+        let repository = FakeEvaluationRepository()
+        repository.evaluationsToReturn = [
+            // Category "First": 1/2 approved -> rate 0.5 (encountered first)
+            makeEvaluation(categoryTitle: "First", correct: 9, total: 10, outcome: .approved),
+            makeEvaluation(categoryTitle: "First", correct: 2, total: 10, outcome: .rejected),
+            // Category "Second": 1/2 approved -> rate 0.5 (encountered second, same rate)
+            makeEvaluation(categoryTitle: "Second", correct: 8, total: 10, outcome: .approved),
+            makeEvaluation(categoryTitle: "Second", correct: 3, total: 10, outcome: .rejected),
+        ]
+        let viewModel = StatsViewModel(evaluationRepository: repository)
+
+        await viewModel.load()
+
+        // When approval rates tie (both 0.5), order-preserving grouping ensures
+        // first-encounter order is maintained: ["First", "Second"]
+        #expect(viewModel.state.categoryStats.map(\.categoryTitle) == ["First", "Second"])
+        #expect(viewModel.state.categoryStats.map(\.evaluationCount) == [2, 2])
+        #expect(viewModel.state.categoryStats.map(\.approvalRate) == [0.5, 0.5])
+    }
 }
