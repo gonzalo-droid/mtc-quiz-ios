@@ -31,13 +31,19 @@ import MTCDomain
 
     @Test func loadPopulatesAllQuestionsWithoutLimit() async {
         let questions = (1...5).map { makeQuestion(id: $0, title: "Pregunta \($0)") }
-        let viewModel = makeViewModel(questions: questions)
+        let questionRepository = FakeQuestionRepository(questionsToReturn: questions)
+        let viewModel = QuestionReviewViewModel(
+            categoryId: "1",
+            categoryRepository: FakeCategoryRepository(categoriesToReturn: [category]),
+            questionRepository: questionRepository
+        )
 
         await viewModel.load()
 
         #expect(viewModel.state.questions.count == 5)
         #expect(viewModel.state.category == category)
         #expect(viewModel.state.isLoading == false)
+        #expect(questionRepository.receivedLimit == .some(nil))
     }
 
     @Test func loadLeavesQuestionsEmptyWhenCategoryNotFound() async {

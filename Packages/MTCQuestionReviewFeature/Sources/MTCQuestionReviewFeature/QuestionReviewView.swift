@@ -62,13 +62,14 @@ private struct QuestionListContent: View {
             } else {
                 ScrollView {
                     LazyVStack(spacing: 16) {
-                        ForEach(Array(filtered.enumerated()), id: \.element.id) { index, question in
+                        ForEach(Array(filtered.enumerated()), id: \.offset) { index, question in
                             QuestionAnswerCard(
                                 title: "\(question.id).- \(question.title)",
                                 options: answerOptions(for: question),
                                 imageURLs: question.images.compactMap(imageResolver.url(forImageName:)),
                                 onSelectOption: { _ in }
                             )
+                            .allowsHitTesting(false)
                             .onAppear { visibleIndices.insert(index) }
                             .onDisappear { visibleIndices.remove(index) }
                         }
