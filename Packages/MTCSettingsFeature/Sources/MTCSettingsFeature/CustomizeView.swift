@@ -20,6 +20,12 @@ public struct CustomizeView: View {
 
     public var body: some View {
         Form {
+            Text("Personaliza tu configuración y sigue estudiando")
+                .font(MTCTypography.largeTitle)
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets())
+                .listRowSeparator(.hidden)
+
             Section {
                 field(
                     label: "Tiempo de duración de la evaluación. (Minutos)",
@@ -58,7 +64,7 @@ public struct CustomizeView: View {
                 .disabled(!allFieldsValid)
             }
         }
-        .navigationTitle("Personaliza tu configuración y sigue estudiando")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await viewModel.load()

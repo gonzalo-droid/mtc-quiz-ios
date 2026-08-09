@@ -20,12 +20,6 @@ public struct HomeView: View {
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Título de barra en Android (TopAppBar, R.string.test_evaluation) — sin NavigationStack
-                // todavía en esta fase, así que se muestra como texto en el flujo, mismo texto exacto.
-                Text("Simulacro de evaluación - Perú 🇵🇪")
-                    .font(MTCTypography.headline)
-                    .foregroundStyle(.secondary)
-
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Preparate para tu evaluación")
                         .font(MTCTypography.largeTitle)
@@ -54,6 +48,8 @@ public struct HomeView: View {
             }
             .padding(16)
         }
+        .navigationTitle("Simulacro de evaluación - Perú 🇵🇪")
+        .navigationBarTitleDisplayMode(.inline)
         .task {
             await viewModel.load()
         }
