@@ -31,7 +31,10 @@ public final class ReviewErrorsViewModel {
     /// Groups failed results by `questionId` preserving first-encounter order (see the
     /// same rationale in `StatsViewModel.categoryStats(from:)`), keeps only questions failed
     /// 3+ times that aren't dismissed, and sorts by fail count descending — mirrors Android's
-    /// `groupBy` -> `filter` -> `map` -> `sortedByDescending` pipeline exactly.
+    /// `groupBy` -> `filter` -> `map` -> `sortedByDescending` pipeline. Swift's `sorted(by:)`
+    /// is NOT documented as stable (unlike Kotlin's `sortedByDescending`), so the final sort
+    /// carries an explicit encounter-index tiebreaker instead of relying on stdlib
+    /// sort-stability behavior that happens to hold today.
     private func frequentErrors(from evaluations: [MTCDomain.Evaluation], dismissedIds: Set<Int>) -> [FrequentError] {
         let failedResults = evaluations.flatMap(\.questionResults).filter { !$0.isCorrect }
 
@@ -45,19 +48,27 @@ public final class ReviewErrorsViewModel {
         }
 
         return order
-            .compactMap { questionId -> FrequentError? in
+            .enumerated()
+            .compactMap { encounterIndex, questionId -> (encounterIndex: Int, error: FrequentError)? in
                 guard let results = buckets[questionId], results.count >= 3, !dismissedIds.contains(questionId) else {
                     return nil
                 }
                 guard let latest = results.last else { return nil }
-                return FrequentError(
+                let error = FrequentError(
                     questionId: questionId,
                     question: latest.question,
                     failCount: results.count,
                     lastWrongAnswer: latest.option ?? "",
                     correctAnswer: latest.correctAnswer
                 )
+                return (encounterIndex, error)
             }
-            .sorted { $0.failCount > $1.failCount }
+            .sorted {
+                if $0.error.failCount != $1.error.failCount {
+                    return $0.error.failCount > $1.error.failCount
+                }
+                return $0.encounterIndex < $1.encounterIndex
+            }
+            .map(\.error)
     }
 }

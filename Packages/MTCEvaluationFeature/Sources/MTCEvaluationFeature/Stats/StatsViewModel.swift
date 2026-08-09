@@ -34,8 +34,10 @@ public final class StatsViewModel {
     }
 
     /// Groups by `categoryTitle` preserving first-encounter order (Swift's `Dictionary` is
-    /// NOT insertion-ordered, unlike Kotlin's `groupBy`/`LinkedHashMap`) so that the final
-    /// `sorted` — stable in Swift — ties break the same way Android's `sortedBy` would.
+    /// NOT insertion-ordered, unlike Kotlin's `groupBy`/`LinkedHashMap`). Swift's `sorted(by:)`
+    /// is NOT documented as stable (unlike Kotlin's `sortedBy`), so the final sort carries an
+    /// explicit encounter-index tiebreaker instead of relying on stdlib sort-stability behavior
+    /// that happens to hold today.
     private func categoryStats(from evaluations: [MTCDomain.Evaluation]) -> [CategoryStat] {
         var order: [String] = []
         var buckets: [String: [MTCDomain.Evaluation]] = [:]
@@ -47,15 +49,23 @@ public final class StatsViewModel {
         }
 
         return order
-            .map { title -> CategoryStat in
+            .enumerated()
+            .map { encounterIndex, title -> (encounterIndex: Int, stat: CategoryStat) in
                 let evals = buckets[title] ?? []
                 let approved = evals.filter { $0.outcome == .approved }.count
-                return CategoryStat(
+                let stat = CategoryStat(
                     categoryTitle: title,
                     evaluationCount: evals.count,
                     approvalRate: evals.isEmpty ? 0 : Double(approved) / Double(evals.count)
                 )
+                return (encounterIndex, stat)
             }
-            .sorted { $0.approvalRate < $1.approvalRate }
+            .sorted {
+                if $0.stat.approvalRate != $1.stat.approvalRate {
+                    return $0.stat.approvalRate < $1.stat.approvalRate
+                }
+                return $0.encounterIndex < $1.encounterIndex
+            }
+            .map(\.stat)
     }
 }
