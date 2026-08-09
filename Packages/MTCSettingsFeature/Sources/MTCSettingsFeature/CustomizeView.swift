@@ -64,6 +64,10 @@ public struct CustomizeView: View {
                 .disabled(!allFieldsValid)
             }
         }
+        // Intentionally blank — the real title renders as the first Form row above (see the
+        // NavigationStack-wide large-title constraint this works around). This screen is a
+        // navigation leaf today; if a screen is ever pushed from here, give it an explicit
+        // back-button title rather than relying on this one.
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .task {
