@@ -46,6 +46,7 @@ public struct StatsView: View {
             Image(systemName: "chart.bar.fill")
                 .font(.system(size: 48))
                 .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
             Text("Aún no tienes estadísticas")
                 .font(MTCTypography.body.weight(.semibold))
             Text("Completa evaluaciones para ver tu progreso")
@@ -111,6 +112,7 @@ private struct StatCard: View {
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .foregroundStyle(color)
+                .accessibilityHidden(true)
             Text(value)
                 .font(MTCTypography.title)
                 .foregroundStyle(color)

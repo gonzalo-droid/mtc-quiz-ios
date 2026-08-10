@@ -104,6 +104,7 @@ private struct QuestionListContent: View {
             Image(systemName: "text.magnifyingglass")
                 .font(.largeTitle)
                 .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
             Text("Sin resultados encontrados")
                 .font(MTCTypography.caption)
                 .foregroundStyle(.secondary)

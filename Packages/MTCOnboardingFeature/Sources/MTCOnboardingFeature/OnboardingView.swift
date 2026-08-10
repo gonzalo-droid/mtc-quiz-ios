@@ -104,6 +104,7 @@ private struct OnboardingPageContent: View {
                 Image(systemName: page.symbolName)
                     .font(.system(size: 48))
                     .foregroundStyle(.white)
+                    .accessibilityHidden(true)
             }
 
             Text(page.title)

@@ -33,6 +33,7 @@ public struct HistoryView: View {
                 Button(action: onReviewErrors) {
                     Image(systemName: "arrow.triangle.2.circlepath")
                 }
+                .accessibilityLabel("Repasar errores")
             }
         }
         .task {
@@ -45,6 +46,7 @@ public struct HistoryView: View {
             Image(systemName: "clock.arrow.circlepath")
                 .font(.system(size: 48))
                 .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
             Text("Aún no tienes evaluaciones")
                 .font(MTCTypography.body)
                 .foregroundStyle(.secondary)

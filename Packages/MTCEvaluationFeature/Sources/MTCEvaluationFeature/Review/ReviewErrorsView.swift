@@ -52,6 +52,7 @@ public struct ReviewErrorsView: View {
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 48))
                 .foregroundStyle(.green)
+                .accessibilityHidden(true)
             Text("¡No tienes errores frecuentes!")
                 .font(MTCTypography.body.weight(.semibold))
                 .multilineTextAlignment(.center)

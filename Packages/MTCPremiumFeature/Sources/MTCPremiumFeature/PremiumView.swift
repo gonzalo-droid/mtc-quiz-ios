@@ -45,6 +45,7 @@ public struct PremiumView: View {
                     Image(systemName: "arrow.left")
                         .foregroundStyle(.white)
                 }
+                .accessibilityLabel("Volver")
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -89,6 +90,7 @@ public struct PremiumView: View {
             Image(systemName: "crown.fill")
                 .font(.system(size: 56))
                 .foregroundStyle(premiumGold)
+                .accessibilityHidden(true)
         }
     }
 
@@ -220,6 +222,7 @@ private struct BenefitItem: View {
                 Image(systemName: icon)
                     .font(.system(size: 20))
                     .foregroundStyle(premiumGold)
+                    .accessibilityHidden(true)
             }
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
@@ -255,6 +258,7 @@ private struct PlanCard: View {
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundStyle(.white)
                                 .font(.system(size: 14))
+                                .accessibilityHidden(true)
                         }
                     }
                     VStack(alignment: .leading, spacing: 2) {

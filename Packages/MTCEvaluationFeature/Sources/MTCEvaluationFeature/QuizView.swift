@@ -48,6 +48,7 @@ public struct QuizView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
+                .accessibilityLabel("Cancelar evaluación")
             }
         }
         .task {
