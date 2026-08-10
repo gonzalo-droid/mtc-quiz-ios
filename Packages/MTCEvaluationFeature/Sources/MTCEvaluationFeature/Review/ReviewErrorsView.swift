@@ -112,13 +112,6 @@ private struct FrequentErrorCard: View {
     }
 }
 
-private struct PreviewEvaluationRepository: EvaluationRepository {
-    let evaluations: [MTCDomain.Evaluation]
-    func save(_ evaluation: MTCDomain.Evaluation) async {}
-    func evaluation(withId id: String) async -> MTCDomain.Evaluation? { nil }
-    func allEvaluations() async -> [MTCDomain.Evaluation] { evaluations }
-}
-
 private struct PreviewDismissedQuestionRepository: DismissedQuestionRepository {
     func dismiss(questionId: Int) async {}
     func dismissedQuestionIds() async -> Set<Int> { [] }

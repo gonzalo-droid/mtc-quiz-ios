@@ -198,12 +198,6 @@ private struct PreviewQuestionRepository: QuestionRepository {
     func questions(pathJson: String, limit: Int?) async -> [MTCDomain.Question] { previewQuestions }
 }
 
-private struct PreviewEvaluationRepository: EvaluationRepository {
-    func save(_ evaluation: MTCDomain.Evaluation) async {}
-    func evaluation(withId id: String) async -> MTCDomain.Evaluation? { nil }
-    func allEvaluations() async -> [MTCDomain.Evaluation] { [] }
-}
-
 private struct PreviewPreferencesRepository: PreferencesRepository {
     var streak: Int { get async { 0 } }
     var userName: String { get async { "" } }

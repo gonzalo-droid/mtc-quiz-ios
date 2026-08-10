@@ -153,13 +153,6 @@ private struct CategoryStatCard: View {
     }
 }
 
-private struct PreviewEvaluationRepository: EvaluationRepository {
-    let evaluations: [MTCDomain.Evaluation]
-    func save(_ evaluation: MTCDomain.Evaluation) async {}
-    func evaluation(withId id: String) async -> MTCDomain.Evaluation? { nil }
-    func allEvaluations() async -> [MTCDomain.Evaluation] { evaluations }
-}
-
 #Preview("Con datos") {
     NavigationStack {
         StatsView(
