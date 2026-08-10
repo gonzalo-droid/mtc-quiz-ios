@@ -14,6 +14,7 @@ public struct VehicleIllustration: View {
         image
             .resizable()
             .aspectRatio(contentMode: .fit)
+            .accessibilityHidden(true)
     }
 
     private var image: Image {

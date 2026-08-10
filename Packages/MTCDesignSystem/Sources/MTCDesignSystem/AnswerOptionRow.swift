@@ -25,6 +25,7 @@ public struct AnswerOptionRow: View {
                 if let icon {
                     Image(systemName: icon)
                         .foregroundStyle(iconColor)
+                        .accessibilityHidden(true)
                 }
             }
             .padding(12)
