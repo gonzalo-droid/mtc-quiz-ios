@@ -18,6 +18,7 @@
 		EAD541673027A928007E9B1F /* MTCPremiumFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD541683027A928007E9B1F /* MTCPremiumFeature */; };
 		EAD5416A3027A928007E9B1F /* MTCQuestionReviewFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5416B3027A928007E9B1F /* MTCQuestionReviewFeature */; };
 		EAD5416D3027A928007E9B1F /* MTCOnboardingFeature in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5416E3027A928007E9B1F /* MTCOnboardingFeature */; };
+		AF542E5AB38AEFB8FBD990C2 /* MTCAdsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = F00B7B64B07A657E1206AF5E /* MTCAdsFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 				EAD541673027A928007E9B1F /* MTCPremiumFeature in Frameworks */,
 				EAD5416A3027A928007E9B1F /* MTCQuestionReviewFeature in Frameworks */,
 				EAD5416D3027A928007E9B1F /* MTCOnboardingFeature in Frameworks */,
+				AF542E5AB38AEFB8FBD990C2 /* MTCAdsFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +103,7 @@
 				EAD541683027A928007E9B1F /* MTCPremiumFeature */,
 				EAD5416B3027A928007E9B1F /* MTCQuestionReviewFeature */,
 				EAD5416E3027A928007E9B1F /* MTCOnboardingFeature */,
+				F00B7B64B07A657E1206AF5E /* MTCAdsFeature */,
 			);
 			productName = mtcquiz;
 			productReference = EA73862B3025ADA90019A50B /* mtcquiz.app */;
@@ -142,6 +145,7 @@
 				EAD541693027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCPremiumFeature" */,
 				EAD5416C3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCQuestionReviewFeature" */,
 				EAD5416F3027A928007E9B1F /* XCLocalSwiftPackageReference "Packages/MTCOnboardingFeature" */,
+				D5AE6831FA503CABE727DBDE /* XCLocalSwiftPackageReference "Packages/MTCAdsFeature" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EA73862C3025ADA90019A50B /* Products */;
@@ -305,6 +309,7 @@
 				DEVELOPMENT_TEAM = 2436FLG37H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -337,6 +342,7 @@
 				DEVELOPMENT_TEAM = 2436FLG37H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,6 +433,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/MTCOnboardingFeature;
 		};
+		D5AE6831FA503CABE727DBDE /* XCLocalSwiftPackageReference "Packages/MTCAdsFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MTCAdsFeature;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -473,6 +483,10 @@
 		EAD5416E3027A928007E9B1F /* MTCOnboardingFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MTCOnboardingFeature;
+		};
+		F00B7B64B07A657E1206AF5E /* MTCAdsFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MTCAdsFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

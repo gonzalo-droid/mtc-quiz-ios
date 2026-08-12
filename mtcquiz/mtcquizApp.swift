@@ -10,7 +10,15 @@ import MTCSettingsFeature
 import MTCPremiumFeature
 import MTCQuestionReviewFeature
 import MTCOnboardingFeature
+import MTCAdsFeature
+import GoogleMobileAds
 internal import MTCDomain
+
+/// No shared `PremiumRepository` exists on iOS yet (Premium is a UI-only stub, see
+/// `PremiumViewModel` — `isPremium` never becomes true today). This hook exists so ad-gating
+/// is already wired correctly for when real billing lands; swap the body for a real repository
+/// read at that point instead of threading a new parameter through everywhere ads are used.
+private func isPremiumUser() -> Bool { false }
 
 @main
 struct mtcquizApp: App {
@@ -19,9 +27,15 @@ struct mtcquizApp: App {
     private let questionRepository = LocalQuestionRepository()
     private let imageResolver = LocalQuestionImageResolver()
     private let modelContainer: ModelContainer
+    private let adsManager = GoogleAdsManager(
+        bannerAdUnitID: "ca-app-pub-1427341798923689/1670669268",
+        interstitialAdUnitID: "ca-app-pub-1427341798923689/6988630460",
+        isPremium: isPremiumUser
+    )
 
     init() {
         modelContainer = try! ModelContainer(for: EvaluationRecord.self, DismissedQuestionRecord.self)
+        MobileAds.shared.start(completionHandler: nil)
     }
 
     var body: some Scene {
@@ -32,7 +46,8 @@ struct mtcquizApp: App {
                 questionRepository: questionRepository,
                 imageResolver: imageResolver,
                 evaluationRepository: SwiftDataEvaluationRepository(modelContext: modelContainer.mainContext),
-                dismissedQuestionRepository: SwiftDataDismissedQuestionRepository(modelContext: modelContainer.mainContext)
+                dismissedQuestionRepository: SwiftDataDismissedQuestionRepository(modelContext: modelContainer.mainContext),
+                adsManager: adsManager
             )
         }
     }
@@ -45,6 +60,7 @@ private struct RootView: View {
     let imageResolver: LocalQuestionImageResolver
     let evaluationRepository: SwiftDataEvaluationRepository
     let dismissedQuestionRepository: SwiftDataDismissedQuestionRepository
+    let adsManager: GoogleAdsManager
     @State private var path = NavigationPath()
     @AppStorage("theme_mode") private var themeModeRaw: String = "system"
     @AppStorage("onboarding_shown") private var onboardingShown: Bool = false
@@ -60,34 +76,55 @@ private struct RootView: View {
     @ViewBuilder
     private var content: some View {
         NavigationStack(path: $path) {
-            HomeView(
-                viewModel: HomeViewModel(
-                    categoryRepository: categoryRepository,
-                    preferencesRepository: preferencesRepository
-                ),
-                onSelectCategory: { category in
-                    path.append(Route.detail(categoryId: category.id))
-                },
-                onOpenSettings: {
-                    path.append(Route.settings)
-                },
-                onOpenPremium: {
-                    path.append(Route.premium)
-                }
-            )
+            VStack(spacing: 0) {
+                HomeView(
+                    viewModel: HomeViewModel(
+                        categoryRepository: categoryRepository,
+                        preferencesRepository: preferencesRepository
+                    ),
+                    onSelectCategory: { category in
+                        path.append(Route.detail(categoryId: category.id))
+                    },
+                    onOpenSettings: {
+                        path.append(Route.settings)
+                    },
+                    onOpenPremium: {
+                        path.append(Route.premium)
+                    }
+                )
+                BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
+            }
+            .task {
+                adsManager.preloadPdfInterstitial()
+                adsManager.preloadEvaluationInterstitial()
+            }
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .detail(let categoryId):
                     DetailView(
                         viewModel: DetailViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
                         onStartEvaluation: {
-                            path.append(Route.evaluation(categoryId: categoryId))
+                            adsManager.recordEvaluationStart()
+                            if adsManager.shouldShowEvaluationInterstitial() {
+                                adsManager.showEvaluationInterstitial {
+                                    path.append(Route.evaluation(categoryId: categoryId))
+                                }
+                            } else {
+                                path.append(Route.evaluation(categoryId: categoryId))
+                            }
                         },
                         onStudy: {
                             path.append(Route.questionReview(categoryId: categoryId))
                         },
                         onDownloadPDF: {
-                            path.append(Route.pdf(categoryId: categoryId))
+                            adsManager.recordPdfDownload()
+                            if adsManager.shouldShowPdfInterstitial() {
+                                adsManager.showPdfInterstitial {
+                                    path.append(Route.pdf(categoryId: categoryId))
+                                }
+                            } else {
+                                path.append(Route.pdf(categoryId: categoryId))
+                            }
                         }
                     )
                 case .questionReview(let categoryId):
