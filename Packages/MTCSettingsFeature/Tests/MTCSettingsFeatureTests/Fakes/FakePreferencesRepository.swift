@@ -39,4 +39,6 @@ final class FakePreferencesRepository: PreferencesRepository {
         passPercentageToReturn = value
         setPassPercentageCalls.append(value)
     }
+
+    func recordStudySession() async {}
 }

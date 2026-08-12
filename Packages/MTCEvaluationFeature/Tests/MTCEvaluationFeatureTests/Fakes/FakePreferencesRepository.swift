@@ -7,6 +7,7 @@ final class FakePreferencesRepository: PreferencesRepository {
     var evaluationTimeMinutesToReturn: Int = 40
     var passPercentageToReturn: Int = 80
     var themeModeToReturn: String = "system"
+    private(set) var recordStudySessionCallCount = 0
 
     var streak: Int { get async { streakToReturn } }
     var userName: String { get async { userNameToReturn } }
@@ -19,4 +20,5 @@ final class FakePreferencesRepository: PreferencesRepository {
     func setNumberOfQuestions(_ value: Int) async { numberOfQuestionsToReturn = value }
     func setEvaluationTimeMinutes(_ value: Int) async { evaluationTimeMinutesToReturn = value }
     func setPassPercentage(_ value: Int) async { passPercentageToReturn = value }
+    func recordStudySession() async { recordStudySessionCallCount += 1 }
 }

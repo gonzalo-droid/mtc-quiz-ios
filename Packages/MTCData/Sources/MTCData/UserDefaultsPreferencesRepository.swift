@@ -6,6 +6,7 @@ public final class UserDefaultsPreferencesRepository: PreferencesRepository {
 
     private enum Keys {
         static let streak = "current_streak"
+        static let lastStudyDate = "last_study_date"
         static let userName = "user_name"
         static let numberOfQuestions = "number_of_questions"
         static let evaluationTimeMinutes = "evaluation_time_minutes"
@@ -67,5 +68,31 @@ public final class UserDefaultsPreferencesRepository: PreferencesRepository {
 
     public func setPassPercentage(_ value: Int) async {
         defaults.set(value, forKey: Keys.passPercentage)
+    }
+
+    public func recordStudySession() async {
+        let today = Self.epochDay(for: Date())
+        let lastDate = defaults.integer(forKey: Keys.lastStudyDate)
+        let currentStreak = defaults.integer(forKey: Keys.streak)
+
+        switch today {
+        case lastDate:
+            break // already recorded today, no change
+        case lastDate + 1:
+            defaults.set(currentStreak + 1, forKey: Keys.streak)
+            defaults.set(today, forKey: Keys.lastStudyDate)
+        default:
+            defaults.set(1, forKey: Keys.streak)
+            defaults.set(today, forKey: Keys.lastStudyDate)
+        }
+    }
+
+    /// Day count in the current calendar/timezone since the Unix epoch — the Swift equivalent of
+    /// Android's `LocalDate.now().toEpochDay()`, used so the streak resets at local midnight rather
+    /// than UTC midnight.
+    private static func epochDay(for date: Date, calendar: Calendar = .current) -> Int {
+        let startOfDay = calendar.startOfDay(for: date)
+        let epoch = Date(timeIntervalSince1970: 0)
+        return calendar.dateComponents([.day], from: epoch, to: startOfDay).day ?? 0
     }
 }
