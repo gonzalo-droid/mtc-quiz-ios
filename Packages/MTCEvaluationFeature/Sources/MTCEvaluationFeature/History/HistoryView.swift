@@ -33,6 +33,7 @@ public struct HistoryView: View {
                 Button(action: onReviewErrors) {
                     Image(systemName: "arrow.triangle.2.circlepath")
                 }
+                .accessibilityLabel("Repasar errores")
             }
         }
         .task {
@@ -45,6 +46,7 @@ public struct HistoryView: View {
             Image(systemName: "clock.arrow.circlepath")
                 .font(.system(size: 48))
                 .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
             Text("Aún no tienes evaluaciones")
                 .font(MTCTypography.body)
                 .foregroundStyle(.secondary)
@@ -92,13 +94,6 @@ private struct EvaluationHistoryCard: View {
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
-}
-
-private struct PreviewEvaluationRepository: EvaluationRepository {
-    let evaluations: [MTCDomain.Evaluation]
-    func save(_ evaluation: MTCDomain.Evaluation) async {}
-    func evaluation(withId id: String) async -> MTCDomain.Evaluation? { nil }
-    func allEvaluations() async -> [MTCDomain.Evaluation] { evaluations }
 }
 
 #Preview("Con evaluaciones") {

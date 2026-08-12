@@ -52,6 +52,7 @@ public struct ReviewErrorsView: View {
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 48))
                 .foregroundStyle(.green)
+                .accessibilityHidden(true)
             Text("¡No tienes errores frecuentes!")
                 .font(MTCTypography.body.weight(.semibold))
                 .multilineTextAlignment(.center)
@@ -109,13 +110,6 @@ private struct FrequentErrorCard: View {
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
-}
-
-private struct PreviewEvaluationRepository: EvaluationRepository {
-    let evaluations: [MTCDomain.Evaluation]
-    func save(_ evaluation: MTCDomain.Evaluation) async {}
-    func evaluation(withId id: String) async -> MTCDomain.Evaluation? { nil }
-    func allEvaluations() async -> [MTCDomain.Evaluation] { evaluations }
 }
 
 private struct PreviewDismissedQuestionRepository: DismissedQuestionRepository {

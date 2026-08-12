@@ -111,4 +111,67 @@ import Foundation
 
         defaults.removePersistentDomain(forName: suiteName)
     }
+
+    @Test func recordStudySessionSetsStreakToOneOnFirstEverCall() async throws {
+        let suiteName = "test-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        let repository = UserDefaultsPreferencesRepository(defaults: defaults)
+
+        await repository.recordStudySession()
+
+        #expect(await repository.streak == 1)
+
+        defaults.removePersistentDomain(forName: suiteName)
+    }
+
+    @Test func recordStudySessionIsANoOpWhenCalledAgainTheSameDay() async throws {
+        let suiteName = "test-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        let repository = UserDefaultsPreferencesRepository(defaults: defaults)
+
+        await repository.recordStudySession()
+        await repository.recordStudySession()
+        await repository.recordStudySession()
+
+        #expect(await repository.streak == 1)
+
+        defaults.removePersistentDomain(forName: suiteName)
+    }
+
+    @Test func recordStudySessionIncrementsStreakOnConsecutiveDay() async throws {
+        let suiteName = "test-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        defaults.set(5, forKey: "current_streak")
+        defaults.set(Self.epochDay(daysAgo: 1), forKey: "last_study_date")
+        let repository = UserDefaultsPreferencesRepository(defaults: defaults)
+
+        await repository.recordStudySession()
+
+        #expect(await repository.streak == 6)
+
+        defaults.removePersistentDomain(forName: suiteName)
+    }
+
+    @Test func recordStudySessionResetsStreakToOneAfterAGapDay() async throws {
+        let suiteName = "test-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        defaults.set(9, forKey: "current_streak")
+        defaults.set(Self.epochDay(daysAgo: 3), forKey: "last_study_date")
+        let repository = UserDefaultsPreferencesRepository(defaults: defaults)
+
+        await repository.recordStudySession()
+
+        #expect(await repository.streak == 1)
+
+        defaults.removePersistentDomain(forName: suiteName)
+    }
+
+    /// Mirrors the private day-math inside UserDefaultsPreferencesRepository so tests can seed
+    /// "yesterday" / "N days ago" without depending on wall-clock timing tricks.
+    private static func epochDay(daysAgo: Int, calendar: Calendar = .current) -> Int {
+        let target = calendar.date(byAdding: .day, value: -daysAgo, to: Date())!
+        let startOfDay = calendar.startOfDay(for: target)
+        let epoch = Date(timeIntervalSince1970: 0)
+        return calendar.dateComponents([.day], from: epoch, to: startOfDay).day ?? 0
+    }
 }

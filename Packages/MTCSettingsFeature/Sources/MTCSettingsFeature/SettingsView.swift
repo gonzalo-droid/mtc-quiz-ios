@@ -96,6 +96,7 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
     func setNumberOfQuestions(_ value: Int) async {}
     func setEvaluationTimeMinutes(_ value: Int) async {}
     func setPassPercentage(_ value: Int) async {}
+    func recordStudySession() async {}
 }
 
 #Preview("Configuraciones") {

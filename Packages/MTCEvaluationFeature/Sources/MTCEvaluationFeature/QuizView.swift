@@ -48,6 +48,7 @@ public struct QuizView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
+                .accessibilityLabel("Cancelar evaluación")
             }
         }
         .task {
@@ -197,12 +198,6 @@ private struct PreviewQuestionRepository: QuestionRepository {
     func questions(pathJson: String, limit: Int?) async -> [MTCDomain.Question] { previewQuestions }
 }
 
-private struct PreviewEvaluationRepository: EvaluationRepository {
-    func save(_ evaluation: MTCDomain.Evaluation) async {}
-    func evaluation(withId id: String) async -> MTCDomain.Evaluation? { nil }
-    func allEvaluations() async -> [MTCDomain.Evaluation] { [] }
-}
-
 private struct PreviewPreferencesRepository: PreferencesRepository {
     var streak: Int { get async { 0 } }
     var userName: String { get async { "" } }
@@ -215,6 +210,7 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
     func setNumberOfQuestions(_ value: Int) async {}
     func setEvaluationTimeMinutes(_ value: Int) async {}
     func setPassPercentage(_ value: Int) async {}
+    func recordStudySession() async {}
 }
 
 private struct PreviewImageResolver: QuestionImageResolver {

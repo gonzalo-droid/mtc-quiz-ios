@@ -35,6 +35,7 @@ public struct HomeView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "flame.fill")
                             .foregroundStyle(MTCColor.amber)
+                            .accessibilityHidden(true)
                         Text("\(viewModel.state.streak) día\(viewModel.state.streak > 1 ? "s" : "")")
                             .font(MTCTypography.headline)
                             .foregroundStyle(MTCColor.amber)
@@ -62,11 +63,13 @@ public struct HomeView: View {
                     Image(systemName: "crown.fill")
                         .foregroundStyle(Color(red: 1.0, green: 0.702, blue: 0.0)) // matches PremiumView's premiumGold
                 }
+                .accessibilityLabel("Premium")
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: onOpenSettings) {
                     Image(systemName: "line.3.horizontal")
                 }
+                .accessibilityLabel("Configuraciones")
             }
         }
     }
@@ -112,6 +115,7 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
     func setNumberOfQuestions(_ value: Int) async {}
     func setEvaluationTimeMinutes(_ value: Int) async {}
     func setPassPercentage(_ value: Int) async {}
+    func recordStudySession() async {}
 }
 
 private let previewCategories: [MTCDomain.Category] = [

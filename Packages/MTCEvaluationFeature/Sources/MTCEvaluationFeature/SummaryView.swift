@@ -121,13 +121,6 @@ private struct PreviewCategoryRepository: CategoryRepository {
     func category(withId id: String) async -> MTCDomain.Category? { nil }
 }
 
-private struct PreviewEvaluationRepository: EvaluationRepository {
-    let evaluationToReturn: MTCDomain.Evaluation?
-    func save(_ evaluation: MTCDomain.Evaluation) async {}
-    func evaluation(withId id: String) async -> MTCDomain.Evaluation? { evaluationToReturn }
-    func allEvaluations() async -> [MTCDomain.Evaluation] { [] }
-}
-
 #Preview("Aprobado") {
     NavigationStack {
         SummaryView(

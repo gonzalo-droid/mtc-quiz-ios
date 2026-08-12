@@ -120,6 +120,7 @@ public final class QuizViewModel {
         )
 
         await evaluationRepository.save(evaluation)
+        await preferencesRepository.recordStudySession()
         onFinished?(evaluation.id)
     }
 }
