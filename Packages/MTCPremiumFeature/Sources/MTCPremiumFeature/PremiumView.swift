@@ -6,17 +6,22 @@ private let premiumAmber = Color(red: 1.0, green: 0.561, blue: 0.0)      // #FF8
 private let premiumDark = Color(red: 0.102, green: 0.102, blue: 0.180)   // #1A1A2E
 private let premiumDarkEnd = Color(red: 0.086, green: 0.129, blue: 0.243) // #16213E
 
-// Both legal links point at the same URL in Android's real source — a likely upstream bug/TODO,
-// ported as-is rather than corrected, matching this project's literal-fidelity approach.
-private let legalURL = URL(string: "https://gonzalo-lozg.me/term/quote-anime/")!
-
 public struct PremiumView: View {
     @State private var viewModel: PremiumViewModel
     private let onBack: () -> Void
+    private let onTerms: () -> Void
+    private let onPrivacy: () -> Void
 
-    public init(viewModel: PremiumViewModel, onBack: @escaping () -> Void) {
+    public init(
+        viewModel: PremiumViewModel,
+        onBack: @escaping () -> Void,
+        onTerms: @escaping () -> Void,
+        onPrivacy: @escaping () -> Void
+    ) {
         _viewModel = State(initialValue: viewModel)
         self.onBack = onBack
+        self.onTerms = onTerms
+        self.onPrivacy = onPrivacy
     }
 
     public var body: some View {
@@ -191,14 +196,14 @@ public struct PremiumView: View {
         Spacer().frame(height: 12)
 
         HStack(spacing: 4) {
-            Link("Términos de uso", destination: legalURL)
+            Button("Términos de uso", action: onTerms)
                 .font(.caption)
                 .foregroundStyle(premiumGold.opacity(0.7))
                 .underline()
             Text("  •  ")
                 .font(.caption)
                 .foregroundStyle(.white.opacity(0.3))
-            Link("Política de privacidad", destination: legalURL)
+            Button("Política de privacidad", action: onPrivacy)
                 .font(.caption)
                 .foregroundStyle(premiumGold.opacity(0.7))
                 .underline()
@@ -314,7 +319,7 @@ private struct PlanCard: View {
 #Preview("Con planes") {
     NavigationStack {
         let viewModel = PremiumViewModel()
-        PremiumView(viewModel: viewModel, onBack: {})
+        PremiumView(viewModel: viewModel, onBack: {}, onTerms: {}, onPrivacy: {})
             .onAppear {
                 viewModel.selectPlan(
                     MTCDomain.SubscriptionPlan(productId: "mtcquiz_premium_annual", billingPeriod: .annual, formattedPrice: "S/ 29.90")
@@ -325,6 +330,6 @@ private struct PlanCard: View {
 
 #Preview("Sin planes disponibles") {
     NavigationStack {
-        PremiumView(viewModel: PremiumViewModel(), onBack: {})
+        PremiumView(viewModel: PremiumViewModel(), onBack: {}, onTerms: {}, onPrivacy: {})
     }
 }

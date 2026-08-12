@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import MTCData
+import MTCDesignSystem
 import MTCHomeFeature
 import MTCDetailFeature
 import MTCPDFFeature
@@ -148,8 +149,22 @@ private struct RootView: View {
                         },
                         onHistory: {
                             path.append(Route.history)
+                        },
+                        onTerms: {
+                            path.append(Route.terms)
+                        },
+                        onPrivacy: {
+                            path.append(Route.privacy)
                         }
                     )
+                case .terms:
+                    LegalWebView(url: URL(string: "https://gonzalo-lozg.me/apps-docs/mtcquiz/term/")!)
+                        .navigationTitle("Términos y condiciones")
+                        .navigationBarTitleDisplayMode(.inline)
+                case .privacy:
+                    LegalWebView(url: URL(string: "https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/")!)
+                        .navigationTitle("Política de privacidad")
+                        .navigationBarTitleDisplayMode(.inline)
                 case .stats:
                     StatsView(viewModel: StatsViewModel(evaluationRepository: evaluationRepository))
                 case .history:
@@ -175,6 +190,12 @@ private struct RootView: View {
                         viewModel: PremiumViewModel(),
                         onBack: {
                             path.removeLast()
+                        },
+                        onTerms: {
+                            path.append(Route.terms)
+                        },
+                        onPrivacy: {
+                            path.append(Route.privacy)
                         }
                     )
                 }

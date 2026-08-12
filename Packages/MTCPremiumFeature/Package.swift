@@ -9,11 +9,12 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../MTCDomain"),
+        .package(path: "../MTCDesignSystem"),
     ],
     targets: [
         .target(
             name: "MTCPremiumFeature",
-            dependencies: ["MTCDomain"]
+            dependencies: ["MTCDomain", "MTCDesignSystem"]
         ),
         .testTarget(
             name: "MTCPremiumFeatureTests",
