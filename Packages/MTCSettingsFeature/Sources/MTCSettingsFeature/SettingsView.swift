@@ -8,6 +8,8 @@ public struct SettingsView: View {
     private let onPremium: () -> Void
     private let onStats: () -> Void
     private let onHistory: () -> Void
+    private let onTerms: () -> Void
+    private let onPrivacy: () -> Void
 
     @Environment(\.requestReview) private var requestReview
 
@@ -16,13 +18,17 @@ public struct SettingsView: View {
         onCustomize: @escaping () -> Void,
         onPremium: @escaping () -> Void,
         onStats: @escaping () -> Void,
-        onHistory: @escaping () -> Void
+        onHistory: @escaping () -> Void,
+        onTerms: @escaping () -> Void,
+        onPrivacy: @escaping () -> Void
     ) {
         _viewModel = State(initialValue: viewModel)
         self.onCustomize = onCustomize
         self.onPremium = onPremium
         self.onStats = onStats
         self.onHistory = onHistory
+        self.onTerms = onTerms
+        self.onPrivacy = onPrivacy
     }
 
     public var body: some View {
@@ -50,6 +56,11 @@ public struct SettingsView: View {
                 Button("Calificar app") {
                     requestReview()
                 }
+            }
+
+            Section {
+                Button("Términos y condiciones", action: onTerms)
+                Button("Política de privacidad", action: onPrivacy)
             }
 
             Section {
@@ -106,7 +117,9 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
             onCustomize: {},
             onPremium: {},
             onStats: {},
-            onHistory: {}
+            onHistory: {},
+            onTerms: {},
+            onPrivacy: {}
         )
     }
 }

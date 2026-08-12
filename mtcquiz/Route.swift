@@ -10,4 +10,6 @@ enum Route: Hashable {
     case stats
     case history
     case errorReview
+    case terms
+    case privacy
 }
