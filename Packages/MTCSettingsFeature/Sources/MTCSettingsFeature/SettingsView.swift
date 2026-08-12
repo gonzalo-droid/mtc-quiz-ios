@@ -1,6 +1,11 @@
 import SwiftUI
-import StoreKit
 import MTCDesignSystem
+
+/// Real, live App Store Connect app record — apps.apple.com won't resolve publicly until the
+/// first version is released, but the ID itself is permanent, so these links are correct now.
+private let appStoreID = "6800840447"
+private let appStoreURL = URL(string: "https://apps.apple.com/app/id\(appStoreID)")!
+private let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(appStoreID)?action=write-review")!
 
 public struct SettingsView: View {
     @State private var viewModel: SettingsViewModel
@@ -11,7 +16,7 @@ public struct SettingsView: View {
     private let onTerms: () -> Void
     private let onPrivacy: () -> Void
 
-    @Environment(\.requestReview) private var requestReview
+    @Environment(\.openURL) private var openURL
 
     public init(
         viewModel: SettingsViewModel,
@@ -54,7 +59,10 @@ public struct SettingsView: View {
 
             Section {
                 Button("Calificar app") {
-                    requestReview()
+                    openURL(writeReviewURL)
+                }
+                ShareLink(item: appStoreURL, message: Text("Prepárate para tu examen de manejo con MTCQuiz")) {
+                    Text("Compartir app")
                 }
             }
 
