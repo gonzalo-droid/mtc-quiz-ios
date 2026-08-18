@@ -29,13 +29,13 @@ public struct CategoryCard: View {
                 .padding(16)
 
                 VehicleIllustration(examId: category.examId)
-                    .frame(width: 230, height: 180)
+                    .frame(width: 260, height: 155)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     .padding(2)
             }
         }
         .buttonStyle(.plain)
-        .frame(height: 190)
+        .frame(height: 165)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
