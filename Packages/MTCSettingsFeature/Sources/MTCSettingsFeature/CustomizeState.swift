@@ -1,18 +1,18 @@
 public struct CustomizeState: Equatable, Sendable {
-    public var numberQuestions: String
-    public var timeToFinishEvaluation: String
-    public var percentageToApprovedEvaluation: String
+    public var numberOfQuestions: Int
+    public var evaluationTimeMinutes: Int
+    public var passPercentage: Int
     public var isLoading: Bool
 
     public init(
-        numberQuestions: String = "",
-        timeToFinishEvaluation: String = "",
-        percentageToApprovedEvaluation: String = "",
+        numberOfQuestions: Int = 40,
+        evaluationTimeMinutes: Int = 40,
+        passPercentage: Int = 80,
         isLoading: Bool = true
     ) {
-        self.numberQuestions = numberQuestions
-        self.timeToFinishEvaluation = timeToFinishEvaluation
-        self.percentageToApprovedEvaluation = percentageToApprovedEvaluation
+        self.numberOfQuestions = numberOfQuestions
+        self.evaluationTimeMinutes = evaluationTimeMinutes
+        self.passPercentage = passPercentage
         self.isLoading = isLoading
     }
 }

@@ -14,33 +14,25 @@ public final class CustomizeViewModel {
 
     public func load() async {
         state = CustomizeState(
-            numberQuestions: String(await preferencesRepository.numberOfQuestions),
-            timeToFinishEvaluation: String(await preferencesRepository.evaluationTimeMinutes),
-            percentageToApprovedEvaluation: String(await preferencesRepository.passPercentage),
+            numberOfQuestions: await preferencesRepository.numberOfQuestions,
+            evaluationTimeMinutes: await preferencesRepository.evaluationTimeMinutes,
+            passPercentage: await preferencesRepository.passPercentage,
             isLoading: false
         )
     }
 
-    public func updateValues(
-        numberQuestions: String,
-        timeToFinishEvaluation: String,
-        percentageToApprovedEvaluation: String
-    ) async -> Bool {
-        guard
-            let questions = Int(numberQuestions), (1...1000).contains(questions),
-            let minutes = Int(timeToFinishEvaluation), (1...1000).contains(minutes),
-            let percentage = Int(percentageToApprovedEvaluation), (1...100).contains(percentage)
-        else {
-            return false
-        }
+    /// A slider-bounded value can't be invalid, so unlike the old text-field `updateValues`,
+    /// there's nothing left to validate here — this always succeeds. It still returns `Bool`
+    /// (rather than `Void`) so the view's existing success/failure alert plumbing needs no
+    /// restructuring, matching the shape `PreferencesRepository`'s setters already commit to.
+    public func save(numberOfQuestions: Int, evaluationTimeMinutes: Int, passPercentage: Int) async -> Bool {
+        state.numberOfQuestions = numberOfQuestions
+        state.evaluationTimeMinutes = evaluationTimeMinutes
+        state.passPercentage = passPercentage
 
-        state.numberQuestions = numberQuestions
-        state.timeToFinishEvaluation = timeToFinishEvaluation
-        state.percentageToApprovedEvaluation = percentageToApprovedEvaluation
-
-        await preferencesRepository.setNumberOfQuestions(questions)
-        await preferencesRepository.setEvaluationTimeMinutes(minutes)
-        await preferencesRepository.setPassPercentage(percentage)
+        await preferencesRepository.setNumberOfQuestions(numberOfQuestions)
+        await preferencesRepository.setEvaluationTimeMinutes(evaluationTimeMinutes)
+        await preferencesRepository.setPassPercentage(passPercentage)
 
         return true
     }
