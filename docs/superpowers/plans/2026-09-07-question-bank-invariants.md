@@ -106,7 +106,10 @@ import MTCDomain
         // here; that cross-check belongs to the Python audit_images.py tool, which has the
         // actual image asset list to compare against. This test only guards the shape.
         let questions = await loadBank(file)
-        let pattern = #/^q\d+_[a-d]_[a-zA-Z0-9]+$/#
+        // The letter segment is a general enumerator, not strictly an answer-option letter --
+        // a3c has 5 multi-image diagram questions (ids 29, 30, 31, 33, 36) using letters up to
+        // 'm', confirmed real and PDF-correct, not a re-extraction artifact.
+        let pattern = #/^q\d+_[a-z]_[a-zA-Z0-9]+$/#
         for question in questions {
             for image in question.images {
                 #expect(image.wholeMatch(of: pattern) != nil, "\(file) question \(question.id) has a malformed image reference: '\(image)'")
