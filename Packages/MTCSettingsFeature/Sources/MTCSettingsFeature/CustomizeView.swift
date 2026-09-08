@@ -1,12 +1,17 @@
 import SwiftUI
 import MTCDesignSystem
 
+private let minutesRange = 5...120
+private let questionsRange = 5...100
+private let passPercentageRange = 50...100
+private let sliderStep = 5.0
+
 public struct CustomizeView: View {
     @State private var viewModel: CustomizeViewModel
     @State private var resultAlert: ResultAlert?
-    @State private var timeToFinishEvaluation: String = ""
-    @State private var numberQuestions: String = ""
-    @State private var percentageToApprovedEvaluation: String = ""
+    @State private var minutes: Int = 40
+    @State private var questions: Int = 40
+    @State private var passPercentage: Int = 80
 
     public init(viewModel: CustomizeViewModel) {
         _viewModel = State(initialValue: viewModel)
@@ -18,50 +23,48 @@ public struct CustomizeView: View {
         var id: Self { self }
     }
 
+    private var setup: EvaluationSetup {
+        EvaluationSetup(minutes: minutes, questions: questions, passPercentage: passPercentage)
+    }
+
     public var body: some View {
         Form {
-            Text("Personaliza tu configuración y sigue estudiando")
-                .font(MTCTypography.largeTitle)
-                .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
-                .listRowSeparator(.hidden)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Personaliza tu configuración y sigue estudiando")
+                    .font(MTCTypography.largeTitle)
+                Text("Ajusta el simulacro y mira cómo queda de exigente.")
+                    .font(MTCTypography.body)
+                    .foregroundStyle(.secondary)
+            }
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets())
+            .listRowSeparator(.hidden)
 
             Section {
-                field(
-                    label: "Tiempo de duración de la evaluación. (Minutos)",
-                    subLabel: "1 - 1000",
-                    errorMessage: "Debe ser un número entre 1 y 1000",
-                    value: $timeToFinishEvaluation,
-                    isValid: isWithinRange(timeToFinishEvaluation, 1...1000)
-                )
-                field(
-                    label: "Número de preguntas para la evaluación",
-                    subLabel: "1 - 1000",
-                    errorMessage: "Debe ser un número entre 1 y 1000",
-                    value: $numberQuestions,
-                    isValid: isWithinRange(numberQuestions, 1...1000)
-                )
-                field(
-                    label: "Porcentage (%) de preguntas correctas para aprobar",
-                    subLabel: "1 - 100 (%)",
-                    errorMessage: "Debe ser un número entre 1 y 100",
-                    value: $percentageToApprovedEvaluation,
-                    isValid: isWithinRange(percentageToApprovedEvaluation, 1...100)
-                )
+                dial(label: "Duración", readout: "\(minutes) min", value: $minutes, range: minutesRange)
+                dial(label: "Preguntas", readout: "\(questions)", value: $questions, range: questionsRange)
+                dial(label: "Aprobación", readout: "\(passPercentage) %", value: $passPercentage, range: passPercentageRange)
             }
 
             Section {
-                Button("Actualizar valores") {
+                paceChip
+                summaryLine
+            }
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+            .listRowSeparator(.hidden)
+
+            Section {
+                Button("Guardar ajustes") {
                     Task {
-                        let succeeded = await viewModel.updateValues(
-                            numberQuestions: numberQuestions,
-                            timeToFinishEvaluation: timeToFinishEvaluation,
-                            percentageToApprovedEvaluation: percentageToApprovedEvaluation
+                        let succeeded = await viewModel.save(
+                            numberOfQuestions: questions,
+                            evaluationTimeMinutes: minutes,
+                            passPercentage: passPercentage
                         )
                         resultAlert = succeeded ? .success : .failure
                     }
                 }
-                .disabled(!allFieldsValid)
             }
         }
         // Intentionally blank — the real title renders as the first Form row above (see the
@@ -72,70 +75,94 @@ public struct CustomizeView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await viewModel.load()
-            timeToFinishEvaluation = viewModel.state.timeToFinishEvaluation
-            numberQuestions = viewModel.state.numberQuestions
-            percentageToApprovedEvaluation = viewModel.state.percentageToApprovedEvaluation
+            minutes = viewModel.state.evaluationTimeMinutes
+            questions = viewModel.state.numberOfQuestions
+            passPercentage = viewModel.state.passPercentage
         }
         .alert(item: $resultAlert) { alert in
             switch alert {
             case .success:
-                Alert(title: Text("Datos actualizados"))
+                Alert(title: Text("Ajustes guardados"))
             case .failure:
-                Alert(title: Text("Error al actualizar los datos"))
+                Alert(title: Text("No se pudieron guardar los ajustes"))
             }
         }
     }
 
+    /// A slider-bounded row: label, big readout, and the slider itself. A value loaded from
+    /// storage outside `range` widens the slider's own bounds instead of clamping or crashing
+    /// -- so a future range change never corrupts an already-saved preference.
     @ViewBuilder
-    private func field(
-        label: String,
-        subLabel: String,
-        errorMessage: String,
-        value: Binding<String>,
-        isValid: Bool
-    ) -> some View {
+    private func dial(label: String, readout: String, value: Binding<Int>, range: ClosedRange<Int>) -> some View {
+        let lower = min(range.lowerBound, value.wrappedValue)
+        let upper = max(range.upperBound, value.wrappedValue)
+
         VStack(alignment: .leading, spacing: 4) {
-            Text(label)
-                .font(MTCTypography.body)
-            TextField("", text: value)
-                .keyboardType(.numberPad)
-                .onChange(of: value.wrappedValue) { _, newValue in
-                    let digitsOnly = newValue.filter(\.isNumber)
-                    if digitsOnly != newValue {
-                        value.wrappedValue = digitsOnly
-                    }
-                }
-            helperText(for: value.wrappedValue, subLabel: subLabel, errorMessage: errorMessage, isValid: isValid)
+            HStack {
+                Text(label)
+                    .font(MTCTypography.body)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text(readout)
+                    .font(MTCTypography.headline)
+            }
+            Slider(
+                value: Binding(
+                    get: { Double(value.wrappedValue) },
+                    set: { value.wrappedValue = Int((($0 / sliderStep).rounded()) * sliderStep) }
+                ),
+                in: Double(lower)...Double(upper)
+            )
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, 6)
     }
 
-    @ViewBuilder
-    private func helperText(for value: String, subLabel: String, errorMessage: String, isValid: Bool) -> some View {
-        if value.isEmpty {
-            Text("Debe ingresar un valor")
-                .font(MTCTypography.caption)
-                .foregroundStyle(.red)
-        } else if !isValid {
-            Text(errorMessage)
-                .font(MTCTypography.caption)
-                .foregroundStyle(.red)
-        } else {
-            Text(subLabel)
-                .font(MTCTypography.caption)
-                .foregroundStyle(MTCColor.primary)
+    private var paceChip: some View {
+        let (color, name) = paceAppearance(setup.pace)
+        let perQuestion: String = {
+            let seconds = setup.secondsPerQuestion
+            if seconds >= 60 {
+                return String(format: "%d:%02d por pregunta", seconds / 60, seconds % 60)
+            }
+            return "\(seconds) s por pregunta"
+        }()
+
+        return HStack(spacing: 10) {
+            Circle()
+                .fill(color)
+                .frame(width: 8, height: 8)
+            Text("\(name) · \(perQuestion)")
+                .font(MTCTypography.body.weight(.medium))
+                .foregroundStyle(color)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .background(color.opacity(0.15))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    private func isWithinRange(_ value: String, _ range: ClosedRange<Int>) -> Bool {
-        guard let number = Int(value) else { return value.isEmpty }
-        return range.contains(number)
+    private var summaryLine: some View {
+        let text = setup.allowedMistakes == 0
+            ? "Apruebas solo con las \(setup.correctToPass) correctas: no puedes fallar ninguna."
+            : "Apruebas con \(setup.correctToPass) de \(setup.questions) correctas: puedes fallar \(setup.allowedMistakes)."
+
+        return Text(text)
+            .font(MTCTypography.body)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .background(MTCColor.primary.opacity(0.12))
+            .foregroundStyle(MTCColor.primary)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    private var allFieldsValid: Bool {
-        isWithinRange(timeToFinishEvaluation, 1...1000) && !timeToFinishEvaluation.isEmpty
-            && isWithinRange(numberQuestions, 1...1000) && !numberQuestions.isEmpty
-            && isWithinRange(percentageToApprovedEvaluation, 1...100) && !percentageToApprovedEvaluation.isEmpty
+    private func paceAppearance(_ pace: Pace) -> (Color, String) {
+        switch pace {
+        case .comfortable: (.green, "Ritmo cómodo")
+        case .tight: (.orange, "Ritmo ajustado")
+        case .againstTheClock: (.red, "Contrarreloj")
+        }
     }
 }
 
