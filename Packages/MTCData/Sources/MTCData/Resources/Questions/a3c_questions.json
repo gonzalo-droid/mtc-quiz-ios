@@ -99,7 +99,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Los colores del semáforo tienen el siguiente significado: rojo: _____ ; ámbar o amarillo: _____; verde: ____.",
+            "title": "Los colores del semáforo tienen el siguiente significado: rojo: __________ ; ámbar o amarillo: __________; verde: __________.",
             "options": [
                 "a) Detención - prevención - paso.",
                 "b) Detención - paso con prevención - circulación rápida.",
@@ -582,7 +582,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El sobrepaso o adelantamiento de un vehículo en movimiento se efectúa, salvo excepciones, por la _________ retornando el vehículo después de la maniobra a su carril original.",
+            "title": "El sobrepaso o adelantamiento de un vehículo en movimiento se efectúa, salvo excepciones, por la __________ retornando el vehículo después de la maniobra a su carril original.",
             "options": [
                 "a) Derecha.",
                 "b) Izquierda.",
@@ -1005,7 +1005,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Si una licencia de conducir consigna alguna restricción, es correcto afirmar que:",
+            "title": "Si una licencia de conducir consiga alguna restricción, es correcto afirmar que:",
             "options": [
                 "a) Dicha restricción es meramente informativa.",
                 "b) Es una obligación cumplir con la restricción.",
@@ -1248,7 +1248,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Si en una vía de dos carriles con tránsito en un mismo sentido usted se desplaza lentamente en su vehículo, debe circular por el carril de la _________ y los vehículos que circulen a mayor velocidad deben hacerlo por el carril de la _________",
+            "title": "Si en una vía de dos carriles con tránsito en un mismo sentido usted se desplaza lentamente en su vehículo, debe circular por el carril de la __________ y los vehículos que circulen a mayor velocidad deben hacerlo por el carril de la __________",
             "options": [
                 "a) Izquierda / Derecha.",
                 "b) Derecha / Derecha.",
@@ -2244,7 +2244,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Si al conducir su vehículo se encuentra con la señal vertical que se muestra, usted debe entender que: (señal con flecha prohibida a izquierda y desvío)",
+            "title": "Si al conducir su vehículo se encuentra con la señal vertical que se muestra, usted debe entender que:",
             "options": [
                 "a) La vía está interrumpida y debe tomar el camino alternativo que muestra la señal.",
                 "b) En la siguiente intersección está prohibido girar a la izquierda y por lo tanto, si desea seguir esa ruta debe tomar el camino alternativo que muestra la señal.",
@@ -2484,7 +2484,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El conductor está ________ a ___________ a las pruebas que le solicite el Efectivo de la Policía Nacional del Perú, asignado al control del tránsito, para determinar su estado de intoxicación por alcohol, drogas, estupefacientes u otros tóxicos",
+            "title": "El conductor está __________ a __________ a las pruebas que le solicite el Efectivo de la Policía Nacional del Perú, asignado al control del tránsito, para determinar su estado de intoxicación por alcohol, drogas, estupefacientes u otros tóxicos",
             "options": [
                 "a) En su derecho - negarse.",
                 "b) Facultado - Rechazar.",
@@ -2532,7 +2532,7 @@
             "title": "¿Puede una persona menor de edad conducir un vehículo?",
             "options": [
                 "a) Nunca.",
-                "b) Sí, siempre y cuando vaya acompañada de una persona mayor de edad y titular de una licencia de conducir.",
+                "b) Sí, siempre y cuando vaya acompañada de una personas mayor de edad y titular de una licencia de conducir.",
                 "c) No, salvo que conduzca un vehículo de dimensión reducida.",
                 "d) Sí, siempre y cuando sea mayor de 16 años y cuente con licencia de conducir o permiso provisional, conforme a lo dispuesto en el Reglamento Nacional del Sistema de Emisión de Licencias de Conducir."
             ],
@@ -2544,7 +2544,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Es una obligación general de tránsito que, los ____________ circulen respetando los mensajes de _______________, las instrucciones de los Efectivos de la Policía de Tránsito y el mandato de las normas legales y reglamentarias correspondientes.",
+            "title": "Es una obligación general de tránsito que, los __________ circulen respetando los mensajes de __________, las instrucciones de los Efectivos de la Policía de Tránsito y el mandato de las normas legales y reglamentarias correspondientes.",
             "options": [
                 "a) Peatones - los letreros instalados en las vías públicas.",
                 "b) Los usuarios de la vía pública - los dispositivos de control de tránsito.",
@@ -2604,12 +2604,12 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El uso de la luz ___________ es obligatorio en __________ , debiendo cambiar por luz ____________ momentos previos al cruce con otro vehículo que circule en sentido contrario.",
+            "title": "El uso de la luz __________ es obligatorio en __________ , debiendo cambiar por luz __________ momentos previos al cruce con otro vehículo que circule en sentido contrario.",
             "options": [
                 "a) Baja - carreteras - alta.",
                 "b) Alta - vías urbanas - baja.",
                 "c) Rompenieblas - carreteras - baja.",
-                "d) Alta - carreteras - baja."
+                "d) Alta - carretereras - baja."
             ],
             "answer": "d"
         },
@@ -2679,7 +2679,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "La autoridad competente, ______________ puede prohibir o restringir _____________________ en determinadas vías públicas.",
+            "title": "La autoridad competente, __________ puede prohibir o restringir __________ en determinadas vías públicas.",
             "options": [
                 "a) Cuando la situación lo justifique - la circulación o estacionamiento de vehículos.",
                 "b) Aun cuando la situación lo justifique no - circulación o estacionamiento de vehículos.",
@@ -2829,7 +2829,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Las __________________ tienen por función informar a los usuarios sobre los servicios generales existentes próximos a la vía, tales como teléfono, hospedaje, restaurante, primeros auxilios, estación de combustibles, talleres, y otros.",
+            "title": "Las __________ tienen por función informar a los usuarios sobre los servicios generales existentes próximos a la vía, tales como teléfono, hospedaje, restaurante, primeros auxilios, estación de combustibles, talleres, y otros.",
             "options": [
                 "a) Señales de localización.",
                 "b) Señales de salida inmediata.",
@@ -2859,7 +2859,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Las marcas en el pavimento constituyen la señalización ___________ y se emplean para _____________ la circulación.",
+            "title": "Las marcas en el pavimento constituyen la señalización __________ y se emplean para __________ la circulación.",
             "options": [
                 "a) Horizontal - reglamentar.",
                 "b) Vertical - reglamentar.",
@@ -2985,7 +2985,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "¿Cuál es la acción correcta del conductor, según las normas de tránsito, en la situación que plantea el siguiente gráfico? (vehículo girando a la derecha con peatón cruzando)",
+            "title": "¿Cuál es la acción correcta del conductor, según las normas de tránsito, en la situación que plantea el siguiente gráfico?",
             "options": [
                 "a) Girar rápidamente a la derecha antes que el peatón cruce la calzada.",
                 "b) Dar preferencia de paso al peatón para que cruce la calzada.",
@@ -3138,7 +3138,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El siguiente gráfico muestra: (señalización zona escolar)",
+            "title": "El siguiente gráfico muestra:",
             "options": [
                 "a) Señalización de tránsito vertical y horizontal en una zona escolar.",
                 "b) Únicamente señalización de tránsito vertical en una zona escolar.",
@@ -3156,7 +3156,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Las __________canalizadoras, tiene por función conformar las islas canalizadoras del tránsito automotor en una _________.",
+            "title": "Las __________ canalizadoras, tiene por función conformar las islas canalizadoras del tránsito automotor en una __________.",
             "options": [
                 "a) Islas canalizadoras - vía.",
                 "b) Líneas - intersección.",
@@ -3189,7 +3189,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "De acuerdo al siguiente gráfico, es correcto afirmar que: (zona con líneas amarillas continuas)",
+            "title": "De acuerdo al siguiente gráfico, es correcto afirmar que:",
             "options": [
                 "a) La zona que permite adelantar inicia con las líneas amarillas continuas.",
                 "b) Los conductores pueden estacionarse al empezar las líneas continuas.",
@@ -3639,7 +3639,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "El rótulo que identifica al material peligroso como explosivo es: [ver imagen en PDF - opción d]",
+            "title": "El rótulo que identifica al material peligroso como explosivo es:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b",
@@ -3661,7 +3661,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "Los rótulos que identifican al material peligroso como líquidos inflamables son: [ver imagen en PDF - opción a]",
+            "title": "Los rótulos que identifican al material peligroso como líquidos inflamables son:",
             "options": [
                 "a) Imagen opción a (líquidos inflamables)",
                 "b) Imagen opción b",
@@ -3686,7 +3686,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "Los rótulos que identifican al material peligroso como gases inflamables son: [ver imagen en PDF - opción c]",
+            "title": "Los rótulos que identifican al material peligroso como gases inflamables son:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b",
@@ -3715,7 +3715,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "Los rótulos que identifican al material peligroso como sólido inflamable son: [ver imagen en PDF - opción a]",
+            "title": "Los rótulos que identifican al material peligroso como sólido inflamable son:",
             "options": [
                 "a) Imagen opción a (sólido inflamable)",
                 "b) Imagen opción b",
@@ -3746,7 +3746,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "El rótulo que identifica al material peligroso como sustancia corburente es: [ver imagen en PDF - opción d]",
+            "title": "El rótulo que identifica al material peligroso como sustancia corburente es:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b",
@@ -3768,7 +3768,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "El rótulo que identifica al material peligroso como peróxidos orgánicos es: [ver imagen en PDF - opción b]",
+            "title": "El rótulo que identifica al material peligroso como peróxidos orgánicos es:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b (peróxidos orgánicos)",
@@ -3794,7 +3794,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "El rótulo que identifica al material peligroso como sustancia tóxica es: [ver imagen en PDF - opción a]",
+            "title": "El rótulo que identifica al material peligroso como sustancia tóxica es:",
             "options": [
                 "a) Imagen opción a (sustancia tóxica)",
                 "b) Imagen opción b",
@@ -3816,7 +3816,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "El rótulo que identifica al material peligroso como sustancia infecciosa es: [ver imagen en PDF - opción c]",
+            "title": "El rótulo que identifica al material peligroso como sustancia infecciosa es:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b",
@@ -3837,7 +3837,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "Los rótulos que identifican al material peligroso como radioactivo son: [ver imagen en PDF - opción c]",
+            "title": "Los rótulos que identifican al material peligroso como radioactivo son:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b",
@@ -3867,7 +3867,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "El rótulo que identifica al material peligroso como corrosivo es: [ver imagen en PDF - opción b]",
+            "title": "El rótulo que identifica al material peligroso como corrosivo es:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b (corrosivo)",
@@ -3889,7 +3889,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Mercancías peligrosas",
-            "title": "El rótulo que identifica al material peligroso como sustancias y objetos varios, incluido las sustancias peligrosas para el medio ambiente es: [ver imagen en PDF - opción b]",
+            "title": "El rótulo que identifica al material peligroso como sustancias y objetos varios, incluido las sustancias peligrosas para el medio ambiente es:",
             "options": [
                 "a) Imagen opción a",
                 "b) Imagen opción b (sustancias varias/peligrosas para el MA)",
@@ -4567,7 +4567,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Reglamento Nacional de Vehículos",
-            "title": "Para vehículos de la categoría N, la altura de la carrocería no podrá superar en más del _____ de la altura de la cabina original del vehículo",
+            "title": "Para vehículos de la categoría N, la altura de la carrocería no podrá superar en más del __________ de la altura de la cabina original del vehículo",
             "options": [
                 "a) 50%",
                 "b) 45%",
@@ -4679,7 +4679,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Funcionamiento del Sistema Nacional de Emisión de Licencias de Conducir",
-            "title": "Para conducir vehículos de transporte terrestre de materiales peligrosos, ____ necesario contar con la licencia que corresponda a la categoría del vehículo que transporta los materiales peligrosos.",
+            "title": "Para conducir vehículos de transporte terrestre de materiales peligrosos, __________ necesario contar con la licencia que corresponda a la categoría del vehículo que transporta los materiales peligrosos.",
             "options": [
                 "a) No es.",
                 "b) Es",
@@ -5159,7 +5159,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Regulación de actividad de transporte",
-            "title": "Según el Reglamento Nacional de Administración de Transporte, se considera reincidencia a aquel que es sancionado, por la misma infracción__________________que amerite una sanción pecuniaria, por la que fue sancionado dentro de los doce (12) meses anteriores.",
+            "title": "Según el Reglamento Nacional de Administración de Transporte, se considera reincidencia a aquel que es sancionado, por la misma infracción __________ que amerite una sanción pecuniaria, por la que fue sancionado dentro de los doce (12) meses anteriores.",
             "options": [
                 "a) Muy grave.",
                 "b) Grave.",
@@ -5495,7 +5495,7 @@
             "section": "Materias específicas",
             "category": "AIIIC",
             "topic": "Regulación de actividad de transporte",
-            "title": "¿Pueden viajar dos personas en un mismo asiento? (repetición con fundamento)",
+            "title": "¿Pueden viajar dos personas en un mismo asiento?",
             "options": [
                 "a) Nunca se da este supuesto.",
                 "b) Sí, cuando una de ellas es un menor de cinco (5) años de edad.",
