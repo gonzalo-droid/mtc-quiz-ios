@@ -2,6 +2,20 @@ import SwiftUI
 import MTCDomain
 import MTCDesignSystem
 
+/// Pinned to generic Spanish, not the device's language — every other string in this app is
+/// hardcoded Spanish, so the one piece of text that used to follow `.formatted()`'s
+/// locale-inference (the result date) was the one inconsistency. `es`, not `es_PE`: Peru's
+/// own CLDR data spells the ninth month "setiembre", and the more familiar "septiembre" was
+/// preferred instead — same call Android made for the same reason.
+func spanishSummaryDate(_ date: Date) -> String {
+    let formatted = date.formatted(
+        .dateTime.weekday(.wide).day().month(.wide).year()
+            .locale(Locale(identifier: "es"))
+    )
+    guard let first = formatted.first else { return formatted }
+    return first.uppercased() + formatted.dropFirst()
+}
+
 public struct SummaryView: View {
     @State private var viewModel: SummaryViewModel
     private let onFinish: () -> Void
@@ -65,7 +79,7 @@ public struct SummaryView: View {
                 .font(MTCTypography.headline)
                 .foregroundStyle(isApproved ? .green : .red)
 
-                Text(evaluation.date.formatted(date: .long, time: .omitted))
+                Text(spanishSummaryDate(evaluation.date))
                     .font(MTCTypography.caption)
                     .foregroundStyle(.secondary)
 
@@ -110,6 +124,7 @@ public struct SummaryView: View {
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
         .padding(12)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
