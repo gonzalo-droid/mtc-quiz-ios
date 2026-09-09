@@ -92,7 +92,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Los colores del semáforo tienen el siguiente significado: rojo: _____; ámbar o amarillo: _____; verde: ____.",
+            "title": "Los colores del semáforo tienen el siguiente significado: rojo: __________; ámbar o amarillo: __________; verde: __________.",
             "answer": "a",
             "options": [
                 "a) Detención - prevención - paso.",
@@ -544,7 +544,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El sobrepaso o adelantamiento de un vehículo en movimiento se efectúa, salvo excepciones, por la _________ retornando el vehículo después de la maniobra a su carril original.",
+            "title": "El sobrepaso o adelantamiento de un vehículo en movimiento se efectúa, salvo excepciones, por la __________ retornando el vehículo después de la maniobra a su carril original.",
             "answer": "b",
             "options": [
                 "a) Derecha.",
@@ -939,7 +939,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Si una licencia de conducir consigna alguna restricción, es correcto afirmar que:",
+            "title": "Si una licencia de conducir consiga alguna restricción, es correcto afirmar que:",
             "answer": "b",
             "options": [
                 "a) Dicha restricción es meramente informativa.",
@@ -1166,7 +1166,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Si en una vía de dos carriles con tránsito en un mismo sentido usted se desplaza lentamente en su vehículo, debe circular por el carril de la _________ y los vehículos que circulen a mayor velocidad deben hacerlo por el carril de la _________",
+            "title": "Si en una vía de dos carriles con tránsito en un mismo sentido usted se desplaza lentamente en su vehículo, debe circular por el carril de la __________ y los vehículos que circulen a mayor velocidad deben hacerlo por el carril de la __________",
             "answer": "c",
             "options": [
                 "a) Izquierda / Derecha.",
@@ -2104,7 +2104,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Si al conducir su vehículo se encuentra con la señal vertical que se muestra (desvío por prohibición de giro izquierda), usted debe entender que:",
+            "title": "Si al conducir su vehículo se encuentra con la señal vertical que se muestra, usted debe entender que:",
             "answer": "b",
             "options": [
                 "a) La vía está interrumpida y debe tomar el camino alternativo que muestra la señal.",
@@ -2330,7 +2330,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El conductor está ________ a ___________ a las pruebas que le solicite el Efectivo de la Policía Nacional del Perú, asignado al control del tránsito, para determinar su estado de intoxicación por alcohol, drogas, estupefacientes u otros tóxicos",
+            "title": "El conductor está __________ a __________ a las pruebas que le solicite el Efectivo de la Policía Nacional del Perú, asignado al control del tránsito, para determinar su estado de intoxicación por alcohol, drogas, estupefacientes u otros tóxicos",
             "answer": "c",
             "options": [
                 "a) En su derecho - negarse.",
@@ -2376,7 +2376,7 @@
             "answer": "d",
             "options": [
                 "a) Nunca.",
-                "b) Sí, siempre y cuando vaya acompañada de una persona mayor de edad y titular de una licencia de conducir.",
+                "b) Sí, siempre y cuando vaya acompañada de una personas mayor de edad y titular de una licencia de conducir.",
                 "c) No, salvo que conduzca un vehículo de dimensión reducida.",
                 "d) Sí, siempre y cuando sea mayor de 16 años y cuente con licencia de conducir o permiso provisional, conforme a lo dispuesto en el Reglamento Nacional del Sistema de Emisión de Licencias de Conducir."
             ]
@@ -2386,7 +2386,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Es una obligación general de tránsito que, los ____________ circulen respetando los mensajes de _______________, las instrucciones de los Efectivos de la Policía de Tránsito y el mandato de las normas legales y reglamentarias correspondientes.",
+            "title": "Es una obligación general de tránsito que, los __________ circulen respetando los mensajes de __________, las instrucciones de los Efectivos de la Policía de Tránsito y el mandato de las normas legales y reglamentarias correspondientes.",
             "answer": "b",
             "options": [
                 "a) Peatones - los letreros instalados en las vías públicas.",
@@ -2442,13 +2442,13 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El uso de la luz ___________ es obligatorio en __________, debiendo cambiar por luz ____________ momentos previos al cruce con otro vehículo que circule en sentido contrario.",
+            "title": "El uso de la luz __________ es obligatorio en __________, debiendo cambiar por luz __________ momentos previos al cruce con otro vehículo que circule en sentido contrario.",
             "answer": "d",
             "options": [
                 "a) Baja - carreteras - alta.",
                 "b) Alta - vías urbanas - baja.",
                 "c) Rompenieblas - carreteras - baja.",
-                "d) Alta - carreteras - baja."
+                "d) Alta - carretereras - baja."
             ]
         },
         {
@@ -2512,7 +2512,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "La autoridad competente, ______________ puede prohibir o restringir _____________________ en determinadas vías públicas.",
+            "title": "La autoridad competente, __________ puede prohibir o restringir __________ en determinadas vías públicas.",
             "answer": "a",
             "options": [
                 "a) Cuando la situación lo justifique - la circulación o estacionamiento de vehículos.",
@@ -2652,7 +2652,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Las __________________ tienen por función informar a los usuarios sobre los servicios generales existentes próximos a la vía, tales como teléfono, hospedaje, restaurante, primeros auxilios, estación de combustibles, talleres, y otros.",
+            "title": "Las __________ tienen por función informar a los usuarios sobre los servicios generales existentes próximos a la vía, tales como teléfono, hospedaje, restaurante, primeros auxilios, estación de combustibles, talleres, y otros.",
             "answer": "c",
             "options": [
                 "a) Señales de localización.",
@@ -2680,7 +2680,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Las marcas en el pavimento constituyen la señalización ___________ y se emplean para _____________ la circulación.",
+            "title": "Las marcas en el pavimento constituyen la señalización __________ y se emplean para __________ la circulación.",
             "answer": "a",
             "options": [
                 "a) Horizontal - reglamentar.",
@@ -2798,7 +2798,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "¿Cuál es la acción correcta del conductor, según las normas de tránsito, en la situación que plantea el siguiente gráfico? (vehículo girando a la derecha con peatón cruzando)",
+            "title": "¿Cuál es la acción correcta del conductor, según las normas de tránsito, en la situación que plantea el siguiente gráfico?",
             "answer": "b",
             "options": [
                 "a) Girar rápidamente a la derecha antes que el peatón cruce la calzada.",
@@ -2941,7 +2941,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "El siguiente gráfico muestra (zona escolar con señalización):",
+            "title": "El siguiente gráfico muestra:",
             "answer": "a",
             "options": [
                 "a) Señalización de tránsito vertical y horizontal en una zona escolar.",
@@ -2958,7 +2958,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "Las __________canalizadoras, tiene por función conformar las islas canalizadoras del tránsito automotor en una _________.",
+            "title": "Las __________ canalizadoras, tiene por función conformar las islas canalizadoras del tránsito automotor en una __________.",
             "answer": "b",
             "options": [
                 "a) Islas canalizadoras - vía.",
@@ -2989,7 +2989,7 @@
             "section": "Materias generales",
             "category": "Todas",
             "topic": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
-            "title": "De acuerdo al siguiente gráfico (líneas amarillas continuas con camión), es correcto afirmar que:",
+            "title": "De acuerdo al siguiente gráfico, es correcto afirmar que:",
             "answer": "c",
             "options": [
                 "a) La zona que permite adelantar inicia con las líneas amarillas continuas.",
@@ -3186,7 +3186,7 @@
             "section": "Materias específicas",
             "category": "AIIA",
             "topic": "Regulación de actividad de transporte",
-            "title": "El vehículo que presta el servicio de transporte provincial de personas debe contar con el siguiente Seguro:",
+            "title": "El vehículo que prestan el servicio de transporte provincial de personas debe contar con el siguiente Seguro:",
             "answer": "c",
             "fundamento": "Artículo 30 de la Ley General de Transporte y Tránsito Terrestre, Ley N° 27181 del RENAT",
             "options": [
@@ -3223,7 +3223,7 @@
                 "a) 60 años.",
                 "b) 55 años.",
                 "c) 65 años.",
-                "d) No existe dicha exigencia en la norma."
+                "d) No existe dicho exigencia en la norma."
             ]
         },
         {

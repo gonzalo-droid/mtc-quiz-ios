@@ -1,5 +1,25 @@
 import SwiftUI
 
+private let blankMarker = "__________"
+private let invisibleBlankPattern = #/[\u{00a0}]{4,}|_{4,}/#
+private let blankTightLeftPattern = #/([\w,;:])__________/#
+private let blankTightRightPattern = #/__________(\w)/#
+
+extension String {
+    /// Fill-in-the-blank questions carry their gap in the question text itself. The balotario
+    /// PDFs they're extracted from spell that gap inconsistently: sometimes a run of
+    /// non-breaking spaces (an invisible hole), sometimes underscores of whatever width the PDF
+    /// happened to lay out. The question JSON is normalized to ten underscores at the data
+    /// layer, so this is a guard rather than the fix — it keeps a future re-extraction from
+    /// silently reintroducing an invisible or malformed gap. Ported from Android's
+    /// QuestionAnswerCard.kt `withVisibleBlanks()`.
+    func withVisibleBlanks() -> String {
+        replacing(invisibleBlankPattern, with: blankMarker)
+            .replacing(blankTightLeftPattern, with: { "\($0.output.1) \(blankMarker)" })
+            .replacing(blankTightRightPattern, with: { "\(blankMarker) \($0.output.1)" })
+    }
+}
+
 public struct QuestionAnswerCard: View {
     private let title: String
     private let options: [AnswerOption]
@@ -20,7 +40,7 @@ public struct QuestionAnswerCard: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(title)
+            Text(title.withVisibleBlanks())
                 .font(MTCTypography.headline)
 
             if !imageURLs.isEmpty {
