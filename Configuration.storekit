@@ -1,0 +1,117 @@
+{
+  "identifier" : "481A52EB-9236-49B3-AC9D-2586C0B55209",
+  "nonRenewingSubscriptions" : [],
+  "products" : [],
+  "settings" : {
+    "_applicationInternalID" : "6800840447",
+    "_developerTeamID" : "2436FLG37H",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "es_PE",
+    "_storefront" : "PER",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "01B8FB87-0A8E-4C68-A7F6-7ED42001E811",
+      "localizations" : [],
+      "name" : "mtcquiz_premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "2.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "5C5A0060-77F1-4493-9484-8ECE14BCAFFD",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Sin anuncios, acceso premium mensual",
+              "displayName" : "Premium Mensual",
+              "locale" : "es_PE"
+            }
+          ],
+          "productID" : "com.gonzadev.mtcquiz.premium.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Mensual",
+          "subscriptionGroupID" : "01B8FB87-0A8E-4C68-A7F6-7ED42001E811",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : []
+        },
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "19.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "741E625B-7516-4F1C-91F0-D8BCEA45DCE5",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Sin anuncios, acceso premium anual",
+              "displayName" : "Premium Anual",
+              "locale" : "es_PE"
+            }
+          ],
+          "productID" : "com.gonzadev.mtcquiz.premium.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Premium Anual",
+          "subscriptionGroupID" : "01B8FB87-0A8E-4C68-A7F6-7ED42001E811",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : []
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

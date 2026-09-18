@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import SwiftData
 import MTCData
@@ -14,11 +15,14 @@ import MTCAdsFeature
 import GoogleMobileAds
 internal import MTCDomain
 
-/// No shared `PremiumRepository` exists on iOS yet (Premium is a UI-only stub, see
-/// `PremiumViewModel` — `isPremium` never becomes true today). This hook exists so ad-gating
-/// is already wired correctly for when real billing lands; swap the body for a real repository
-/// read at that point instead of threading a new parameter through everywhere ads are used.
-private func isPremiumUser() -> Bool { false }
+/// Backed by `StoreKitPremiumRepository`'s `UserDefaults` cache. Synchronous ad-gating call
+/// sites (ads manager construction, `BannerAdView` at render time) can't `await` the
+/// repository actor mid-render, so they read this cached flag directly instead — it's kept
+/// current by `refreshPurchaseState()` (called on launch) and by the repository's own
+/// `Transaction.updates` listener.
+private func isPremiumUser() -> Bool {
+    UserDefaults.standard.bool(forKey: StoreKitPremiumRepository.cachedIsPremiumKey)
+}
 
 @main
 struct mtcquizApp: App {
@@ -26,6 +30,7 @@ struct mtcquizApp: App {
     private let preferencesRepository = UserDefaultsPreferencesRepository()
     private let questionRepository = LocalQuestionRepository()
     private let imageResolver = LocalQuestionImageResolver()
+    private let premiumRepository = StoreKitPremiumRepository()
     private let modelContainer: ModelContainer
     private let adsManager = GoogleAdsManager(
         bannerAdUnitID: "ca-app-pub-1427341798923689/1670669268",
@@ -47,7 +52,8 @@ struct mtcquizApp: App {
                 imageResolver: imageResolver,
                 evaluationRepository: SwiftDataEvaluationRepository(modelContext: modelContainer.mainContext),
                 dismissedQuestionRepository: SwiftDataDismissedQuestionRepository(modelContext: modelContainer.mainContext),
-                adsManager: adsManager
+                adsManager: adsManager,
+                premiumRepository: premiumRepository
             )
         }
     }
@@ -61,6 +67,7 @@ private struct RootView: View {
     let evaluationRepository: SwiftDataEvaluationRepository
     let dismissedQuestionRepository: SwiftDataDismissedQuestionRepository
     let adsManager: GoogleAdsManager
+    let premiumRepository: StoreKitPremiumRepository
     @State private var path = NavigationPath()
     @AppStorage("theme_mode") private var themeModeRaw: String = "system"
     @AppStorage("onboarding_shown") private var onboardingShown: Bool = false
@@ -97,6 +104,7 @@ private struct RootView: View {
             .task {
                 adsManager.preloadPdfInterstitial()
                 adsManager.preloadEvaluationInterstitial()
+                await premiumRepository.refreshPurchaseState()
             }
             .navigationDestination(for: Route.self) { route in
                 switch route {
@@ -224,7 +232,7 @@ private struct RootView: View {
                     )
                 case .premium:
                     PremiumView(
-                        viewModel: PremiumViewModel(),
+                        viewModel: PremiumViewModel(premiumRepository: premiumRepository),
                         onBack: {
                             path.removeLast()
                         },

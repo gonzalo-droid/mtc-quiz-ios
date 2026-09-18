@@ -5,21 +5,41 @@ import Observation
 @Observable
 public final class PremiumViewModel {
     public private(set) var state = PremiumState()
+    private let premiumRepository: PremiumRepository
 
-    public init() {}
+    public init(premiumRepository: PremiumRepository) {
+        self.premiumRepository = premiumRepository
+    }
+
+    public func load() async {
+        async let premium = premiumRepository.isPremium
+        async let plans = premiumRepository.loadAvailablePlans()
+        state.isPremium = await premium
+        state.availablePlans = await plans
+    }
 
     public func selectPlan(_ plan: MTCDomain.SubscriptionPlan) {
         state.selectedPlan = plan
     }
 
-    /// No real purchase backend in this scope — intentional no-op. The button this is wired to
-    /// stays disabled in practice, since `state.selectedPlan` can never become non-nil through
-    /// real user interaction while `availablePlans` is always empty. Kept as a real method for
-    /// API parity with Android and as the natural hook for a future real-StoreKit pass.
-    public func subscribe() {}
+    public func subscribe() async {
+        guard let productId = state.selectedPlan?.productId else { return }
+        state.isLoading = true
+        let success = await premiumRepository.subscribe(productId: productId)
+        state.isLoading = false
+        if success {
+            state.isPremium = await premiumRepository.isPremium
+        }
+    }
 
-    public func restorePurchases() {
-        state.restoreMessage = "No se encontró ninguna suscripción activa"
+    public func restorePurchases() async {
+        state.isLoading = true
+        _ = await premiumRepository.restorePurchases()
+        state.isPremium = await premiumRepository.isPremium
+        state.isLoading = false
+        state.restoreMessage = state.isPremium
+            ? "Suscripción restaurada correctamente"
+            : "No se encontró ninguna suscripción activa"
     }
 
     public func clearRestoreMessage() {

@@ -55,6 +55,9 @@ public struct PremiumView: View {
         }
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .task {
+            await viewModel.load()
+        }
         // NOTE: When the app-wide theme is explicitly "Claro" (light), this nested
         // .preferredColorScheme(.dark) does NOT override the status bar's text/icon
         // color — the outer NavigationStack's explicit light scheme wins for system
@@ -159,7 +162,7 @@ public struct PremiumView: View {
 
         Spacer().frame(height: 24)
 
-        Button(action: { viewModel.subscribe() }) {
+        Button(action: { Task { await viewModel.subscribe() } }) {
             ZStack {
                 LinearGradient(colors: [premiumGold, premiumAmber], startPoint: .leading, endPoint: .trailing)
                 if viewModel.state.isLoading {
@@ -179,7 +182,7 @@ public struct PremiumView: View {
         Spacer().frame(height: 8)
 
         Button("Restaurar compras") {
-            viewModel.restorePurchases()
+            Task { await viewModel.restorePurchases() }
         }
         .font(.body)
         .foregroundStyle(.white.opacity(0.5))
@@ -316,9 +319,28 @@ private struct PlanCard: View {
     .background(premiumDark)
 }
 
+private actor PreviewPremiumRepository: PremiumRepository {
+    private let plans: [MTCDomain.SubscriptionPlan]
+    var isPremium: Bool { false }
+
+    init(plans: [MTCDomain.SubscriptionPlan]) {
+        self.plans = plans
+    }
+
+    func loadAvailablePlans() async -> [MTCDomain.SubscriptionPlan] { plans }
+    func subscribe(productId: String) async -> Bool { false }
+    func restorePurchases() async -> Bool { false }
+    func refreshPurchaseState() async {}
+}
+
 #Preview("Con planes") {
     NavigationStack {
-        let viewModel = PremiumViewModel()
+        let viewModel = PremiumViewModel(
+            premiumRepository: PreviewPremiumRepository(plans: [
+                MTCDomain.SubscriptionPlan(productId: "mtcquiz_premium_monthly", billingPeriod: .monthly, formattedPrice: "S/ 9.90"),
+                MTCDomain.SubscriptionPlan(productId: "mtcquiz_premium_annual", billingPeriod: .annual, formattedPrice: "S/ 29.90")
+            ])
+        )
         PremiumView(viewModel: viewModel, onBack: {}, onTerms: {}, onPrivacy: {})
             .onAppear {
                 viewModel.selectPlan(
@@ -330,6 +352,9 @@ private struct PlanCard: View {
 
 #Preview("Sin planes disponibles") {
     NavigationStack {
-        PremiumView(viewModel: PremiumViewModel(), onBack: {}, onTerms: {}, onPrivacy: {})
+        PremiumView(
+            viewModel: PremiumViewModel(premiumRepository: PreviewPremiumRepository(plans: [])),
+            onBack: {}, onTerms: {}, onPrivacy: {}
+        )
     }
 }
