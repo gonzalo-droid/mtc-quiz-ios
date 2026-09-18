@@ -108,8 +108,7 @@ the app ever needs a second language, that is its own task.
 ## Deployment
 
 - **Minimum iOS 17**, app and packages alike. The app target inherited an accidental 26.2 from
-  Xcode's scaffold (project-level setting, never overridden) until PR #10 brought it to 17.0. If
-  that PR hasn't merged when you read this, the app still says 26.2 — merge it before a release.
+  Xcode's scaffold (project-level setting, never overridden) until PR #10 brought it to 17.0.
   Nothing in the code needs more than 17: there is no iOS availability guard anywhere, and Swift
   rejects a too-new API at compile time. Runtime-verified on iOS 18.0; no iOS 17 simulator runtime
   was available to check 17.x itself.
@@ -143,13 +142,22 @@ corrígelo aquí — el agente la trata como autoridad por encima de sus propios
 No hay tag de sincronización en el repo Android.
 
 **Estado de paridad (hasta que exista `PARITY.md`, esta línea es el libro mayor):** iOS `master`
-equivale a Android `e971e65` (2026-09-07). Lo portado está en
-`docs/superpowers/specs/2026-09-07-android-homologation-design.md`, más el shuffle del simulacro
-(Android `e892b0f`, iOS PR #9). Si mueves Android o portas algo, actualiza esta línea.
+equivale a Android `d163a04` (2026-09-18). Lo portado:
+`docs/superpowers/specs/2026-09-07-android-homologation-design.md` (Android #16–#20), más el
+shuffle del simulacro (Android `e892b0f` → iOS #9), la figura de la pregunta 93 en los bancos A
+(Android #21 → iOS #12, re-mergeado como #13 tras un force push) y el título "Ajustes de
+evaluación" (Android `e14192f` → iOS `fix/customize-screen-title`). Si mueves Android o portas
+algo, actualiza esta línea.
 
-**Ojo al calcular brechas:** esa homologación se armó por números de PR (#16–#20) y se le escapó
-`e892b0f`, que entró como commit directo, sin PR. Revisa siempre
-`git log --first-parent master` del repo Android, no solo los merges.
+**Ojo al calcular brechas:** esa homologación se armó por números de PR y se le escaparon dos
+commits directos, sin PR: `e892b0f` y `e14192f`. Revisa siempre los commits directos además de los
+merges:
+
+```bash
+git -C /Volumes/Neko/AndroidStudioProjects/MTCQuiz log --first-parent --no-merges <sha-de-la-última-paridad>..origin/master
+```
+
+Revisados hasta `d163a04`: los demás commits directos son docs, ids de AdMob y claves de build.
 
 **2. Build y tests** — ver [Build & Run](#build--run). Nada se compila "a nivel de app": se compila
 y se testea **por paquete**, con el scheme del paquete. `swift test` no sirve (SDK del simulador).
@@ -254,6 +262,11 @@ auditoría viven en el repo **Android**
 (`.claude/skills/mtc-question-extractor/scripts/audit_questions.py` y `audit_images.py`) y se pueden
 apuntar a la copia de iOS.
 
+**Si Android vuelve a extraer imágenes, no copies a ciegas.** `extract_images.py` asigna cada
+figura a la fila donde cae su borde superior, y así terminó la figura de la 93 pegada a la 92 (a
+2 px del límite). `audit_images.py` ya detecta ese caso desde Android #21: córrelo sobre lo que vas
+a copiar antes de copiarlo.
+
 **No renumerar ids** aunque queden desordenados: `DismissedQuestionRecord.questionId` persiste el id
 de la pregunta, y renumerar apuntaría ese estado guardado a otra pregunta.
 
@@ -299,6 +312,12 @@ actuales):
 - **Nunca `git add -A`.** Hay `.build/` de SPM dentro de los paquetes, un `build/` en la raíz y dos
   carpetas basura de un comando mal tipeado (`-p/` y `mkdir/`). Stagea por nombre.
 - Hay un worktree en `/Volumes/Neko/apps_ios/mtcquiz-worktrees/` — no lo toques desde aquí.
+- **Nunca `push --force` a `master`.** El 2026-09-18 un force push desde un clon desactualizado
+  borró el merge del #12 sin que nadie lo notara: el PR seguía diciendo "Merged". Si un PR mergeado
+  parece no estar en `master`, revisa `gh api repos/gonzalo-droid/mtc-quiz-ios/activity`.
+- **Los simuladores se comparten con otras sesiones** (quoteAnime corre en los mismos). Antes de
+  lanzar la app en uno ya arrancado, mira la barra de estado: un "◀ QuoteAnime" arriba a la izquierda
+  significa que otra sesión lo está usando. Usa uno que hayas arrancado tú.
 - El target de la app es casi vacío a propósito: si vas a agregar una pantalla, va en un paquete,
   no en `mtcquiz/`. Lo único que crece ahí es `Route.swift` y el `switch` de `RootView`.
 - Archivos fuente nuevos dentro de un paquete no necesitan paso en Xcode. Un **paquete nuevo**, un
