@@ -9,6 +9,7 @@ private let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(appStor
 
 public struct SettingsView: View {
     @State private var viewModel: SettingsViewModel
+    private let isPremium: Bool
     private let onCustomize: () -> Void
     private let onPremium: () -> Void
     private let onStats: () -> Void
@@ -21,6 +22,7 @@ public struct SettingsView: View {
 
     public init(
         viewModel: SettingsViewModel,
+        isPremium: Bool,
         onCustomize: @escaping () -> Void,
         onPremium: @escaping () -> Void,
         onStats: @escaping () -> Void,
@@ -30,6 +32,7 @@ public struct SettingsView: View {
         onTramites: @escaping () -> Void
     ) {
         _viewModel = State(initialValue: viewModel)
+        self.isPremium = isPremium
         self.onCustomize = onCustomize
         self.onPremium = onPremium
         self.onStats = onStats
@@ -57,7 +60,7 @@ public struct SettingsView: View {
 
             Section {
                 Button("Personalización", action: onCustomize)
-                Button("Premium", action: onPremium)
+                premiumRow
             }
 
             Section {
@@ -89,6 +92,49 @@ public struct SettingsView: View {
         .navigationTitle("Configuraciones")
         .task {
             await viewModel.load()
+        }
+    }
+
+    /// Mirrors Android's ConfigurationScreen: a "Hazte Premium" banner while the user isn't
+    /// premium, a plain confirmation row once they are. Both open the Premium screen.
+    @ViewBuilder
+    private var premiumRow: some View {
+        if isPremium {
+            Button(action: onPremium) {
+                HStack {
+                    Label("Premium", systemImage: "crown.fill")
+                    Spacer()
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(MTCColor.premiumGold)
+                }
+            }
+            .accessibilityLabel("Premium activo")
+        } else {
+            Button(action: onPremium) {
+                HStack(spacing: 12) {
+                    Image(systemName: "crown.fill")
+                        .font(.title2)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Hazte Premium")
+                            .font(MTCTypography.headline)
+                        Text("Estudia sin anuncios")
+                            .font(MTCTypography.caption)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                }
+                .foregroundStyle(MTCColor.onPremiumGold)
+                .padding(.vertical, 6)
+            }
+            .listRowBackground(
+                LinearGradient(
+                    colors: [MTCColor.premiumGold, MTCColor.premiumAmber],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
+            .accessibilityElement(children: .combine)
         }
     }
 
@@ -126,6 +172,23 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
     NavigationStack {
         SettingsView(
             viewModel: SettingsViewModel(preferencesRepository: PreviewPreferencesRepository()),
+            isPremium: false,
+            onCustomize: {},
+            onPremium: {},
+            onStats: {},
+            onHistory: {},
+            onTerms: {},
+            onPrivacy: {},
+            onTramites: {}
+        )
+    }
+}
+
+#Preview("Configuraciones — premium") {
+    NavigationStack {
+        SettingsView(
+            viewModel: SettingsViewModel(preferencesRepository: PreviewPreferencesRepository()),
+            isPremium: true,
             onCustomize: {},
             onPremium: {},
             onStats: {},

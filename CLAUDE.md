@@ -194,13 +194,16 @@ de fuente en una vista (`Color+Hex` existe para definir los tokens, no para usar
 La app **no es dark-only**: respeta `theme_mode` (`system`/`light`/`dark`), así que cualquier
 pantalla nueva tiene que verse bien en los dos esquemas.
 
+**El dorado del premium son tokens:** `MTCColor.premiumGold` / `premiumAmber` (el degradado de
+Android) y `MTCColor.onPremiumGold` para texto e íconos encima. **Nunca blanco sobre el dorado**,
+aunque Android lo haga: da 1,79:1, por debajo incluso del 3:1 de WCAG para texto grande.
+
 **Dos excepciones que ya existen, y que no son precedente:**
 - `PremiumView` fuerza `.preferredColorScheme(.dark)` a propósito: el paywall tiene fondo degradado
   fijo. El comentario del archivo documenta un efecto conocido: con tema "Claro", la barra de estado
   puede quedar ilegible.
-- `HomeView` escribe a mano el dorado de la corona (`Color(red: 1.0, green: 0.702, blue: 0.0)`),
-  copiando el `premiumGold` de `PremiumView`. Si vas a tocar cualquiera de los dos, conviértelo en un
-  token de `MTCColor` en vez de agregar una tercera copia.
+- El botón "Suscribirme ahora" de `PremiumView` todavía pone texto blanco sobre el dorado. Está
+  pendiente de corregir con `onPremiumGold`; no lo copies.
 
 Reutiliza antes de escribir: `AnswerOptionRow`, `QuestionAnswerCard`, `QuestionImageStrip`,
 `VehicleIllustration`, `LegalWebView`. Lo compartido entre features va a `MTCDesignSystem`, nunca
@@ -313,8 +316,8 @@ actuales):
 - El checkout vive en un volumen externo (`/Volumes/Neko`). `core.fileMode` está en `true` hoy y no
   ha dado problemas; si aparece una avalancha de archivos "modificados" por bits de permisos,
   ponlo en `false` antes de commitear.
-- **Nunca `git add -A`.** Hay `.build/` de SPM dentro de los paquetes, un `build/` en la raíz y dos
-  carpetas basura de un comando mal tipeado (`-p/` y `mkdir/`). Stagea por nombre.
+- **Nunca `git add -A`.** Hay `.build/` de SPM dentro de los paquetes y un `build/` en la raíz.
+  Stagea por nombre.
 - **Nunca `push --force` a `master`.** El 2026-09-18 un force push desde un clon desactualizado
   borró el merge del #12 sin que nadie lo notara: el PR seguía diciendo "Merged". Si un PR mergeado
   parece no estar en `master`, revisa `gh api repos/gonzalo-droid/mtc-quiz-ios/activity`.

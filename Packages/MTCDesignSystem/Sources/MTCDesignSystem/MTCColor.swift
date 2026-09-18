@@ -8,6 +8,15 @@ public enum MTCColor {
     /// Ported from Color.kt: tertiaryLight/tertiaryDark (used for the streak flame).
     public static let amber = Color(light: "#785900", dark: "#F5BF48")
 
+    /// Android's premium gold gradient (0xFFFFB300 → 0xFFFF8F00): the paywall, the Home crown and
+    /// the Settings premium row. Fixed values — Android doesn't vary them by theme either.
+    public static let premiumGold = Color(hex: "#FFB300")
+    public static let premiumAmber = Color(hex: "#FF8F00")
+    /// Text/icons on top of the premium gold. Android uses white there, but white on #FFB300 is
+    /// 1.79:1 — below even WCAG's 3:1 for large bold text. This is the paywall's own dark
+    /// (#1A1A2E): 9.5:1 on gold, 7.5:1 on amber.
+    public static let onPremiumGold = Color(hex: "#1A1A2E")
+
     public struct CategoryPalette: Sendable {
         public let container: Color
         public let content: Color
