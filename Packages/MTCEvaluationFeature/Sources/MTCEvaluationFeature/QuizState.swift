@@ -36,3 +36,13 @@ public struct QuizState: Equatable, Sendable {
         self.isFinishing = isFinishing
     }
 }
+
+public extension QuizState {
+    /// How far through the evaluation the user is, for the progress bar: 0 on the first question,
+    /// 1 on the last. Mirrors Android's `EvaluationScreen.kt` exactly — `index / (count - 1)`,
+    /// clamped to 0...1, and 0 with fewer than two questions.
+    var progress: Double {
+        guard questions.count > 1 else { return 0 }
+        return min(max(Double(currentIndex) / Double(questions.count - 1), 0), 1)
+    }
+}

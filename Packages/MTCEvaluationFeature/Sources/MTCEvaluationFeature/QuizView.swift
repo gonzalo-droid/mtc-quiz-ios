@@ -100,6 +100,14 @@ public struct QuizView: View {
                     .foregroundStyle(MTCColor.primary)
             }
 
+            // Android shows a progress bar with its own "n/total" count; here the header above
+            // already says "Pregunta n de total", so the bar carries no text and is hidden from
+            // VoiceOver, which would otherwise read the same position twice.
+            ProgressView(value: viewModel.state.progress)
+                .tint(MTCColor.primary)
+                .animation(.easeInOut, value: viewModel.state.progress)
+                .accessibilityHidden(true)
+
             ScrollView {
                 QuestionAnswerCard(
                     title: viewModel.state.currentQuestion.title,
