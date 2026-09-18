@@ -37,6 +37,8 @@ Regla de dependencia sin cambios: cada feature depende de `MTCDomain` (+`MTCDesi
 
 **Generación del simulacro**: sin randomización, igual que Android — se toman las primeras N preguntas del JSON tal cual vienen (`numberQuestions` de preferencias). Sin shuffle de preguntas ni de opciones.
 
+> **Superado (2026-09-18).** Era cierto cuando se escribió, pero Android empezó a barajar el 2026-08-27 (`e892b0f`, *fix: random questions by evaluation*: `shuffled().take(n)`) y ese fix no entró en la homologación de septiembre. iOS ahora baraja igual — ver rama `fix/shuffle-evaluation-questions`. Las **opciones** siguen sin barajarse, en las dos plataformas.
+
 **Persistencia de evaluaciones**: SwiftData (`@Model final class EvaluationRecord`), equivalente directo de `EvaluationEntity` de Room — mismos campos, `questionResults` serializado como JSON String igual que Android (no se modela como relación SwiftData, por fidelidad simple con el port y porque nada en este alcance necesita queries sobre resultados individuales).
 
 **PDF**: `PDFKit` (`PDFView` envuelto en `UIViewRepresentable`) en vez de replicar el renderer custom de Android — es la herramienta nativa de iOS para esto, mucho más simple y robusta. Sin búsqueda de texto en el PDF en esta pasada (Android la tiene solo en API 35+, es un nice-to-have, no bloqueante). Descarga/compartir vía `ShareLink` nativo en vez de guardar a una carpeta de Descargas (concepto que no existe igual en iOS — Files/compartir es el equivalente real).
