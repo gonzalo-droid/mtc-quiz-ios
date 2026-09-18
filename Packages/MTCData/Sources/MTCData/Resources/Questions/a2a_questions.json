@@ -1313,9 +1313,6 @@
                 "b) Está permitido cruzar al otro carril para el adelantamiento.",
                 "c) Se trata de una vía de doble sentido de circulación, que permite cruzar al otro carril.",
                 "d) Separa corrientes de tráfico en el mismo sentido."
-            ],
-            "imagens": [
-                "q92_a_a2a"
             ]
         },
         {
@@ -1330,6 +1327,9 @@
                 "b) Adelantar al vehículo que se encuentra delante de él y que circula por el carril izquierdo.",
                 "c) No adelantar al vehículo que tiene adelante y que circula por el carril izquierdo y continuar por su carril.",
                 "d) Cambiarse al carril izquierdo con precaución."
+            ],
+            "imagens": [
+                "q93_a_a2a"
             ]
         },
         {
