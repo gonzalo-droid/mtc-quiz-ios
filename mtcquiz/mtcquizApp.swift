@@ -15,9 +15,10 @@ import GoogleMobileAds
 internal import MTCDomain
 
 /// No shared `PremiumRepository` exists on iOS yet (Premium is a UI-only stub, see
-/// `PremiumViewModel` — `isPremium` never becomes true today). This hook exists so ad-gating
-/// is already wired correctly for when real billing lands; swap the body for a real repository
-/// read at that point instead of threading a new parameter through everywhere ads are used.
+/// `PremiumViewModel` — `isPremium` never becomes true today). This hook exists so everything
+/// premium-aware — ad-gating, the Home crown, the Settings premium row — is already wired
+/// correctly for when real billing lands; swap the body for a real repository read at that point
+/// instead of threading a new parameter through every screen.
 private func isPremiumUser() -> Bool { false }
 
 @main
@@ -82,6 +83,7 @@ private struct RootView: View {
                         categoryRepository: categoryRepository,
                         preferencesRepository: preferencesRepository
                     ),
+                    isPremium: isPremiumUser(),
                     onSelectCategory: { category in
                         path.append(Route.detail(categoryId: category.id))
                     },
@@ -175,6 +177,7 @@ private struct RootView: View {
                 case .settings:
                     SettingsView(
                         viewModel: SettingsViewModel(preferencesRepository: preferencesRepository),
+                        isPremium: isPremiumUser(),
                         onCustomize: {
                             path.append(Route.customize)
                         },

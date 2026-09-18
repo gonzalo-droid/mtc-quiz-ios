@@ -7,14 +7,17 @@ public struct HomeView: View {
     private let onSelectCategory: (MTCDomain.Category) -> Void
     private let onOpenSettings: () -> Void
     private let onOpenPremium: () -> Void
+    private let isPremium: Bool
 
     public init(
         viewModel: HomeViewModel,
+        isPremium: Bool,
         onSelectCategory: @escaping (MTCDomain.Category) -> Void,
         onOpenSettings: @escaping () -> Void,
         onOpenPremium: @escaping () -> Void
     ) {
         _viewModel = State(initialValue: viewModel)
+        self.isPremium = isPremium
         self.onSelectCategory = onSelectCategory
         self.onOpenSettings = onOpenSettings
         self.onOpenPremium = onOpenPremium
@@ -58,12 +61,16 @@ public struct HomeView: View {
             await viewModel.load()
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: onOpenPremium) {
-                    Image(systemName: "crown.fill")
-                        .foregroundStyle(Color(red: 1.0, green: 0.702, blue: 0.0)) // matches PremiumView's premiumGold
+            // The crown is an invitation to go premium, so a premium user doesn't see it — as on
+            // Android's Home.
+            if !isPremium {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: onOpenPremium) {
+                        Image(systemName: "crown.fill")
+                            .foregroundStyle(MTCColor.premiumGold)
+                    }
+                    .accessibilityLabel("Premium")
                 }
-                .accessibilityLabel("Premium")
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: onOpenSettings) {
@@ -142,6 +149,7 @@ private let previewCategories: [MTCDomain.Category] = [
             categoryRepository: PreviewCategoryRepository(categoriesToReturn: previewCategories),
             preferencesRepository: PreviewPreferencesRepository(streakToReturn: 5)
         ),
+        isPremium: false,
         onSelectCategory: { _ in },
         onOpenSettings: {},
         onOpenPremium: {}
@@ -154,8 +162,24 @@ private let previewCategories: [MTCDomain.Category] = [
             categoryRepository: PreviewCategoryRepository(categoriesToReturn: previewCategories),
             preferencesRepository: PreviewPreferencesRepository(streakToReturn: 0)
         ),
+        isPremium: false,
         onSelectCategory: { _ in },
         onOpenSettings: {},
         onOpenPremium: {}
     )
+}
+
+#Preview("Premium (sin corona)") {
+    NavigationStack {
+        HomeView(
+            viewModel: HomeViewModel(
+                categoryRepository: PreviewCategoryRepository(categoriesToReturn: previewCategories),
+                preferencesRepository: PreviewPreferencesRepository(streakToReturn: 5)
+            ),
+            isPremium: true,
+            onSelectCategory: { _ in },
+            onOpenSettings: {},
+            onOpenPremium: {}
+        )
+    }
 }

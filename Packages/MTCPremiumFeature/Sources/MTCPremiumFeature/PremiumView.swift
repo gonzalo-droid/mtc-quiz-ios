@@ -1,8 +1,9 @@
 import SwiftUI
 import MTCDomain
+import MTCDesignSystem
 
-private let premiumGold = Color(red: 1.0, green: 0.702, blue: 0.0)       // #FFB300
-private let premiumAmber = Color(red: 1.0, green: 0.561, blue: 0.0)      // #FF8F00
+private let premiumGold = MTCColor.premiumGold
+private let premiumAmber = MTCColor.premiumAmber
 private let premiumDark = Color(red: 0.102, green: 0.102, blue: 0.180)   // #1A1A2E
 private let premiumDarkEnd = Color(red: 0.086, green: 0.129, blue: 0.243) // #16213E
 
