@@ -222,8 +222,12 @@ ese fue exactamente el bug que arregló el PR #7.
   los anuncios. Portar trabajo de billing de Android significa portar el comportamiento *alrededor*
   del entitlement — gates, paywall, qué muestra la app — y **nunca** cablear StoreKit 2. El billing
   real es su propia tarea y su propio fork: si un port parece exigirlo, párate y pregunta.
-  (La rama `feat/ios-storekit2-billing` existe pero está vacía: es un marcador, no una
-  implementación.)
+  **Hay una implementación de StoreKit 2 a medio hacer** en la rama `feat/ios-storekit2-billing`
+  (`f47af7a`): `PremiumRepository`, `StoreKitPremiumRepository` con tests, el paywall conectado a
+  ese repositorio y un `Configuration.storekit`. Quedó sin commitear desde el 2026-08-17 y se
+  guardó tal cual el 2026-09-18: no está compilada, ni probada, ni revisada, y está basada en un
+  `master` anterior a los PRs #5–#14. Si se retoma el billing, empieza por ahí — actualízala sobre
+  `master` antes de nada — en vez de escribirlo de cero.
 - **Sin backend y sin Firebase.** Android usa Firebase para auth/analytics; en iOS esos caminos no
   existen y no se portan sin preguntar.
 - **Anuncios**: AdMob con ids de unidad hardcodeados. Los intersticiales son por contador —
@@ -311,7 +315,6 @@ actuales):
   ponlo en `false` antes de commitear.
 - **Nunca `git add -A`.** Hay `.build/` de SPM dentro de los paquetes, un `build/` en la raíz y dos
   carpetas basura de un comando mal tipeado (`-p/` y `mkdir/`). Stagea por nombre.
-- Hay un worktree en `/Volumes/Neko/apps_ios/mtcquiz-worktrees/` — no lo toques desde aquí.
 - **Nunca `push --force` a `master`.** El 2026-09-18 un force push desde un clon desactualizado
   borró el merge del #12 sin que nadie lo notara: el PR seguía diciendo "Merged". Si un PR mergeado
   parece no estar en `master`, revisa `gh api repos/gonzalo-droid/mtc-quiz-ios/activity`.
