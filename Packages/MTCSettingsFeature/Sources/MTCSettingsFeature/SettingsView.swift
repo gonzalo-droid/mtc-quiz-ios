@@ -15,6 +15,7 @@ public struct SettingsView: View {
     private let onHistory: () -> Void
     private let onTerms: () -> Void
     private let onPrivacy: () -> Void
+    private let onTramites: () -> Void
 
     @Environment(\.openURL) private var openURL
 
@@ -25,7 +26,8 @@ public struct SettingsView: View {
         onStats: @escaping () -> Void,
         onHistory: @escaping () -> Void,
         onTerms: @escaping () -> Void,
-        onPrivacy: @escaping () -> Void
+        onPrivacy: @escaping () -> Void,
+        onTramites: @escaping () -> Void
     ) {
         _viewModel = State(initialValue: viewModel)
         self.onCustomize = onCustomize
@@ -34,6 +36,7 @@ public struct SettingsView: View {
         self.onHistory = onHistory
         self.onTerms = onTerms
         self.onPrivacy = onPrivacy
+        self.onTramites = onTramites
     }
 
     public var body: some View {
@@ -69,6 +72,7 @@ public struct SettingsView: View {
             Section {
                 Button("Términos y condiciones", action: onTerms)
                 Button("Política de privacidad", action: onPrivacy)
+                Button("Trámites asociados", action: onTramites)
             }
 
             Section {
@@ -127,7 +131,8 @@ private struct PreviewPreferencesRepository: PreferencesRepository {
             onStats: {},
             onHistory: {},
             onTerms: {},
-            onPrivacy: {}
+            onPrivacy: {},
+            onTramites: {}
         )
     }
 }
