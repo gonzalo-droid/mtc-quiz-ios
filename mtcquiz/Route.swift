@@ -12,4 +12,5 @@ enum Route: Hashable {
     case errorReview
     case terms
     case privacy
+    case tramites
 }

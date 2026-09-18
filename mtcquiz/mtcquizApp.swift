@@ -192,6 +192,9 @@ private struct RootView: View {
                         },
                         onPrivacy: {
                             path.append(Route.privacy)
+                        },
+                        onTramites: {
+                            path.append(Route.tramites)
                         }
                     )
                 case .terms:
@@ -201,6 +204,12 @@ private struct RootView: View {
                 case .privacy:
                     LegalWebView(url: URL(string: "https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/")!)
                         .navigationTitle("Política de privacidad")
+                        .navigationBarTitleDisplayMode(.inline)
+                case .tramites:
+                    // Same gob.pe page as Android's TarifasScreen: the real procedure for getting
+                    // the licence by sitting the rules exam.
+                    LegalWebView(url: URL(string: "https://www.gob.pe/196-obtener-licencia-de-conducir-brevete-por-primera-vez-rendir-examen-de-reglas-de-transito-para-obtener-licencia-de-conducir-brevete")!)
+                        .navigationTitle("Trámites asociados")
                         .navigationBarTitleDisplayMode(.inline)
                 case .stats:
                     StatsView(viewModel: StatsViewModel(evaluationRepository: evaluationRepository))
