@@ -14,8 +14,11 @@ public final class LocalQuestionRepository: QuestionRepository {
             return []
         }
 
+        // A limited request is an evaluation: a random sample, so repeating the simulacro doesn't
+        // replay the same questions — mirrors Android's `shuffled().take(numberQuestion)`
+        // (e892b0f). An unlimited request is the study list and keeps the bank's own order.
         if let limit {
-            return Array(response.data.prefix(limit))
+            return Array(response.data.shuffled().prefix(limit))
         }
         return response.data
     }
