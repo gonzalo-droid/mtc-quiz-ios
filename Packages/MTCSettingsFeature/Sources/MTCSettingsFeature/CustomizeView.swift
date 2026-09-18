@@ -30,7 +30,7 @@ public struct CustomizeView: View {
     public var body: some View {
         Form {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Personaliza tu configuración y sigue estudiando")
+                Text("Ajustes de evaluación")
                     .font(MTCTypography.largeTitle)
                 Text("Ajusta el simulacro y mira cómo queda de exigente.")
                     .font(MTCTypography.body)
