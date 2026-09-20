@@ -147,7 +147,9 @@ equivale a Android `d163a04` (2026-09-18). Lo portado:
 shuffle del simulacro (Android `e892b0f` → iOS #9), la figura de la pregunta 93 en los bancos A
 (Android #21 → iOS #12, re-mergeado como #13 tras un force push) y el título "Ajustes de
 evaluación" (Android `e14192f` → iOS `fix/customize-screen-title`). Si mueves Android o portas
-algo, actualiza esta línea.
+algo, actualiza esta línea. Cerradas además las brechas que la auditoría encontró y no venían de un
+commit puntual de Android: barra de progreso de la evaluación, "Trámites asociados", fila Premium
+según estado y corona de Home (PRs #16–#18).
 
 **Ojo al calcular brechas:** esa homologación se armó por números de PR y se le escaparon dos
 commits directos, sin PR: `e892b0f` y `e14192f`. Revisa siempre los commits directos además de los
@@ -212,6 +214,11 @@ duplicado en dos paquetes.
 **5. Localización** — **no hay.** Todo el texto visible es español hardcodeado. Al portar una
 pantalla de Android, toma la redacción de su `strings.xml` y escríbela directo en la vista.
 **No introduzcas String Catalog ni `Localizable.strings`** como efecto secundario de un port.
+
+El proyecto declara **español como idioma de desarrollo** (`developmentRegion = es` en el
+`.pbxproj`, `CFBundleDevelopmentRegion = es` en el binario). De ahí salen en español los textos que
+pone el sistema y no la app: "Atrás", "Cancelar", los menús de edición. Con `en` —como estaba hasta
+el 2026-09-19— esos textos aparecían en inglés en una app por lo demás toda en español.
 
 El corolario: **toda fecha o número formateado se fija a `Locale(identifier: "es")`** (español
 genérico, no `es-PE`, para evitar variantes regionales de CLDR), como hace `SummaryView`. Un
