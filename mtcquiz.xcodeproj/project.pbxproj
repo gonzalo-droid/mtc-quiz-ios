@@ -125,10 +125,10 @@
 				};
 			};
 			buildConfigurationList = EA7386263025ADA80019A50B /* Build configuration list for PBXProject "mtcquiz" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				es,
 				Base,
 			);
 			mainGroup = EA7386223025ADA80019A50B;
