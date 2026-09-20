@@ -124,9 +124,11 @@ public struct QuizView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
             }
-            .background(MTCColor.primary)
+            // The background is drawn outside the Button, so SwiftUI's own disabled styling never
+            // reached it: the button stayed fully coloured while doing nothing. Dim it instead.
+            .background(MTCColor.primary.opacity(viewModel.state.canSubmit ? 1 : 0.35))
             .clipShape(Capsule())
-            .disabled(viewModel.state.selectedOptionIndex == nil || viewModel.state.isFinishing)
+            .disabled(!viewModel.state.canSubmit)
         }
         .padding(16)
     }
