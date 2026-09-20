@@ -52,16 +52,16 @@ public final class GoogleAdsManager: AdsManaging {
         return count > 0 && count % 3 == 0
     }
 
-    public func showPdfInterstitial(onDismiss: @escaping () -> Void) {
+    public func showPdfInterstitial(onDismiss: @escaping (_ adWasShown: Bool) -> Void) {
         guard !isPremium(), let ad = pdfInterstitial, let presenter = RootViewController.current() else {
-            onDismiss()
+            onDismiss(false)
             return
         }
-        let delegate = InterstitialDelegate { [weak self] in
+        let delegate = InterstitialDelegate { [weak self] adWasShown in
             self?.pdfInterstitial = nil
             self?.pdfDelegate = nil
             self?.preloadPdfInterstitial()
-            onDismiss()
+            onDismiss(adWasShown)
         }
         pdfDelegate = delegate
         ad.fullScreenContentDelegate = delegate
@@ -87,16 +87,16 @@ public final class GoogleAdsManager: AdsManaging {
         return count > 0 && count % 3 == 0
     }
 
-    public func showEvaluationInterstitial(onDismiss: @escaping () -> Void) {
+    public func showEvaluationInterstitial(onDismiss: @escaping (_ adWasShown: Bool) -> Void) {
         guard !isPremium(), let ad = evaluationInterstitial, let presenter = RootViewController.current() else {
-            onDismiss()
+            onDismiss(false)
             return
         }
-        let delegate = InterstitialDelegate { [weak self] in
+        let delegate = InterstitialDelegate { [weak self] adWasShown in
             self?.evaluationInterstitial = nil
             self?.evaluationDelegate = nil
             self?.preloadEvaluationInterstitial()
-            onDismiss()
+            onDismiss(adWasShown)
         }
         evaluationDelegate = delegate
         ad.fullScreenContentDelegate = delegate
@@ -110,19 +110,20 @@ public final class GoogleAdsManager: AdsManaging {
 
 /// `FullScreenContentDelegate` can't be a closure, so this adapts one to the callback shape
 /// `GoogleAdsManager` needs — fired on dismiss AND on failure-to-present, since both cases mean
-/// "the ad is gone, let the caller proceed" (matches Android's `onDismiss`-on-either-path).
+/// "the ad is gone, let the caller proceed" (matches Android's `onDismiss`-on-either-path). The
+/// flag separates the two: only a dismissal means the user actually sat through an ad.
 private final class InterstitialDelegate: NSObject, FullScreenContentDelegate {
-    private let onFinished: () -> Void
+    private let onFinished: (_ adWasShown: Bool) -> Void
 
-    init(onFinished: @escaping () -> Void) {
+    init(onFinished: @escaping (_ adWasShown: Bool) -> Void) {
         self.onFinished = onFinished
     }
 
     func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
-        onFinished()
+        onFinished(true)
     }
 
     func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        onFinished()
+        onFinished(false)
     }
 }

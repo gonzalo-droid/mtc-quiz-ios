@@ -17,8 +17,9 @@ public protocol AdsManaging: AnyObject {
     func shouldShowPdfInterstitial() -> Bool
 
     /// Muestra el intersticial de PDF precargado. Si no está listo o falla, invoca `onDismiss`
-    /// inmediatamente. Nunca bloquea.
-    func showPdfInterstitial(onDismiss: @escaping () -> Void)
+    /// inmediatamente. Nunca bloquea. `adWasShown` dice si el anuncio llegó a verse: sirve para
+    /// no ofrecer "quita los anuncios" cuando no hubo ninguno.
+    func showPdfInterstitial(onDismiss: @escaping (_ adWasShown: Bool) -> Void)
 
     /// Incrementa el contador persistente. Se llama ANTES de decidir si mostrar el intersticial.
     func recordPdfDownload()
@@ -31,8 +32,8 @@ public protocol AdsManaging: AnyObject {
     func shouldShowEvaluationInterstitial() -> Bool
 
     /// Muestra el intersticial de evaluación precargado. Si no está listo o falla, invoca
-    /// `onDismiss` inmediatamente. Nunca bloquea.
-    func showEvaluationInterstitial(onDismiss: @escaping () -> Void)
+    /// `onDismiss` inmediatamente. Nunca bloquea. `adWasShown` dice si el anuncio llegó a verse.
+    func showEvaluationInterstitial(onDismiss: @escaping (_ adWasShown: Bool) -> Void)
 
     /// Incrementa el contador persistente. Se llama ANTES de decidir si mostrar el intersticial.
     func recordEvaluationStart()
