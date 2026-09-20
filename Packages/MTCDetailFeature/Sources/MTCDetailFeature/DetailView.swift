@@ -77,7 +77,7 @@ public struct DetailView: View {
 
         VStack(spacing: 12) {
             Button(action: onStartEvaluation) {
-                Text("Iniciar evalución")
+                Text("Iniciar evaluación")
                     .font(MTCTypography.headline)
                     .foregroundStyle(MTCColor.onPrimary)
                     .frame(maxWidth: .infinity)
