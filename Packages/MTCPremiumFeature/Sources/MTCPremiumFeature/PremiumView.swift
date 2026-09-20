@@ -164,11 +164,13 @@ public struct PremiumView: View {
             ZStack {
                 LinearGradient(colors: [premiumGold, premiumAmber], startPoint: .leading, endPoint: .trailing)
                 if viewModel.state.isLoading {
-                    ProgressView().tint(.white)
+                    ProgressView().tint(MTCColor.onPremiumGold)
                 } else {
                     Text("Suscribirme ahora")
                         .font(.title3.bold())
-                        .foregroundStyle(.white)
+                        // Not white: white on this gradient is 1.79:1, below WCAG's 3:1 for
+                        // large bold text. See MTCColor.onPremiumGold.
+                        .foregroundStyle(MTCColor.onPremiumGold)
                 }
             }
         }
