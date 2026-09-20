@@ -38,6 +38,13 @@ public struct QuizState: Equatable, Sendable {
 }
 
 public extension QuizState {
+    /// Whether the primary button has anything to act on: an option must be picked before
+    /// "Verificar", and nothing is actionable once the evaluation is being saved. Same rule
+    /// Android uses to grey its button out.
+    var canSubmit: Bool {
+        selectedOptionIndex != nil && !isFinishing
+    }
+
     /// How far through the evaluation the user is, for the progress bar: 0 on the first question,
     /// 1 on the last. Mirrors Android's `EvaluationScreen.kt` exactly — `index / (count - 1)`,
     /// clamped to 0...1, and 0 with fewer than two questions.
