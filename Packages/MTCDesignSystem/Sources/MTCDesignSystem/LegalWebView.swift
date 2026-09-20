@@ -8,6 +8,7 @@ import WebKit
 public struct LegalWebView: View {
     private let url: URL
     @State private var loadFailed = false
+    @State private var isLoading = true
     @State private var reloadToken = UUID()
 
     public init(url: URL) {
@@ -18,10 +19,23 @@ public struct LegalWebView: View {
         if loadFailed {
             offlineState
         } else {
-            WebViewRepresentable(
-                url: url,
-                onLoadFailed: { loadFailed = true }
-            )
+            // A remote page can take seconds on a cold start; without this the screen is a blank
+            // rectangle under the title and looks broken.
+            ZStack {
+                WebViewRepresentable(
+                    url: url,
+                    onLoadFailed: {
+                        isLoading = false
+                        loadFailed = true
+                    },
+                    onLoadFinished: { isLoading = false }
+                )
+                if isLoading {
+                    ProgressView()
+                        .controlSize(.large)
+                        .accessibilityLabel("Cargando")
+                }
+            }
             .id(reloadToken)
         }
     }
@@ -39,6 +53,7 @@ public struct LegalWebView: View {
                 .multilineTextAlignment(.center)
             Button("Reintentar") {
                 loadFailed = false
+                isLoading = true
                 reloadToken = UUID()
             }
             .buttonStyle(.borderedProminent)
@@ -51,6 +66,7 @@ public struct LegalWebView: View {
 private struct WebViewRepresentable: UIViewRepresentable {
     let url: URL
     let onLoadFailed: () -> Void
+    let onLoadFinished: () -> Void
 
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
@@ -62,14 +78,20 @@ private struct WebViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: WKWebView, context: Context) {}
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(onLoadFailed: onLoadFailed)
+        Coordinator(onLoadFailed: onLoadFailed, onLoadFinished: onLoadFinished)
     }
 
     final class Coordinator: NSObject, WKNavigationDelegate {
         private let onLoadFailed: () -> Void
+        private let onLoadFinished: () -> Void
 
-        init(onLoadFailed: @escaping () -> Void) {
+        init(onLoadFailed: @escaping () -> Void, onLoadFinished: @escaping () -> Void) {
             self.onLoadFailed = onLoadFailed
+            self.onLoadFinished = onLoadFinished
+        }
+
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            onLoadFinished()
         }
 
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
