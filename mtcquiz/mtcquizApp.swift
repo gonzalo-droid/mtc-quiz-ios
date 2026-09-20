@@ -63,6 +63,11 @@ private struct RootView: View {
     let dismissedQuestionRepository: SwiftDataDismissedQuestionRepository
     let adsManager: GoogleAdsManager
     @State private var path = NavigationPath()
+    /// Set when an interstitial actually ran; turned into the dialog the next time Detail is on
+    /// screen, so the offer lands after the flow the ad interrupted instead of stacking a second
+    /// modal on top of it. Android sets its dialog flag in the same callback, with the same effect.
+    @State private var pendingUpsell = false
+    @State private var showUpsell = false
     @AppStorage("theme_mode") private var themeModeRaw: String = "system"
     @AppStorage("onboarding_shown") private var onboardingShown: Bool = false
 
@@ -103,12 +108,14 @@ private struct RootView: View {
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .detail(let categoryId):
+                    VStack(spacing: 0) {
                     DetailView(
                         viewModel: DetailViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
                         onStartEvaluation: {
                             adsManager.recordEvaluationStart()
                             if adsManager.shouldShowEvaluationInterstitial() {
-                                adsManager.showEvaluationInterstitial {
+                                adsManager.showEvaluationInterstitial { adWasShown in
+                                    if adWasShown { pendingUpsell = true }
                                     path.append(Route.evaluation(categoryId: categoryId))
                                 }
                             } else {
@@ -121,7 +128,8 @@ private struct RootView: View {
                         onDownloadPDF: {
                             adsManager.recordPdfDownload()
                             if adsManager.shouldShowPdfInterstitial() {
-                                adsManager.showPdfInterstitial {
+                                adsManager.showPdfInterstitial { adWasShown in
+                                    if adWasShown { pendingUpsell = true }
                                     path.append(Route.pdf(categoryId: categoryId))
                                 }
                             } else {
@@ -129,6 +137,24 @@ private struct RootView: View {
                             }
                         }
                     )
+                        BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
+                    }
+                    .onAppear {
+                        if pendingUpsell {
+                            pendingUpsell = false
+                            showUpsell = true
+                        }
+                    }
+                    .confirmationDialog(
+                        "¿Cansado de los anuncios?",
+                        isPresented: $showUpsell,
+                        titleVisibility: .visible
+                    ) {
+                        Button("Ver planes") { path.append(Route.premium) }
+                        Button("No, gracias", role: .cancel) {}
+                    } message: {
+                        Text("Hazte Premium y estudia sin interrupciones")
+                    }
                 case .questionReview(let categoryId):
                     QuestionReviewView(
                         viewModel: QuestionReviewViewModel(
