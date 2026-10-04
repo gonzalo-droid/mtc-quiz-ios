@@ -43,39 +43,34 @@ public struct SettingsView: View {
     }
 
     public var body: some View {
+        // Same sections, order and wording as Android's ConfigurationScreen.
         List {
-            Section("Apariencia") {
-                Picker("Tema", selection: themeModeBinding) {
-                    Text("Sistema").tag("system")
-                    Text("Claro").tag("light")
-                    Text("Oscuro").tag("dark")
-                }
-                .pickerStyle(.segmented)
-            }
-
             Section("Mi progreso") {
                 Button("Estadísticas", action: onStats)
                 Button("Historial de evaluaciones", action: onHistory)
             }
 
-            Section {
+            Section("Configuración") {
+                Picker("Apariencia", selection: themeModeBinding) {
+                    Text("Sistema").tag("system")
+                    Text("Claro").tag("light")
+                    Text("Oscuro").tag("dark")
+                }
+                .pickerStyle(.menu)
                 Button("Personalización", action: onCustomize)
                 premiumRow
             }
 
-            Section {
+            Section("Información") {
+                Button("Términos y condiciones", action: onTerms)
+                Button("Política de privacidad", action: onPrivacy)
+                Button("Trámites asociados", action: onTramites)
                 Button("Calificar app") {
                     openURL(writeReviewURL)
                 }
                 ShareLink(item: appStoreURL, message: Text("Prepárate para tu examen de manejo con MTCQuiz")) {
                     Text("Compartir app")
                 }
-            }
-
-            Section {
-                Button("Términos y condiciones", action: onTerms)
-                Button("Política de privacidad", action: onPrivacy)
-                Button("Trámites asociados", action: onTramites)
             }
 
             Section {
