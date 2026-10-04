@@ -31,7 +31,7 @@ public struct QuestionReviewView: View {
                 get: { viewModel.state.searchText },
                 set: { viewModel.updateSearchText($0) }
             ),
-            prompt: "Buscar"
+            prompt: "Buscar..."
         )
         .task {
             await viewModel.load()

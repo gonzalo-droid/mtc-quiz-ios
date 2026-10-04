@@ -84,9 +84,9 @@ public struct SummaryView: View {
                     .foregroundStyle(.secondary)
 
                 HStack(spacing: 12) {
-                    statCard(value: evaluation.totalCorrect, label: "Correctas")
-                    statCard(value: evaluation.totalIncorrect, label: "Incorrectas")
-                    statCard(value: evaluation.totalQuestions, label: "Preguntas")
+                    statCard(value: evaluation.totalCorrect, label: "Total correctas")
+                    statCard(value: evaluation.totalIncorrect, label: "Total incorrectas")
+                    statCard(value: evaluation.totalQuestions, label: "Total")
                 }
 
                 Text(
@@ -119,12 +119,16 @@ public struct SummaryView: View {
         VStack(spacing: 4) {
             Text("\(value)")
                 .font(MTCTypography.title)
+            // "Total incorrectas" wraps on narrow phones. Reserving two lines for every label
+            // keeps the three numbers on one row instead of the wrapped card's riding higher.
             Text(label)
                 .font(MTCTypography.caption)
                 .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .lineLimit(2, reservesSpace: true)
         }
         .frame(maxWidth: .infinity)
-        .frame(maxHeight: .infinity)
+        .frame(maxHeight: .infinity, alignment: .top)
         .padding(12)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
