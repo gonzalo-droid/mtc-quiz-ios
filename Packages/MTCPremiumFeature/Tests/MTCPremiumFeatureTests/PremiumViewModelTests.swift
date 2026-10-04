@@ -39,4 +39,12 @@ import MTCDomain
 
         #expect(viewModel.state.restoreMessage == nil)
     }
+
+    /// The paywall reads the same entitlement hook as ads, Home and Settings: when that hook
+    /// says premium, `PremiumView` shows "¡Eres Premium!" instead of the plans.
+    @Test(arguments: [true, false])
+    func isPremiumComesFromTheSharedEntitlementSource(isPremium: Bool) {
+        let viewModel = PremiumViewModel(isPremium: { isPremium })
+        #expect(viewModel.state.isPremium == isPremium)
+    }
 }

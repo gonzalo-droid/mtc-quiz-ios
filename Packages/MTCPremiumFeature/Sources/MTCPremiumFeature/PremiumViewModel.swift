@@ -6,7 +6,12 @@ import Observation
 public final class PremiumViewModel {
     public private(set) var state = PremiumState()
 
-    public init() {}
+    /// - Parameter isPremium: the same entitlement source the rest of the app reads (the app
+    ///   shell's `isPremiumUser()`), so the paywall says "¡Eres Premium!" exactly when ads,
+    ///   the Home crown and the Settings row also treat the user as premium.
+    public init(isPremium: () -> Bool = { false }) {
+        state.isPremium = isPremium()
+    }
 
     public func selectPlan(_ plan: MTCDomain.SubscriptionPlan) {
         state.selectedPlan = plan

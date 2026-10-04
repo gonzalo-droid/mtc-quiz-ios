@@ -129,6 +129,9 @@ private struct RootView: View {
                         // action inside the PDF screen, as on Android.
                         onDownloadPDF: {
                             path.append(Route.pdf(categoryId: categoryId))
+                        },
+                        onOpenSettings: {
+                            path.append(Route.settings)
                         }
                     )
                         BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
@@ -260,7 +263,7 @@ private struct RootView: View {
                     )
                 case .premium:
                     PremiumView(
-                        viewModel: PremiumViewModel(),
+                        viewModel: PremiumViewModel(isPremium: isPremiumUser),
                         onBack: {
                             path.removeLast()
                         },
