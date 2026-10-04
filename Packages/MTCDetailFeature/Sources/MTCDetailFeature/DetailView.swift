@@ -8,17 +8,20 @@ public struct DetailView: View {
     private let onStartEvaluation: () -> Void
     private let onStudy: () -> Void
     private let onDownloadPDF: () -> Void
+    private let onOpenSettings: () -> Void
 
     public init(
         viewModel: DetailViewModel,
         onStartEvaluation: @escaping () -> Void,
         onStudy: @escaping () -> Void,
-        onDownloadPDF: @escaping () -> Void
+        onDownloadPDF: @escaping () -> Void,
+        onOpenSettings: @escaping () -> Void = {}
     ) {
         _viewModel = State(initialValue: viewModel)
         self.onStartEvaluation = onStartEvaluation
         self.onStudy = onStudy
         self.onDownloadPDF = onDownloadPDF
+        self.onOpenSettings = onOpenSettings
     }
 
     public var body: some View {
@@ -39,6 +42,16 @@ public struct DetailView: View {
                 }
             }
             .padding(16)
+        }
+        // Android's DetailScreen has the same shortcut to Configuraciones in its top bar, with
+        // the same icon Home uses for it here.
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: onOpenSettings) {
+                    Image(systemName: "line.3.horizontal")
+                }
+                .accessibilityLabel("Configuraciones")
+            }
         }
         .task {
             await viewModel.load()
