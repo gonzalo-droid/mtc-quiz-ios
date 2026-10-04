@@ -40,6 +40,10 @@ public struct QuizView: View {
                 content
             }
         }
+        // Android shows the category title, small and bold, in its top bar; the inline title is
+        // iOS's version of that.
+        .navigationTitle(viewModel.state.category.title)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -50,23 +54,33 @@ public struct QuizView: View {
                 }
                 .accessibilityLabel("Cancelar evaluación")
             }
+            if !viewModel.state.isLoading, !viewModel.state.questions.isEmpty {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Text(formattedTime(secondsRemaining))
+                        .font(MTCTypography.headline)
+                        .monospacedDigit()
+                        .foregroundStyle(MTCColor.primary)
+                        .accessibilityLabel("Tiempo restante \(formattedTime(secondsRemaining))")
+                }
+            }
         }
         .task {
             await viewModel.load()
             viewModel.onFinished = onFinished
         }
+        // Copy shared with Android's EvaluationScreen, word for word.
         .alert("¿Cancelar evaluación?", isPresented: $showCancelConfirmation) {
-            Button("Cancelar", role: .cancel) {}
-            Button("Salir", role: .destructive) { onCancel() }
+            Button("No", role: .cancel) {}
+            Button("Sí, cancelar", role: .destructive) { onCancel() }
         } message: {
-            Text("Perderás el progreso de esta evaluación.")
+            Text("Si cancelas ahora, se perderá todo el progreso de tu evaluación.")
         }
-        .alert("Tiempo terminado", isPresented: $showTimeUpDialog) {
-            Button("Finalizar") {
+        .alert("Tiempo finalizado", isPresented: $showTimeUpDialog) {
+            Button("Finalizar evaluación") {
                 Task { await viewModel.finishQuiz() }
             }
         } message: {
-            Text("Se acabó el tiempo para esta evaluación.")
+            Text("Tu tiempo ha terminado. La evaluación se ha finalizado.")
         }
         .task(id: viewModel.state.isLoading) {
             guard !viewModel.state.isLoading else { return }
@@ -90,27 +104,23 @@ public struct QuizView: View {
     @ViewBuilder
     private var content: some View {
         VStack(spacing: 16) {
-            HStack {
-                Text("Pregunta \(viewModel.state.currentIndex + 1) de \(viewModel.state.questions.count)")
+            // Same header as Android's LinearProgressComponent: the bar with its "n/total" count
+            // beside it. The bar itself is hidden from VoiceOver, which reads the count instead.
+            HStack(spacing: 12) {
+                ProgressView(value: viewModel.state.progress)
+                    .tint(MTCColor.primary)
+                    .animation(.easeInOut, value: viewModel.state.progress)
+                    .accessibilityHidden(true)
+                Text(viewModel.state.positionText)
                     .font(MTCTypography.caption)
+                    .monospacedDigit()
                     .foregroundStyle(.secondary)
-                Spacer()
-                Text(formattedTime(secondsRemaining))
-                    .font(MTCTypography.headline)
-                    .foregroundStyle(MTCColor.primary)
+                    .accessibilityLabel("Pregunta \(viewModel.state.currentIndex + 1) de \(viewModel.state.questions.count)")
             }
-
-            // Android shows a progress bar with its own "n/total" count; here the header above
-            // already says "Pregunta n de total", so the bar carries no text and is hidden from
-            // VoiceOver, which would otherwise read the same position twice.
-            ProgressView(value: viewModel.state.progress)
-                .tint(MTCColor.primary)
-                .animation(.easeInOut, value: viewModel.state.progress)
-                .accessibilityHidden(true)
 
             ScrollView {
                 QuestionAnswerCard(
-                    title: viewModel.state.currentQuestion.title,
+                    title: viewModel.state.numberedQuestionTitle,
                     options: answerOptions,
                     imageURLs: viewModel.state.currentQuestion.images.compactMap(imageResolver.url(forImageName:)),
                     onSelectOption: { viewModel.selectOption(at: $0) }
@@ -118,7 +128,7 @@ public struct QuizView: View {
             }
 
             Button(action: primaryAction) {
-                Text(primaryButtonLabel)
+                Text(viewModel.state.primaryButtonTitle)
                     .font(MTCTypography.headline)
                     .foregroundStyle(MTCColor.onPrimary)
                     .frame(maxWidth: .infinity)
@@ -164,10 +174,6 @@ public struct QuizView: View {
         }
     }
 
-    private var primaryButtonLabel: String {
-        if !viewModel.state.isAnswerVerified { return "Verificar" }
-        return viewModel.isLastQuestion ? "Finalizar" : "Siguiente"
-    }
 
     private func primaryAction() {
         if !viewModel.state.isAnswerVerified {
