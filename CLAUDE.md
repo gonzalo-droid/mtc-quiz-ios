@@ -155,15 +155,15 @@ algo, actualiza esta línea. Cerradas además las brechas que la auditoría enco
 commit puntual de Android: barra de progreso de la evaluación, "Trámites asociados", fila Premium
 según estado y corona de Home (PRs #16–#18).
 
-**Auditoría 2026-10 (contra Android `344cc14`):** cerrada en iOS en tres PRs apilados —
+**Auditoría 2026-10 (contra Android `344cc14`):** cerrada en iOS en los PRs #22–#24 —
 `fix/evaluation-copy-and-header` (alertas de cancelar y de tiempo, "Terminar evaluación",
 cabecera "n/total" + título de categoría + "N.- ", etiquetas "Total …" del resumen, "Buscar..."),
 `fix/pdf-download-interstitial` (el intersticial de PDF cuenta en "Descargar", no al abrir) y
 `fix/settings-detail-paywall` (botón de Configuraciones en Detail, orden de Configuraciones,
 paywall leyendo `isPremiumUser()`). El lado Android de la misma auditoría (textos que Android
 cambia para igualar a iOS, "Términos y condiciones", registro de la respuesta al verificar) está en
-**Android PR #27**, abierto al escribir esto. Cuando #27 se mergee, la referencia de paridad pasa a
-ser el merge de #27; hasta entonces es `344cc14` + #27.
+**Android PR #27**, mergeado el 2026-10-03. **Referencia de paridad: Android `7141813`** (merge
+de #27); iOS master la iguala desde el merge de este perfil (#25).
 
 **Ojo al calcular brechas:** esa homologación se armó por números de PR y se le escaparon dos
 commits directos, sin PR: `e892b0f` y `e14192f`. Revisa siempre los commits directos además de los
