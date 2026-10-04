@@ -11,7 +11,7 @@ public struct QuizState: Equatable, Sendable {
     /// True once `finishQuiz()` has been triggered (re-entrancy guard). Once set, it never
     /// resets — the owning `QuizViewModel` instance is done with its job as soon as
     /// `finishQuiz()` completes and navigates away. The view uses this to disable the
-    /// "Finalizar" button and to stop the countdown timer from firing a second finish.
+    /// "Terminar evaluación" button and to stop the countdown timer from firing a second finish.
     public var isFinishing: Bool
 
     public init(
@@ -51,5 +51,24 @@ public extension QuizState {
     var progress: Double {
         guard questions.count > 1 else { return 0 }
         return min(max(Double(currentIndex) / Double(questions.count - 1), 0), 1)
+    }
+
+    /// Android's "n/total" beside the progress bar (`EvaluationScreen.kt`'s `countProgress`).
+    var positionText: String {
+        "\(currentIndex + 1)/\(questions.count)"
+    }
+
+    /// The question title as Android prints it: "N.- title", where N is the position in this
+    /// evaluation — never `Question.id`, which is the position in the whole bank and looks
+    /// jumbled once the questions are shuffled.
+    var numberedQuestionTitle: String {
+        "\(currentIndex + 1).- \(currentQuestion.title)"
+    }
+
+    /// The primary button's label: "Verificar" until the answer is checked, then "Siguiente",
+    /// or "Terminar evaluación" on the last question — Android's wording.
+    var primaryButtonTitle: String {
+        guard isAnswerVerified else { return "Verificar" }
+        return currentIndex == questions.count - 1 ? "Terminar evaluación" : "Siguiente"
     }
 }
