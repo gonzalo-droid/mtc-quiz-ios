@@ -93,11 +93,15 @@ gap at a2b 267).
 
 **Premium is a UI-only stub.** `PremiumViewModel.subscribe()` is an intentional no-op,
 `availablePlans` is always empty, and `isPremiumUser()` in `mtcquizApp.swift` returns a hardcoded
-`false` — its only job today is to gate ads. There is no StoreKit code in the app.
+`false`. Everything premium-aware reads that one hook: ads, the Home crown, the Settings row and
+`PremiumViewModel(isPremium:)` (the paywall's "¡Eres Premium!"). There is no StoreKit code in the app.
 
 **Ads**: `GoogleAdsManager` (package `MTCAdsFeature`) wraps Google Mobile Ads; the banner and the
-two interstitials (PDF download, evaluation start) are triggered from `RootView`. Ad unit IDs are
-hardcoded in `mtcquizApp.swift`.
+two interstitials are triggered from `RootView` through `AdsManaging.gatePdfDownload` /
+`gateEvaluationStart`. The PDF one fires on the PDF screen's "Descargar" button (before the share
+sheet), never on opening the PDF from Detail. After an ad that actually ran, the "¿Cansado de los
+anuncios?" dialog is offered — on Detail for the evaluation ad, on the PDF screen (after the share
+sheet closes) for the PDF ad. Ad unit IDs are hardcoded in `mtcquizApp.swift`.
 
 ### Strings
 
@@ -151,6 +155,16 @@ algo, actualiza esta línea. Cerradas además las brechas que la auditoría enco
 commit puntual de Android: barra de progreso de la evaluación, "Trámites asociados", fila Premium
 según estado y corona de Home (PRs #16–#18).
 
+**Auditoría 2026-10 (contra Android `344cc14`):** cerrada en iOS en tres PRs apilados —
+`fix/evaluation-copy-and-header` (alertas de cancelar y de tiempo, "Terminar evaluación",
+cabecera "n/total" + título de categoría + "N.- ", etiquetas "Total …" del resumen, "Buscar..."),
+`fix/pdf-download-interstitial` (el intersticial de PDF cuenta en "Descargar", no al abrir) y
+`fix/settings-detail-paywall` (botón de Configuraciones en Detail, orden de Configuraciones,
+paywall leyendo `isPremiumUser()`). El lado Android de la misma auditoría (textos que Android
+cambia para igualar a iOS, "Términos y condiciones", registro de la respuesta al verificar) está en
+**Android PR #27**, abierto al escribir esto. Cuando #27 se mergee, la referencia de paridad pasa a
+ser el merge de #27; hasta entonces es `344cc14` + #27.
+
 **Ojo al calcular brechas:** esa homologación se armó por números de PR y se le escaparon dos
 commits directos, sin PR: `e892b0f` y `e14192f`. Revisa siempre los commits directos además de los
 merges:
@@ -197,15 +211,14 @@ La app **no es dark-only**: respeta `theme_mode` (`system`/`light`/`dark`), así
 pantalla nueva tiene que verse bien en los dos esquemas.
 
 **El dorado del premium son tokens:** `MTCColor.premiumGold` / `premiumAmber` (el degradado de
-Android) y `MTCColor.onPremiumGold` para texto e íconos encima. **Nunca blanco sobre el dorado**,
-aunque Android lo haga: da 1,79:1, por debajo incluso del 3:1 de WCAG para texto grande.
+Android) y `MTCColor.onPremiumGold` para texto e íconos encima. **Nunca blanco sobre el dorado**:
+da 1,79:1, por debajo incluso del 3:1 de WCAG para texto grande. Android usa ya el mismo
+`onPremiumGold`.
 
-**Dos excepciones que ya existen, y que no son precedente:**
+**Una excepción que ya existe, y que no es precedente:**
 - `PremiumView` fuerza `.preferredColorScheme(.dark)` a propósito: el paywall tiene fondo degradado
   fijo. El comentario del archivo documenta un efecto conocido: con tema "Claro", la barra de estado
   puede quedar ilegible.
-- El botón "Suscribirme ahora" de `PremiumView` todavía pone texto blanco sobre el dorado. Está
-  pendiente de corregir con `onPremiumGold`; no lo copies.
 
 Reutiliza antes de escribir: `AnswerOptionRow`, `QuestionAnswerCard`, `QuestionImageStrip`,
 `VehicleIllustration`, `LegalWebView`. Lo compartido entre features va a `MTCDesignSystem`, nunca
@@ -228,8 +241,8 @@ ese fue exactamente el bug que arregló el PR #7.
 **6. Decisiones de producto que condicionan el port**
 
 - **Premium es un stub de UI y no hay StoreKit.** `subscribe()` es un no-op deliberado,
-  `availablePlans` siempre vacío, `isPremiumUser()` devuelve `false` fijo y sólo sirve para cerrar
-  los anuncios. Portar trabajo de billing de Android significa portar el comportamiento *alrededor*
+  `availablePlans` siempre vacío, `isPremiumUser()` devuelve `false` fijo; es la única fuente del
+  estado premium (anuncios, corona, fila de Configuraciones y paywall). Portar trabajo de billing de Android significa portar el comportamiento *alrededor*
   del entitlement — gates, paywall, qué muestra la app — y **nunca** cablear StoreKit 2. El billing
   real es su propia tarea y su propio fork: si un port parece exigirlo, párate y pregunta.
   **Hay una implementación de StoreKit 2 a medio hacer** en la rama `feat/ios-storekit2-billing`
@@ -241,9 +254,11 @@ ese fue exactamente el bug que arregló el PR #7.
 - **Sin backend y sin Firebase.** Android usa Firebase para auth/analytics; en iOS esos caminos no
   existen y no se portan sin preguntar.
 - **Anuncios**: AdMob con ids de unidad hardcodeados. Los intersticiales son por contador —
-  descarga de PDF e inicio de evaluación, cada uno con el suyo — y se muestran cuando
-  `count > 0 && count % 3 == 0`. El contador se incrementa **antes** de decidir (`record…()` y luego
-  `should…()` en `RootView`). Es la misma regla que Android; respétala en vez de inventar otra.
+  descarga de PDF (el botón "Descargar" de la pantalla PDF, **no** abrirla) e inicio de evaluación,
+  cada uno con el suyo — y se muestran cuando `count > 0 && count % 3 == 0`. El contador se
+  incrementa **antes** de decidir: `record…()` → `should…()` → `show…()`, todo dentro de
+  `AdsManaging.gatePdfDownload` / `gateEvaluationStart`. Es la misma regla que Android; respétala
+  en vez de inventar otra.
 
 **Código de Android que parece brecha y no lo es.** Está compilado pero es inalcanzable. No lo portes,
 y no lo cuentes en una auditoría:
@@ -251,10 +266,6 @@ y no lo cuentes en una auditoría:
 - **Login / Firebase Auth** (todo el módulo `auth`): el gate `if (isLoggedIn) HomeScreenRoute else
   LoginScreenRoute` está comentado en `NavigationRoot.kt:63`. A `LoginScreenRoute` solo se llega por
   el logout, que no tiene botón en `ConfigurationScreen`.
-- **`sendComment/`** (`SendCommentViewModel.kt`, `FirebaseInstance.kt`): ambos archivos enteros
-  dentro de un `/* … */`, sin referencias.
-- **`ReviewErrorsViewModel.restoreAllDismissed()`**: definida, nunca llamada.
-- **`ConfigurationAction.GoToAbout`**: ningún control la dispara.
 - **Lottie**: declarado en 8 `build.gradle.kts`, con cero usos de `LottieAnimation` /
   `rememberLottieComposition`.
 
@@ -331,6 +342,16 @@ actuales):
 - **Los simuladores se comparten con otras sesiones** (quoteAnime corre en los mismos). Antes de
   lanzar la app en uno ya arrancado, mira la barra de estado: un "◀ QuoteAnime" arriba a la izquierda
   significa que otra sesión lo está usando. Usa uno que hayas arrancado tú.
+- **Para leer un ajuste que la app guardó, lee el plist de su contenedor**, no
+  `simctl spawn … defaults read`: este último devolvió un valor viejo del dominio global mientras
+  la app ya había escrito otro (2026-10-03, contador `ads_pdf_download_count`):
+  `plutil -p "$(xcrun simctl get_app_container <udid> com.gonzadev.mtcquiz data)/Library/Preferences/com.gonzadev.mtcquiz.plist"`.
+  `defaults write` sí sirve para sembrar ajustes antes de lanzar (`onboarding_shown`,
+  `number_of_questions`, `evaluation_time_minutes`).
+- Con dos simuladores llamados igual (hay dos "iPhone 17"), `-destination name=…` es ambiguo:
+  usa `id=<udid>`. El 2026-10-03 el simulador de pruebas apareció apagado después de correr los
+  tests de paquetes contra el mismo udid; si una captura falla con "device is not booted",
+  `xcrun simctl boot` y reinstala.
 - El target de la app es casi vacío a propósito: si vas a agregar una pantalla, va en un paquete,
   no en `mtcquiz/`. Lo único que crece ahí es `Route.swift` y el `switch` de `RootView`.
 - Archivos fuente nuevos dentro de un paquete no necesitan paso en Xcode. Un **paquete nuevo**, un
