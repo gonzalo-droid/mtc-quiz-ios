@@ -2,9 +2,24 @@ import SwiftUI
 
 public struct PDFScreenView: View {
     @State private var viewModel: PDFViewModel
+    @State private var isSharing = false
+    private let onDownload: (_ presentShareSheet: @escaping () -> Void) -> Void
+    private let onShareSheetDismissed: () -> Void
 
-    public init(viewModel: PDFViewModel) {
+    /// - Parameters:
+    ///   - onDownload: runs when "Descargar" is tapped and must call `presentShareSheet` exactly
+    ///     once when the share sheet may appear — the app shell runs the PDF interstitial gate
+    ///     here, as Android does on its download action (never on opening the screen).
+    ///   - onShareSheetDismissed: runs after the share sheet closes; the shell uses it to offer
+    ///     premium when an ad interrupted the download.
+    public init(
+        viewModel: PDFViewModel,
+        onDownload: @escaping (_ presentShareSheet: @escaping () -> Void) -> Void = { $0() },
+        onShareSheetDismissed: @escaping () -> Void = {}
+    ) {
         _viewModel = State(initialValue: viewModel)
+        self.onDownload = onDownload
+        self.onShareSheetDismissed = onShareSheetDismissed
     }
 
     public var body: some View {
@@ -15,8 +30,21 @@ public struct PDFScreenView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            ShareLink(item: url)
+                            // Android's "Descargar" action. iOS has no Downloads folder an app
+                            // writes to directly: the share sheet's "Guardar en Archivos" is the
+                            // native way to keep a copy, and it also offers every other target.
+                            Button {
+                                onDownload { isSharing = true }
+                            } label: {
+                                Label("Descargar", systemImage: "square.and.arrow.down")
+                            }
+                            .accessibilityLabel("Descargar")
                         }
+                    }
+                    .sheet(isPresented: $isSharing, onDismiss: onShareSheetDismissed) {
+                        ShareSheet(items: [url])
+                            .presentationDetents([.medium, .large])
+                            .ignoresSafeArea()
                     }
             } else if viewModel.state.isLoading {
                 ProgressView()

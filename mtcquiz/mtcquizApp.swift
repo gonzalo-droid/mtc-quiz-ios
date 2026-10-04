@@ -68,6 +68,11 @@ private struct RootView: View {
     /// modal on top of it. Android sets its dialog flag in the same callback, with the same effect.
     @State private var pendingUpsell = false
     @State private var showUpsell = false
+    /// Same idea on the PDF screen: set when the download's interstitial actually ran, turned into
+    /// the dialog once the share sheet closes. Kept apart from `pendingUpsell` so it can never
+    /// leak into Detail's `onAppear` after the user leaves the PDF.
+    @State private var pendingPdfUpsell = false
+    @State private var showPdfUpsell = false
     @AppStorage("theme_mode") private var themeModeRaw: String = "system"
     @AppStorage("onboarding_shown") private var onboardingShown: Bool = false
 
@@ -112,29 +117,18 @@ private struct RootView: View {
                     DetailView(
                         viewModel: DetailViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
                         onStartEvaluation: {
-                            adsManager.recordEvaluationStart()
-                            if adsManager.shouldShowEvaluationInterstitial() {
-                                adsManager.showEvaluationInterstitial { adWasShown in
-                                    if adWasShown { pendingUpsell = true }
-                                    path.append(Route.evaluation(categoryId: categoryId))
-                                }
-                            } else {
+                            adsManager.gateEvaluationStart { adWasShown in
+                                if adWasShown { pendingUpsell = true }
                                 path.append(Route.evaluation(categoryId: categoryId))
                             }
                         },
                         onStudy: {
                             path.append(Route.questionReview(categoryId: categoryId))
                         },
+                        // Opening the PDF is free: the interstitial belongs to the download
+                        // action inside the PDF screen, as on Android.
                         onDownloadPDF: {
-                            adsManager.recordPdfDownload()
-                            if adsManager.shouldShowPdfInterstitial() {
-                                adsManager.showPdfInterstitial { adWasShown in
-                                    if adWasShown { pendingUpsell = true }
-                                    path.append(Route.pdf(categoryId: categoryId))
-                                }
-                            } else {
-                                path.append(Route.pdf(categoryId: categoryId))
-                            }
+                            path.append(Route.pdf(categoryId: categoryId))
                         }
                     )
                         BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
@@ -145,16 +139,7 @@ private struct RootView: View {
                             showUpsell = true
                         }
                     }
-                    .confirmationDialog(
-                        "¿Cansado de los anuncios?",
-                        isPresented: $showUpsell,
-                        titleVisibility: .visible
-                    ) {
-                        Button("Ver planes") { path.append(Route.premium) }
-                        Button("No, gracias", role: .cancel) {}
-                    } message: {
-                        Text("Hazte Premium y estudia sin interrupciones")
-                    }
+                    .premiumUpsell(isPresented: $showUpsell) { path.append(Route.premium) }
                 case .questionReview(let categoryId):
                     QuestionReviewView(
                         viewModel: QuestionReviewViewModel(
@@ -166,8 +151,21 @@ private struct RootView: View {
                     )
                 case .pdf(let categoryId):
                     PDFScreenView(
-                        viewModel: PDFViewModel(categoryId: categoryId, categoryRepository: categoryRepository)
+                        viewModel: PDFViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
+                        onDownload: { presentShareSheet in
+                            adsManager.gatePdfDownload { adWasShown in
+                                if adWasShown { pendingPdfUpsell = true }
+                                presentShareSheet()
+                            }
+                        },
+                        onShareSheetDismissed: {
+                            if pendingPdfUpsell {
+                                pendingPdfUpsell = false
+                                showPdfUpsell = true
+                            }
+                        }
                     )
+                    .premiumUpsell(isPresented: $showPdfUpsell) { path.append(Route.premium) }
                 case .evaluation(let categoryId):
                     QuizView(
                         viewModel: QuizViewModel(
@@ -285,5 +283,31 @@ private struct RootView: View {
         case "light": .light
         default: nil // nil == follow the system setting, matching Android's isSystemInDarkTheme() fallback
         }
+    }
+}
+
+/// "¿Cansado de los anuncios?" — offered after an interstitial that actually ran, on Detail (the
+/// evaluation's ad) and on the PDF screen (the download's ad). Android's `PremiumUpsellDialog`.
+private struct PremiumUpsellModifier: ViewModifier {
+    @Binding var isPresented: Bool
+    let onSeePlans: () -> Void
+
+    func body(content: Content) -> some View {
+        content.confirmationDialog(
+            "¿Cansado de los anuncios?",
+            isPresented: $isPresented,
+            titleVisibility: .visible
+        ) {
+            Button("Ver planes", action: onSeePlans)
+            Button("No, gracias", role: .cancel) {}
+        } message: {
+            Text("Hazte Premium y estudia sin interrupciones")
+        }
+    }
+}
+
+private extension View {
+    func premiumUpsell(isPresented: Binding<Bool>, onSeePlans: @escaping () -> Void) -> some View {
+        modifier(PremiumUpsellModifier(isPresented: isPresented, onSeePlans: onSeePlans))
     }
 }
