@@ -167,8 +167,15 @@ cabecera "n/total" + título de categoría + "N.- ", etiquetas "Total …" del r
 `fix/settings-detail-paywall` (botón de Configuraciones en Detail, orden de Configuraciones,
 paywall leyendo `isPremiumUser()`). El lado Android de la misma auditoría (textos que Android
 cambia para igualar a iOS, "Términos y condiciones", registro de la respuesta al verificar) está en
-**Android PR #27**, mergeado el 2026-10-03. **Referencia de paridad: Android `7141813`** (merge
-de #27); iOS master la iguala desde el merge de este perfil (#25).
+**Android PR #27**, mergeado el 2026-10-03.
+
+**Revisión pre-lanzamiento 2026-11-13:** Android #28 (1.2.5, versionCode 10) ↔ iOS #26, mergeados el
+mismo día. En los dos: errores frecuentes y descartes identificados por `frequentErrorKey` (banco +
+id + texto, mismo FNV-1a) y bancos B sin la clase de la señal en las opciones 13–15. Sólo Android: la
+clave de la lista de Estudio (iOS ya usaba `\.offset`). Sólo iOS: ícono, `PrivacyInfo.xcprivacy`,
+premium oculto (`offersPremium`), anuncios de prueba en Debug, `SKAdNetworkItems`, export compliance
+y `ModelContainer` sin `try!` en disco. **Referencia de paridad: Android `dffe601`** (merge de #28);
+iOS master la iguala desde `c2fbfa5` (merge de #26).
 
 **Ojo al calcular brechas:** esa homologación se armó por números de PR y se le escaparon dos
 commits directos, sin PR: `e892b0f` y `e14192f`. Revisa siempre los commits directos además de los
