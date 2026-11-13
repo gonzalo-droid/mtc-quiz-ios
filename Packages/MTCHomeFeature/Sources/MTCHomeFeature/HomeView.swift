@@ -6,7 +6,8 @@ public struct HomeView: View {
     @State private var viewModel: HomeViewModel
     private let onSelectCategory: (MTCDomain.Category) -> Void
     private let onOpenSettings: () -> Void
-    private let onOpenPremium: () -> Void
+    /// `nil` hides the crown: the app passes `nil` while it has nothing to sell.
+    private let onOpenPremium: (() -> Void)?
     private let isPremium: Bool
 
     public init(
@@ -14,7 +15,7 @@ public struct HomeView: View {
         isPremium: Bool,
         onSelectCategory: @escaping (MTCDomain.Category) -> Void,
         onOpenSettings: @escaping () -> Void,
-        onOpenPremium: @escaping () -> Void
+        onOpenPremium: (() -> Void)?
     ) {
         _viewModel = State(initialValue: viewModel)
         self.isPremium = isPremium
@@ -63,7 +64,7 @@ public struct HomeView: View {
         .toolbar {
             // The crown is an invitation to go premium, so a premium user doesn't see it — as on
             // Android's Home.
-            if !isPremium {
+            if !isPremium, let onOpenPremium {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: onOpenPremium) {
                         Image(systemName: "crown.fill")
