@@ -51,8 +51,21 @@ struct mtcquizApp: App {
     )
 
     init() {
-        modelContainer = try! ModelContainer(for: EvaluationRecord.self, DismissedQuestionRecord.self)
+        modelContainer = Self.makeModelContainer()
         MobileAds.shared.start(completionHandler: nil)
+    }
+
+    /// The on-disk store, or — if it can't be opened (a future schema change that fails to
+    /// migrate, a corrupt file) — an in-memory one, so the app still launches without its history
+    /// instead of crashing on every start. The in-memory container can't fail in practice.
+    private static func makeModelContainer() -> ModelContainer {
+        if let container = try? ModelContainer(for: EvaluationRecord.self, DismissedQuestionRecord.self) {
+            return container
+        }
+        return try! ModelContainer(
+            for: EvaluationRecord.self, DismissedQuestionRecord.self,
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+        )
     }
 
     var body: some Scene {
