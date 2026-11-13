@@ -299,8 +299,9 @@ figura a la fila donde cae su borde superior, y así terminó la figura de la 93
 2 px del límite). `audit_images.py` ya detecta ese caso desde Android #21: córrelo sobre lo que vas
 a copiar antes de copiarlo.
 
-**No renumerar ids** aunque queden desordenados: `DismissedQuestionRecord.questionId` persiste el id
-de la pregunta, y renumerar apuntaría ese estado guardado a otra pregunta.
+**No renumerar ids** aunque queden desordenados: `DismissedQuestionRecord.questionId` persiste una
+clave que incluye el id (`frequentErrorKey`: banco + id + texto, el mismo hash FNV-1a que Android),
+y renumerar —o corregir el texto— invalidaría esos descartes guardados.
 
 Lo que sí es específico de plataforma y nunca se sincroniza: bundle id (`com.gonzadev.mtcquiz`),
 ids de unidad de AdMob, product ids, firma, y **las claves de preferencias, que no coinciden a

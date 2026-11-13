@@ -29,7 +29,7 @@ public struct ReviewErrorsView: View {
                             .listRowSeparator(.hidden)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button {
-                                    Task { await viewModel.dismissQuestion(error.questionId) }
+                                    Task { await viewModel.dismissQuestion(error.key) }
                                 } label: {
                                     Label("Aprendida", systemImage: "checkmark")
                                 }
