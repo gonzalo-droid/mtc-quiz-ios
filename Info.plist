@@ -4,5 +4,14 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1427341798923689~2983750936</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
 </dict>
 </plist>

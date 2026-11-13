@@ -11,7 +11,8 @@ public struct SettingsView: View {
     @State private var viewModel: SettingsViewModel
     private let isPremium: Bool
     private let onCustomize: () -> Void
-    private let onPremium: () -> Void
+    /// `nil` hides the premium row: the app passes `nil` while it has nothing to sell.
+    private let onPremium: (() -> Void)?
     private let onStats: () -> Void
     private let onHistory: () -> Void
     private let onTerms: () -> Void
@@ -24,7 +25,7 @@ public struct SettingsView: View {
         viewModel: SettingsViewModel,
         isPremium: Bool,
         onCustomize: @escaping () -> Void,
-        onPremium: @escaping () -> Void,
+        onPremium: (() -> Void)?,
         onStats: @escaping () -> Void,
         onHistory: @escaping () -> Void,
         onTerms: @escaping () -> Void,
@@ -94,6 +95,13 @@ public struct SettingsView: View {
     /// premium, a plain confirmation row once they are. Both open the Premium screen.
     @ViewBuilder
     private var premiumRow: some View {
+        if let onPremium {
+            premiumButton(onPremium: onPremium)
+        }
+    }
+
+    @ViewBuilder
+    private func premiumButton(onPremium: @escaping () -> Void) -> some View {
         if isPremium {
             Button(action: onPremium) {
                 HStack {

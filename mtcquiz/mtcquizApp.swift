@@ -21,6 +21,22 @@ internal import MTCDomain
 /// instead of threading a new parameter through every screen.
 private func isPremiumUser() -> Bool { false }
 
+/// Whether the app offers Premium at all: the Home crown, the Settings row and the "¿Cansado de
+/// los anuncios?" dialog. `false` until real billing exists — the paywall's "Suscribirme" and
+/// "Restaurar compras" are no-ops, and App Review rejects purchase buttons that do nothing.
+/// The paywall itself (`Route.premium`) stays in place, just unreachable.
+private let offersPremium = false
+
+/// Google's sample ad units in Debug, so simulator and development runs never request real ads
+/// (AdMob can treat that as invalid traffic). Release keeps the real units.
+#if DEBUG
+private let bannerAdUnitID = "ca-app-pub-3940256099942544/2435281174"
+private let interstitialAdUnitID = "ca-app-pub-3940256099942544/4411468910"
+#else
+private let bannerAdUnitID = "ca-app-pub-1427341798923689/1670669268"
+private let interstitialAdUnitID = "ca-app-pub-1427341798923689/6988630460"
+#endif
+
 @main
 struct mtcquizApp: App {
     private let categoryRepository = LocalCategoryRepository()
@@ -29,14 +45,27 @@ struct mtcquizApp: App {
     private let imageResolver = LocalQuestionImageResolver()
     private let modelContainer: ModelContainer
     private let adsManager = GoogleAdsManager(
-        bannerAdUnitID: "ca-app-pub-1427341798923689/1670669268",
-        interstitialAdUnitID: "ca-app-pub-1427341798923689/6988630460",
+        bannerAdUnitID: bannerAdUnitID,
+        interstitialAdUnitID: interstitialAdUnitID,
         isPremium: isPremiumUser
     )
 
     init() {
-        modelContainer = try! ModelContainer(for: EvaluationRecord.self, DismissedQuestionRecord.self)
+        modelContainer = Self.makeModelContainer()
         MobileAds.shared.start(completionHandler: nil)
+    }
+
+    /// The on-disk store, or — if it can't be opened (a future schema change that fails to
+    /// migrate, a corrupt file) — an in-memory one, so the app still launches without its history
+    /// instead of crashing on every start. The in-memory container can't fail in practice.
+    private static func makeModelContainer() -> ModelContainer {
+        if let container = try? ModelContainer(for: EvaluationRecord.self, DismissedQuestionRecord.self) {
+            return container
+        }
+        return try! ModelContainer(
+            for: EvaluationRecord.self, DismissedQuestionRecord.self,
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+        )
     }
 
     var body: some Scene {
@@ -100,9 +129,7 @@ private struct RootView: View {
                     onOpenSettings: {
                         path.append(Route.settings)
                     },
-                    onOpenPremium: {
-                        path.append(Route.premium)
-                    }
+                    onOpenPremium: offersPremium ? { path.append(Route.premium) } : nil
                 )
                 BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
             }
@@ -118,7 +145,7 @@ private struct RootView: View {
                         viewModel: DetailViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
                         onStartEvaluation: {
                             adsManager.gateEvaluationStart { adWasShown in
-                                if adWasShown { pendingUpsell = true }
+                                if adWasShown && offersPremium { pendingUpsell = true }
                                 path.append(Route.evaluation(categoryId: categoryId))
                             }
                         },
@@ -157,7 +184,7 @@ private struct RootView: View {
                         viewModel: PDFViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
                         onDownload: { presentShareSheet in
                             adsManager.gatePdfDownload { adWasShown in
-                                if adWasShown { pendingPdfUpsell = true }
+                                if adWasShown && offersPremium { pendingPdfUpsell = true }
                                 presentShareSheet()
                             }
                         },
@@ -208,9 +235,7 @@ private struct RootView: View {
                         onCustomize: {
                             path.append(Route.customize)
                         },
-                        onPremium: {
-                            path.append(Route.premium)
-                        },
+                        onPremium: offersPremium ? { path.append(Route.premium) } : nil,
                         onStats: {
                             path.append(Route.stats)
                         },

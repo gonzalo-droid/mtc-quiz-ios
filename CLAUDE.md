@@ -95,13 +95,18 @@ gap at a2b 267).
 `availablePlans` is always empty, and `isPremiumUser()` in `mtcquizApp.swift` returns a hardcoded
 `false`. Everything premium-aware reads that one hook: ads, the Home crown, the Settings row and
 `PremiumViewModel(isPremium:)` (the paywall's "¡Eres Premium!"). There is no StoreKit code in the app.
+**And it is hidden:** `offersPremium = false` in `mtcquizApp.swift` passes `nil` for the Home crown
+and the Settings row and suppresses the "¿Cansado de los anuncios?" dialog, because App Review
+rejects purchase buttons that do nothing. Flip it to `true` in the same change that ships billing.
+Android does show Premium (it has real billing): this is a deliberate divergence, not a gap.
 
 **Ads**: `GoogleAdsManager` (package `MTCAdsFeature`) wraps Google Mobile Ads; the banner and the
 two interstitials are triggered from `RootView` through `AdsManaging.gatePdfDownload` /
 `gateEvaluationStart`. The PDF one fires on the PDF screen's "Descargar" button (before the share
 sheet), never on opening the PDF from Detail. After an ad that actually ran, the "¿Cansado de los
 anuncios?" dialog is offered — on Detail for the evaluation ad, on the PDF screen (after the share
-sheet closes) for the PDF ad. Ad unit IDs are hardcoded in `mtcquizApp.swift`.
+sheet closes) for the PDF ad. Ad unit IDs are hardcoded in `mtcquizApp.swift`: Google's sample units under `#if DEBUG`,
+the real ones in Release.
 
 ### Strings
 
@@ -242,7 +247,9 @@ ese fue exactamente el bug que arregló el PR #7.
 
 - **Premium es un stub de UI y no hay StoreKit.** `subscribe()` es un no-op deliberado,
   `availablePlans` siempre vacío, `isPremiumUser()` devuelve `false` fijo; es la única fuente del
-  estado premium (anuncios, corona, fila de Configuraciones y paywall). Portar trabajo de billing de Android significa portar el comportamiento *alrededor*
+  estado premium (anuncios, corona, fila de Configuraciones y paywall). **Y está oculto** (`offersPremium = false`):
+  sin corona, sin fila de Configuraciones y sin el diálogo de upsell, porque App Review rechaza botones
+  de compra que no hacen nada. Es una divergencia deliberada con Android, no una brecha de paridad. Portar trabajo de billing de Android significa portar el comportamiento *alrededor*
   del entitlement — gates, paywall, qué muestra la app — y **nunca** cablear StoreKit 2. El billing
   real es su propia tarea y su propio fork: si un port parece exigirlo, párate y pregunta.
   **Hay una implementación de StoreKit 2 a medio hacer** en la rama `feat/ios-storekit2-billing`
@@ -292,8 +299,9 @@ figura a la fila donde cae su borde superior, y así terminó la figura de la 93
 2 px del límite). `audit_images.py` ya detecta ese caso desde Android #21: córrelo sobre lo que vas
 a copiar antes de copiarlo.
 
-**No renumerar ids** aunque queden desordenados: `DismissedQuestionRecord.questionId` persiste el id
-de la pregunta, y renumerar apuntaría ese estado guardado a otra pregunta.
+**No renumerar ids** aunque queden desordenados: `DismissedQuestionRecord.questionId` persiste una
+clave que incluye el id (`frequentErrorKey`: banco + id + texto, el mismo hash FNV-1a que Android),
+y renumerar —o corregir el texto— invalidaría esos descartes guardados.
 
 Lo que sí es específico de plataforma y nunca se sincroniza: bundle id (`com.gonzadev.mtcquiz`),
 ids de unidad de AdMob, product ids, firma, y **las claves de preferencias, que no coinciden a
