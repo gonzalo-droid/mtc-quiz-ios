@@ -188,9 +188,9 @@
             "title": "Cuál de la siguiente señal vertical es informativa:",
             "answer": "a",
             "options": [
-                "a) Señal con distancias a Lurín/ICA (informativa de ruta)",
-                "b) Señal de NO VOLTEAR A LA IZQUIERDA (reguladora)",
-                "c) Señal preventiva de reductor de velocidad",
+                "a) Señal verde LURÍN 22 km / ICA 317 km",
+                "b) Señal NO VOLTEAR A LA IZQUIERDA",
+                "c) Señal de reductor de velocidad",
                 "d) Ninguna de las anteriores"
             ],
             "fundamento": "Articulo 42 del Código de Tránsito y numeral 2.10.3 del Manual de dispositivos y Control de Tránsito.",
@@ -208,9 +208,9 @@
             "title": "Cuál de la siguiente señal vertical es preventiva:",
             "answer": "d",
             "options": [
-                "a) Señal preventiva de camino sinuoso (curvas en S)",
-                "b) Señal de NO CAMIONES (reguladora)",
-                "c) Señal preventiva de ciclistas en pendiente",
+                "a) Señal de camino sinuoso (curvas en S)",
+                "b) Señal NO CAMIONES",
+                "c) Señal de ciclistas en pendiente",
                 "d) La a y c son correctas."
             ],
             "fundamento": "Articulo 42 del Código de Tránsito y numeral 2.10.2 del Manual de dispositivos y Control de Tránsito.",
@@ -228,9 +228,9 @@
             "title": "Cuál de la siguiente señal vertical es reguladora o de reglamentación:",
             "answer": "d",
             "options": [
-                "a) Señal de prohibido el paso a motocicletas (reguladora)",
-                "b) Señal SALIDA 58 / PUCUSANA (informativa)",
-                "c) Señal de MANTENGA SU DERECHA / prohibido adelantar (reguladora)",
+                "a) Señal de motocicleta tachada",
+                "b) Señal SALIDA 58 / PUCUSANA",
+                "c) Señal MANTENGA SU DERECHA",
                 "d) Solo la b es incorrecta"
             ],
             "fundamento": "Articulo 42 del Código de Tránsito y numeral 2.10.1 del Manual de dispositivos y Control de Tránsito.",
