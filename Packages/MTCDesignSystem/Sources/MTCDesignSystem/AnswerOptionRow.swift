@@ -31,6 +31,10 @@ public struct AnswerOptionRow: View {
             .padding(12)
             .background(backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: 10))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .strokeBorder(borderColor, lineWidth: borderColor == .clear ? 0 : 2)
+            )
         }
         .buttonStyle(.plain)
         .disabled(isLocked)
@@ -56,12 +60,26 @@ public struct AnswerOptionRow: View {
         }
     }
 
+    /// Selected/correct/incorrect used to differ from `.unselected` only by a faint tint
+    /// (0.15 opacity), which all but disappeared in dark mode because `MTCColor.primary`'s dark
+    /// value and the dark `tertiarySystemBackground` it sits on are both light, low-contrast
+    /// colors. A colored border (below) now carries the distinction in both themes; the fill just
+    /// reinforces it, so it can afford to be a bit stronger without hurting text legibility.
     private var backgroundColor: Color {
         switch option.state {
         case .unselected: return Color(.tertiarySystemBackground)
-        case .selected: return MTCColor.primary.opacity(0.15)
-        case .revealedCorrect, .correctAnswerHint: return Color.green.opacity(0.15)
-        case .revealedIncorrect: return Color.red.opacity(0.15)
+        case .selected: return MTCColor.primary.opacity(0.22)
+        case .revealedCorrect, .correctAnswerHint: return Color.green.opacity(0.26)
+        case .revealedIncorrect: return Color.red.opacity(0.26)
+        }
+    }
+
+    private var borderColor: Color {
+        switch option.state {
+        case .unselected: return .clear
+        case .selected: return MTCColor.primary
+        case .revealedCorrect, .correctAnswerHint: return .green
+        case .revealedIncorrect: return .red
         }
     }
 }
