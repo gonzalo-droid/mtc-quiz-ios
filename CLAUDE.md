@@ -151,7 +151,7 @@ corrígelo aquí — el agente la trata como autoridad por encima de sus propios
 No hay tag de sincronización en el repo Android.
 
 **Estado de paridad (hasta que exista `PARITY.md`, esta línea es el libro mayor):** iOS `master`
-equivale a Android `a453d32` — ver "Revisión pre-lanzamiento 2026-11-13" más abajo, la referencia
+equivale a Android `70cf187` — ver "Flag de oferta premium 2026-11-14" más abajo, la referencia
 vigente. Lo que queda de esta línea es histórico: lo portado desde el punto de partida
 `docs/superpowers/specs/2026-09-07-android-homologation-design.md` (Android #16–#20), más el
 shuffle del simulacro (Android `e892b0f` → iOS #9), la figura de la pregunta 93 en los bancos A
@@ -175,9 +175,26 @@ mismo día. En los dos: errores frecuentes y descartes identificados por `freque
 id + texto, mismo FNV-1a) y bancos B sin la clase de la señal en las opciones 13–15. Sólo Android: la
 clave de la lista de Estudio (iOS ya usaba `\.offset`). Sólo iOS: ícono, `PrivacyInfo.xcprivacy`,
 premium oculto (`offersPremium`), anuncios de prueba en Debug, `SKAdNetworkItems`, export compliance
-y `ModelContainer` sin `try!` en disco. **Referencia de paridad: Android `a453d32`** (HEAD de
-Android al 2026-11-13, tras #29 y #30 — sólo Gradle/AGP/R8, nada portable); iOS master la iguala
-desde `c2fbfa5` (merge de #26).
+y `ModelContainer` sin `try!` en disco.
+
+**Flag de oferta premium 2026-11-14 (Android #33, `ec97767`):** Android apaga la oferta premium (no
+el entitlement) con Firebase Remote Config — parámetro `premium_enabled`, default `true`,
+`FeatureFlagsRepository.isPremiumOfferEnabled`, se activa en el arranque — y lo lee en las mismas
+cinco pantallas que iOS ya tapa con `offersPremium`: corona de Home, fila de Configuraciones,
+`PremiumUpsellDialog` tras el anuncio de Detail y de PDF, y `PremiumViewModel.isPaywallAvailable`
+del paywall. Paridad de comportamiento visible, por una constante en vez de un flag remoto — **a
+propósito, no se porta Remote Config sin preguntar** (perfil §6: sin Firebase). Dos divergencias
+latentes, sin efecto mientras `isPremiumUser()` sea `false` fijo, documentadas para cuando llegue el
+billing real:
+- Android sigue mostrando "Premium ✓" a quien ya compró, aun con la oferta apagada; en iOS
+  `onPremium == nil` en `SettingsView.swift` oculta la fila entera. Ajuste de una línea cuando haya
+  entitlement real: `mtcquizApp.swift:238` necesitaría `offersPremium || isPremiumUser()`.
+- El paywall de Android se cierra solo (`navigateBack()`) si la oferta se apaga con él abierto; en
+  iOS no hace falta mientras `offersPremium` sea una constante de compilación.
+
+**Referencia de paridad: Android `70cf187`** (incluye #31 ktlint/estilo y #32 nota de changelog,
+ninguno portable; e #33 arriba); iOS master la iguala desde `c2fbfa5` (merge de #26) más las dos
+divergencias anotadas.
 
 **Ojo al calcular brechas:** esa homologación se armó por números de PR y se le escaparon dos
 commits directos, sin PR: `e892b0f` y `e14192f`. Revisa siempre los commits directos además de los
@@ -187,7 +204,7 @@ merges:
 git -C /Volumes/Neko/AndroidStudioProjects/MTCQuiz log --first-parent --no-merges <sha-de-la-última-paridad>..origin/master
 ```
 
-Revisados hasta `a453d32`: los demás commits directos son docs, ids de AdMob y claves de build.
+Revisados hasta `70cf187`: los demás commits directos son docs, ids de AdMob y claves de build.
 
 **2. Build y tests** — ver [Build & Run](#build--run). Nada se compila "a nivel de app": se compila
 y se testea **por paquete**, con el scheme del paquete. `swift test` no sirve (SDK del simulador).
