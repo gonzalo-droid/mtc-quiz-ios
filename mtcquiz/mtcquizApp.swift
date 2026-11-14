@@ -11,7 +11,6 @@ import MTCPremiumFeature
 import MTCQuestionReviewFeature
 import MTCOnboardingFeature
 import MTCAdsFeature
-import GoogleMobileAds
 internal import MTCDomain
 
 /// No shared `PremiumRepository` exists on iOS yet (Premium is a UI-only stub, see
@@ -52,7 +51,6 @@ struct mtcquizApp: App {
 
     init() {
         modelContainer = Self.makeModelContainer()
-        MobileAds.shared.start(completionHandler: nil)
     }
 
     /// The on-disk store, or — if it can't be opened (a future schema change that fails to
@@ -134,6 +132,7 @@ private struct RootView: View {
                 BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
             }
             .task {
+                await TrackingConsentCoordinator.requestConsentAndStartAds()
                 adsManager.preloadPdfInterstitial()
                 adsManager.preloadEvaluationInterstitial()
             }
