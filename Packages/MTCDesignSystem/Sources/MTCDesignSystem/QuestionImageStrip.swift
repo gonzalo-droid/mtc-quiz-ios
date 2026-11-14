@@ -14,10 +14,16 @@ public struct QuestionImageStrip: View {
             HStack(spacing: 8) {
                 ForEach(imageURLs, id: \.self) { url in
                     if let uiImage = loadedImages[url] {
+                        // Source crops range from ~33px to ~400px per side (extracted from the
+                        // balotario PDF), so most get scaled up, some by 4x or more. `.fit` alone
+                        // keeps the ratio correct, but letting width grow unbounded let the widest
+                        // crops (e.g. 400x140) render past the screen's own width; both together
+                        // keep every image sharp-as-possible and fully on screen.
                         Image(uiImage: uiImage)
                             .resizable()
+                            .interpolation(.high)
                             .aspectRatio(contentMode: .fit)
-                            .frame(height: 150)
+                            .frame(maxWidth: 260, maxHeight: 150)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
                 }

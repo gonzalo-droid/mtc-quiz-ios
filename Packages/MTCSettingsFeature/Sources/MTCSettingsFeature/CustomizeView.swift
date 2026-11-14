@@ -55,7 +55,7 @@ public struct CustomizeView: View {
             .listRowSeparator(.hidden)
 
             Section {
-                Button("Guardar ajustes") {
+                Button {
                     Task {
                         let succeeded = await viewModel.save(
                             numberOfQuestions: questions,
@@ -64,8 +64,19 @@ public struct CustomizeView: View {
                         )
                         resultAlert = succeeded ? .success : .failure
                     }
+                } label: {
+                    Text("Guardar ajustes")
+                        .font(MTCTypography.headline)
+                        .foregroundStyle(MTCColor.onPrimary)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
                 }
+                .background(MTCColor.primary)
+                .clipShape(Capsule())
             }
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+            .listRowSeparator(.hidden)
         }
         // Intentionally blank — the real title renders as the first Form row above (see the
         // NavigationStack-wide large-title constraint this works around). This screen is a
