@@ -4,6 +4,8 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1427341798923689~2983750936</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Usamos este identificador para mostrarte anuncios más relevantes.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>SKAdNetworkItems</key>
