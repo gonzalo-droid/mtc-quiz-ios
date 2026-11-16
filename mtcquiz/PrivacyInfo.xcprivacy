@@ -5,7 +5,9 @@
   Privacy manifest for the app's own code. Google Mobile Ads ships its own manifest for what
   the SDK collects; this one covers MTCQuiz itself.
 
-  - No tracking: the app never asks for ATT, so the advertising identifier is unavailable.
+  - No tracking by the app's own code. The app does request ATT, but only on behalf of Google
+    Mobile Ads: the SDK's manifest declares the device ID as tracking data, and the App Store
+    privacy labels must declare that tracking too.
   - No data collected by the app: everything (evaluations, settings) stays on the device.
   - UserDefaults (CA92.1): UserDefaultsPreferencesRepository and @AppStorage read and write
     settings that only this app uses.
