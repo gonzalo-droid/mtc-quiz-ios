@@ -125,10 +125,14 @@ existe pero no resuelve públicamente hasta que salga ese primer lanzamiento.
 - [Términos y condiciones](https://gonzalo-lozg.me/apps-docs/mtcquiz/term/)
 - [Política de privacidad](https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/)
 
-Según el `PrivacyInfo.xcprivacy` de la app: no rastrea (sin aviso de App Tracking Transparency), no
-recolecta datos propios, y su único uso de API declarado es leer/escribir `UserDefaults` para sus
-propios ajustes. Google Mobile Ads trae su propio manifiesto de privacidad separado para lo que el
-SDK de anuncios recolecte por su cuenta.
+Al primer arranque, antes de cargar anuncios, la app muestra el formulario de consentimiento de
+Google (UMP, para usuarios del EEE, Reino Unido y Suiza) y luego el aviso de App Tracking
+Transparency. Si el usuario no da permiso, AdMob sirve anuncios no personalizados.
+
+Según el `PrivacyInfo.xcprivacy` de la app, el código propio no rastrea ni recolecta datos (todo
+queda en el dispositivo), y su único uso de API declarado es leer/escribir `UserDefaults` para sus
+propios ajustes. Quien rastrea es Google Mobile Ads: su propio manifiesto declara el identificador
+del dispositivo como dato de rastreo, junto con lo demás que el SDK recolecta para publicidad.
 
 ## Licencia
 
