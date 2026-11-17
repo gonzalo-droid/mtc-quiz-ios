@@ -128,6 +128,14 @@ the app ever needs a second language, that is its own task.
   rejects a too-new API at compile time. Runtime-verified on iOS 18.0; no iOS 17 simulator runtime
   was available to check 17.x itself.
 - Bundle ID `com.gonzadev.mtcquiz`, `MARKETING_VERSION` 1.0.
+- **Nombre bajo el ícono: "MTCQuiz"** (`CFBundleDisplayName` en `Info.plist`, desde el build 6).
+  Sin esa clave iOS usaba el nombre del target, "mtcquiz" en minúsculas, también en el aviso de
+  rastreo. Es independiente del nombre en App Store ("MTCQuiz - Examen Brevete Perú") y del de
+  Android ("Examen Brevete Perú").
+- **Capturas de App Store**: App Store Connect pide las de iPhone de 6,1"/6,3" (1206 × 2622) y las
+  reduce para los demás tamaños; ya no pide 6,9". Las de la 1.0 están en
+  `docs/release/screenshots-6.3/` (y las originales de 1320 × 2868 en `screenshots-6.9/`), sacadas
+  de un build Release con `isPremiumUser()` en `true` solo localmente, para que no salieran anuncios.
 - **Solo iPhone** (`TARGETED_DEVICE_FAMILY = 1`, desde el build 5, 2026-11-16): decisión de
   publicación para no exigir capturas ni revisión en iPad. En iPad se instala en modo
   compatibilidad. Volver a `"1,2"` es una decisión de producto, no un arreglo.
@@ -211,6 +219,11 @@ iOS: el cuerpo de la alerta habla de "Archivos" (iOS no guarda en Descargas) y e
 constante en vez de Remote Config. Spec:
 `docs/superpowers/specs/2026-11-16-study-banner-pdf-rewarded-design.md`. Al mergear Android, revisa
 que su versión final no haya cambiado reglas o textos.
+
+**Textos corregidos solo en iOS 2026-11-17 (`fix/display-name-and-copy`, build 6):** "Prepárate para
+tu evaluación" con tilde en Home y "1 evaluación" en singular en Estadísticas. Android tiene los dos
+errores (`practice_to_evaluation` en `app/` y `home/presentation/` `strings.xml`, y
+`StatsScreen.kt:243`): es Android el que queda atrás, no una divergencia que haya que deshacer en iOS.
 
 **Referencia de paridad: Android `70cf187`** (incluye #31 ktlint/estilo y #32 nota de changelog,
 ninguno portable; e #33 arriba); iOS master la iguala desde `c2fbfa5` (merge de #26) más las dos
