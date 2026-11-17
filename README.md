@@ -31,12 +31,12 @@ con ella sobre una base de mejor esfuerzo.
 | Evaluación cronometrada | Duración, número de preguntas y porcentaje de aprobación configurables (por defecto: 40 minutos / 40 preguntas / 80%, igual que Android); cada respuesta se califica al instante con resaltado verde/rojo, y el intento terminado se puntúa y se guarda |
 | Resumen, historial y estadísticas | Un resumen de aprobado/no aprobado por intento, un historial de evaluaciones pasadas, estadísticas agregadas, y una revisión de "errores más frecuentes" a partir de intentos anteriores |
 | Estudiar | Recorre el banco completo de una categoría (hasta 200 preguntas) con búsqueda que ignora tildes; las respuestas correctas se muestran en línea y no hay cronómetro |
-| Visor del PDF del balotario | Visor de PDF integrado para el examen oficial de la categoría, con descarga por hoja de compartir |
+| Visor del PDF del balotario | Visor de PDF integrado para el examen oficial de la categoría, con descarga por hoja de compartir a cambio de un anuncio con recompensa (si no hay anuncio disponible, la descarga es directa) |
 | Configuraciones | Tema (sistema / claro / oscuro), duración/número de preguntas/porcentaje de aprobación de la evaluación, estadísticas, historial de evaluaciones, y enlaces a Términos, Política de Privacidad y la página oficial de "Trámites asociados" |
 | Onboarding | Introducción deslizable de tres páginas, se muestra una sola vez en el primer arranque |
 | Racha | Contador "🔥 N día(s)" en Inicio una vez completada al menos una evaluación |
-| Anuncios | Banner de Google Mobile Ads en Inicio/Detalle, más un intersticial con contador al iniciar una evaluación y al descargar un PDF (cada 3ra vez); los builds de Debug usan las unidades de prueba públicas de Google para que el desarrollo nunca sirva impresiones reales |
-| Premium | Stub de paywall solo de interfaz. `PremiumViewModel.subscribe()` es un no-op, no hay planes reales, y `isPremiumUser()` está fijo en `false` — no hay integración de StoreKit todavía. Sus puntos de entrada (la corona de Inicio, la fila de Configuraciones, el upsell "¿Cansado de los anuncios?" tras un anuncio) están **ocultos** hoy detrás de un flag de build (`offersPremium = false` en `mtcquizApp.swift`), así que la pantalla del paywall en sí no es alcanzable desde la app en ejecución |
+| Anuncios | Banner de Google Mobile Ads en Inicio/Detalle y uno cada 10 preguntas en Estudiar, un intersticial con contador al iniciar una evaluación (cada 3ra vez) y un anuncio con recompensa al descargar un PDF; los builds de Debug usan las unidades de prueba públicas de Google para que el desarrollo nunca sirva impresiones reales |
+| Premium | Stub de paywall solo de interfaz. `PremiumViewModel.subscribe()` es un no-op, no hay planes reales, y `isPremiumUser()` está fijo en `false` — no hay integración de StoreKit todavía. Sus puntos de entrada (la corona de Inicio, la fila de Configuraciones, el upsell "¿Cansado de los anuncios?" tras un anuncio, la opción Premium de la descarga del PDF) están **ocultos** hoy detrás de un flag de build (`offersPremium = false` en `mtcquizApp.swift`), así que la pantalla del paywall en sí no es alcanzable desde la app en ejecución |
 
 ## Stack tecnológico
 
@@ -47,7 +47,7 @@ con ella sobre una base de mejor esfuerzo.
 | Persistencia | SwiftData (historial de evaluaciones, preguntas descartadas) + `UserDefaults` (ajustes de evaluación) + `@AppStorage` (tema, flag de onboarding) |
 | Navegación | Un único `NavigationStack` + `NavigationPath`, con un enum `Route` para cada destino |
 | Modularidad | Paquetes locales de Swift Package Manager, uno por capa/feature, cada uno con su propio scheme de Xcode — el target de la app solo contiene el composition root |
-| Anuncios | Google Mobile Ads SDK 12.14.0 (banner + intersticiales). Google User Messaging Platform 3.1.0 está enlazado como dependencia transitiva pero el código de la app todavía no lo importa directamente |
+| Anuncios | Google Mobile Ads SDK 12.14.0 (banner, intersticial y con recompensa). Google User Messaging Platform 3.1.0 para el formulario de consentimiento |
 | Tests | Swift Testing (`@Test`, `#expect`, `@Test(arguments:)`), fakes escritos a mano sobre los protocolos de `MTCDomain` — sin framework de mocking |
 | Backend | Ninguno — sin servidor, sin Firebase, sin login. Todo el contenido va empaquetado dentro de la app |
 
@@ -73,7 +73,7 @@ Packages/
 ├── MTCHomeFeature/ MTCDetailFeature/ MTCEvaluationFeature/ MTCQuestionReviewFeature/
 │   MTCPDFFeature/ MTCSettingsFeature/ MTCPremiumFeature/ MTCOnboardingFeature/
 │                              Una pantalla (vista + view model) por paquete de feature
-└── MTCAdsFeature/              GoogleAdsManager — envuelve el banner e intersticiales de Google Mobile Ads
+└── MTCAdsFeature/              GoogleAdsManager — envuelve los banners, el intersticial y el anuncio con recompensa
 ```
 
 La inyección de dependencias es manual y explícita: `mtcquizApp` construye cada repositorio una sola
