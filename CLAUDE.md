@@ -128,6 +128,9 @@ the app ever needs a second language, that is its own task.
   rejects a too-new API at compile time. Runtime-verified on iOS 18.0; no iOS 17 simulator runtime
   was available to check 17.x itself.
 - Bundle ID `com.gonzadev.mtcquiz`, `MARKETING_VERSION` 1.0.
+- **Solo iPhone** (`TARGETED_DEVICE_FAMILY = 1`, desde el build 5, 2026-11-16): decisión de
+  publicación para no exigir capturas ni revisión en iPad. En iPad se instala en modo
+  compatibilidad. Volver a `"1,2"` es una decisión de producto, no un arreglo.
 - No linting configured.
 
 ## Working process
