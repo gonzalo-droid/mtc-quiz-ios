@@ -1,8 +1,10 @@
-# Ficha de App Store — MTCQuiz 1.0 (borrador)
+# Ficha de App Store — MTCQuiz 1.0
 
 Idioma principal: **Español (México)** (ya configurado en App Store Connect).
-Estado actual en App Store Connect: versión 1.0 "En preparación para el envío", con todos los campos
-vacíos salvo el nombre. Build 1.0 (4) procesado y en TestFlight.
+ID de Apple de la app: **6800840447** · Bundle ID y SKU: `com.gonzadev.mtcquiz`.
+
+**Estado: enviada a revisión el 2026-11-17 a las 9:44**, con el build 1.0 (6). App Store Connect la
+marca "Pendiente de revisión". Ver [Estado en App Store Connect](#estado-en-app-store-connect).
 
 Basado en la ficha de Google Play, sin la sección Premium (en iOS está oculto) y ajustado a lo que
 hace la app de iOS.
@@ -57,18 +59,17 @@ licencia,conducir,balotario,tránsito,reglas,test,preguntas,señales,categoría,
 
 | Campo | Propuesta |
 |---|---|
-| URL de soporte | **Falta** — `gonzalo-lozg.me/apps-docs/mtcquiz/` da 404 (ver decisiones) |
+| URL de soporte | `https://gonzalo-lozg.me` (`gonzalo-lozg.me/apps-docs/mtcquiz/` da 404) |
 | URL de marketing | Vacía (opcional; no enlazar a Google Play) |
 | Copyright | 2026 Neko Dojo |
-| Compilación | 1.0 (5) — solo iPhone |
+| Compilación | 1.0 (6) — solo iPhone, con el nombre "MTCQuiz" bajo el ícono |
 | Publicación | Manual (decides el día de salida tras la aprobación) |
 
 ## Información para el equipo de revisión
 
-- **Inicio de sesión:** desmarcar "Es necesario iniciar sesión" (la app no tiene cuentas).
-- **Datos de contacto:** nombre, apellido, teléfono y correo de quien atiende a Apple — **los
-  pones tú** (no los relleno con datos personales sin tu confirmación).
-- **Notas** (propuesta):
+- **Inicio de sesión:** "Es necesario iniciar sesión" desmarcado (la app no tiene cuentas).
+- **Datos de contacto:** completados con los del titular de la cuenta (no se copian aquí).
+- **Notas** (las enviadas):
 
 ```
 MTCQuiz ayuda a preparar el examen de reglas de tránsito del Perú para obtener la licencia de conducir. Es una app independiente, no afiliada al MTC; las preguntas provienen de los balotarios públicos que el MTC publica en PDF.
@@ -86,46 +87,66 @@ La app no tiene compras dentro de la app en esta versión.
 ## Privacidad de la app (etiquetas)
 
 Vienen del SDK de Google Mobile Ads (su `PrivacyInfo.xcprivacy`); el código propio no recolecta
-nada. Propuesta:
+nada. **Publicadas el 2026-11-16.** Lo que muestra la ficha de la app:
 
-| Dato | Uso | ¿Vinculado al usuario? | ¿Rastreo? |
-|---|---|---|---|
-| Identificadores → ID del dispositivo (IDFA) | Publicidad de terceros | No | **Sí** |
-| Datos de uso → Interacción con el producto | Publicidad de terceros, Analítica | No | No |
-| Datos de uso → Datos de publicidad | Publicidad de terceros | No | No |
-| Ubicación → Aproximada (por IP) | Publicidad de terceros | No | No |
-| Diagnóstico → Datos de fallos, rendimiento, otros | Publicidad de terceros | No | No |
+| Sección de la ficha | Tipos de datos |
+|---|---|
+| Datos usados para rastrearte | Identificadores (ID del dispositivo / IDFA) |
+| Datos vinculados contigo | Ubicación, Datos de uso, Identificadores |
+| Datos no vinculados contigo | Diagnósticos |
 
-**URL de la política de privacidad:** `https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/` existe,
-pero describe la app de Android: Firebase Analytics, Crashlytics, Realtime Database y compras
-Premium, nada de lo cual existe en iOS, y no menciona ATT ni el anuncio con recompensa. Apple
-compara la política con las etiquetas; conviene corregirla antes de enviar (ver decisiones).
+Declarar el ID del dispositivo como rastreo es lo que hizo desaparecer el aviso de App Store Connect
+sobre `NSUserTrackingUsageDescription`: la app pide permiso de ATT, así que las etiquetas tienen que
+declarar rastreo.
+
+**URL de la política de privacidad:** `https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/`.
+Describía solo la app de Android (Firebase, Crashlytics, compras Premium); el 2026-11-16 se le
+agregó la sección "3.9 Aplicación para iPhone (iOS)": sin Firebase ni compras, solo AdMob con UMP
+y ATT, y cómo cambiar el rastreo en Ajustes.
 
 ## Otros apartados
 
-- **Clasificación por edades:** cuestionario sin contenido sensible → previsiblemente 4+. Contiene
-  anuncios (Apple lo pregunta).
-- **Derechos sobre el contenido:** sí contiene contenido de terceros (balotarios públicos del MTC).
-- **Precio y disponibilidad:** gratis.
-- **Capturas de pantalla:** obligatorias para iPhone 6,9" (1320 × 2868) — y también para iPad 13"
-  porque el target declara iPhone **y iPad** (`TARGETED_DEVICE_FAMILY = "1,2"`). Las de
-  `docs/screen/` no tienen esos tamaños; hay que sacarlas de nuevo en el simulador.
+- **Clasificación por edades: 4+** (172 países; A12 en Brasil, ALL en Corea, 00+ en Vietnam).
+  Respuestas: "Sí" solo en Capacidades → Publicidad; "No" o "Ninguno" en todo lo demás, y "No
+  aplicable" en el reemplazo manual. En "Alcohol, tabaco o drogas" va **Ninguno** aunque unas 10
+  preguntas mencionan alcohol o estupefacientes: son preguntas de norma (sanciones, alcoholemia,
+  límite legal), no muestran consumo. Si Apple lo objeta, pasarlo a "Poco frecuente" sube la
+  clasificación, probablemente a 13+.
+- **Derechos sobre el contenido:** "Sí, contiene, muestra o accede a contenido de terceros y tengo
+  los derechos necesarios" (balotarios públicos del MTC).
+- **Precio y disponibilidad:** gratis, solo Perú (1 de 175 países).
+- **Capturas de pantalla:** App Store Connect ya no pide 6,9"; pide iPhone 6,1"/6,3" (1206 × 2622)
+  y las reduce para los demás tamaños. Subidas las seis de `docs/release/screenshots-6.3/`; las
+  originales de 1320 × 2868 están en `screenshots-6.9/`. Sin iPad: la app es solo iPhone.
+- **Avisos que no aplican:** evaluación de seguridad y declaración de AIGC para China continental,
+  y Reglamento de Servicios Digitales de la UE. La app solo se distribuye en Perú.
 
 ## Decisiones (2026-11-16)
 
-1. **Solo iPhone**: `TARGETED_DEVICE_FAMILY = 1` desde el build 1.0 (5), que es el asignado a la
-   versión. Basta con capturas de iPhone 6,9".
+1. **Solo iPhone**: `TARGETED_DEVICE_FAMILY = 1` desde el build 1.0 (5). Basta con capturas de
+   iPhone.
 2. **URL de soporte:** `https://gonzalo-lozg.me`.
 3. **Países:** solo Perú, gratis.
-4. **Política de privacidad:** pendiente de corregir en la web para iOS antes de enviar.
+4. **Política de privacidad:** corregida en la web para iOS (hecho el 2026-11-16).
 
-## Estado en App Store Connect (guardado, sin enviar a revisión)
+## Decisiones (2026-11-17)
 
-- Información de la app: subtítulo, categorías Educación / Referencia.
-- Versión 1.0: texto promocional, descripción, palabras clave, URL de soporte, copyright, build 5,
-  notas de revisión, sin inicio de sesión, publicación manual.
+1. **Build 6** reemplaza al 5 en la versión: agrega `CFBundleDisplayName` "MTCQuiz" (antes salía
+   "mtcquiz" bajo el ícono y en el aviso de rastreo) y corrige "Prepárate" en Inicio y "1 evaluación"
+   en Estadísticas (PRs #36–#38).
+
+## Estado en App Store Connect
+
+**Enviada a revisión el 2026-11-17, 9:44 — "Pendiente de revisión".** Apple avisa por correo; la
+revisión puede tardar hasta 48 horas.
+
+- Información de la app: subtítulo, categorías Educación / Referencia, clasificación 4+, derechos
+  sobre el contenido.
+- Versión 1.0: texto promocional, descripción, palabras clave, URL de soporte, copyright, build 6,
+  seis capturas de 6,3", notas y datos de contacto de revisión, sin inicio de sesión, publicación
+  manual.
+- Privacidad de la app: etiquetas publicadas y URL de la política.
 - Precio y disponibilidad: gratis, solo Perú.
 
-Falta, antes de "Añadir a revisión": capturas de iPhone 6,9", datos de contacto para revisión,
-etiquetas de privacidad + URL de la política, clasificación por edades y derechos sobre el
-contenido.
+Mientras está en revisión se puede editar parte de la ficha, pero no cambiar el build. Al
+aprobarse queda "Lista para publicar": sale en App Store al pulsar "Publicar esta versión".
