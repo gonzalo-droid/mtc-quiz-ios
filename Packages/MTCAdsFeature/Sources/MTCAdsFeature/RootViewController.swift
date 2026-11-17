@@ -17,4 +17,17 @@ enum RootViewController {
         }
         return top
     }
+
+    /// `current()`, once any presentation or dismissal in flight has finished. A full-screen ad
+    /// started from an alert's button would otherwise be presented on the alert while it is still
+    /// going away; when the ad later closes, the next sheet SwiftUI presents never appears.
+    static func whenSettled(_ action: @escaping (UIViewController?) -> Void) {
+        guard let top = current(), let coordinator = top.transitionCoordinator else {
+            action(current())
+            return
+        }
+        coordinator.animate(alongsideTransition: nil) { _ in
+            action(current())
+        }
+    }
 }

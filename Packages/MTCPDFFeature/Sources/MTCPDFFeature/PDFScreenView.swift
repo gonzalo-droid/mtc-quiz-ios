@@ -2,24 +2,13 @@ import SwiftUI
 
 public struct PDFScreenView: View {
     @State private var viewModel: PDFViewModel
-    @State private var isSharing = false
-    private let onDownload: (_ presentShareSheet: @escaping () -> Void) -> Void
-    private let onShareSheetDismissed: () -> Void
+    private let onGoToPremium: (() -> Void)?
 
-    /// - Parameters:
-    ///   - onDownload: runs when "Descargar" is tapped and must call `presentShareSheet` exactly
-    ///     once when the share sheet may appear — the app shell runs the PDF interstitial gate
-    ///     here, as Android does on its download action (never on opening the screen).
-    ///   - onShareSheetDismissed: runs after the share sheet closes; the shell uses it to offer
-    ///     premium when an ad interrupted the download.
-    public init(
-        viewModel: PDFViewModel,
-        onDownload: @escaping (_ presentShareSheet: @escaping () -> Void) -> Void = { $0() },
-        onShareSheetDismissed: @escaping () -> Void = {}
-    ) {
+    /// - Parameter onGoToPremium: adds "Descargar sin anuncios con Premium" to the rewarded-ad
+    ///   prompt. The shell passes `nil` while the app offers no Premium.
+    public init(viewModel: PDFViewModel, onGoToPremium: (() -> Void)? = nil) {
         _viewModel = State(initialValue: viewModel)
-        self.onDownload = onDownload
-        self.onShareSheetDismissed = onShareSheetDismissed
+        self.onGoToPremium = onGoToPremium
     }
 
     public var body: some View {
@@ -34,17 +23,36 @@ public struct PDFScreenView: View {
                             // writes to directly: the share sheet's "Guardar en Archivos" is the
                             // native way to keep a copy, and it also offers every other target.
                             Button {
-                                onDownload { isSharing = true }
+                                viewModel.downloadTapped()
                             } label: {
                                 Label("Descargar", systemImage: "square.and.arrow.down")
                             }
                             .accessibilityLabel("Descargar")
                         }
                     }
-                    .sheet(isPresented: $isSharing, onDismiss: onShareSheetDismissed) {
+                    .sheet(isPresented: binding(\.isShareSheetPresented, viewModel.setShareSheetPresented)) {
                         ShareSheet(items: [url])
                             .presentationDetents([.medium, .large])
                             .ignoresSafeArea()
+                    }
+                    // AdMob requires the user to choose the rewarded ad and know what it earns.
+                    .alert(
+                        "Descarga gratis con un anuncio",
+                        isPresented: binding(\.isRewardPromptPresented, viewModel.setRewardPromptPresented)
+                    ) {
+                        Button("Ver anuncio y descargar") { viewModel.watchAdTapped() }
+                        if let onGoToPremium {
+                            Button("Descargar sin anuncios con Premium", action: onGoToPremium)
+                        }
+                        Button("Cancelar", role: .cancel) {}
+                    } message: {
+                        Text("Mira un anuncio corto y podrás guardar el balotario en Archivos o compartirlo.")
+                    }
+                    .alert(
+                        "Mira el anuncio completo para descargar el PDF",
+                        isPresented: binding(\.isRewardSkippedPresented, viewModel.setRewardSkippedPresented)
+                    ) {
+                        Button("Entendido", role: .cancel) {}
                     }
             } else if viewModel.state.isLoading {
                 ProgressView()
@@ -58,6 +66,13 @@ public struct PDFScreenView: View {
         .task {
             await viewModel.load()
         }
+    }
+
+    private func binding(
+        _ keyPath: KeyPath<PDFState, Bool>,
+        _ set: @escaping (Bool) -> Void
+    ) -> Binding<Bool> {
+        Binding(get: { viewModel.state[keyPath: keyPath] }, set: set)
     }
 }
 

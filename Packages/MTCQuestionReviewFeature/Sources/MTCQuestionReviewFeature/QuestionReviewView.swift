@@ -2,13 +2,27 @@ import SwiftUI
 import MTCDomain
 import MTCDesignSystem
 
-public struct QuestionReviewView: View {
+public struct QuestionReviewView<InlineAd: View>: View {
     @State private var viewModel: QuestionReviewViewModel
     private let imageResolver: QuestionImageResolver
+    private let bannerInterval: Int
+    private let inlineAd: (_ slot: Int) -> InlineAd
 
-    public init(viewModel: QuestionReviewViewModel, imageResolver: QuestionImageResolver) {
+    /// - Parameters:
+    ///   - bannerInterval: a banner goes after every this many questions; 0 means none. The shell
+    ///     passes 0 for a premium user.
+    ///   - inlineAd: the banner for one slot. Injected because a feature never depends on another:
+    ///     the shell builds it with `MTCAdsFeature`.
+    public init(
+        viewModel: QuestionReviewViewModel,
+        imageResolver: QuestionImageResolver,
+        bannerInterval: Int,
+        @ViewBuilder inlineAd: @escaping (_ slot: Int) -> InlineAd
+    ) {
         _viewModel = State(initialValue: viewModel)
         self.imageResolver = imageResolver
+        self.bannerInterval = bannerInterval
+        self.inlineAd = inlineAd
     }
 
     public var body: some View {
@@ -21,7 +35,12 @@ public struct QuestionReviewView: View {
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                QuestionListContent(viewModel: viewModel, imageResolver: imageResolver)
+                QuestionListContent(
+                    viewModel: viewModel,
+                    imageResolver: imageResolver,
+                    bannerInterval: bannerInterval,
+                    inlineAd: inlineAd
+                )
             }
         }
         .navigationTitle(viewModel.state.category?.title ?? "")
@@ -39,18 +58,30 @@ public struct QuestionReviewView: View {
     }
 }
 
+public extension QuestionReviewView where InlineAd == EmptyView {
+    /// The list without banners.
+    init(viewModel: QuestionReviewViewModel, imageResolver: QuestionImageResolver) {
+        self.init(viewModel: viewModel, imageResolver: imageResolver, bannerInterval: 0) { _ in EmptyView() }
+    }
+}
+
 /// Split out from `QuestionReviewView` so it can read `@Environment(\.isSearching)` — that
 /// environment value is only visible to descendants of the view carrying `.searchable`, not to
 /// the view applying the modifier itself.
-private struct QuestionListContent: View {
+private struct QuestionListContent<InlineAd: View>: View {
     @Environment(\.isSearching) private var isSearching
     @State private var visibleIndices: Set<Int> = []
 
     let viewModel: QuestionReviewViewModel
     let imageResolver: QuestionImageResolver
+    let bannerInterval: Int
+    let inlineAd: (_ slot: Int) -> InlineAd
 
     var body: some View {
         let filtered = viewModel.filteredQuestions
+        // No banners while searching: the results are a short list the user wants to scan at once.
+        let isFiltering = !viewModel.state.searchText.trimmingCharacters(in: .whitespaces).isEmpty
+        let entries = filtered.withBanners(interval: isFiltering ? 0 : bannerInterval)
 
         VStack(spacing: 8) {
             if !isSearching, !filtered.isEmpty {
@@ -62,16 +93,23 @@ private struct QuestionListContent: View {
             } else {
                 ScrollView {
                     LazyVStack(spacing: 16) {
-                        ForEach(Array(filtered.enumerated()), id: \.offset) { index, question in
-                            QuestionAnswerCard(
-                                title: "\(question.id).- \(question.title)",
-                                options: answerOptions(for: question),
-                                imageURLs: question.images.compactMap(imageResolver.url(forImageName:)),
-                                onSelectOption: { _ in }
-                            )
-                            .allowsHitTesting(false)
-                            .onAppear { visibleIndices.insert(index) }
-                            .onDisappear { visibleIndices.remove(index) }
+                        // Only question rows report visibility, so the "x/N" progress counts
+                        // questions and never the banners in between.
+                        ForEach(entries) { entry in
+                            switch entry {
+                            case .question(let index, let question):
+                                QuestionAnswerCard(
+                                    title: "\(question.id).- \(question.title)",
+                                    options: answerOptions(for: question),
+                                    imageURLs: question.images.compactMap(imageResolver.url(forImageName:)),
+                                    onSelectOption: { _ in }
+                                )
+                                .allowsHitTesting(false)
+                                .onAppear { visibleIndices.insert(index) }
+                                .onDisappear { visibleIndices.remove(index) }
+                            case .banner(let slot):
+                                inlineAd(slot)
+                            }
                         }
                     }
                 }

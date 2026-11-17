@@ -31,10 +31,20 @@ private let offersPremium = false
 #if DEBUG
 private let bannerAdUnitID = "ca-app-pub-3940256099942544/2435281174"
 private let interstitialAdUnitID = "ca-app-pub-3940256099942544/4411468910"
+private let pdfRewardedAdUnitID = "ca-app-pub-3940256099942544/1712485313"
 #else
 private let bannerAdUnitID = "ca-app-pub-1427341798923689/1670669268"
 private let interstitialAdUnitID = "ca-app-pub-1427341798923689/6988630460"
+private let pdfRewardedAdUnitID = "ca-app-pub-1427341798923689/1197830238"
 #endif
+
+/// The banners between the questions of Estudiar use the same unit as the bottom banners. Android
+/// has a unit of its own for them; create one in AdMob and swap it in here to report them apart.
+private let studyBannerAdUnitID = bannerAdUnitID
+
+/// A banner after every this many questions in Estudiar. Android reads it from Remote Config
+/// (`study_banner_interval`); iOS has no Firebase, so it is a constant, like `offersPremium`.
+private let studyBannerInterval = 10
 
 @main
 struct mtcquizApp: App {
@@ -46,6 +56,7 @@ struct mtcquizApp: App {
     private let adsManager = GoogleAdsManager(
         bannerAdUnitID: bannerAdUnitID,
         interstitialAdUnitID: interstitialAdUnitID,
+        pdfRewardedAdUnitID: pdfRewardedAdUnitID,
         isPremium: isPremiumUser
     )
 
@@ -95,11 +106,6 @@ private struct RootView: View {
     /// modal on top of it. Android sets its dialog flag in the same callback, with the same effect.
     @State private var pendingUpsell = false
     @State private var showUpsell = false
-    /// Same idea on the PDF screen: set when the download's interstitial actually ran, turned into
-    /// the dialog once the share sheet closes. Kept apart from `pendingUpsell` so it can never
-    /// leak into Detail's `onAppear` after the user leaves the PDF.
-    @State private var pendingPdfUpsell = false
-    @State private var showPdfUpsell = false
     @AppStorage("theme_mode") private var themeModeRaw: String = "system"
     @AppStorage("onboarding_shown") private var onboardingShown: Bool = false
 
@@ -133,7 +139,7 @@ private struct RootView: View {
             }
             .task {
                 await TrackingConsentCoordinator.requestConsentAndStartAds()
-                adsManager.preloadPdfInterstitial()
+                adsManager.preloadPdfRewarded()
                 adsManager.preloadEvaluationInterstitial()
             }
             .navigationDestination(for: Route.self) { route in
@@ -151,7 +157,7 @@ private struct RootView: View {
                         onStudy: {
                             path.append(Route.questionReview(categoryId: categoryId))
                         },
-                        // Opening the PDF is free: the interstitial belongs to the download
+                        // Opening the PDF is free: the rewarded ad belongs to the download
                         // action inside the PDF screen, as on Android.
                         onDownloadPDF: {
                             path.append(Route.pdf(categoryId: categoryId))
@@ -170,31 +176,37 @@ private struct RootView: View {
                     }
                     .premiumUpsell(isPresented: $showUpsell) { path.append(Route.premium) }
                 case .questionReview(let categoryId):
-                    QuestionReviewView(
-                        viewModel: QuestionReviewViewModel(
-                            categoryId: categoryId,
-                            categoryRepository: categoryRepository,
-                            questionRepository: questionRepository
-                        ),
-                        imageResolver: imageResolver
-                    )
+                    // The list has 16 pt of padding on each side.
+                    InlineBannerAdsHost(adUnitID: studyBannerAdUnitID, horizontalInset: 32) { banners in
+                        QuestionReviewView(
+                            viewModel: QuestionReviewViewModel(
+                                categoryId: categoryId,
+                                categoryRepository: categoryRepository,
+                                questionRepository: questionRepository
+                            ),
+                            imageResolver: imageResolver,
+                            bannerInterval: isPremiumUser() ? 0 : studyBannerInterval
+                        ) { slot in
+                            InlineBannerAdSlot(banners: banners, slot: slot)
+                        }
+                    }
                 case .pdf(let categoryId):
                     PDFScreenView(
-                        viewModel: PDFViewModel(categoryId: categoryId, categoryRepository: categoryRepository),
-                        onDownload: { presentShareSheet in
-                            adsManager.gatePdfDownload { adWasShown in
-                                if adWasShown && offersPremium { pendingPdfUpsell = true }
-                                presentShareSheet()
+                        viewModel: PDFViewModel(
+                            categoryId: categoryId,
+                            categoryRepository: categoryRepository,
+                            isRewardedAdReady: { adsManager.isPdfRewardedReady },
+                            showRewardedAd: { completion in
+                                // A failure to show is not the user's fault: only closing the
+                                // ad early holds the download back.
+                                adsManager.showPdfRewarded { completion($0 != .skipped) }
                             }
-                        },
-                        onShareSheetDismissed: {
-                            if pendingPdfUpsell {
-                                pendingPdfUpsell = false
-                                showPdfUpsell = true
-                            }
-                        }
+                        ),
+                        // Android's "Descargar sin anuncios con Premium" in the rewarded prompt;
+                        // it replaces the "¿Cansado de los anuncios?" that followed the old
+                        // PDF interstitial.
+                        onGoToPremium: offersPremium ? { path.append(Route.premium) } : nil
                     )
-                    .premiumUpsell(isPresented: $showPdfUpsell) { path.append(Route.premium) }
                 case .evaluation(let categoryId):
                     QuizView(
                         viewModel: QuizViewModel(
@@ -313,8 +325,9 @@ private struct RootView: View {
     }
 }
 
-/// "¿Cansado de los anuncios?" — offered after an interstitial that actually ran, on Detail (the
-/// evaluation's ad) and on the PDF screen (the download's ad). Android's `PremiumUpsellDialog`.
+/// "¿Cansado de los anuncios?" — offered on Detail after the evaluation's interstitial actually
+/// ran. Android's `PremiumUpsellDialog`. The PDF screen no longer has one: its rewarded-ad prompt
+/// carries the Premium option instead.
 private struct PremiumUpsellModifier: ViewModifier {
     @Binding var isPresented: Bool
     let onSeePlans: () -> Void

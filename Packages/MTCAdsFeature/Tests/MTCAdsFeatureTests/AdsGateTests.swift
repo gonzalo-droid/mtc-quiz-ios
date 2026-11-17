@@ -11,12 +11,11 @@ private final class FakeAdsManager: AdsManaging {
     var adActuallyShows = true
     private(set) var calls: [String] = []
 
-    func preloadPdfInterstitial() { calls.append("preloadPdf") }
-    func shouldShowPdfInterstitial() -> Bool { calls.append("shouldPdf"); return isDue }
-    func showPdfInterstitial(onDismiss: @escaping (Bool) -> Void) {
-        calls.append("showPdf"); onDismiss(adActuallyShows)
+    func preloadPdfRewarded() { calls.append("preloadPdfRewarded") }
+    var isPdfRewardedReady: Bool { false }
+    func showPdfRewarded(onResult: @escaping (RewardedOutcome) -> Void) {
+        calls.append("showPdfRewarded"); onResult(.unavailable)
     }
-    func recordPdfDownload() { calls.append("recordPdf") }
 
     func preloadEvaluationInterstitial() { calls.append("preloadEvaluation") }
     func shouldShowEvaluationInterstitial() -> Bool { calls.append("shouldEvaluation"); return isDue }
@@ -28,36 +27,13 @@ private final class FakeAdsManager: AdsManaging {
 
 @MainActor
 @Suite struct AdsGateTests {
-    @Test func pdfDownloadCountsBeforeDecidingAndProceedsWithoutAnAdWhenNoneIsDue() {
-        let ads = FakeAdsManager()
-        var results: [Bool] = []
-
-        ads.gatePdfDownload { results.append($0) }
-
-        #expect(ads.calls == ["recordPdf", "shouldPdf"])
-        #expect(results == [false])
-    }
-
-    @Test(arguments: [true, false])
-    func pdfDownloadShowsTheAdWhenDueAndReportsWhetherItRan(adActuallyShows: Bool) {
-        let ads = FakeAdsManager()
-        ads.isDue = true
-        ads.adActuallyShows = adActuallyShows
-        var results: [Bool] = []
-
-        ads.gatePdfDownload { results.append($0) }
-
-        #expect(ads.calls == ["recordPdf", "shouldPdf", "showPdf"])
-        #expect(results == [adActuallyShows])
-    }
-
-    @Test func pdfGateNeverTouchesTheEvaluationCounter() {
+    @Test func evaluationGateNeverTouchesThePdfAd() {
         let ads = FakeAdsManager()
         ads.isDue = true
 
-        ads.gatePdfDownload { _ in }
+        ads.gateEvaluationStart { _ in }
 
-        #expect(!ads.calls.contains { $0.contains("Evaluation") })
+        #expect(!ads.calls.contains { $0.contains("Pdf") })
     }
 
     @Test(arguments: [false, true])
