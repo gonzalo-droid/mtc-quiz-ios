@@ -143,7 +143,7 @@ private struct CategoryStatCard: View {
             }
             ProgressView(value: stat.approvalRate)
                 .tint(barColor)
-            Text("\(stat.evaluationCount) evaluaciones")
+            Text(stat.evaluationCount == 1 ? "1 evaluación" : "\(stat.evaluationCount) evaluaciones")
                 .font(MTCTypography.caption)
                 .foregroundStyle(.secondary)
         }

@@ -28,7 +28,7 @@ public struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Preparate para tu evaluación")
+                    Text("Prepárate para tu evaluación")
                         .font(MTCTypography.largeTitle)
                     Text("Evaluación de conocimientos para postulantes a licencias de conducir.")
                         .font(MTCTypography.body)
