@@ -100,13 +100,19 @@ and the Settings row and suppresses the "¿Cansado de los anuncios?" dialog, bec
 rejects purchase buttons that do nothing. Flip it to `true` in the same change that ships billing.
 Android does show Premium (it has real billing): this is a deliberate divergence, not a gap.
 
-**Ads**: `GoogleAdsManager` (package `MTCAdsFeature`) wraps Google Mobile Ads; the banner and the
-two interstitials are triggered from `RootView` through `AdsManaging.gatePdfDownload` /
-`gateEvaluationStart`. The PDF one fires on the PDF screen's "Descargar" button (before the share
-sheet), never on opening the PDF from Detail. After an ad that actually ran, the "¿Cansado de los
-anuncios?" dialog is offered — on Detail for the evaluation ad, on the PDF screen (after the share
-sheet closes) for the PDF ad. Ad unit IDs are hardcoded in `mtcquizApp.swift`: Google's sample units under `#if DEBUG`,
-the real ones in Release.
+**Ads**: `GoogleAdsManager` (package `MTCAdsFeature`) wraps Google Mobile Ads. Four placements:
+- a bottom banner on Home and Detail (`BannerAdView`);
+- a banner after every `studyBannerInterval` (10) questions in Estudiar — `InlineBannerAdsHost` +
+  `InlineBannerAdSlot` injected into `QuestionReviewView`, one cached `BannerView` per slot, none
+  while searching, none after the last question;
+- the evaluation interstitial, every 3rd start, through `AdsManaging.gateEvaluationStart`; after one
+  that actually ran, Detail offers "¿Cansado de los anuncios?";
+- a rewarded ad on the PDF screen's "Descargar" button (never on opening the PDF from Detail):
+  `PDFViewModel` asks first ("Descarga gratis con un anuncio"), downloads straight away when no ad
+  is loaded, and holds the download back only when the user closes the ad early. It is presented
+  through `RootViewController.whenSettled`, because it starts from an alert that is still going away.
+Ad unit IDs are hardcoded in `mtcquizApp.swift`: Google's sample units under `#if DEBUG`, the real
+ones in Release.
 
 ### Strings
 
@@ -181,7 +187,8 @@ y `ModelContainer` sin `try!` en disco.
 el entitlement) con Firebase Remote Config — parámetro `premium_enabled`, default `true`,
 `FeatureFlagsRepository.isPremiumOfferEnabled`, se activa en el arranque — y lo lee en las mismas
 cinco pantallas que iOS ya tapa con `offersPremium`: corona de Home, fila de Configuraciones,
-`PremiumUpsellDialog` tras el anuncio de Detail y de PDF, y `PremiumViewModel.isPaywallAvailable`
+`PremiumUpsellDialog` tras el anuncio de Detail y de PDF (el de PDF ya no existe desde el banner de
+Estudiar, ver abajo), y `PremiumViewModel.isPaywallAvailable`
 del paywall. Paridad de comportamiento visible, por una constante en vez de un flag remoto — **a
 propósito, no se porta Remote Config sin preguntar** (perfil §6: sin Firebase). Dos divergencias
 latentes, sin efecto mientras `isPremiumUser()` sea `false` fijo, documentadas para cuando llegue el
@@ -191,6 +198,16 @@ billing real:
   entitlement real: `mtcquizApp.swift:238` necesitaría `offersPremium || isPremiumUser()`.
 - El paywall de Android se cierra solo (`navigateBack()`) si la oferta se apaga con él abierto; en
   iOS no hace falta mientras `offersPremium` sea una constante de compilación.
+
+**Banner en Estudiar y PDF con recompensa 2026-11-16:** iOS `feat/study-banner-pdf-rewarded` porta
+la rama Android del mismo nombre, todavía sin mergear en Android cuando se escribió (en su checkout
+local, sin commit). Banner cada 10 preguntas en Estudiar y anuncio con recompensa en "Descargar" del
+PDF, que reemplaza al intersticial de PDF y al "¿Cansado de los anuncios?" que lo seguía (la opción
+Premium vive ahora en la alerta, `onGoToPremium`, `nil` mientras `offersPremium == false`). Sólo
+iOS: el cuerpo de la alerta habla de "Archivos" (iOS no guarda en Descargas) y el intervalo es una
+constante en vez de Remote Config. Spec:
+`docs/superpowers/specs/2026-11-16-study-banner-pdf-rewarded-design.md`. Al mergear Android, revisa
+que su versión final no haya cambiado reglas o textos.
 
 **Referencia de paridad: Android `70cf187`** (incluye #31 ktlint/estilo y #32 nota de changelog,
 ninguno portable; e #33 arriba); iOS master la iguala desde `c2fbfa5` (merge de #26) más las dos
@@ -286,12 +303,14 @@ ese fue exactamente el bug que arregló el PR #7.
   `master` antes de nada — en vez de escribirlo de cero.
 - **Sin backend y sin Firebase.** Android usa Firebase para auth/analytics; en iOS esos caminos no
   existen y no se portan sin preguntar.
-- **Anuncios**: AdMob con ids de unidad hardcodeados. Los intersticiales son por contador —
-  descarga de PDF (el botón "Descargar" de la pantalla PDF, **no** abrirla) e inicio de evaluación,
-  cada uno con el suyo — y se muestran cuando `count > 0 && count % 3 == 0`. El contador se
-  incrementa **antes** de decidir: `record…()` → `should…()` → `show…()`, todo dentro de
-  `AdsManaging.gatePdfDownload` / `gateEvaluationStart`. Es la misma regla que Android; respétala
-  en vez de inventar otra.
+- **Anuncios**: AdMob con ids de unidad hardcodeados. El intersticial de inicio de evaluación es
+  por contador y se muestra cuando `count > 0 && count % 3 == 0`; el contador se incrementa
+  **antes** de decidir: `record…()` → `should…()` → `show…()`, dentro de
+  `AdsManaging.gateEvaluationStart`. La descarga del PDF (el botón "Descargar", **no** abrirla) va
+  por un anuncio con recompensa en cada descarga, sin contador: si no hay anuncio listo se descarga
+  igual, y sólo `.skipped` (cerrarlo antes) frena la descarga. En Estudiar, un banner cada 10
+  preguntas (Android lo lee de Remote Config `study_banner_interval`; iOS, constante). Son las
+  mismas reglas que Android; respétalas en vez de inventar otras.
 
 **Código de Android que parece brecha y no lo es.** Está compilado pero es inalcanzable. No lo portes,
 y no lo cuentes en una auditoría:
