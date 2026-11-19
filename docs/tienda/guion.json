@@ -1,0 +1,30 @@
+{
+  "app": "MTCQuiz - Examen Brevete Perú",
+  "tiendas": ["ios"],
+  "aviso": "App independiente, no afiliada al MTC",
+  "marca": {
+    "claro": "#FBF8FF", "oscuro": "#1A1F4A", "acento": "#3949AB",
+    "acentoSobreOscuro": "#8C9EFF", "detalle": "#FFC940",
+    "icono": "icono.png"
+  },
+  "laminas": [
+    {"tipo": "portada", "fondo": "oscuro", "etiqueta": "01 · 9 categorías",
+     "titular": "Llega listo\nal *examen del MTC*", "sub": "Las preguntas del balotario de tu licencia.", "aviso": true,
+     "captura": {"ios": "capturas/01-inicio.png"}},
+    {"tipo": "telefono-abajo", "etiqueta": "02 · Estudiar",
+     "titular": "Cada pregunta\ncon su *respuesta*", "sub": "Todo el balotario, señales incluidas.",
+     "captura": {"ios": "capturas/03-estudio-b.png"}},
+    {"tipo": "destacado", "fondo": "oscuro", "etiqueta": "03 · Simulacro",
+     "titular": "Practica\n*contra el reloj*", "sub": "Preguntas al azar, como en el examen.",
+     "captura": {"ios": "capturas/04-evaluacion-c.png"},
+     "zona": {"ios": [1060, 170, 240, 165]}},
+    {"tipo": "telefono-abajo", "etiqueta": "04 · Resultado",
+     "titular": "Sabe si ya\n*apruebas*", "sub": "Tu nota y tus aciertos al terminar.",
+     "captura": {"ios": "capturas/05-resultado.png"}},
+    {"tipo": "dos-telefonos", "fondo": "oscuro", "etiqueta": "05 · Progreso",
+     "titular": "Mira cómo\n*mejoras*", "sub": "Estadísticas e historial de tus simulacros.",
+     "captura": {"ios": "capturas/06-estadisticas.png"}, "captura2": {"ios": "capturas/06-historial.png"}},
+    {"tipo": "lista", "fondo": "oscuro", "titular": "*Y además*", "aviso": true,
+     "items": ["Simulacro a tu medida", "PDF del balotario", "Racha de estudio", "Sin crear cuenta"]}
+  ]
+}
