@@ -20,6 +20,17 @@ internal import MTCDomain
 /// instead of threading a new parameter through every screen.
 private func isPremiumUser() -> Bool { false }
 
+/// Debug only: launch with `-hideAds` (scheme argument, or `simctl launch <device> <bundle> -hideAds`)
+/// to hide every ad and skip the consent prompts, for store screenshots. Release always shows ads.
+#if DEBUG
+private let showsAds = !ProcessInfo.processInfo.arguments.contains("-hideAds")
+#else
+private let showsAds = true
+#endif
+
+/// Ads are off for a premium user or a `-hideAds` debug run.
+private func hidesAds() -> Bool { isPremiumUser() || !showsAds }
+
 /// Whether the app offers Premium at all: the Home crown, the Settings row and the "¿Cansado de
 /// los anuncios?" dialog. `false` until real billing exists — the paywall's "Suscribirme" and
 /// "Restaurar compras" are no-ops, and App Review rejects purchase buttons that do nothing.
@@ -57,7 +68,7 @@ struct mtcquizApp: App {
         bannerAdUnitID: bannerAdUnitID,
         interstitialAdUnitID: interstitialAdUnitID,
         pdfRewardedAdUnitID: pdfRewardedAdUnitID,
-        isPremium: isPremiumUser
+        isPremium: hidesAds
     )
 
     init() {
@@ -135,9 +146,10 @@ private struct RootView: View {
                     },
                     onOpenPremium: offersPremium ? { path.append(Route.premium) } : nil
                 )
-                BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
+                BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: hidesAds())
             }
             .task {
+                guard showsAds else { return }
                 await TrackingConsentCoordinator.requestConsentAndStartAds()
                 adsManager.preloadPdfRewarded()
                 adsManager.preloadEvaluationInterstitial()
@@ -166,7 +178,7 @@ private struct RootView: View {
                             path.append(Route.settings)
                         }
                     )
-                        BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: isPremiumUser())
+                        BannerAdView(adUnitID: adsManager.bannerAdUnitID, isPremium: hidesAds())
                     }
                     .onAppear {
                         if pendingUpsell {
@@ -185,7 +197,7 @@ private struct RootView: View {
                                 questionRepository: questionRepository
                             ),
                             imageResolver: imageResolver,
-                            bannerInterval: isPremiumUser() ? 0 : studyBannerInterval
+                            bannerInterval: hidesAds() ? 0 : studyBannerInterval
                         ) { slot in
                             InlineBannerAdSlot(banners: banners, slot: slot)
                         }
