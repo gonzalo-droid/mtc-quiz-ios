@@ -105,5 +105,5 @@ private struct WebViewRepresentable: UIViewRepresentable {
 }
 
 #Preview("Legal WebView") {
-    LegalWebView(url: URL(string: "https://gonzalo-lozg.me/apps-docs/mtcquiz/term/")!)
+    LegalWebView(url: URL(string: "https://nekodojo.app/apps/mtcquiz/terms")!)
 }

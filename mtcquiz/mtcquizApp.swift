@@ -276,11 +276,11 @@ private struct RootView: View {
                         }
                     )
                 case .terms:
-                    LegalWebView(url: URL(string: "https://gonzalo-lozg.me/apps-docs/mtcquiz/term/")!)
+                    LegalWebView(url: URL(string: "https://nekodojo.app/apps/mtcquiz/terms")!)
                         .navigationTitle("Términos y condiciones")
                         .navigationBarTitleDisplayMode(.inline)
                 case .privacy:
-                    LegalWebView(url: URL(string: "https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/")!)
+                    LegalWebView(url: URL(string: "https://nekodojo.app/apps/mtcquiz/privacy")!)
                         .navigationTitle("Política de privacidad")
                         .navigationBarTitleDisplayMode(.inline)
                 case .tramites:
