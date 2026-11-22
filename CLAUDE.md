@@ -137,9 +137,12 @@ the app ever needs a second language, that is its own task.
   `docs/release/screenshots-6.3/`, sacadas de un build Release con `isPremiumUser()` en `true` solo
   localmente; las de la 1.0.1, con titulares, en `docs/tienda/salida/ios/1206x2622/` (generadas desde
   `docs/tienda/guion.json`; hoy se sacan las capturas con `-hideAds` en Debug).
-- **Imágenes de `docs/` en WebP calidad 95** (2026-11-21), para aligerar el repo; no entran en ningún
-  build. App Store Connect **no acepta WebP**: para volver a subir una, conviértela antes
-  (`sips -s format png in.webp --out out.png`) o regenera las láminas con el guion, que salen en PNG.
+- **Las capturas de tienda no se suben a git** (2026-11-21, en `.gitignore`): `screenshots-6.3/`,
+  `docs/tienda/capturas/` y `docs/tienda/salida/` existen solo en el disco local, en WebP calidad 95.
+  Sí se versionan `docs/tienda/guion.json`, que regenera las láminas en PNG, y `docs/screen/`
+  (WebP), porque el README lo muestra. En otro clon hay que sacar las capturas de nuevo. Ninguna
+  imagen de `docs/` entra en un build. App Store Connect **no acepta WebP**: para volver a subir
+  una, conviértela antes (`sips -s format png in.webp --out out.png`) o regenera con el guion.
 - **Solo iPhone** (`TARGETED_DEVICE_FAMILY = 1`, desde el build 5, 2026-11-16): decisión de
   publicación para no exigir capturas ni revisión en iPad. En iPad se instala en modo
   compatibilidad. Volver a `"1,2"` es una decisión de producto, no un arreglo.
