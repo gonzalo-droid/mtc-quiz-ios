@@ -135,6 +135,22 @@ y ATT, y cómo cambiar el rastreo en Ajustes.
    "mtcquiz" bajo el ícono y en el aviso de rastreo) y corrige "Prepárate" en Inicio y "1 evaluación"
    en Estadísticas (PRs #36–#38).
 
+## Decisiones (2026-11-22): dominio nekodojo.app
+
+El sitio pasa de `gonzalo-lozg.me` a **`nekodojo.app`**, que ya sirve `app-ads.txt` (mismo
+`pub-1427341798923689`) y las páginas de la app. Las URLs de arriba son las que se enviaron con la
+1.0/1.0.1; las nuevas:
+
+| Campo | Valor | Cuándo |
+|---|---|---|
+| Política de privacidad (Privacidad de la app) | `https://nekodojo.app/apps/mtcquiz/privacy` | Editable ya |
+| URL de marketing — la que lee AdMob para `app-ads.txt` | `https://nekodojo.app` | Con la próxima versión |
+| URL de soporte | `https://nekodojo.app/apps/mtcquiz/support` | Con la próxima versión |
+
+La app abre términos y privacidad en `nekodojo.app/apps/mtcquiz/{terms,privacy}` desde el build
+que siga a la 1.0.1. `gonzalo-lozg.me` debe seguir vivo mientras haya usuarios con las versiones
+anteriores.
+
 ## Estado en App Store Connect
 
 **Enviada a revisión el 2026-11-17, 9:44 — "Pendiente de revisión".** Apple avisa por correo; la

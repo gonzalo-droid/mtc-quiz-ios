@@ -122,8 +122,8 @@ existe pero no resuelve públicamente hasta que salga ese primer lanzamiento.
 
 ## Privacidad
 
-- [Términos y condiciones](https://gonzalo-lozg.me/apps-docs/mtcquiz/term/)
-- [Política de privacidad](https://gonzalo-lozg.me/apps-docs/mtcquiz/politics/)
+- [Términos y condiciones](https://nekodojo.app/apps/mtcquiz/terms)
+- [Política de privacidad](https://nekodojo.app/apps/mtcquiz/privacy)
 
 Al primer arranque, antes de cargar anuncios, la app muestra el formulario de consentimiento de
 Google (UMP, para usuarios del EEE, Reino Unido y Suiza) y luego el aviso de App Tracking
