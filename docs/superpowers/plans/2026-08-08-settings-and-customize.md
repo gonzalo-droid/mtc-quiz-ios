@@ -526,7 +526,7 @@ git commit -m "feat: add SettingsViewModel and CustomizeViewModel to new MTCSett
 - Consumes: `SettingsViewModel`/`SettingsState` (Task 2), `MTCColor`/`MTCTypography` (`MTCDesignSystem`).
 - Produces: `SettingsView` (public SwiftUI `View`, `init(viewModel: SettingsViewModel, onCustomize: @escaping () -> Void, onPremium: @escaping () -> Void)`). Task 5's app shell constructs this by this exact initializer.
 
-Ported from `docs/screen/settings.png` and the real Android `ConfigurationScreen.kt`: a segmented theme picker (native `Picker(selection:).pickerStyle(.segmented)` — the idiomatic iOS equivalent of Android's exact 3-button-row pattern, same 3 options), a "Personalización" row, a "Premium" row, a "Calificar app" row wired to the real `requestReview` environment action, and a version footer read from the real app bundle.
+Ported from `docs/screen/settings.webp` and the real Android `ConfigurationScreen.kt`: a segmented theme picker (native `Picker(selection:).pickerStyle(.segmented)` — the idiomatic iOS equivalent of Android's exact 3-button-row pattern, same 3 options), a "Personalización" row, a "Premium" row, a "Calificar app" row wired to the real `requestReview` environment action, and a version footer read from the real app bundle.
 
 - [ ] **Step 1: Add `MTCDesignSystem` to the target's dependencies**
 
@@ -671,7 +671,7 @@ git commit -m "feat: add SettingsView with theme picker and settings rows"
 - Consumes: `CustomizeViewModel`/`CustomizeState` (Task 2), `MTCColor`/`MTCTypography` (`MTCDesignSystem`).
 - Produces: `CustomizeView` (public SwiftUI `View`, `init(viewModel: CustomizeViewModel)`). Task 5's app shell constructs this.
 
-Ported from `" personalization.png"` (note the literal leading space in that filename if you need to read it — `Read`/`ls` will silently fail without it) and the real Android `CustomizeScreen.kt`: 3 numeric text fields in the order **time → number of questions → percentage** (not alphabetical — matches Android's actual field order), each with a label, a helper/error text that switches between the sub-label and an error message, digit-only input filtering, and a submit button enabled only when all 3 are valid. No `navigateBack()` on success — the screen stays open, matching Android exactly.
+Ported from `" personalization.webp"` (note the literal leading space in that filename if you need to read it — `Read`/`ls` will silently fail without it) and the real Android `CustomizeScreen.kt`: 3 numeric text fields in the order **time → number of questions → percentage** (not alphabetical — matches Android's actual field order), each with a label, a helper/error text that switches between the sub-label and an error message, digit-only input filtering, and a submit button enabled only when all 3 are valid. No `navigateBack()` on success — the screen stays open, matching Android exactly.
 
 - [ ] **Step 1: Implement `CustomizeView`**
 
@@ -984,7 +984,7 @@ Use `mcp__Claude_Code_iOS_Simulator__build` with `action: "build"`, project `/Vo
 
 - [ ] **Step 6: Launch and verify visually**
 
-`control` `attach`, then `launch`, `screenshot`. Verify: Home now shows a hamburger/menu icon top-right → tap it → Settings screen shows the segmented theme picker + Personalización/Premium/Calificar rows + version footer (compare loosely against `docs/screen/settings.png`) → tap a different theme segment (e.g. "Oscuro") → confirm the app's actual color scheme visibly changes immediately (screenshot before/after) → tap "Personalización" → Customize screen shows the 3 fields in time/number/percentage order with real current values (compare loosely against `" personalization.png"`) → edit a field to an invalid value (e.g. clear it or type "9999") → confirm "Actualizar valores" becomes disabled and an error message appears → fix it back to a valid value → tap "Actualizar valores" → confirm a success alert appears and the screen does NOT navigate back (matches Android) → navigate back to Home, confirm the theme choice persisted (still dark, or whatever was selected).
+`control` `attach`, then `launch`, `screenshot`. Verify: Home now shows a hamburger/menu icon top-right → tap it → Settings screen shows the segmented theme picker + Personalización/Premium/Calificar rows + version footer (compare loosely against `docs/screen/settings.webp`) → tap a different theme segment (e.g. "Oscuro") → confirm the app's actual color scheme visibly changes immediately (screenshot before/after) → tap "Personalización" → Customize screen shows the 3 fields in time/number/percentage order with real current values (compare loosely against `" personalization.webp"`) → edit a field to an invalid value (e.g. clear it or type "9999") → confirm "Actualizar valores" becomes disabled and an error message appears → fix it back to a valid value → tap "Actualizar valores" → confirm a success alert appears and the screen does NOT navigate back (matches Android) → navigate back to Home, confirm the theme choice persisted (still dark, or whatever was selected).
 
 - [ ] **Step 7: Commit**
 

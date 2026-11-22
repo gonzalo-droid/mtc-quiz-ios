@@ -399,7 +399,7 @@ Use `mcp__Claude_Code_iOS_Simulator__build` with `action: "build"`, the `mtcquiz
 
 - [ ] **Step 5: Launch and verify visually**
 
-`control` `action: "launch"`, then `screenshot`. Navigate Home → tap a category card → Detail → tap "Descargar PDF" → screenshot again, confirm a real embedded PDF renders (compare loosely against `/Volumes/Neko/apps_ios/mtcquiz/docs/screen/pdf.png`) with a share icon in the nav bar and the category code as the title. Tap back, confirm it returns to Detail correctly.
+`control` `action: "launch"`, then `screenshot`. Navigate Home → tap a category card → Detail → tap "Descargar PDF" → screenshot again, confirm a real embedded PDF renders (compare loosely against `/Volumes/Neko/apps_ios/mtcquiz/docs/screen/pdf.webp`) with a share icon in the nav bar and the category code as the title. Tap back, confirm it returns to Detail correctly.
 
 - [ ] **Step 6: Commit**
 
