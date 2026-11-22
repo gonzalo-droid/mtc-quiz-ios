@@ -116,8 +116,8 @@ y ATT, y cómo cambiar el rastreo en Ajustes.
   los derechos necesarios" (balotarios públicos del MTC).
 - **Precio y disponibilidad:** gratis, solo Perú (1 de 175 países).
 - **Capturas de pantalla:** App Store Connect ya no pide 6,9"; pide iPhone 6,1"/6,3" (1206 × 2622)
-  y las reduce para los demás tamaños. Subidas las seis de `docs/release/screenshots-6.3/`; las
-  originales de 1320 × 2868 están en `screenshots-6.9/`. Sin iPad: la app es solo iPhone.
+  y las reduce para los demás tamaños. Subidas las seis de `docs/release/screenshots-6.3/`, que
+  desde el 2026-11-21 solo existe en local (fuera de git). Sin iPad: la app es solo iPhone.
 - **Avisos que no aplican:** evaluación de seguridad y declaración de AIGC para China continental,
   y Reglamento de Servicios Digitales de la UE. La app solo se distribuye en Perú.
 

@@ -133,9 +133,13 @@ the app ever needs a second language, that is its own task.
   rastreo. Es independiente del nombre en App Store ("MTCQuiz - Examen Brevete Perú") y del de
   Android ("Examen Brevete Perú").
 - **Capturas de App Store**: App Store Connect pide las de iPhone de 6,1"/6,3" (1206 × 2622) y las
-  reduce para los demás tamaños; ya no pide 6,9". Las de la 1.0 están en
-  `docs/release/screenshots-6.3/` (y las originales de 1320 × 2868 en `screenshots-6.9/`), sacadas
-  de un build Release con `isPremiumUser()` en `true` solo localmente, para que no salieran anuncios.
+  reduce para los demás tamaños; ya no pide 6,9". **Las capturas de tienda no se suben a git**
+  (2026-11-21, en `.gitignore`): viven solo en el disco local, en WebP calidad 95 —
+  `docs/release/screenshots-6.3/` (las de la 1.0), `docs/tienda/capturas/` y
+  `docs/tienda/salida/ios/1206x2622/` (las de la 1.0.1, con titulares). Lo que sí se versiona es
+  `docs/tienda/guion.json`, que las regenera en PNG; en otro clon hay que sacar las capturas de
+  nuevo (Debug con `-hideAds`). App Store Connect **no acepta WebP**: para resubir una, conviértela
+  (`sips -s format png in.webp --out out.png`). `docs/screen/` sí sigue en git: lo usa el README.
 - **Solo iPhone** (`TARGETED_DEVICE_FAMILY = 1`, desde el build 5, 2026-11-16): decisión de
   publicación para no exigir capturas ni revisión en iPad. En iPad se instala en modo
   compatibilidad. Volver a `"1,2"` es una decisión de producto, no un arreglo.

@@ -30,3 +30,9 @@ Packages/*/.swiftpm/
 # Superpowers scratch workspace
 .superpowers/
 .worktrees
+
+# Capturas de tienda: solo locales, no se suben (regenerables con docs/tienda/guion.json)
+docs/release/screenshots-*/
+docs/tienda/capturas/
+docs/tienda/salida/
+docs/tienda/icono.png
