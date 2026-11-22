@@ -134,8 +134,12 @@ the app ever needs a second language, that is its own task.
   Android ("Examen Brevete Perú").
 - **Capturas de App Store**: App Store Connect pide las de iPhone de 6,1"/6,3" (1206 × 2622) y las
   reduce para los demás tamaños; ya no pide 6,9". Las de la 1.0 están en
-  `docs/release/screenshots-6.3/` (y las originales de 1320 × 2868 en `screenshots-6.9/`), sacadas
-  de un build Release con `isPremiumUser()` en `true` solo localmente, para que no salieran anuncios.
+  `docs/release/screenshots-6.3/`, sacadas de un build Release con `isPremiumUser()` en `true` solo
+  localmente; las de la 1.0.1, con titulares, en `docs/tienda/salida/ios/1206x2622/` (generadas desde
+  `docs/tienda/guion.json`; hoy se sacan las capturas con `-hideAds` en Debug).
+- **Imágenes de `docs/` en WebP calidad 95** (2026-11-21), para aligerar el repo; no entran en ningún
+  build. App Store Connect **no acepta WebP**: para volver a subir una, conviértela antes
+  (`sips -s format png in.webp --out out.png`) o regenera las láminas con el guion, que salen en PNG.
 - **Solo iPhone** (`TARGETED_DEVICE_FAMILY = 1`, desde el build 5, 2026-11-16): decisión de
   publicación para no exigir capturas ni revisión en iPad. En iPad se instala en modo
   compatibilidad. Volver a `"1,2"` es una decisión de producto, no un arreglo.

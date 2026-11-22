@@ -2,7 +2,7 @@
 
 ## Contexto
 
-Continuación del port de MTCQuiz Android → iOS. Sub-proyecto 1 (Fundación + Home) está completo y en `master`. Este documento cubre las 5 piezas que faltan para llegar al flujo completo mostrado en las capturas de referencia (`docs/screen/*.png`): Home → Detail → Evaluation → Summary, Detail → PDF, Home → Settings → Customize/Premium.
+Continuación del port de MTCQuiz Android → iOS. Sub-proyecto 1 (Fundación + Home) está completo y en `master`. Este documento cubre las 5 piezas que faltan para llegar al flujo completo mostrado en las capturas de referencia (`docs/screen/*.webp`): Home → Detail → Evaluation → Summary, Detail → PDF, Home → Settings → Customize/Premium.
 
 Decidido en modo autónomo (usuario ausente) con 3 confirmaciones previas:
 - **Evaluation**: solo examen + resultado. Historial/Estadísticas/Repaso de errores quedan para un sub-proyecto futuro (dependen de tener evaluaciones acumuladas para tener sentido).
@@ -49,7 +49,7 @@ Regla de dependencia sin cambios: cada feature depende de `MTCDomain` (+`MTCDesi
 
 **Timer de evaluación**: `Task` con `Task.sleep(for: .seconds(1))` en loop, decrementando un `@Observable` counter — equivalente directo del `delay(1000L)` de Android. Se cancela si la evaluación termina antes.
 
-**Premium (UI only)**: estado vacío exacto de la captura real: "No hay planes disponibles en este momento. Intenta más tarde." (texto tomado literal de `docs/screen/premium.png`, que ya refleja el mismo estado — Android tampoco tiene productos configurados todavía). Beneficios y colores portados 1:1 de `PremiumScreen.kt` (dorado `#FFB300`→`#FF8F00`, fondo `#1A1A2E`→`#16213E`).
+**Premium (UI only)**: estado vacío exacto de la captura real: "No hay planes disponibles en este momento. Intenta más tarde." (texto tomado literal de `docs/screen/premium.webp`, que ya refleja el mismo estado — Android tampoco tiene productos configurados todavía). Beneficios y colores portados 1:1 de `PremiumScreen.kt` (dorado `#FFB300`→`#FF8F00`, fondo `#1A1A2E`→`#16213E`).
 
 **Configuración (tema)**: el `themeMode` ("system"/"light"/"dark") se persiste en `UserDefaultsPreferencesRepository` (ya existe el patrón) y se aplica en `mtcquizApp.swift` vía `.preferredColorScheme(_:)` sobre el `NavigationStack` raíz, leyendo el valor desde un `HomeViewModel`-equivalente a nivel de app (un `AppViewModel` liviano, nuevo, que solo expone `themeMode` para esto).
 

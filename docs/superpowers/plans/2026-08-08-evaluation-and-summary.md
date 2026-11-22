@@ -1590,7 +1590,7 @@ git commit -m "feat: add QuizState and QuizViewModel to new MTCEvaluationFeature
 
 **Why `preferencesRepository` instead of a plain `evaluationTimeMinutes: Int`:** `PreferencesRepository.evaluationTimeMinutes` is `{ get async }`, and the app shell's `RootView.body` (Task 9) is a synchronous computed property — it cannot `await` a value to pass in as a plain `Int` at construction time. `QuizView` reads the real value itself, inside its own `.task`, alongside `viewModel.load()`.
 
-Ported from `docs/screen/evaluation.png` and `docs/screen/evaluation_image.png` (the latter showing a question with an image strip), and the real Android `EvaluationScreen.kt` timer/button/dialog logic already fully captured in this plan's header.
+Ported from `docs/screen/evaluation.webp` and `docs/screen/evaluation_image.webp` (the latter showing a question with an image strip), and the real Android `EvaluationScreen.kt` timer/button/dialog logic already fully captured in this plan's header.
 
 - [ ] **Step 1: Add `MTCDesignSystem` to the target's dependencies**
 
@@ -2375,7 +2375,7 @@ Use `mcp__Claude_Code_iOS_Simulator__build` with `action: "build"`, project `/Vo
 
 - [ ] **Step 5: Launch and verify the full flow visually**
 
-`control` `attach`, then `launch`, `screenshot`. Navigate: Home → tap a category → Detail → tap "Iniciar evaluación" → confirm the Quiz screen shows a real question with real options and a running countdown timer (compare loosely against `docs/screen/evaluation.png`; if the first several questions in `a1_questions.json` don't have images, navigate a couple of questions forward if needed to find one that does, and compare against `docs/screen/evaluation_image.png` for that state) → tap an option → tap "Verificar" → confirm the answer reveals correct/incorrect coloring → tap "Siguiente" a few times, then answer through to the last question and tap "Finalizar" → confirm it navigates automatically to Summary showing a real score ring, correct/incorrect/total stats, and a message → tap "Finalizar evaluación" → confirm it returns to Detail (not Home). Also verify the cancel path: start a new evaluation, tap the back chevron, confirm the cancel-confirmation dialog appears, confirm tapping "Salir" returns to Detail.
+`control` `attach`, then `launch`, `screenshot`. Navigate: Home → tap a category → Detail → tap "Iniciar evaluación" → confirm the Quiz screen shows a real question with real options and a running countdown timer (compare loosely against `docs/screen/evaluation.webp`; if the first several questions in `a1_questions.json` don't have images, navigate a couple of questions forward if needed to find one that does, and compare against `docs/screen/evaluation_image.webp` for that state) → tap an option → tap "Verificar" → confirm the answer reveals correct/incorrect coloring → tap "Siguiente" a few times, then answer through to the last question and tap "Finalizar" → confirm it navigates automatically to Summary showing a real score ring, correct/incorrect/total stats, and a message → tap "Finalizar evaluación" → confirm it returns to Detail (not Home). Also verify the cancel path: start a new evaluation, tap the back chevron, confirm the cancel-confirmation dialog appears, confirm tapping "Salir" returns to Detail.
 
 - [ ] **Step 6: Commit**
 

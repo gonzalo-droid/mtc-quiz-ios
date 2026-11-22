@@ -13,7 +13,7 @@
 - Deployment target iOS 17, `platforms: [.iOS(.v17)]` in every `Package.swift`.
 - Any `Category` reference in a file that imports `Foundation`/`SwiftUI`/`UIKit` alongside `MTCDomain` must be qualified `MTCDomain.Category` (Objective-C runtime collision, established in the Home plan).
 - Packages importing `SwiftUI`/`UIKit` cannot be verified with plain `swift build`/`swift test` (macOS host has no UIKit) — use `cd Packages/<Name> && xcodebuild build -scheme <Name> -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/<name>-verify` instead. `MTCDomain` changes alone stay verifiable with plain `swift test`.
-- All UI copy stays in Spanish, ported from Android's real strings (verified against `docs/screen/detail.png` and the Android source already read this session) — not re-translated or paraphrased.
+- All UI copy stays in Spanish, ported from Android's real strings (verified against `docs/screen/detail.webp` and the Android source already read this session) — not re-translated or paraphrased.
 - Work directly on `master` (no worktree) — matches the pattern already established this session. Commit after each task.
 
 ---
@@ -434,7 +434,7 @@ git commit -m "feat: add DetailState and DetailViewModel to MTCDetailFeature"
 - Consumes: `DetailViewModel`/`DetailState` (Task 3), `MTCColor`/`MTCTypography`/`VehicleIllustration` (`MTCDesignSystem`, Task 1).
 - Produces: `DetailView` (public SwiftUI `View`, `init(viewModel: DetailViewModel, onStartEvaluation: @escaping () -> Void, onStudy: @escaping () -> Void, onDownloadPDF: @escaping () -> Void)`). Task 5's app shell constructs this by this exact initializer.
 
-Ported from `docs/screen/detail.png` and the real `DetailScreen.kt` (already read this session): neutral dark card (not category-colored, unlike Home's cards) with `classType`/`category` text in `MTCColor.primary`, vehicle image top-right inside the card, description below, a small dimmed legal note, then 3 action buttons — filled "Iniciar evaluación", outlined "Estudiar" with a car icon, and a plain text link "Descargar PDF" with a book icon.
+Ported from `docs/screen/detail.webp` and the real `DetailScreen.kt` (already read this session): neutral dark card (not category-colored, unlike Home's cards) with `classType`/`category` text in `MTCColor.primary`, vehicle image top-right inside the card, description below, a small dimmed legal note, then 3 action buttons — filled "Iniciar evaluación", outlined "Estudiar" with a car icon, and a plain text link "Descargar PDF" with a book icon.
 
 - [ ] **Step 1: Add `MTCDesignSystem` to the target's dependencies**
 

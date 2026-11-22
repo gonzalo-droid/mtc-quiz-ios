@@ -698,7 +698,7 @@ Use `mcp__Claude_Code_iOS_Simulator__build` with `action: "build"`, the `mtcquiz
 
 - [ ] **Step 6: Launch and verify visually**
 
-`control` `action: "launch"`, then `screenshot`. Navigate Home → tap a category card → Detail → tap "Estudiar" (now enabled) → screenshot again, confirm the full question list renders with correct answers highlighted green and a progress bar/count at the top (compare loosely against `docs/screen/practice.png`). Tap the search icon, type a partial word from a visible question's title, confirm the list filters live and the progress bar disappears while searching. Clear the search, confirm the progress bar reappears. Tap back, confirm it returns to Detail correctly and nothing else regressed (Detail's other two buttons still work).
+`control` `action: "launch"`, then `screenshot`. Navigate Home → tap a category card → Detail → tap "Estudiar" (now enabled) → screenshot again, confirm the full question list renders with correct answers highlighted green and a progress bar/count at the top (compare loosely against `docs/screen/practice.webp`). Tap the search icon, type a partial word from a visible question's title, confirm the list filters live and the progress bar disappears while searching. Clear the search, confirm the progress bar reappears. Tap back, confirm it returns to Detail correctly and nothing else regressed (Detail's other two buttons still work).
 
 - [ ] **Step 7: Commit**
 

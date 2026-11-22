@@ -18,9 +18,9 @@ con ella sobre una base de mejor esfuerzo.
 
 | | | |
 |:---:|:---:|:---:|
-| <img src="docs/screen/home.png" width="240"> | <img src="docs/screen/detail.png" width="240"> | <img src="docs/screen/evaluation.png" width="240"> |
+| <img src="docs/screen/home.webp" width="240"> | <img src="docs/screen/detail.webp" width="240"> | <img src="docs/screen/evaluation.webp" width="240"> |
 | **Inicio** | **Detalle de categoría** | **Evaluación** |
-| <img src="docs/screen/practice.png" width="240"> | <img src="docs/screen/pdf.png" width="240"> | <img src="docs/screen/settings.png" width="240"> |
+| <img src="docs/screen/practice.webp" width="240"> | <img src="docs/screen/pdf.webp" width="240"> | <img src="docs/screen/settings.webp" width="240"> |
 | **Estudiar** | **PDF del balotario** | **Configuraciones** |
 
 ## Funcionalidades
