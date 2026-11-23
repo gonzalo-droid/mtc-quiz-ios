@@ -228,9 +228,8 @@ constante en vez de Remote Config. Spec:
 que su versión final no haya cambiado reglas o textos.
 
 **Textos corregidos solo en iOS 2026-11-17 (`fix/display-name-and-copy`, build 6):** "Prepárate para
-tu evaluación" con tilde en Home y "1 evaluación" en singular en Estadísticas. Android tiene los dos
-errores (`practice_to_evaluation` en `app/` y `home/presentation/` `strings.xml`, y
-`StatsScreen.kt:243`): es Android el que queda atrás, no una divergencia que haya que deshacer en iOS.
+tu evaluación" con tilde en Home y "1 evaluación" en singular en Estadísticas. Android los
+igualó: el singular en `a26dc4d` y la tilde en la rama `chore/release-1.2.7` (Android PR #39, 1.2.7).
 
 **Referencia de paridad: Android `70cf187`** (incluye #31 ktlint/estilo y #32 nota de changelog,
 ninguno portable; e #33 arriba); iOS master la iguala desde `c2fbfa5` (merge de #26) más las dos
