@@ -127,7 +127,7 @@ the app ever needs a second language, that is its own task.
   Nothing in the code needs more than 17: there is no iOS availability guard anywhere, and Swift
   rejects a too-new API at compile time. Runtime-verified on iOS 18.0; no iOS 17 simulator runtime
   was available to check 17.x itself.
-- Bundle ID `com.gonzadev.mtcquiz`, `MARKETING_VERSION` 1.0.1.
+- Bundle ID `com.gonzadev.mtcquiz`, `MARKETING_VERSION` 1.0.2.
 - **Nombre bajo el ícono: "MTCQuiz"** (`CFBundleDisplayName` en `Info.plist`, desde el build 6).
   Sin esa clave iOS usaba el nombre del target, "mtcquiz" en minúsculas, también en el aviso de
   rastreo. Es independiente del nombre en App Store ("MTCQuiz - Examen Brevete Perú") y del de
