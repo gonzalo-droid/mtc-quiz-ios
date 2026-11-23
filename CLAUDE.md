@@ -127,7 +127,7 @@ the app ever needs a second language, that is its own task.
   Nothing in the code needs more than 17: there is no iOS availability guard anywhere, and Swift
   rejects a too-new API at compile time. Runtime-verified on iOS 18.0; no iOS 17 simulator runtime
   was available to check 17.x itself.
-- Bundle ID `com.gonzadev.mtcquiz`, `MARKETING_VERSION` 1.0.1.
+- Bundle ID `com.gonzadev.mtcquiz`, `MARKETING_VERSION` 1.0.2.
 - **Nombre bajo el ícono: "MTCQuiz"** (`CFBundleDisplayName` en `Info.plist`, desde el build 6).
   Sin esa clave iOS usaba el nombre del target, "mtcquiz" en minúsculas, también en el aviso de
   rastreo. Es independiente del nombre en App Store ("MTCQuiz - Examen Brevete Perú") y del de
@@ -228,9 +228,8 @@ constante en vez de Remote Config. Spec:
 que su versión final no haya cambiado reglas o textos.
 
 **Textos corregidos solo en iOS 2026-11-17 (`fix/display-name-and-copy`, build 6):** "Prepárate para
-tu evaluación" con tilde en Home y "1 evaluación" en singular en Estadísticas. Android tiene los dos
-errores (`practice_to_evaluation` en `app/` y `home/presentation/` `strings.xml`, y
-`StatsScreen.kt:243`): es Android el que queda atrás, no una divergencia que haya que deshacer en iOS.
+tu evaluación" con tilde en Home y "1 evaluación" en singular en Estadísticas. Android los
+igualó: el singular en `a26dc4d` y la tilde en la rama `chore/release-1.2.7` (Android PR #39, 1.2.7).
 
 **Referencia de paridad: Android `70cf187`** (incluye #31 ktlint/estilo y #32 nota de changelog,
 ninguno portable; e #33 arriba); iOS master la iguala desde `c2fbfa5` (merge de #26) más las dos
