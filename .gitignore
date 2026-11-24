@@ -35,3 +35,6 @@ Packages/*/.swiftpm/
 docs/release/screenshots-*/
 docs/tienda/capturas/
 docs/tienda/salida/
+
+# Firebase: configuración local, fuera de git (como google-services.json en Android)
+mtcquiz/GoogleService-Info.plist
