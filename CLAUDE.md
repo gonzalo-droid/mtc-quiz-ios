@@ -9,7 +9,8 @@ Comunicaciones) traffic-rules exam. Repo `gonzalo-droid/mtc-quiz-ios`; the Andro
 `gonzalo-droid/mtc-quiz` and is the source of truth for behaviour — see
 [Perfil de paridad](#perfil-de-paridad).
 
-SwiftUI, iOS 17+, no Firebase, no backend: the nine question banks ship as JSON inside the app.
+SwiftUI, iOS 17+, no backend: the nine question banks ship as JSON inside the app. Firebase is there
+only for Crashlytics and Analytics, in Release builds (see **Firebase** below).
 
 ## Build & Run
 
@@ -80,6 +81,17 @@ true if the stack changes.
   `mtcquizApp.init()`.
 - `UserDefaultsPreferencesRepository` for evaluation settings.
 - `@AppStorage` directly in `RootView` for `theme_mode` and `onboarding_shown`.
+
+**Firebase**: Crashlytics + Analytics only (SPM `firebase-ios-sdk` on the app target, not in a
+package), started by `mtcquizApp.configureFirebase()` **in Release only** — Debug and simulator
+runs never report. Same Firebase project as Android (`mtcquiz-d8c5f`), iOS app "MTCQuiz iOS".
+`mtcquiz/GoogleService-Info.plist` is **local and gitignored**, like Android's
+`google-services.json`: a fresh clone builds and runs without it (Firebase just stays off), but a
+store archive needs it — download it from Firebase console → Configuración del proyecto → MTCQuiz
+iOS. The "Upload dSYMs to Crashlytics" build phase runs only for Release on `iphoneos` and skips
+itself without the plist; it needs `ENABLE_USER_SCRIPT_SANDBOXING = NO` on the target, and
+Analytics needs `OTHER_LDFLAGS = -ObjC`. No Remote Config, Auth or other Firebase product: adding
+one is still its own decision.
 
 **Theme**: the app follows the system by default and can be forced light or dark from Settings
 (`theme_mode` ∈ `system` / `light` / `dark`). `nil` means "follow the system", matching Android's
@@ -208,7 +220,7 @@ cinco pantallas que iOS ya tapa con `offersPremium`: corona de Home, fila de Con
 `PremiumUpsellDialog` tras el anuncio de Detail y de PDF (el de PDF ya no existe desde el banner de
 Estudiar, ver abajo), y `PremiumViewModel.isPaywallAvailable`
 del paywall. Paridad de comportamiento visible, por una constante en vez de un flag remoto — **a
-propósito, no se porta Remote Config sin preguntar** (perfil §6: sin Firebase). Dos divergencias
+propósito, no se porta Remote Config sin preguntar** (perfil §6: de Firebase solo Crashlytics y Analytics). Dos divergencias
 latentes, sin efecto mientras `isPremiumUser()` sea `false` fijo, documentadas para cuando llegue el
 billing real:
 - Android sigue mostrando "Premium ✓" a quien ya compró, aun con la oferta apagada; en iOS
@@ -323,8 +335,9 @@ ese fue exactamente el bug que arregló el PR #7.
   guardó tal cual el 2026-09-18: no está compilada, ni probada, ni revisada, y está basada en un
   `master` anterior a los PRs #5–#14. Si se retoma el billing, empieza por ahí — actualízala sobre
   `master` antes de nada — en vez de escribirlo de cero.
-- **Sin backend y sin Firebase.** Android usa Firebase para auth/analytics; en iOS esos caminos no
-  existen y no se portan sin preguntar.
+- **Sin backend; de Firebase solo Crashlytics y Analytics** (desde la 1.0.2, en Release). Android
+  usa además Auth, Realtime Database, Remote Config y Performance: en iOS no existen y no se portan
+  sin preguntar.
 - **Anuncios**: AdMob con ids de unidad hardcodeados. El intersticial de inicio de evaluación es
   por contador y se muestra cuando `count > 0 && count % 3 == 0`; el contador se incrementa
   **antes** de decidir: `record…()` → `should…()` → `show…()`, dentro de

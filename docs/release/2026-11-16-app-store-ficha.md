@@ -151,6 +151,19 @@ La app abre términos y privacidad en `nekodojo.app/apps/mtcquiz/{terms,privacy}
 que siga a la 1.0.1. `gonzalo-lozg.me` debe seguir vivo mientras haya usuarios con las versiones
 anteriores.
 
+## Pendiente para la 1.0.2: Firebase Crashlytics y Analytics
+
+La 1.0.2 agrega Firebase Crashlytics y Analytics (solo en Release). Antes de enviarla a revisión:
+
+1. **Etiquetas de privacidad:** revisarlas con la lista de Firebase de datos recolectados por
+   producto. Lo esperable es sumar *Datos de fallos* (y rendimiento) en Diagnósticos e
+   *Interacción con el producto* en Datos de uso, con propósito Analítica. Identificadores y
+   ubicación ya están declarados por AdMob.
+2. **Política de privacidad:** la sección iOS de `nekodojo.app/apps/mtcquiz/privacy` todavía dice
+   "sin Firebase". Hay que agregar Crashlytics y Analytics.
+3. **Archivo:** `mtcquiz/GoogleService-Info.plist` tiene que estar en el disco local (no está en
+   git), si no la app sale sin Firebase.
+
 ## Estado en App Store Connect
 
 **Enviada a revisión el 2026-11-17, 9:44 — "Pendiente de revisión".** Apple avisa por correo; la
