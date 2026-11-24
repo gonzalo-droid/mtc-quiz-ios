@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import FirebaseCore
 import MTCData
 import MTCDesignSystem
 import MTCHomeFeature
@@ -54,7 +55,8 @@ private let pdfRewardedAdUnitID = "ca-app-pub-1427341798923689/1197830238"
 private let studyBannerAdUnitID = bannerAdUnitID
 
 /// A banner after every this many questions in Estudiar. Android reads it from Remote Config
-/// (`study_banner_interval`); iOS has no Firebase, so it is a constant, like `offersPremium`.
+/// (`study_banner_interval`); iOS has Crashlytics and Analytics but no Remote Config, so it is a
+/// constant, like `offersPremium`.
 private let studyBannerInterval = 10
 
 @main
@@ -72,7 +74,18 @@ struct mtcquizApp: App {
     )
 
     init() {
+        Self.configureFirebase()
         modelContainer = Self.makeModelContainer()
+    }
+
+    /// Crashlytics and Analytics, Release only: Debug and simulator runs never report, so the
+    /// console holds only real users' crashes. `GoogleService-Info.plist` is local and out of git
+    /// (like Android's `google-services.json`); without it the app runs as before, without Firebase.
+    private static func configureFirebase() {
+        #if !DEBUG
+        guard Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") != nil else { return }
+        FirebaseApp.configure()
+        #endif
     }
 
     /// The on-disk store, or — if it can't be opened (a future schema change that fails to

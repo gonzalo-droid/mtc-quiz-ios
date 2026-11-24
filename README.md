@@ -49,7 +49,8 @@ con ella sobre una base de mejor esfuerzo.
 | Modularidad | Paquetes locales de Swift Package Manager, uno por capa/feature, cada uno con su propio scheme de Xcode — el target de la app solo contiene el composition root |
 | Anuncios | Google Mobile Ads SDK 12.14.0 (banner, intersticial y con recompensa). Google User Messaging Platform 3.1.0 para el formulario de consentimiento |
 | Tests | Swift Testing (`@Test`, `#expect`, `@Test(arguments:)`), fakes escritos a mano sobre los protocolos de `MTCDomain` — sin framework de mocking |
-| Backend | Ninguno — sin servidor, sin Firebase, sin login. Todo el contenido va empaquetado dentro de la app |
+| Backend | Ninguno — sin servidor ni login. Todo el contenido va empaquetado dentro de la app |
+| Monitoreo | Firebase Crashlytics y Analytics, solo en builds Release |
 
 ## Arquitectura
 
@@ -88,8 +89,9 @@ vez y los pasa hacia abajo como parámetros de `init`. No hay contenedor de DI n
 | iOS | 17.0+ (deployment target) |
 | Swift | Language mode 5 |
 
-No hace falta ninguna API key, `GoogleService-Info.plist` ni configuración de backend — la app no
-tiene Firebase ni servidor. Los ids de unidad de AdMob están fijos en `mtcquiz/mtcquizApp.swift`
+No hace falta ninguna API key ni configuración de backend. `mtcquiz/GoogleService-Info.plist`
+(Firebase Crashlytics y Analytics) no está en git: sin él la app compila y corre igual, solo que sin
+Firebase; hace falta para el archivo de la tienda. Los ids de unidad de AdMob están fijos en `mtcquiz/mtcquizApp.swift`
 (las unidades de muestra públicas de Google bajo `#if DEBUG`, las reales en Release), así que un
 clon recién hecho compila y corre sin ningún paso de configuración.
 
